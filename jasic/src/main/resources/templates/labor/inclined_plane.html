@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Labor - Inclined Plane</title>
+<script src="../../static/js/draw_shapes.js"></script>
+</head>
+<body>
+<h1>Labor - Inclined Plane</h1>
+<canvas id="myCanvas" width="300" height="150"></canvas>
+<script type="module">
+
+function drawTriangle(context,p1_x, p1_y, p2_x, p2_y, p3_x, p3_y){
+	
+	drawLine(context, p1_x, p1_y, p2_x, p2_y);
+	drawLine(context, p2_x, p2_y, p3_x, p3_y);
+	drawLine(context, p3_x, p3_y, p1_x, p1_y);
+}
+
+function drawLine(context, p1_x, p1_y, p2_x, p2_y){
+	context.beginPath();
+	context.moveTo(p1_x, p1_y);
+	context.lineTo(p2_x, p2_y);
+	context.stroke();
+}
+
+
+var c = document.getElementById("myCanvas");
+var context = c.getContext("2d");
+drawTriangle(context, 10, 140, 290, 10, 290, 10);
+
+
+</script>
+</body>
+</html>
