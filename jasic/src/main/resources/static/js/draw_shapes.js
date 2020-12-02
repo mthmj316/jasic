@@ -1,3 +1,9 @@
+function drawCircle(context, centerX, centerY, radius){
+	
+	context.beginPath();
+	context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+	context.stroke();
+}
 /**
  * 
  */

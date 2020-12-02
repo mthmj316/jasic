@@ -5,18 +5,45 @@
 <title>Labor - Inclined Plane</title>
 <script type="text/javascript" th:src="@{/js/draw_shapes.js}"></script>
 </head>
-<body onload="load()">
-<h1>Labor - Inclined Plane</h1>
-<canvas id="myCanvas" width="300" height="150"></canvas>
-<script>
+<body onload="drawPlane()">
+	<h1>Labor - Inclined Plane</h1>
+	<div>
+		<canvas id="myCanvas" width="400" height="300">
+		Your browser does not support the HTML5 canvas tag.
+		</canvas>
+	</div>
+	<div>
+		<button onclick="increaseHeight()">Height +</button>
+		<button onclick="decreaseHeight()">Height -</button>
+	</div>
+	<script>
+	
+		var height = 70;
+		var radius = 30;
+		
+		function increaseHeight(){
+			height += 1;
+			drawPlane();
+		}
+		
+		function decreaseHeight(){
+			height -= 1;
+			drawPlane();
+		}
+		
+		function drawPlane() {
 
-function load(){
-
-	var c = document.getElementById("myCanvas");
-	var context = c.getContext("2d");
-	drawTriangle(context, 10, 140, 290, 10, 290, 10);
-}
-
-</script>
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			
+			topPos = canvas.height - height - 10;
+			
+			drawTriangle(context, 10, canvas.height - 10, 200, canvas.height - 10, 200, topPos);
+			
+			drawCircle(context, 200, topPos-30, radius);
+		}
+	</script>
 </body>
 </html>
