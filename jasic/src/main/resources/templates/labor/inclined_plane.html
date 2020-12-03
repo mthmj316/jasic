@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Labor - Inclined Plane</title>
 <script type="text/javascript" th:src="@{/js/draw_shapes.js}"></script>
+<script type="text/javascript" th:src="@{/js/draw_basic_physic_shaps.js}"></script>
 </head>
 <body onload="drawPlane()">
 	<h1>Labor - Inclined Plane</h1>
@@ -43,6 +44,8 @@
 			drawTriangle(context, 10, canvas.height - 10, 200, canvas.height - 10, 200, topPos);
 			
 			drawCircle(context, 200, topPos-30, radius);
+			
+			drawForceArrow(context, 200, topPos-30, 100, topPos-20);
 		}
 	</script>
 </body>

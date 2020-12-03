@@ -1,7 +1,47 @@
+function drawArrow(context, fromX, fromY, toX, toY){
+	drawArrow(context, fromX, fromY, toX, toY, "black", 1)
+}
+
+function drawArrow(context, fromX, fromY, toX, toY, color, width){
+	
+	context.fillStyle = color;
+	context.strokeStyle = color;
+	context.lineWidth = width;
+	
+
+	var headlen = 20; // length of head in pixels
+	var dx = toX - fromX;
+	var dy = toY - fromY;
+	var angle = Math.atan2(dy, dx);
+
+	context.beginPath();
+	context.moveTo(fromX, fromY);
+	context.lineTo(toX, toY);
+	context.stroke();
+
+	context.beginPath();
+	context.moveTo(toX, toY);
+	context.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+	context.stroke();
+	context.moveTo(toX, toY);
+	context.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+	context.stroke();
+	
+	context.moveTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+	context.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+	context.stroke();
+	context.fill();
+	
+	context.fillStyle = "black";
+	context.strokeStyle = "black";
+	context.lineWidth = 1;
+}
+
 function drawCircle(context, centerX, centerY, radius){
 	
 	context.beginPath();
 	context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+	context.closePath();
 	context.stroke();
 }
 /**
