@@ -2,36 +2,49 @@ function drawArrow(context, fromX, fromY, toX, toY){
 	drawArrow(context, fromX, fromY, toX, toY, "black", 1)
 }
 
-function drawArrow(context, fromX, fromY, toX, toY, color, width){
+function drawArrow(context, fromx, fromy, tox, toy, color, width, r){
 	
 	context.fillStyle = color;
 	context.strokeStyle = color;
 	context.lineWidth = width;
 	
-
-	var headlen = 20; // length of head in pixels
-	var dx = toX - fromX;
-	var dy = toY - fromY;
-	var angle = Math.atan2(dy, dx);
-
-	context.beginPath();
-	context.moveTo(fromX, fromY);
-	context.lineTo(toX, toY);
-	context.stroke();
-
-	context.beginPath();
-	context.moveTo(toX, toY);
-	context.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
-	context.stroke();
-	context.moveTo(toX, toY);
-	context.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
-	context.stroke();
+	var x_center = tox;
+	var y_center = toy;
 	
-	context.moveTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
-	context.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
-	context.stroke();
+	var angle;
+	var x;
+	var y;
+	
+	context.beginPath();
+	
+	angle = Math.atan2(toy-fromy,tox-fromx)
+	
+	x = r*Math.cos(angle) + x_center;
+	y = r*Math.sin(angle) + y_center;
+
+	context.moveTo(x, y);
+	
+	angle += (1/3)*(2*Math.PI)
+	x = r*Math.cos(angle) + x_center;
+	y = r*Math.sin(angle) + y_center;
+	
+	context.lineTo(x, y);
+	
+	angle += (1/3)*(2*Math.PI)
+	x = r*Math.cos(angle) + x_center;
+	y = r*Math.sin(angle) + y_center;
+	
+	context.lineTo(x, y);
+	
+	context.closePath();
+	
 	context.fill();
 	
+	context.beginPath();
+	context.moveTo(fromx, fromy);
+	context.lineTo(tox, toy);
+	context.stroke();
+
 	context.fillStyle = "black";
 	context.strokeStyle = "black";
 	context.lineWidth = 1;
