@@ -31,6 +31,11 @@ var r = 0;
 //Gewichtskraft
 var fg = 50;
 
+function recalc(gForce, triangleHeigth){
+	
+	this.bhy = this.bry - triangleHeigth;
+}
+
 function initPlane(width, height){
 	
 	this.canvasWidth = width;
@@ -40,6 +45,10 @@ function initPlane(width, height){
 	this.brx = this.canvasWidth - this.RIGHT_SPACE_X;
 	this.bry = this.bly;
 	this.bhx = this.brx;
-	this.bhy = this.canvasHeight / 2; //initial value
-	this.r = (this.bry - this.bhy) / 2;
+	
+	//Initial height of the triangle
+	var triangleHeight =  this.bry - this.canvasHeight / 2;
+	this.recalc(this.fg, triangleHeight);
+	
+	this.r = (this.bry - this.bhy) / 2; //Not before recalc has been called!
 }
