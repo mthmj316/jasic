@@ -26,6 +26,10 @@ var bry = 0;
 var bhx = 0;
 //Y coordinate of the upper corner of the triangle.
 var bhy = 0;
+//X coordinate of the circle centre
+var mx = 0;
+//Y coordinate of the circle centre
+var my = 0;
 //Radius of the circle
 var r = 0;
 //Gewichtskraft
@@ -34,6 +38,7 @@ var fg = 50;
 function recalc(gForce, triangleHeigth){
 	
 	this.bhy = this.bry - triangleHeigth;
+//	this.my = (this.bry - this.bhy) / 2 + this.bhy + 
 }
 
 function initPlane(width, height){
@@ -45,6 +50,7 @@ function initPlane(width, height){
 	this.brx = this.canvasWidth - this.RIGHT_SPACE_X;
 	this.bry = this.bly;
 	this.bhx = this.brx;
+	this.mx = this.canvasWidth / 2;
 	
 	//Initial height of the triangle
 	var triangleHeight =  this.bry - this.canvasHeight / 2;
