@@ -2,59 +2,63 @@
  * Contains all JavaScript functions which are needed by the
  * HTML page inclined_plane.html.
  */
-//Space between the left side of the canvas and the inclined plane triangle.
-const LEFT_SPACE_X = 10;
-//Space between the right side of the canvas and the inclined plane triangle.
-const RIGHT_SPACE_X = 10;
-//Space between the bottom of the canvas and the inclined plane triangle.
-const BOTTOM_SPACE_Y = 10;
-//Space between the top of the canvas and the inclined plane triangle.
-const TOP_SPACE_Y = 10;
-//Width of the the canvas
-var canvasWidth = 0;
-//Height of the canvas
-var canvasHeight = 0;
-//X coordinate of the left bottom corner of the triangle.
-var blx = LEFT_SPACE_X
-//Y coordinate of the left bottom corner of the triangle.
-var bly = 0;
-//X coordinate of the right bottom corner of the triangle.
-var brx = 0;
-//Y coordinate of the right bottom corner of the triangle.
-var bry = 0;
-//X coordinate of the upper corner of the triangle.
-var bhx = 0;
-//Y coordinate of the upper corner of the triangle.
-var bhy = 0;
-//X coordinate of the circle centre
-var mx = 0;
-//Y coordinate of the circle centre
-var my = 0;
-//Radius of the circle
-var r = 0;
-//Gewichtskraft
-var fg = 50;
+
+//Space between the border of the canvas and the drawing within. 
+const SPACE = {left:10, right:10, bottom:10, top:10};
+
+//Canvas dimension
+var canvasDim = {x:0,  y:0}; 
+
+//Position of triangle bottom line (b)
+var b = {xs:0,  ys:0, xe:0,  ye:0}; 
+
+//Position of triangle vertical  line (h)
+var h = {xs:0,  ys:0, xe:0,  ye:0};
+
+//Position of triangle inclined  line (l)
+var l = {xs:0,  ys:0, xe:0,  ye:0};
+
+//Position of the circle and its radius
+var circle = {mx:0, my:0, r=0};
+
+//Position of the fg arrow
+var fg = {xs:0,  ys:0, xe:0,  ye:0};
+
+//Position of the fh arrow
+var fh = {xs:0,  ys:0, xe:0,  ye:0};
+
+//Position of the fn arrow
+var fn = {xs:0,  ys:0, xe:0,  ye:0};
+
+//Angle of the bottom line b to the inclined line l
+var alpha = 0;
 
 function recalc(gForce, triangleHeigth){
 	
-	this.bhy = this.bry - triangleHeigth;
-//	this.my = (this.bry - this.bhy) / 2 + this.bhy + 
+
 }
 
-function initPlane(width, height){
+function initPlane(canvasWidth, canvasHeight){
 	
-	this.canvasWidth = width;
-	this.canvasHeight = height;
+	canvasDim.x = canvasWidth;
+	canvasDim.y = canvasHeight;
+
+	b.xs = SPACE.left;
+	b.ys = canvasDim.y - SPACE.bottom;
+	b.xe = canvasDim.x -  SPACE.right;
+	b.ye = b.ys;
 	
-	this.bly = this.canvasHeight - this.BOTTOM_SPACE_Y;
-	this.brx = this.canvasWidth - this.RIGHT_SPACE_X;
-	this.bry = this.bly;
-	this.bhx = this.brx;
-	this.mx = this.canvasWidth / 2;
+	h.xs = b.xe;
+	h.ys =  b.ys;
+	h.xe = h.xs;
+	h.ye = canvasDim.y / 2; //must be recalculated after ui change
 	
-	//Initial height of the triangle
-	var triangleHeight =  this.bry - this.canvasHeight / 2;
-	this.recalc(this.fg, triangleHeight);
+	l.xs = b.xs;
+	l.ys = b.ys;
+	l.xe = h.xe;
+	l.ye = h.ye;  //must be recalculated after ui change
 	
-	this.r = (this.bry - this.bhy) / 2; //Not before recalc has been called!
+	circle.r = (h.ys - h.ye) / 2; 
+	circle.mx = canvasDim.x / 2;
+	circle.my = l.ye + (l.ys - l.ye) / 2 - circle.r;   //must be recalculated after ui change
 }
