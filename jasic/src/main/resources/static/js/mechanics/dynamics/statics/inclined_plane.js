@@ -19,7 +19,7 @@ var h = {xs:0,  ys:0, xe:0,  ye:0};
 var l = {xs:0,  ys:0, xe:0,  ye:0};
 
 //Position of the circle and its radius
-var circle = {mx:0, my:0, r=0};
+var circle = {mx:0, my:0, r:0};
 
 //Position of the fg arrow
 var fg = {xs:0,  ys:0, xe:0,  ye:0};
@@ -37,12 +37,12 @@ var fgValue = 50;
 var fhValue = 0;
 var fnValue = 0;
 
-function recalc(gForce, triangleHeigth){
+export function recalc(gForce, triangleHeigth){
 	
 
 }
 
-function initPlane(canvasWidth, canvasHeight){
+export function initPlane(canvasWidth, canvasHeight){
 	
 	canvasDim.x = canvasWidth;
 	canvasDim.y = canvasHeight;
@@ -62,9 +62,9 @@ function initPlane(canvasWidth, canvasHeight){
 	l.xe = h.xe;
 	l.ye = h.ye;  //must be recalculated after ui change
 	
-	alpha = Math.atan(getH() / getB() );
+	alpha = Math.atan(getHLength() / getBLength() );
 	
-	circle.r = (h.ys - h.ye) / 2; 
+	circle.r = (h.ys - h.ye) / 4; 
 	circle.mx = canvasDim.x / 2;
 	circle.my = l.ye + (l.ys - l.ye) / 2 - circle.r;   //must be recalculated after ui change
 	
@@ -73,7 +73,7 @@ function initPlane(canvasWidth, canvasHeight){
 	fg.xe = fg.xs;
 	fg.ye = fg.ys + fgValue;
 	
-	fhValue = fgValue * (getH() / getL());
+	fhValue = fgValue * (getHLength() / getLLength());
 
 	fh.xs = circle.mx;
 	fh.ys = circle.my;
@@ -88,27 +88,58 @@ function initPlane(canvasWidth, canvasHeight){
 	fn.ye = fg.ye - Math.sin(alpha) * fhValue;
 }
 
-function getH(){
+export function getFnPosition(){
+	return fn;
+}
+
+export function getFhPosition(){
+	return fg;
+}
+
+export function getFgPosition(){
+	return fg;
+}
+
+export function getCirclePosition(){
+	return circle;
+}
+
+export function getBPosition(){
+	
+	return b;
+}
+
+export function getHLength(){
 	return h.ys - h.ye;
 }
 
-function getB(){
+export function getHPosition(){
+	
+	return h;
+}
+
+export function getLPosition(){
+	
+	return l;
+}
+
+export function getBLength(){
 	return b.xe - b.xs;
 }
 
-function getL(){
-	return Math.sqrt(Math.pow(getB()) + Math.pow(getH()));
+export function getLLength(){
+	return Math.sqrt(Math.pow(getBLength()) + Math.pow(getHLength()));
 }
 
-function getFg(){
+export function getFg(){
 	return fgValue;
 }
 
-function getFn(){
+export function getFn(){
 	return fnValue;
 }
 
-function getFh(){
+export function getFh(){
 	return fhValue;
 }
 

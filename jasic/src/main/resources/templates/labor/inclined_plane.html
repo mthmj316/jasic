@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Labor - Inclined Plane</title>
-<script type="text/javascript" th:src="@{/js/draw_shapes.js}"></script>
-<script type="text/javascript" th:src="@{/js/draw_basic_physic_shaps.js}"></script>
+<script type="module" th:src="@{/js/draw_statics.js}"></script>
 </head>
-<body onload="drawPlane()">
+<body onload="init()">
 	<h1>Labor - Inclined Plane</h1>
 	<div>
 		<canvas id="myCanvas" width="400" height="300">
@@ -18,34 +17,13 @@
 		<button onclick="decreaseHeight()">Height -</button>
 	</div>
 	<script>
-	
-		var height = 70;
-		var radius = 30;
 		
-		function increaseHeight(){
-			height += 1;
-			drawPlane();
-		}
-		
-		function decreaseHeight(){
-			height -= 1;
-			drawPlane();
-		}
-		
-		function drawPlane() {
+		function init() {
 
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
 			
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			
-			topPos = canvas.height - height - 10;
-			
-			drawTriangle(context, 10, canvas.height - 10, 200, canvas.height - 10, 200, topPos);
-			
-			drawCircle(context, 100, topPos - 30, radius);
-			
-			drawForceArrow(context, 200, topPos-30, 100, topPos-30);
+			drawInclinedPlane(context, canvas.width, canvas.height);
 		}
 	</script>
 </body>
