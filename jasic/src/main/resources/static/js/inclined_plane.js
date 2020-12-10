@@ -62,7 +62,7 @@ function initPlane(canvasWidth, canvasHeight){
 	l.xe = h.xe;
 	l.ye = h.ye;  //must be recalculated after ui change
 	
-	alpha = Math.atan(getB() /getH());
+	alpha = Math.atan(getH() / getB() );
 	
 	circle.r = (h.ys - h.ye) / 2; 
 	circle.mx = canvasDim.x / 2;
@@ -73,14 +73,19 @@ function initPlane(canvasWidth, canvasHeight){
 	fg.xe = fg.xs;
 	fg.ye = fg.ys + fgValue;
 	
-	fhValue = fgValue * ()
+	fhValue = fgValue * (getH() / getL());
 
 	fh.xs = circle.mx;
-	fh.ys = circle.my; 
+	fh.ys = circle.my;
+	fh.xe = circle.mx - Math.cos(alpha) * fhValue; 
+	fh.ye = circle.my - Math.sin(alpha) * fhValue;
+	
+	fnValue = fgValue * Math.cos(alpha);
 	
 	fn.xs = circle.mx;
 	fn.ys = circle.my; 
-	
+	fn.xe = fg.xe + Math.cos(alpha) * fhValue;
+	fn.ye = fg.ye - Math.sin(alpha) * fhValue;
 }
 
 function getH(){
@@ -92,19 +97,19 @@ function getB(){
 }
 
 function getL(){
-	
+	return Math.sqrt(Math.pow(getB()) + Math.pow(getH()));
 }
 
 function getFg(){
-	
+	return fgValue;
 }
 
 function getFn(){
-	
+	return fnValue;
 }
 
 function getFh(){
-	
+	return fhValue;
 }
 
 
