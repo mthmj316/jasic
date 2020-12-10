@@ -33,6 +33,10 @@ var fn = {xs:0,  ys:0, xe:0,  ye:0};
 //Angle of the bottom line b to the inclined line l
 var alpha = 0;
 
+var fgValue = 50;
+var fhValue = 0;
+var fnValue = 0;
+
 function recalc(gForce, triangleHeigth){
 	
 
@@ -58,7 +62,49 @@ function initPlane(canvasWidth, canvasHeight){
 	l.xe = h.xe;
 	l.ye = h.ye;  //must be recalculated after ui change
 	
+	alpha = Math.atan(getB() /getH());
+	
 	circle.r = (h.ys - h.ye) / 2; 
 	circle.mx = canvasDim.x / 2;
 	circle.my = l.ye + (l.ys - l.ye) / 2 - circle.r;   //must be recalculated after ui change
+	
+	fg.xs = circle.mx;
+	fg.ys = circle.my; 	
+	fg.xe = fg.xs;
+	fg.ye = fg.ys + fgValue;
+	
+	fhValue = fgValue * ()
+
+	fh.xs = circle.mx;
+	fh.ys = circle.my; 
+	
+	fn.xs = circle.mx;
+	fn.ys = circle.my; 
+	
 }
+
+function getH(){
+	return h.ys - h.ye;
+}
+
+function getB(){
+	return b.xe - b.xs;
+}
+
+function getL(){
+	
+}
+
+function getFg(){
+	
+}
+
+function getFn(){
+	
+}
+
+function getFh(){
+	
+}
+
+
