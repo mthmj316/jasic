@@ -33,7 +33,7 @@ var fn = {xs:0,  ys:0, xe:0,  ye:0};
 //Angle of the bottom line b to the inclined line l
 var alpha = 0;
 
-var fgValue = 50;
+var fgValue = 100;
 var fhValue = 0;
 var fnValue = 0;
 
@@ -66,7 +66,7 @@ export function initPlane(canvasWidth, canvasHeight){
 	
 	circle.r = (h.ys - h.ye) / 4; 
 	circle.mx = canvasDim.x / 2;
-	circle.my = l.ye + (l.ys - l.ye) / 2 - circle.r;   //must be recalculated after ui change
+	circle.my =  calcCircleMy();   //must be recalculated after ui change
 	
 	fg.xs = circle.mx;
 	fg.ys = circle.my; 	
@@ -78,7 +78,7 @@ export function initPlane(canvasWidth, canvasHeight){
 	fh.xs = circle.mx;
 	fh.ys = circle.my;
 	fh.xe = circle.mx - Math.cos(alpha) * fhValue; 
-	fh.ye = circle.my - Math.sin(alpha) * fhValue;
+	fh.ye = circle.my + Math.sin(alpha) * fhValue;
 	
 	fnValue = fgValue * Math.cos(alpha);
 	
@@ -88,12 +88,16 @@ export function initPlane(canvasWidth, canvasHeight){
 	fn.ye = fg.ye - Math.sin(alpha) * fhValue;
 }
 
+function calcCircleMy(){
+	return canvasDim.y - SPACE.bottom  - Math.tan(alpha) * getBLength() / 2  -  circle.r / Math.cos(alpha);
+}
+
 export function getFnPosition(){
 	return fn;
 }
 
 export function getFhPosition(){
-	return fg;
+	return fh;
 }
 
 export function getFgPosition(){
@@ -128,7 +132,16 @@ export function getBLength(){
 }
 
 export function getLLength(){
-	return Math.sqrt(Math.pow(getBLength()) + Math.pow(getHLength()));
+	
+	var bl = getBLength();
+	var hl = getHLength();
+	
+	var bl2 = Math.pow(bl, 2);
+	var hl2 =  Math.pow(hl, 2);
+	
+	var ll = Math.sqrt( bl2 + hl2)
+	
+	return  ll;
 }
 
 export function getFg(){
