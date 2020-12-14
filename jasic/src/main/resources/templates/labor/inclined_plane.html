@@ -19,7 +19,6 @@
 	<script>
 		
 		function init() {
-
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
 			
@@ -27,15 +26,22 @@
 		}
 		
 		function increaseHeight(){
-			var canvas = document.getElementById("myCanvas");
-			var context = canvas.getContext("2d");
-			redrawInclinedPlane(0,1);
+			
+			redrawInclinedPlane(clearAtGetCanvasContext(), 0, 1);
 		}
 		
 		function decreaseHeight(){
+			
+			redrawInclinedPlane(clearAtGetCanvasContext(), 0,-1);
+		}
+		
+		function clearAtGetCanvasContext(){
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
-			redrawInclinedPlane(0,-1);
+			
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			
+			return context;
 		}
 	</script>
 </body>

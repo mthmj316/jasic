@@ -38,16 +38,26 @@ var fhValue = 0;
 var fnValue = 0;
 
 export function recalc(gForceDelta,hDelta){
-	 alert("Hello!" + triangleHeigthDelta);
 
 	 fgValue = fgValue + gForceDelta;
 	 h.ye = h.ye - hDelta;
 	 
 	 l.ye = h.ye;
-	 this.calcalcAlpha();
-	 circle.my =  this.calcCircleMy();
+	 calcAlpha();
+	 circle.my =  calcCircleMy();
 	 
+	 fg.ys = circle.my;
 	 fg.ye = fg.ys + fgValue;
+
+	 calcFhValue();
+	 
+	 fh.ys = circle.my;
+	 calcFhEndPoint();
+		
+	 calcFnValue();
+
+	 fn.ys = circle.my; 
+	 calcFnEndPoint();
 }
 
 export function initPlane(canvasWidth, canvasHeight){
@@ -70,7 +80,7 @@ export function initPlane(canvasWidth, canvasHeight){
 	l.xe = h.xe;
 	l.ye = h.ye;  //must be recalculated after ui change
 	
-	this.calcAlpha();
+	calcAlpha();
 	
 	circle.r = (h.ys - h.ye) / 4;  //Don not recalulate
 	circle.mx = canvasDim.x / 2;
@@ -81,27 +91,46 @@ export function initPlane(canvasWidth, canvasHeight){
 	fg.xe = fg.xs;
 	fg.ye = fg.ys + fgValue;
 	
-	this.calcFhValue();
+	calcFhValue();
 
 	fh.xs = circle.mx;
-	fh.ys = circle.my;
-	fh.xe = circle.mx - Math.cos(alpha) * fhValue; 
-	fh.ye = circle.my + Math.sin(alpha) * fhValue;
+	fh.ys = circle.my;	
+	calcFhEndPoint();
 	
-	fnValue = fgValue * Math.cos(alpha);
+	calcFnValue();
 	
 	fn.xs = circle.mx;
 	fn.ys = circle.my; 
+	calcFnEndPoint();
+}
+
+function calcFnEndPoint(){
 	fn.xe = fg.xe + Math.cos(alpha) * fhValue;
 	fn.ye = fg.ye - Math.sin(alpha) * fhValue;
 }
 
+
+function calcFnValue(){
+	fnValue = fgValue * Math.cos(alpha);	
+}
+
+function calcFhEndPoint(){
+
+	fh.xe = circle.mx - Math.cos(alpha) * fhValue; 
+	fh.ye = circle.my + Math.sin(alpha) * fhValue;
+}
+
 function calcFhValue(){
-	fhValue = fgValue * (this.getHLength() / this.getLLength());
+	fhValue = fgValue * (getHLength() / getLLength());
 }
 
 function calcAlpha(){
-	alpha = Math.atan(getHLength() / getBLength() );
+	
+	var h = getHLength();
+	var b =  getBLength();
+	var x = h / b;
+	
+	alpha = Math.atan( x);
 }
 
 function calcCircleMy(){

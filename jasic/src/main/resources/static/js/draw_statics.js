@@ -37,6 +37,6 @@ function drawInclinedPlane(context){
 }
 
 window.redrawInclinedPlane = function redrawInclinedPlane(context, fgDelta, hDelta){
-	recalc(context, fgDelta,hDelta);
+	recalc(fgDelta,hDelta);
 	drawInclinedPlane(context);
 } 
