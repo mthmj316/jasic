@@ -23,7 +23,19 @@
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
 			
-			drawInclinedPlane(context, canvas.width, canvas.height);
+			initInclinedPlane(context, canvas.width, canvas.height);
+		}
+		
+		function increaseHeight(){
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			redrawInclinedPlane(0,1);
+		}
+		
+		function decreaseHeight(){
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+			redrawInclinedPlane(0,-1);
 		}
 	</script>
 </body>
