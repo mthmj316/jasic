@@ -4,25 +4,63 @@
 <meta charset="UTF-8">
 <title>Labor - Inclined Plane</title>
 <script type="module" th:src="@{/js/draw_statics.js}"></script>
+<style>
+#height_slider{
+ width: 8px;
+ height: 600px;
+ /*padding: 10px;*/
+}
+#fg_slider{
+ height: 8px;
+ width: 700px;
+ /*padding: 10px;*/
+}
+</style>
 </head>
 <body onload="init()">
 	<h1>Labor - Inclined Plane</h1>
 	<div>
 		<canvas id="myCanvas" width="700" height="600">
 		Your browser does not support the HTML5 canvas tag.
-		</canvas>
+		</canvas>	
+		<input id="height_slider" type="range" orient="vertical" min="0" max="580" value="50"/>
 	</div>
+		<input id="fg_slider" type="range" min="0" max="200" value="50"/>
 	<div>
-		<button onclick="increaseHeight()">Height +</button>
-		<button onclick="decreaseHeight()">Height -</button>
+		
 	</div>
 	<script>
+		var heightSlider = document.getElementById("height_slider");
+		var heightSliderLastValue = heightSlider.value;
+		
+		heightSlider.oninput = function() {
+			var delta = this.value - heightSliderLastValue;
+		  	redrawInclinedPlane(clearAtGetCanvasContext(), 0,delta);
+		  	
+		  	heightSliderLastValue = this.value;
+		}
+		
+		var fgSlider = document.getElementById("fg_slider");
+		var fgSliderLastValue = fgSlider.value;
+		
+		fgSlider.oninput = function() {
+			var delta = this.value - fgSliderLastValue;
+		  	redrawInclinedPlane(clearAtGetCanvasContext(), delta, 0);
+		  	
+		  	fgSliderLastValue = this.value;
+		}
 		
 		function init() {
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
 			
 			initInclinedPlane(context, canvas.width, canvas.height);
+			
+  			document.getElementById("height_slider").value = getHeightSilderDefault();
+  			heightSliderLastValue = heightSlider.value;
+  			
+  			document.getElementById("fg_slider").value = getFgSilderDefault();
+  			fgSliderLastValue = fgSlider.value;
 		}
 		
 		function increaseHeight(){

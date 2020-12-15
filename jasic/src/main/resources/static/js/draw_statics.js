@@ -2,7 +2,7 @@
  * 
  */
                                                    
-import { initPlane, getBPosition , getHPosition,getCirclePosition, getFgPosition, getFhPosition, getFnPosition, recalc} from "/js/mechanics/dynamics/statics/inclined_plane.js";
+import { initPlane, getBPosition , getHPosition,getCirclePosition, getFgPosition, getFhPosition, getFnPosition, recalc, getHLength, getFg} from "/js/mechanics/dynamics/statics/inclined_plane.js";
 import {drawTriangle, drawCircle}  from  "/js/draw_shapes.js";
 import {drawForceArrow}  from  "/js/draw_basic_physic_shaps.js";
 
@@ -40,3 +40,12 @@ window.redrawInclinedPlane = function redrawInclinedPlane(context, fgDelta, hDel
 	recalc(fgDelta,hDelta);
 	drawInclinedPlane(context);
 } 
+
+window.getHeightSilderDefault = function getHeightSilderDefault(){
+	return getHLength();
+} 
+
+window.getFgSilderDefault = function getFgSilderDefault(){
+	return getFg();
+} 
+
