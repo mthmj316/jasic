@@ -1,7 +1,11 @@
 /**
  * 
  */
-                                                   
+ 
+//##################################################################################################
+//##################################################################################################
+//START: Inclined Plane ####################################################################################
+
 import { initPlane, getBPosition , getHPosition,getCirclePosition, getFgPosition, getFhPosition, getFnPosition, recalc, getHLength, getFg} from "/js/mechanics/dynamics/statics/inclined_plane.js";
 import {drawTriangle, drawCircle}  from  "/js/draw_shapes.js";
 import {drawForceArrow}  from  "/js/draw_basic_physic_shaps.js";
@@ -48,4 +52,8 @@ window.getHeightSilderDefault = function getHeightSilderDefault(){
 window.getFgSilderDefault = function getFgSilderDefault(){
 	return getFg();
 } 
+
+//END: Inclined Plane #####################################################################################
+//##################################################################################################
+//##################################################################################################
 
