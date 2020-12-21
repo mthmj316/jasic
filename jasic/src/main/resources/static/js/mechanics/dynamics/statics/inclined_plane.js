@@ -4,7 +4,7 @@
  */
 
 //Space between the border of the canvas and the drawing within. 
-const SPACE = {left:10, right:10, bottom:10, top:10};
+const SPACE = {left:100, right:100, bottom:10, top:10};
 
 //Canvas dimension
 var canvasDim = {x:0,  y:0}; 
@@ -36,6 +36,8 @@ var alpha = 0;
 var fgValue = 100;
 var fhValue = 0;
 var fnValue = 0;
+
+var initialH = 150;
 
 export function recalc(gForceDelta,hDelta){
 
@@ -73,7 +75,7 @@ export function initPlane(canvasWidth, canvasHeight){
 	h.xs = b.xe;
 	h.ys =  b.ys;
 	h.xe = h.xs;
-	h.ye = canvasDim.y / 2; //must be recalculated after ui change
+	h.ye = h.ys - initialH; //must be recalculated after ui change
 	
 	l.xs = b.xs;
 	l.ys = b.ys;
@@ -82,7 +84,7 @@ export function initPlane(canvasWidth, canvasHeight){
 	
 	calcAlpha();
 	
-	circle.r = (h.ys - h.ye) / 4;  //Don not recalulate
+	circle.r = (h.ys - h.ye) / 3;  //Don not recalulate
 	circle.mx = canvasDim.x / 2;
 	circle.my =  calcCircleMy();   //must be recalculated after ui change
 	
@@ -135,6 +137,11 @@ function calcAlpha(){
 
 function calcCircleMy(){
 	return canvasDim.y - SPACE.bottom  - Math.tan(alpha) * getBLength() / 2  -  circle.r / Math.cos(alpha);
+}
+
+export function getAlpha(){
+	
+	return alpha;
 }
 
 export function getFnPosition(){

@@ -6,7 +6,7 @@
 //##################################################################################################
 //START: Inclined Plane ####################################################################################
 
-import { initPlane, getBPosition , getHPosition,getCirclePosition, getFgPosition, getFhPosition, getFnPosition, recalc, getHLength, getFg} from "/js/mechanics/dynamics/statics/inclined_plane.js";
+import { initPlane, getBPosition , getHPosition,getCirclePosition, getFgPosition, getFhPosition, getFnPosition, recalc, getHLength, getLLength, getFg, getFh, getFn,  getAlpha} from "/js/mechanics/dynamics/statics/inclined_plane.js";
 import {drawTriangle, drawCircle}  from  "/js/draw_shapes.js";
 import {drawForceArrow}  from  "/js/draw_basic_physic_shaps.js";
 
@@ -52,6 +52,30 @@ window.getHeightSilderDefault = function getHeightSilderDefault(){
 window.getFgSilderDefault = function getFgSilderDefault(){
 	return getFg();
 } 
+
+window.getAlphaInDegree = function getAlphaInDegree(){
+	return (getAlpha() / Math.PI * 180).toFixed(1);
+}
+
+window.getPlaneHeight  = function getPlaneHeight(){
+	return getHLength();
+}
+
+window.getPlaneLength  = function getPlaneLength(){
+	return getLLength().toFixed(1);
+}
+
+window.getGewichtskraft = function getGewichtskraft(){
+	return getFg().toFixed(3);
+}
+
+window.getNormalkraft  = function getNormalkraft(){
+	return getFn().toFixed(3);
+}
+
+window.getHangabtriebskraft  = function getHangabtriebskraft(){
+	return getFh().toFixed(3);
+}
 
 //END: Inclined Plane #####################################################################################
 //##################################################################################################

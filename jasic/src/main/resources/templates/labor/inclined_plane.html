@@ -27,6 +27,20 @@
 	</div>
 		<input id="fg_slider" type="range" min="0" max="200" value="50"/>
 	<div>
+	<div>
+		<label for="alpha">α:</label>
+		<input type="text" id="alpha" name="alpha" value="" readonly>
+		<label for="planeHeight">h:</label>
+		<input type="text" id="planeHeight" name="planeHeight" value="" readonly>
+		<label for="planeLength">l:</label>
+		<input type="text" id="planeLength" name="planeLength" value="" readonly><br>
+		<label for="gewichtskraft">G:</label>
+		<input type="text" id="gewichtskraft" name="planeHeight" value="" readonly>
+		<label for="normalkraft">F<sub>N</sub>:</label>
+		<input type="text" id="normalkraft" name="normalkraft" value="" readonly>
+		<label for="hangabtriebskraft">F<sub>H</sub>:</label>
+		<input type="text" id="hangabtriebskraft" name="hangabtriebskraft" value="" readonly>
+	</div>
 		
 	</div>
 	<script>
@@ -38,6 +52,8 @@
 		  	redrawInclinedPlane(clearAtGetCanvasContext(), 0,delta);
 		  	
 		  	heightSliderLastValue = this.value;
+  			
+  			setDataOutput();
 		}
 		
 		var fgSlider = document.getElementById("fg_slider");
@@ -48,6 +64,8 @@
 		  	redrawInclinedPlane(clearAtGetCanvasContext(), delta, 0);
 		  	
 		  	fgSliderLastValue = this.value;
+		  	
+  			setDataOutput();
 		}
 		
 		function init() {
@@ -61,6 +79,18 @@
   			
   			document.getElementById("fg_slider").value = getFgSilderDefault();
   			fgSliderLastValue = fgSlider.value;
+  			
+  			setDataOutput();
+		}
+		
+		function setDataOutput(){
+  			
+  			document.getElementById("alpha").value = getAlphaInDegree();
+  			document.getElementById("planeHeight").value = getPlaneHeight();
+  			document.getElementById("planeLength").value = getPlaneLength();
+  			document.getElementById("gewichtskraft").value = getGewichtskraft();
+  			document.getElementById("normalkraft").value = getNormalkraft();
+  			document.getElementById("hangabtriebskraft").value = getHangabtriebskraft();
 		}
 		
 		function increaseHeight(){
