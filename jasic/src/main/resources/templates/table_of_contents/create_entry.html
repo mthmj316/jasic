@@ -2,9 +2,16 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Create Entry</title>
+<title>Kapitel anlegen</title>
 </head>
 <body>
-<h1>Create Entry</h1> 
+<h1>Kapitel anlegen</h1>
+<div>
+	<label for="selectParent">Anlegen unter:</label>
+    <select id="selectParent" th:object="${chapters}">
+    <option value="0">Hauptkapitel</option>
+    <option th:each="chapter : ${chapters}" th:value="${chapter.id}" th:text="${chapter.chapterName}"></option>
+    </select>
+</div>
 </body>
 </html>
