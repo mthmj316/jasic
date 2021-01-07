@@ -7,11 +7,15 @@
 <body>
 <h1>Kapitel anlegen</h1>
 <div>
-	<label for="selectParent">Anlegen unter:</label>
-    <select id="selectParent" th:object="${chapters}">
-    <option value="0">Hauptkapitel</option>
-    <option th:each="chapter : ${chapters}" th:value="${chapter.id}" th:text="${chapter.chapterName}"></option>
-    </select>
+	<form method="post" action="#" th:action="@{/perform_create_entry}" th:object="${chapter}">
+		<label for="selectParent">Anlegen unter:</label>
+    	<select th:field="*{id}" id="selectParent">
+   	 	<option value="0">Hauptkapitel</option>
+    	<option th:each="chapter : ${chapters}" th:id="${chapter.id}" th:value="${chapter.id}" th:text="${chapter.chapterName}"></option>
+    	</select>
+    	<input type="submit" value="Anlegen" />
+	</form>
+
 </div>
 </body>
 </html>
