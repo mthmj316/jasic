@@ -1,4 +1,4 @@
-package de.mthoma.jasic.web.entities;
+package de.mthoma.jasic.data.entities;
 
 //import javax.persistence.Column;
 //import javax.persistence.Entity;
