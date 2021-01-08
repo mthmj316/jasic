@@ -20,12 +20,12 @@ import de.mthoma.web.jasic.entities.Chapter;
 @Controller
 public class TableOfContentsController {
 	
-//	@RequestMapping(value="perfrom_create_entry", method = RequestMethod.POST)
 	@PostMapping("/perform_create_entry")
-	public String performCreateEntry(@ModelAttribute  Chapter selectParent, Model model) {
-		//@RequestParam(value="idNumber") String idNumber , @RequestParam(value="applicationId") String applicationId
+	public String performCreateEntry(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
-		System.out.println("Chapter parent: " + selectParent);
+		System.out.println("Chapter parent: " + selectedChapter);
+		
+		System.out.println("Working Directory = " + System.getProperty("user.dir"));
 		
 		return "table_of_contents/table_of_contents";
 	}
@@ -52,6 +52,8 @@ public class TableOfContentsController {
 		
 		model.addAttribute("chapters", chapters);
 		
+		Chapter selectedChapter = new Chapter();
+		model.addAttribute("selectedChapter", selectedChapter);
 		
 		return "table_of_contents/create_entry";
 	}
