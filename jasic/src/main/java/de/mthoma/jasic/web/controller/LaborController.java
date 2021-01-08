@@ -1,4 +1,4 @@
-package de.mthoma.web.jasic.controller;
+package de.mthoma.jasic.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

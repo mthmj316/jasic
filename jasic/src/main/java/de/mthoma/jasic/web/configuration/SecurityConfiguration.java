@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.mthoma.web.jasic.configuration;
+package de.mthoma.jasic.web.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

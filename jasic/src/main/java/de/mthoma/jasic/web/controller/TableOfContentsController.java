@@ -1,4 +1,4 @@
-package de.mthoma.web.jasic.controller;
+package de.mthoma.jasic.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import de.mthoma.web.jasic.entities.Chapter;
+import de.mthoma.jasic.web.entities.Chapter;
 
 @Controller
 public class TableOfContentsController {
