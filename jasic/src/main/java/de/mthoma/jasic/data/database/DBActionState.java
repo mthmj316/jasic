@@ -1,5 +1,6 @@
 package de.mthoma.jasic.data.database;
 
-public class DBActionState {
+public enum DBActionState {
 
+	SUCCESS;
 }

@@ -1,28 +1,34 @@
 package de.mthoma.jasic.data.entities;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
-//
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//
-//@Entity
-//@Table(name = "operator")
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Chapter")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Chapter {
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "id")
-//	@JsonIgnore
+	
+	@XmlAttribute(name="Id")
 	private Long id;
 
-//  @NotBlank(message="operator Name cannot be empty")
-//	@Column(name = "operator_name", nullable = false)
+	@XmlAttribute(name="ParentId")
+	private Long parentId;
+
+	@XmlElement(name="ChapterName")
 	private String chapterName;
 	
-	private Long parentId;
+	@XmlElement(name = "Content")
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	@Override
 	public String toString() {
@@ -33,6 +39,8 @@ public class Chapter {
 		builder.append(chapterName);
 		builder.append(", parentId=");
 		builder.append(parentId);
+		builder.append(", content=");
+		builder.append(content);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -61,4 +69,14 @@ public class Chapter {
 		this.chapterName = operatorName;
 	}
 
+	public Chapter copy() {
+		
+		Chapter copy = new Chapter();
+		copy.setChapterName(this.chapterName);
+		copy.setContent(this.content);
+		copy.setId(this.id);
+		copy.setParentId(this.parentId);
+		
+		return copy;
+	}
 }
