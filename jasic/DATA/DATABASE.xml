@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JasicDatabase>
+    <Chapters>
+        <Chapter Id="1610314999049" ParentId="0">
+            <ChapterName>Mechanik</ChapterName>
+        </Chapter>
+        <Chapter Id="1610315041869" ParentId="0">
+            <ChapterName>Atom</ChapterName>
+        </Chapter>
+        <Chapter Id="1610315567628" ParentId="0">
+            <ChapterName>Elektrotechnik</ChapterName>
+        </Chapter>
+        <Chapter Id="1610315699209" ParentId="1610314999049">
+            <ChapterName>Kräfte</ChapterName>
+        </Chapter>
+    </Chapters>
+</JasicDatabase>
