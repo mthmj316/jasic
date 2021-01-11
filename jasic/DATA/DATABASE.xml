@@ -13,5 +13,26 @@
         <Chapter Id="1610315699209" ParentId="1610314999049">
             <ChapterName>Kräfte</ChapterName>
         </Chapter>
+        <Chapter Id="1610397743954" ParentId="0">
+            <ChapterName>Fehlerberechnung</ChapterName>
+        </Chapter>
+        <Chapter Id="1610399682632" ParentId="1610315699209">
+            <ChapterName>Geneigte Ebene</ChapterName>
+        </Chapter>
+        <Chapter Id="1610400094509" ParentId="1610315699209">
+            <ChapterName>Parallele Kräfte</ChapterName>
+        </Chapter>
+        <Chapter Id="1610400243860" ParentId="1610315699209">
+            <ChapterName>Entegengesetzte Kräfte</ChapterName>
+        </Chapter>
+        <Chapter Id="1610400260622" ParentId="0">
+            <ChapterName>Wärmelehre</ChapterName>
+        </Chapter>
+        <Chapter Id="1610400728539" ParentId="1610400260622">
+            <ChapterName>Wärmetauscher</ChapterName>
+        </Chapter>
+        <Chapter Id="1610400921911" ParentId="0">
+            <ChapterName>String Theorie</ChapterName>
+        </Chapter>
     </Chapters>
 </JasicDatabase>

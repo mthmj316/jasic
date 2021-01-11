@@ -2,10 +2,17 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Inhaltsverzeichnis</title>
+<title>Physik</title>
 </head>
 <body>
-	<h1>Inhaltsverzeichnis</h1>
+	<h1 th:text="${header}"></h1>
+	<table>
+		<tr th:each="chapter : ${chapters}">
+			<!--      <td th:text="${category.idCategory}"></td> -->
+			<!--      <td th:text="${category.name}"></td> -->
+			<td><a th:href="@{'/getSubChapters4' + ${chapter.id}}" th:text="${chapter.chapterName}">view</a></td>
+		</tr>
+	</table>
 	<form action="/table_of_contents/create_entry" method="get">
 		<input type="submit" value="Anlegen" />
 	</form>

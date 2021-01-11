@@ -6,11 +6,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
+import com.fasterxml.jackson.annotation.OptBoolean;
 
 import de.mthoma.jasic.data.entities.Chapter;
 import de.mthoma.jasic.data.entities.JasicDatabase;
@@ -33,31 +37,57 @@ public enum DatabaseService {
 		}
 	}
 	
-	public DBActionState write(Chapter chapter) throws JAXBException {
+	public List<Chapter> getSubChapter(final long parentId){
 		
-		chapter.setId(System.currentTimeMillis());
+		List<Chapter> result = database.getChapters().stream().filter(
+				chapter -> chapter.getParentId() == parentId).collect(Collectors.toList());
 		
-		database.getChapters().add(chapter);
+		return this.copyList(result);
+	}
+	
+	public DBActionState write(final Chapter chapter) throws JAXBException {
+		
+		Chapter newChapter = chapter.copy();		
+		newChapter.setId(System.currentTimeMillis());
+		
+		chapter.setId(newChapter.getId());
+		
+		database.getChapters().add(newChapter);
 		
 		marshall();
 		
 		return DBActionState.SUCCESS;
 	}
+	
+	public Chapter get(final long id) {
+		
+		Optional<Chapter> optional = database.getChapters().stream().filter(chapter -> chapter.getId() == id).findFirst();
+		
+		Chapter result = null; 
+		
+		if(optional.isPresent()) {
+		
+			result = optional.get().copy();
+		}
+		
+		return result;
+	}
 
 	public List<Chapter> getAll(){
 		
-		List<Chapter> chapters = new ArrayList<Chapter>();
-		
-		database.getChapters().forEach(chapter -> chapters.add(chapter.copy()));		
-		
-		return chapters;
+		return this.copyList(database.getChapters());
 	}
 	
-	public List<Chapter> getChapters(){
+	private List<Chapter> copyList(List<Chapter> originals){
 		
-		List<Chapter> mainChapters = new ArrayList<Chapter>();
+		List<Chapter> copies = new ArrayList<Chapter>();
+		originals.forEach(chapter -> copies.add(chapter.copy()));
+		return copies;
+	}
+	
+	public List<Chapter> getMainChapters(){
 		
-		return mainChapters;
+		return this.getSubChapter(0l);
 	}
 	
 	private static void unmarshall() throws JAXBException, IOException {
