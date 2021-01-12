@@ -21,6 +21,11 @@ public class TableOfContentsController {
 	private static final String HEADER_TEMPLATE = "Physik Grundlagen: %s";
 	
 	private long currentlySelectedChapter = 0l;
+	
+	@PostMapping(value = "/table_of_contents/create_entry", params="save")
+	public void saveChange(HttpServletRequest request) {
+		System.out.println("Hello saved world!");
+	}
 
 	@GetMapping("/getSubChapters4**")
 	public String chapterSelected(Model model, HttpServletRequest request) {
@@ -62,7 +67,7 @@ public class TableOfContentsController {
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, parent.getChapterName()));
 	}
 
-	@GetMapping(value = "/table_of_contents/create_entry")
+	@GetMapping(value = "/table_of_contents/create_entry", params="create")
 	public String createEntry(Model model) {
 		
 		model.addAttribute(CHAPTERS, DatabaseService.TABLE_OF_CONTENT_TBL.getAll());
