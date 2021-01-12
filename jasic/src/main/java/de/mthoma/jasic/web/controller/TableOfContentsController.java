@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import de.mthoma.jasic.data.database.DatabaseService;
 import de.mthoma.jasic.data.entities.Chapter;
@@ -33,10 +31,7 @@ public class TableOfContentsController {
 		
 		this.currentlySelectedChapter = parentId;
 		
-		Chapter parent = DatabaseService.TABLE_OF_CONTENT_TBL.get(parentId);
-		
-		model.addAttribute(CHAPTERS, DatabaseService.TABLE_OF_CONTENT_TBL.getSubChapter(parentId));
-		model.addAttribute("header", String.format(HEADER_TEMPLATE, parent.getChapterName()));
+		this.setPageParameter(model, false, parentId);
 		
 		return TABLE_OF_CONTENTS_TABLE_OF_CONTENTS;
 	}
@@ -52,9 +47,19 @@ public class TableOfContentsController {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute(CHAPTERS, DatabaseService.TABLE_OF_CONTENT_TBL.getSubChapter(this.currentlySelectedChapter));
+		this.setPageParameter(model, newChapter.getParentId() == 0, this.currentlySelectedChapter);
 		
 		return TABLE_OF_CONTENTS_TABLE_OF_CONTENTS;
+	}
+	
+	private void setPageParameter(Model model, boolean isRoot, long parentId) {
+		
+		model.addAttribute(CHAPTERS, DatabaseService.TABLE_OF_CONTENT_TBL.getSubChapter(this.currentlySelectedChapter));
+		model.addAttribute("isRoot", isRoot);
+		
+		Chapter parent = DatabaseService.TABLE_OF_CONTENT_TBL.get(parentId);
+		model.addAttribute("selectedChapter", parent);
+		model.addAttribute("header", String.format(HEADER_TEMPLATE, parent.getChapterName()));
 	}
 
 	@GetMapping(value = "/table_of_contents/create_entry")
@@ -80,6 +85,7 @@ public class TableOfContentsController {
 		
 		model.addAttribute(CHAPTERS, DatabaseService.TABLE_OF_CONTENT_TBL.getMainChapters());
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, "Übersicht"));
+		model.addAttribute("isRoot", true);
 		
 		return TABLE_OF_CONTENTS_TABLE_OF_CONTENTS;
 	}

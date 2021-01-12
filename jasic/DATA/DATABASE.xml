@@ -12,6 +12,7 @@
         </Chapter>
         <Chapter Id="1610315699209" ParentId="1610314999049">
             <ChapterName>Kräfte</ChapterName>
+            <Content>Kräfte sind sehr stark!</Content>
         </Chapter>
         <Chapter Id="1610397743954" ParentId="0">
             <ChapterName>Fehlerberechnung</ChapterName>
@@ -33,6 +34,18 @@
         </Chapter>
         <Chapter Id="1610400921911" ParentId="0">
             <ChapterName>String Theorie</ChapterName>
+        </Chapter>
+        <Chapter Id="1610458275074" ParentId="1610315699209">
+            <ChapterName>Virtuelle Kräfte</ChapterName>
+        </Chapter>
+        <Chapter Id="1610458424994" ParentId="1610315699209">
+            <ChapterName>Unbestimmte Kräfte</ChapterName>
+        </Chapter>
+        <Chapter Id="1610458497124" ParentId="1610314999049">
+            <ChapterName>Superkräft</ChapterName>
+        </Chapter>
+        <Chapter Id="1610458514403" ParentId="1610315699209">
+            <ChapterName>Negative Kräfte</ChapterName>
         </Chapter>
     </Chapters>
 </JasicDatabase>
