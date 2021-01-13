@@ -15,10 +15,10 @@
 				th:text="${chapter.chapterName}">view</a></td>
 		</tr>
 	</table>
-	<form action="/table_of_contents/create_entry" method="get">
+	<form action="/table_of_contents/create_entry" method="post">
 		<input type="submit" name="create" value="Anlegen" />
 		<input type="button" th:if="${isRoot == false}" value="Ändern" onclick="onChange()" /> 
-		<input id="saveBtn" name="save" style="display: none;" type="submit" value="Speichern" onclick="onSave()" /> 
+		<input id="saveBtn" name="save" style="display: none;" type="submit" value="Speichern" /> 
 		<input id="cancelBtn" style="display: none;" type="button" value="Abbrechen" onclick="onCancel()" />
 	</form>
 	<script type="text/javascript">

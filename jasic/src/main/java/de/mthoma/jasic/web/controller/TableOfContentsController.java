@@ -23,8 +23,8 @@ public class TableOfContentsController {
 	private long currentlySelectedChapter = 0l;
 	
 	@PostMapping(value = "/table_of_contents/create_entry", params="save")
-	public void saveChange(HttpServletRequest request) {
-		System.out.println("Hello saved world!");
+	public void saveChange(@ModelAttribute  Chapter selectedChapter, HttpServletRequest request) {
+		System.out.println("selectedChapter: " + selectedChapter);
 	}
 
 	@GetMapping("/getSubChapters4**")
@@ -67,7 +67,7 @@ public class TableOfContentsController {
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, parent.getChapterName()));
 	}
 
-	@GetMapping(value = "/table_of_contents/create_entry", params="create")
+	@PostMapping(value = "/table_of_contents/create_entry", params="create")
 	public String createEntry(Model model) {
 		
 		model.addAttribute(CHAPTERS, DatabaseService.TABLE_OF_CONTENT_TBL.getAll());
