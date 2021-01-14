@@ -22,7 +22,7 @@ import de.mthoma.jasic.data.entities.JasicDatabase;
 
 public enum DatabaseService {
 	
-	TABLE_OF_CONTENT_TBL;
+	KNOWLEDGE_BASE_TBL;
 	
 	private static final String DATABASE_PATH = System.getProperty("user.dir") + "/DATA/DATABASE.xml";
 	
@@ -59,7 +59,34 @@ public enum DatabaseService {
 		return DBActionState.SUCCESS;
 	}
 	
+	public Chapter updateContent(long id, String content) throws JAXBException {
+		
+		Chapter chapter = this.getOrg(id);
+		
+		if(chapter != null) {
+			
+			chapter.setContent(content);
+			marshall();
+			
+			return chapter.copy();
+		}
+		
+		return chapter;
+	}
+	
 	public Chapter get(final long id) {
+		
+		Chapter result = getOrg(id); 
+		
+		if(result != null) {
+		
+			result = result.copy();
+		}
+		
+		return result;
+	}
+	
+	private Chapter getOrg(final long id) {
 		
 		Optional<Chapter> optional = database.getChapters().stream().filter(chapter -> chapter.getId() == id).findFirst();
 		
@@ -67,10 +94,12 @@ public enum DatabaseService {
 		
 		if(optional.isPresent()) {
 		
-			result = optional.get().copy();
+			result = optional.get();
+			
+			return result;
 		}
 		
-		return result;
+		return null;
 	}
 
 	public List<Chapter> getAll(){

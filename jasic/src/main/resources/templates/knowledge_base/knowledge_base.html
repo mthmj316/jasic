@@ -6,21 +6,24 @@
 </head>
 <body>
 	<h1 th:text="${header}"></h1>
-	<div th:if="${isRoot == false}">
-		<textarea id="chapterContent" cols="200" rows="5" th:text="${selectedChapter.content}" disabled></textarea>
-	</div>
+	<form action="/knowledge_base/update_entry" method="post" th:object="${selectedChapter}">
+		<div th:if="${isRoot == false}">
+			<textarea id="chapterContent" cols="200" rows="20" th:field="*{content}" disabled></textarea>
+		</div>
+		<input type="button" th:if="${isRoot == false}" value="Ändern" onclick="onChange()" /> 
+		<input id="saveBtn" name="save" style="display: none;" type="submit" value="Speichern" /> 
+		<input id="cancelBtn" style="display: none;" type="button" value="Abbrechen" onclick="onCancel()" />
+	</form>
 	<table>
 		<tr th:each="chapter : ${chapters}">
 			<td><a th:href="@{'/getSubChapters4' + ${chapter.id}}"
 				th:text="${chapter.chapterName}">view</a></td>
 		</tr>
 	</table>
-	<form action="/table_of_contents/create_entry" method="post">
-		<input type="submit" name="create" value="Anlegen" />
-		<input type="button" th:if="${isRoot == false}" value="Ändern" onclick="onChange()" /> 
-		<input id="saveBtn" name="save" style="display: none;" type="submit" value="Speichern" /> 
-		<input id="cancelBtn" style="display: none;" type="button" value="Abbrechen" onclick="onCancel()" />
+	<form action="/knowledge_base/create_chapter" method="post" th:object="${selectedChapter}">
+		<input type="submit" name="create" value="Kapitel Anlegen" />
 	</form>
+
 	<script type="text/javascript">
 	
 		var chapterContentBeforeChange = "";

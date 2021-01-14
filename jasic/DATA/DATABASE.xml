@@ -9,6 +9,13 @@
         </Chapter>
         <Chapter Id="1610315567628" ParentId="0">
             <ChapterName>Elektrotechnik</ChapterName>
+            <Content>Hier geht's ganz schön spannend zu!&#13;
+&#13;
+Aber so was von!&#13;
+&#13;
+&lt;Klappt das!&gt;&#13;
+&#13;
+Ok das klappt!</Content>
         </Chapter>
         <Chapter Id="1610315699209" ParentId="1610314999049">
             <ChapterName>Kräfte</ChapterName>
@@ -46,6 +53,19 @@
         </Chapter>
         <Chapter Id="1610458514403" ParentId="1610315699209">
             <ChapterName>Negative Kräfte</ChapterName>
+        </Chapter>
+        <Chapter Id="1610654353599" ParentId="1610315567628">
+            <ChapterName>Gleichstrom</ChapterName>
+            <Content>Hier fließt alle gleichmäßig!</Content>
+        </Chapter>
+        <Chapter Id="1610657099574" ParentId="0">
+            <ChapterName>Quanten Mechanik</ChapterName>
+        </Chapter>
+        <Chapter Id="1610657283992" ParentId="0">
+            <ChapterName>Glossar</ChapterName>
+        </Chapter>
+        <Chapter Id="1610657306959" ParentId="1610657099574">
+            <ChapterName>Testsystem</ChapterName>
         </Chapter>
     </Chapters>
 </JasicDatabase>
