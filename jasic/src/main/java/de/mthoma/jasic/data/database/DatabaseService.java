@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import javax.xml.bind.JAXBContext;
@@ -17,12 +19,13 @@ import javax.xml.bind.Unmarshaller;
 import com.fasterxml.jackson.annotation.OptBoolean;
 
 import de.mthoma.jasic.data.entities.Chapter;
+import de.mthoma.jasic.data.entities.IndexEntry;
 import de.mthoma.jasic.data.entities.JasicDatabase;
 
 
 public enum DatabaseService {
 	
-	KNOWLEDGE_BASE_TBL;
+	DATABASE;
 	
 	private static final String DATABASE_PATH = System.getProperty("user.dir") + "/DATA/DATABASE.xml";
 	
@@ -32,7 +35,6 @@ public enum DatabaseService {
 		try {
 			unmarshall();
 		} catch (JAXBException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -42,10 +44,24 @@ public enum DatabaseService {
 		List<Chapter> result = database.getChapters().stream().filter(
 				chapter -> chapter.getParentId() == parentId).collect(Collectors.toList());
 		
-		return this.copyList(result);
+		return this.copyChapterList(result);
 	}
 	
-	public DBActionState write(final Chapter chapter) throws JAXBException {
+	public DBActionState writeIndexEntry(final IndexEntry indexEntry) throws JAXBException {
+		
+		IndexEntry newIndexEntry = indexEntry.copy();
+		newIndexEntry.setId(System.currentTimeMillis());
+		
+		indexEntry.setId(newIndexEntry.getId());
+		
+		database.getIndexEntries().add(newIndexEntry);
+		
+		marshall();
+		
+		return DBActionState.SUCCESS;
+	}
+	
+	public DBActionState writeChapter(final Chapter chapter) throws JAXBException {
 		
 		Chapter newChapter = chapter.copy();		
 		newChapter.setId(System.currentTimeMillis());
@@ -59,9 +75,9 @@ public enum DatabaseService {
 		return DBActionState.SUCCESS;
 	}
 	
-	public Chapter updateContent(long id, String content) throws JAXBException {
+	public Chapter updateChapterContent(long id, String content) throws JAXBException {
 		
-		Chapter chapter = this.getOrg(id);
+		Chapter chapter = this.getOrgChapter(id);
 		
 		if(chapter != null) {
 			
@@ -76,7 +92,7 @@ public enum DatabaseService {
 	
 	public Chapter get(final long id) {
 		
-		Chapter result = getOrg(id); 
+		Chapter result = getOrgChapter(id); 
 		
 		if(result != null) {
 		
@@ -86,7 +102,7 @@ public enum DatabaseService {
 		return result;
 	}
 	
-	private Chapter getOrg(final long id) {
+	private Chapter getOrgChapter(final long id) {
 		
 		Optional<Chapter> optional = database.getChapters().stream().filter(chapter -> chapter.getId() == id).findFirst();
 		
@@ -102,12 +118,26 @@ public enum DatabaseService {
 		return null;
 	}
 
-	public List<Chapter> getAll(){
+	public List<IndexEntry> getAllIndexEntries(){
 		
-		return this.copyList(database.getChapters());
+		Set<IndexEntry> sortedCopies = new TreeSet<IndexEntry>(this.copyIndexEntries(database.getIndexEntries()));
+		
+		return new ArrayList<>(sortedCopies);
 	}
 	
-	private List<Chapter> copyList(List<Chapter> originals){
+	private List<IndexEntry> copyIndexEntries(List<IndexEntry> originals){
+		
+		List<IndexEntry> copies = new ArrayList<IndexEntry>();
+		originals.forEach(entry -> copies.add(entry.copy()));
+		return copies;
+	}
+
+	public List<Chapter> getAllChapters(){
+		
+		return this.copyChapterList(database.getChapters());
+	}
+	
+	private List<Chapter> copyChapterList(List<Chapter> originals){
 		
 		List<Chapter> copies = new ArrayList<Chapter>();
 		originals.forEach(chapter -> copies.add(chapter.copy()));

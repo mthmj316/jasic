@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Physik - Stichwortverzeichnis</title>
+</head>
+<body>
+	<h1>Stichwortverzeichnis</h1>
+	<form action="/create_index_entry" method="post" th:object="${indexEntry}">
+		<label for="index_keyword">Stichwort:</label>
+    	<input id="index_keyword" type="text" th:field="*{keyword}"><br>
+		<textarea id="explanation" cols="100" rows="10" th:field="*{explanation}"></textarea><br>
+		<input id="saveBtn" name="save" type="submit" value="Speichern" /> 
+		<input id="cancelBtn" type="button" value="Abbrechen" onclick="onCancel()" />
+	</form>
+	<script type="text/javascript">		
+		function onCancel(){
+			document.getElementById('index_keyword').value = "";
+			document.getElementById('explanation').value = "";
+		}
+	</script>
+</body>
+</html>

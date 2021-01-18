@@ -13,18 +13,31 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class JasicDatabase {
 	
-	@XmlElementWrapper(name = "Chapters")
-		 
+	@XmlElementWrapper(name = "Index")		 
+	@XmlElement(name = "IndexEntry")
+	private List<IndexEntry> indexEntries = new ArrayList<>();
+	
+	@XmlElementWrapper(name = "Chapters")		 
 	@XmlElement(name = "Chapter")
-	private List<Chapter> chapters = new ArrayList<Chapter>();
+	private List<Chapter> chapters = new ArrayList<>();
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("JasicDatabase [chapters=");
+		builder.append("JasicDatabase [indexEntries=");
+		builder.append(indexEntries);
+		builder.append(", chapters=");
 		builder.append(chapters);
 		builder.append("]");
 		return builder.toString();
+	}
+	
+	public List<IndexEntry> getIndexEntries() {
+		return indexEntries;
+	}
+
+	public void setIndexEntries(List<IndexEntry> indexEntries) {
+		this.indexEntries = indexEntries;
 	}
 
 	public List<Chapter> getChapters() {

@@ -30,7 +30,7 @@ public class KnowledgeBaseController {
 	public String saveChange(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
 		try {
-			DatabaseService.KNOWLEDGE_BASE_TBL.updateContent(this.currentlySelectedChapter, selectedChapter.getContent());
+			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +59,7 @@ public class KnowledgeBaseController {
 		
 		try {
 			newChapter.setParentId(this.currentlySelectedChapter);
-			DatabaseService.KNOWLEDGE_BASE_TBL.write(newChapter);
+			DatabaseService.DATABASE.writeChapter(newChapter);
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,10 +72,10 @@ public class KnowledgeBaseController {
 	
 	private void setPageParameter(Model model, boolean isRoot, long parentId) {
 		
-		model.addAttribute(CHAPTERS, DatabaseService.KNOWLEDGE_BASE_TBL.getSubChapter(this.currentlySelectedChapter));
+		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getSubChapter(this.currentlySelectedChapter));
 		model.addAttribute("isRoot", isRoot);
 		
-		Chapter parent = DatabaseService.KNOWLEDGE_BASE_TBL.get(parentId);
+		Chapter parent = DatabaseService.DATABASE.get(parentId);
 		model.addAttribute("selectedChapter", parent);
 		
 		String headerAppendix = parent != null ? parent.getChapterName() : "Übersicht";
@@ -86,7 +86,7 @@ public class KnowledgeBaseController {
 	@PostMapping(value = KNOWLEDGE_CREATE_ENTRY)
 	public String createEntry(Model model) {
 		
-		model.addAttribute(CHAPTERS, DatabaseService.KNOWLEDGE_BASE_TBL.getAll());
+		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getAllChapters());
 		
 		Chapter newChapter = new Chapter();
 		model.addAttribute("newChapter", newChapter);
@@ -99,7 +99,7 @@ public class KnowledgeBaseController {
 		
 		this.currentlySelectedChapter = 0;
 		
-		model.addAttribute(CHAPTERS, DatabaseService.KNOWLEDGE_BASE_TBL.getMainChapters());
+		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getMainChapters());
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, "Übersicht"));
 		model.addAttribute("isRoot", true);
 		
