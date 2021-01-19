@@ -7,13 +7,15 @@
 <body>
 	<h1 th:text="${header}"></h1>
 	<form action="/knowledge_base/update_entry" method="post" th:object="${selectedChapter}">
-		<div th:if="${isRoot == false}">
-			<textarea id="chapterContent" cols="200" rows="20" th:field="*{content}" disabled></textarea>
+		<div th:if="${isRoot == false}" >
+			<textarea style="display: none;" id="chapterContentChangeable" cols="200" rows="20" th:field="*{content}" disabled></textarea>
 		</div>
+		<p id="chapterContentDisplayOnly" th:utext="*{content}" th:if="${isRoot == false}" ></p>
 		<input type="button" th:if="${isRoot == false}" value="Ändern" onclick="onChange()" /> 
 		<input id="saveBtn" name="save" style="display: none;" type="submit" value="Speichern" /> 
 		<input id="cancelBtn" style="display: none;" type="button" value="Abbrechen" onclick="onCancel()" />
 	</form>
+	
 	<table>
 		<tr th:each="chapter : ${chapters}">
 			<td><a th:href="@{'/getSubChapters4' + ${chapter.id}}"
@@ -29,22 +31,29 @@
 		var chapterContentBeforeChange = "";
 	
 		function onChange(){
-			var chapterContentTXA = document.getElementById('chapterContent');
+			var chapterContentTXA = document.getElementById('chapterContentChangeable');
 			chapterContentTXA.disabled = false;
 			chapterContentBeforeChange = chapterContentTXA.value;
 			
+			chapterContentTXA.style.display = "block";
+			document.getElementById('chapterContentDisplayOnly').style.display = "none";
 			
 			document.getElementById('saveBtn').style.display = "inline";
 			document.getElementById('cancelBtn').style.display = "inline";
+			
 		}
 		
 		function onCancel(){
-			var chapterContentTXA = document.getElementById('chapterContent');
+			var chapterContentTXA = document.getElementById('chapterContentChangeable');
 			chapterContentTXA.disabled = true;
 			chapterContentTXA.value = chapterContentBeforeChange;
 			
+			chapterContentTXA.style.display = "none";
+			document.getElementById('chapterContentDisplayOnly').style.display = "block";
+			
 			document.getElementById('saveBtn').style.display = "none";
 			document.getElementById('cancelBtn').style.display = "none";
+			
 		}
 	</script>
 </body>

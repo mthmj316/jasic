@@ -75,7 +75,7 @@ public class KnowledgeBaseController {
 		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getSubChapter(this.currentlySelectedChapter));
 		model.addAttribute("isRoot", isRoot);
 		
-		Chapter parent = DatabaseService.DATABASE.get(parentId);
+		Chapter parent = DatabaseService.DATABASE.getChapter(parentId);
 		model.addAttribute("selectedChapter", parent);
 		
 		String headerAppendix = parent != null ? parent.getChapterName() : "Übersicht";

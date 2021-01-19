@@ -13,6 +13,13 @@
 		<input id="saveBtn" name="save" type="submit" value="Speichern" /> 
 		<input id="cancelBtn" type="button" value="Abbrechen" onclick="onCancel()" />
 	</form>
+	<table>
+		<tr th:each="indexEntry : ${index}">
+			<td>
+				<a th:href="@{'/getKeywordExplanation4' + ${indexEntry.id}}" th:text="${indexEntry.keyword}">view</a>
+			</td>
+		</tr>
+	</table>
 	<script type="text/javascript">		
 		function onCancel(){
 			document.getElementById('index_keyword').value = "";

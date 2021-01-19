@@ -5,6 +5,18 @@
             <Keyword>Glas</Keyword>
             <Explanation>Durch Glas kann man schauen!</Explanation>
         </IndexEntry>
+        <IndexEntry Id="1611088335083">
+            <Keyword>Alpha</Keyword>
+            <Explanation>Standardname für einen Winkel.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1611088403606">
+            <Keyword>Bell</Keyword>
+            <Explanation>Keine Ahnung was das sein soll.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1611089577553">
+            <Keyword>Volt</Keyword>
+            <Explanation>EInheit für Spannung.</Explanation>
+        </IndexEntry>
     </Index>
     <Chapters>
         <Chapter Id="1610314999049" ParentId="0">
@@ -62,7 +74,7 @@ Ok das klappt!</Content>
         </Chapter>
         <Chapter Id="1610654353599" ParentId="1610315567628">
             <ChapterName>Gleichstrom</ChapterName>
-            <Content>Hier fließt alle gleichmäßig!</Content>
+            <Content>Hier fließt alles gleichmäßig!</Content>
         </Chapter>
         <Chapter Id="1610657099574" ParentId="0">
             <ChapterName>Quanten Mechanik</ChapterName>

@@ -16,6 +16,8 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.eclipse.jdt.internal.compiler.codegen.CachedIndexEntry;
+
 import com.fasterxml.jackson.annotation.OptBoolean;
 
 import de.mthoma.jasic.data.entities.Chapter;
@@ -90,7 +92,7 @@ public enum DatabaseService {
 		return chapter;
 	}
 	
-	public Chapter get(final long id) {
+	public Chapter getChapter(final long id) {
 		
 		Chapter result = getOrgChapter(id); 
 		
@@ -107,6 +109,34 @@ public enum DatabaseService {
 		Optional<Chapter> optional = database.getChapters().stream().filter(chapter -> chapter.getId() == id).findFirst();
 		
 		Chapter result = null; 
+		
+		if(optional.isPresent()) {
+		
+			result = optional.get();
+			
+			return result;
+		}
+		
+		return null;
+	}
+	
+	public IndexEntry getIndexEntry(final long id) {
+		
+		IndexEntry result = getOrgIndexEntry(id); 
+		
+		if(result != null) {
+		
+			result = result.copy();
+		}
+		
+		return result;
+	}
+	
+	private IndexEntry getOrgIndexEntry(final long id) {
+		
+		Optional<IndexEntry> optional = database.getIndexEntries().stream().filter(entry -> entry.getId() == id).findFirst();
+		
+		IndexEntry result = null; 
 		
 		if(optional.isPresent()) {
 		

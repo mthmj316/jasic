@@ -1,5 +1,6 @@
 package de.mthoma.jasic.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.JAXBException;
 
 import org.springframework.stereotype.Controller;
@@ -30,14 +31,34 @@ public class IndexController {
 		}
 		
 		model.addAttribute("indexEntry", new IndexEntry());
+		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
 		
 		return INDEX_PAGE;
+	}
+	
+	@GetMapping(value = "/getKeywordExplanation4**")
+	public String loadIndexEntry(Model model, HttpServletRequest request) {
+		
+		String requestUri = request.getRequestURI();
+		
+		long id = Long.parseLong(requestUri.substring(23));
+		
+		IndexEntry entry2Load = DatabaseService.DATABASE.getIndexEntry(id);
+		
+		if(entry2Load == null) entry2Load = new IndexEntry();
+		
+		model.addAttribute("indexEntry", entry2Load);
+		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
+		
+		return INDEX_PAGE;
+	
 	}
 	
 	@GetMapping(value = INDEX_URL)
 	public String index(Model model) {
 		
 		model.addAttribute("indexEntry", new IndexEntry());
+		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
 		
 		return INDEX_PAGE;
 	}
