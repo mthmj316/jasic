@@ -17,6 +17,14 @@
             <Keyword>Volt</Keyword>
             <Explanation>EInheit für Spannung.</Explanation>
         </IndexEntry>
+        <IndexEntry Id="1611177384084">
+            <Keyword>Kraft</Keyword>
+            <Explanation>Kraft ist kräftig.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1611178380887">
+            <Keyword>eine</Keyword>
+            <Explanation>Ist ein unbestimmter Artikel.</Explanation>
+        </IndexEntry>
     </Index>
     <Chapters>
         <Chapter Id="1610314999049" ParentId="0">
@@ -84,6 +92,11 @@ Ok das klappt!</Content>
         </Chapter>
         <Chapter Id="1610657306959" ParentId="1610657099574">
             <ChapterName>Testsystem</ChapterName>
+        </Chapter>
+        <Chapter Id="1611177400615" ParentId="1610314999049">
+            <ChapterName>Kraft</ChapterName>
+            <Content>Kraft ist eine Superkraft. Wenn sich aber eine Kraft, durch eine andere Kraft aufhebt, dann bleibt nix übrig!&#13;
+Eine Sache bleibt noch zu sagen: Tschüss!</Content>
         </Chapter>
     </Chapters>
 </JasicDatabase>

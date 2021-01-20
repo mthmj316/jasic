@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement(name="Chapter")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -21,9 +22,20 @@ public class Chapter {
 	
 	@XmlElement(name = "Content")
 	private String content;
+	
+	@XmlTransient
+	private String linkedContent;
 
 	public String getContent() {
 		return content;
+	}
+
+	public String getLinkedContent() {
+		return linkedContent;
+	}
+
+	public void setLinkedContent(String linkedContent) {
+		this.linkedContent = linkedContent;
 	}
 
 	public void setContent(String content) {
@@ -35,12 +47,14 @@ public class Chapter {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Chapter [id=");
 		builder.append(id);
-		builder.append(", chapterName=");
-		builder.append(chapterName);
 		builder.append(", parentId=");
 		builder.append(parentId);
+		builder.append(", chapterName=");
+		builder.append(chapterName);
 		builder.append(", content=");
 		builder.append(content);
+		builder.append(", linkedContent=");
+		builder.append(linkedContent);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -76,6 +90,7 @@ public class Chapter {
 		copy.setContent(this.content);
 		copy.setId(this.id);
 		copy.setParentId(this.parentId);
+		copy.setLinkedContent(this.linkedContent);
 		
 		return copy;
 	}
