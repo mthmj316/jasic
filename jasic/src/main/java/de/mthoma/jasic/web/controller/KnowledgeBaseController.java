@@ -7,10 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.mthoma.jasic.data.database.DatabaseService;
 import de.mthoma.jasic.data.entities.Chapter;
+import de.mthoma.jasic.data.entities.IndexEntry;
 
 @Controller
 public class KnowledgeBaseController {
@@ -26,13 +29,21 @@ public class KnowledgeBaseController {
 	
 	private long currentlySelectedChapter = 0l;
 	
+	@ResponseBody
+	@GetMapping(value = "/getKeywordExplanation/{id}")
+	public String getKeywordExplanation(@PathVariable(value = "id") String id) {
+		
+		IndexEntry indexEntry = DatabaseService.DATABASE.getIndexEntry(Long.parseLong(id));
+		
+		return indexEntry.getExplanation();
+	}
+	
 	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY)
 	public String saveChange(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
 		try {
 			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
 		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
