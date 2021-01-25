@@ -1,6 +1,7 @@
 package de.mthoma.jasic.data.database;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -248,7 +249,7 @@ public enum DatabaseService {
 
 			database = new JasicDatabase();
 		} else {
-			database = (JasicDatabase) um.unmarshal(new FileReader(DATABASE_PATH));
+			database = (JasicDatabase) um.unmarshal(new FileInputStream(DATABASE_PATH));
 		}
 	}
 

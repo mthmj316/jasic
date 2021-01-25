@@ -1,107 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <JasicDatabase>
     <Index>
-        <IndexEntry Id="1611003415996">
-            <Keyword>Glas</Keyword>
-            <Explanation>Durch Glas kann man schauen!</Explanation>
+        <IndexEntry Id="1611330291432">
+            <Keyword>Analogie</Keyword>
+            <Explanation>Sich-Ähnlich- bzw. Sich-gleich-Sein in bestimmten Verhältnissen.</Explanation>
         </IndexEntry>
-        <IndexEntry Id="1611088335083">
-            <Keyword>Alpha</Keyword>
-            <Explanation>Standardname für einen Winkel.</Explanation>
+        <IndexEntry Id="1611330561920">
+            <Keyword>PhÃ¤nomen</Keyword>
+            <Explanation>Etwas, was sich beobachten bzw. wahrnehmen lÃ¤sst.</Explanation>
         </IndexEntry>
-        <IndexEntry Id="1611088403606">
-            <Keyword>Bell</Keyword>
-            <Explanation>Keine Ahnung was das sein soll.</Explanation>
-        </IndexEntry>
-        <IndexEntry Id="1611089577553">
-            <Keyword>Volt</Keyword>
-            <Explanation>EInheit für Spannung.</Explanation>
-        </IndexEntry>
-        <IndexEntry Id="1611177384084">
-            <Keyword>Kraft</Keyword>
-            <Explanation>Kraft ist kräftig.</Explanation>
-        </IndexEntry>
-        <IndexEntry Id="1611178380887">
-            <Keyword>eine</Keyword>
-            <Explanation>Ist ein unbestimmter Artikel.</Explanation>
-        </IndexEntry>
-        <IndexEntry Id="1611261644061">
-            <Keyword>Corbinian</Keyword>
-            <Explanation>Corbinian ist frech!</Explanation>
+        <IndexEntry Id="1611332527159">
+            <Keyword>Model</Keyword>
+            <Explanation>Ein Model ist eine Art von Analogie oder geistigem Bild eines PhÃ¤nomens in der Sprache von etwas uns Bekanntem (z.B. Licht-Wellenmodell). Ein Model soll es erleichtern, eine Vorstellung von etwas, das wir noch nicht verstehen oder ein tieferes VerstÃ¤ndnis von etwas Bekanntem, zu bekommen.&#13;
+&#13;
+Der Unterschied zur Theorie ist, dass ein Model simpler ist und nur eine strukturelle Ã„hnlichkeit mit dem beobachteten PhÃ¤nomen liefert.</Explanation>
         </IndexEntry>
     </Index>
     <Chapters>
-        <Chapter Id="1610314999049" ParentId="0">
-            <ChapterName>Mechanik</ChapterName>
-        </Chapter>
-        <Chapter Id="1610315041869" ParentId="0">
-            <ChapterName>Atom</ChapterName>
-        </Chapter>
-        <Chapter Id="1610315567628" ParentId="0">
-            <ChapterName>Elektrotechnik</ChapterName>
-            <Content>Hier geht's ganz schön spannend zu!&#13;
+        <Chapter Id="1611326065348" ParentId="0">
+            <ChapterName>Einführung, Messungen, Abschätzungen</ChapterName>
+            <Content>Gebiete der klassischen Physik:&#13;
+--&gt; Klassische Mechanik|&#13;
+--&gt; Strömungslehre|&#13;
+--&gt; Thermodynamik|&#13;
+--&gt; Akustik|&#13;
+--&gt; Optik|&#13;
+--&gt; Elektrizität|&#13;
+--&gt; Magnetismus|&#13;
 &#13;
-Aber so was von!&#13;
+Gebiete der modernen Physik:&#13;
+--&gt; Quantenmechanik|&#13;
+--&gt; Relativitätstheorie|&#13;
+--&gt; Atomphysik|&#13;
+--&gt; Festkörperphysik|&#13;
+--&gt; Kernphysik|&#13;
+--&gt; Teilchenphysik|&#13;
+--&gt; Astrophysik|</Content>
+        </Chapter>
+        <Chapter Id="1611327072905" ParentId="1611326065348">
+            <ChapterName>Das Wesen der Wissenschaft</ChapterName>
+            <Content>Wichtige Aspekte der Wissenschaft:&#13;
+--&gt; Beobachtung von Ereignissen, ausfÃ¼hren von Experimenten und Messungen.&#13;
+--&gt; Entscheiden, was von dem Beobachteten und den Experimenten relevant ist.&#13;
+--&gt; Erstellen von Theorien, die das Beobachtete, die Experimente und Messungen erklÃ¤ren.&#13;
+--&gt; PrÃ¼fung der Theorien, ob sie den Vorhersagen der Experimenten standhalten.&#13;
 &#13;
-&lt;Klappt das!&gt;&#13;
+</Content>
+        </Chapter>
+        <Chapter Id="1611328274903" ParentId="1611326065348">
+            <ChapterName>Modelle, Theorien und Gesetze</ChapterName>
+            <Content>Ein Model ist eine Art von Analogie oder geistigem Bild eines PhÃ¤nomens in der Sprache von etwas uns Bekanntem (z.B. Licht-Wellenmodell). Ein Model soll es erleichtern, eine Vorstellung von etwas, das wir noch nicht verstehen oder ein tieferes VerstÃ¤ndnis von etwas Bekanntem, zu bekommen.&#13;
 &#13;
-Ok das klappt!</Content>
+Der Unterschied zur Theorie ist, dass ein Model simpler ist und nur eine strukturelle Ã„hnlichkeit mit dem beobachteten PhÃ¤nomen liefert.</Content>
         </Chapter>
-        <Chapter Id="1610315699209" ParentId="1610314999049">
-            <ChapterName>Kräfte</ChapterName>
-            <Content>Kräfte sind sehr stark!</Content>
-        </Chapter>
-        <Chapter Id="1610397743954" ParentId="0">
-            <ChapterName>Fehlerberechnung</ChapterName>
-        </Chapter>
-        <Chapter Id="1610399682632" ParentId="1610315699209">
-            <ChapterName>Geneigte Ebene</ChapterName>
-        </Chapter>
-        <Chapter Id="1610400094509" ParentId="1610315699209">
-            <ChapterName>Parallele Kräfte</ChapterName>
-        </Chapter>
-        <Chapter Id="1610400243860" ParentId="1610315699209">
-            <ChapterName>Entegengesetzte Kräfte</ChapterName>
-        </Chapter>
-        <Chapter Id="1610400260622" ParentId="0">
-            <ChapterName>Wärmelehre</ChapterName>
-        </Chapter>
-        <Chapter Id="1610400728539" ParentId="1610400260622">
-            <ChapterName>Wärmetauscher</ChapterName>
-        </Chapter>
-        <Chapter Id="1610400921911" ParentId="0">
-            <ChapterName>String Theorie</ChapterName>
-        </Chapter>
-        <Chapter Id="1610458275074" ParentId="1610315699209">
-            <ChapterName>Virtuelle Kräfte</ChapterName>
-        </Chapter>
-        <Chapter Id="1610458424994" ParentId="1610315699209">
-            <ChapterName>Unbestimmte Kräfte</ChapterName>
-        </Chapter>
-        <Chapter Id="1610458497124" ParentId="1610314999049">
-            <ChapterName>Superkräft</ChapterName>
-        </Chapter>
-        <Chapter Id="1610458514403" ParentId="1610315699209">
-            <ChapterName>Negative Kräfte</ChapterName>
-        </Chapter>
-        <Chapter Id="1610654353599" ParentId="1610315567628">
-            <ChapterName>Gleichstrom</ChapterName>
-            <Content>Hier fließt alles gleichmäßig!</Content>
-        </Chapter>
-        <Chapter Id="1610657099574" ParentId="0">
-            <ChapterName>Quanten Mechanik</ChapterName>
-        </Chapter>
-        <Chapter Id="1610657283992" ParentId="0">
-            <ChapterName>Glossar</ChapterName>
-        </Chapter>
-        <Chapter Id="1610657306959" ParentId="1610657099574">
-            <ChapterName>Testsystem</ChapterName>
-            <Content>Hallo Corbinian.</Content>
-        </Chapter>
-        <Chapter Id="1611177400615" ParentId="1610314999049">
-            <ChapterName>Kraft</ChapterName>
-            <Content>Kraft ist eine Superkraft. Wenn sich aber eine Kraft, durch eine andere Kraft aufhebt, dann bleibt nix übrig!&#13;
-Eine Sache bleibt noch zu sagen: Tschüss!</Content>
+        <Chapter Id="1611607376376" ParentId="0">
+            <ChapterName>Änderungen ändern süch!</ChapterName>
         </Chapter>
     </Chapters>
 </JasicDatabase>
