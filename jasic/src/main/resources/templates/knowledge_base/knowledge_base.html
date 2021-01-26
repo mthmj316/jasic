@@ -10,7 +10,7 @@
 		th:object="${selectedChapter}">
 		<div th:if="${isRoot == false}">
 			<textarea style="display: none;" id="chapterContentChangeable"
-				cols="200" rows="20" th:field="*{content}" disabled></textarea>
+				cols="100" rows="20" th:field="*{content}" disabled></textarea>
 		</div>
 		<p id="chapterContentDisplayOnly" th:utext="*{linkedContent}"
 			th:if="${isRoot == false}"></p>

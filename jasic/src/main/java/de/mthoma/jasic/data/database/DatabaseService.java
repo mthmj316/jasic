@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -38,6 +39,11 @@ public enum DatabaseService {
 	private static final String LINK_CONTENT_REPLACE_REGEX_TEMPLATE = "\\b%s\\b";
 	
 	private static final String LINK_CONTENT_REPLACEMENT_TEMPLATE = "<a href=\"javascript:showKeywordExplanation('%s');\">%s</a>";
+	
+	private static final String HTML_UL_TEMPLATE = "<ul>%s</ul>";
+	
+	private static final String HTML_LI_TEMPLATE = "<li>%s</li>";
+	
 	
 	private static JasicDatabase database;
 
@@ -108,10 +114,55 @@ public enum DatabaseService {
 
 			result = result.copy();
 			this.linkChapterContent(result);
+			this.createHTMLLists(result);
 		}
 		
 
 		return result;
+	}
+	
+	private void createHTMLLists(final Chapter chapter) {
+		
+		if(chapter.getContent() == null || chapter.getContent().isEmpty()) {
+			return;
+		}
+		
+		String linkedContent = chapter.getContent();
+		
+		if(linkedContent.indexOf("-->") > -1) {
+			
+			List<String> listItems = Arrays.stream(linkedContent.split(System.lineSeparator()))
+                    .filter(line -> line.startsWith("-->")).collect(Collectors.toList());
+			
+			listItems.forEach(listItem -> listItem.replaceAll(Patte, replacement));
+			
+			System.out.println(listItems);
+		}
+	}
+	
+	private String createUnorderedList(String parent, List<String> listItems) {
+		
+		String baseTemplate;
+		StringBuilder listContent = new StringBuilder();
+		
+		if(parent != null) {
+			
+			baseTemplate = HTML_LI_TEMPLATE;
+			
+			listContent.append(parent);
+			listContent.append(this.createUnorderedList(null, listItems));
+			
+		} else {
+			
+			baseTemplate = HTML_UL_TEMPLATE;
+			
+			for(String listItem : listItems) {
+				
+				listContent.append(String.format(HTML_LI_TEMPLATE, listItem));
+			}
+		}
+		
+		return String.format(baseTemplate, listContent.toString());
 	}
 
 	private void linkChapterContent(final Chapter chapter) {
@@ -142,8 +193,6 @@ public enum DatabaseService {
 					}
 				}
 			}
-			
-			
 		}
 		chapter.setLinkedContent(linkedContent);
 	}
