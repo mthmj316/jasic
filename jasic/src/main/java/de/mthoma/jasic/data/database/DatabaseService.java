@@ -134,7 +134,7 @@ public enum DatabaseService {
 			List<String> listItems = Arrays.stream(linkedContent.split(System.lineSeparator()))
                     .filter(line -> line.startsWith("-->")).collect(Collectors.toList());
 			
-			listItems.forEach(listItem -> listItem.replaceAll(Patte, replacement));
+//			listItems.forEach(listItem -> listItem.replaceAll(Patte, replacement));
 			
 			System.out.println(listItems);
 		}

@@ -19,23 +19,7 @@ Der Unterschied zur Theorie ist, dass ein Model simpler ist und nur eine struktu
     <Chapters>
         <Chapter Id="1611326065348" ParentId="0">
             <ChapterName>Einführung, Messungen, Abschätzungen</ChapterName>
-            <Content>Gebiete der klassischen Physik:&#13;
---&gt; Klassische Mechanik|&#13;
---&gt; Strömungslehre|&#13;
---&gt; Thermodynamik|&#13;
---&gt; Akustik|&#13;
---&gt; Optik|&#13;
---&gt; Elektrizität|&#13;
---&gt; Magnetismus|&#13;
-&#13;
-Gebiete der modernen Physik:&#13;
---&gt; Quantenmechanik|&#13;
---&gt; Relativitätstheorie|&#13;
---&gt; Atomphysik|&#13;
---&gt; Festkörperphysik|&#13;
---&gt; Kernphysik|&#13;
---&gt; Teilchenphysik|&#13;
---&gt; Astrophysik|</Content>
+            <Content>&lt;p&gt;Gebiete der klassischen Physik:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Klassische Mechanik&lt;br&gt;&lt;/li&gt;&lt;li&gt;Strömungslehre&lt;br&gt;&lt;/li&gt;&lt;li&gt;Thermodynamik &lt;br&gt;&lt;/li&gt;&lt;li&gt;Akustik&lt;br&gt;&lt;/li&gt;&lt;li&gt;Optik &lt;br&gt;&lt;/li&gt;&lt;li&gt;Elektrizität&lt;/li&gt;&lt;li&gt;Magnetismus&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Gebiete der modernen Physik:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Quantenmechanik&lt;/li&gt;&lt;li&gt;Relativitätstheorie&lt;/li&gt;&lt;li&gt;Atomphysik&lt;/li&gt;&lt;li&gt;Festkörperphysik&lt;/li&gt;&lt;li&gt;Kernphysik&lt;/li&gt;&lt;li&gt;Teilchenphysik&lt;/li&gt;&lt;li&gt;Astrophysik&lt;/li&gt;&lt;/ul&gt;</Content>
         </Chapter>
         <Chapter Id="1611327072905" ParentId="1611326065348">
             <ChapterName>Das Wesen der Wissenschaft</ChapterName>
