@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.mthoma.jasic.data.database.DatabaseService;
@@ -29,6 +31,13 @@ public class KnowledgeBaseController {
 	
 	private long currentlySelectedChapter = 0l;
 	
+	@PostMapping(value = "/Zurück")
+	public String cancelUpdateUser(HttpServletRequest request) {
+	    
+		System.out.println("Hello back");
+		return "";
+	}
+	
 	@ResponseBody
 	@GetMapping(value = "/getKeywordExplanation/{id}")
 	public String getKeywordExplanation(@PathVariable(value = "id") String id) {
@@ -38,10 +47,12 @@ public class KnowledgeBaseController {
 		return indexEntry.getExplanation();
 	}
 	
-	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY)
+	@PostMapping(params = "/save")
+//	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY)
 	public String saveChange(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
 		try {
+			System.out.println("Hello save");
 			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
 		} catch (JAXBException e) {
 			e.printStackTrace();
