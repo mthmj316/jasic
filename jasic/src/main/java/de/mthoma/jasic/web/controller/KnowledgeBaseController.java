@@ -31,7 +31,8 @@ public class KnowledgeBaseController {
 	
 	private long currentlySelectedChapter = 0l;
 	
-	@PostMapping(value = "/Zurück")
+//	@PostMapping(value = "/Zurück")
+	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "back")
 	public String cancelUpdateUser(HttpServletRequest request) {
 	    
 		System.out.println("Hello back");
@@ -47,16 +48,16 @@ public class KnowledgeBaseController {
 		return indexEntry.getExplanation();
 	}
 	
-	@PostMapping(params = "/save")
-//	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY)
+//	@PostMapping(params = "/save")
+	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "save")
 	public String saveChange(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
-		try {
-			System.out.println("Hello save");
-			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
+		System.out.println("Hello save");
+//		try {
+//			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
+//		} catch (JAXBException e) {
+//			e.printStackTrace();
+//		}
 		
 		this.setPageParameter(model, false, this.currentlySelectedChapter);
 		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;

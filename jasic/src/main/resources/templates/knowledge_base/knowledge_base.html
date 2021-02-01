@@ -13,8 +13,8 @@
 </head>
 <body>
 	<h1 th:text="${header}"></h1>
-	<form method="POST" th:object="${selectedChapter}">
-<!-- 	<form action="/knowledge_base/update_entry" method="post" th:object="${selectedChapter}"> -->
+<!-- 	<form method="POST" th:object="${selectedChapter}"> -->
+	<form action="/knowledge_base/update_entry" method="post" th:object="${selectedChapter}">
 		<div th:if="${isRoot == false}">
 			<textarea style="display: none;" id="chapterContentChangeable"
 				cols="100" rows="20" th:field="*{content}" autofocus></textarea>
