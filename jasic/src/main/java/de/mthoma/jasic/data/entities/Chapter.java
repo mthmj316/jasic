@@ -11,6 +11,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Chapter {
 	
+	@XmlTransient
+	public static final Chapter NULL_CHAPTER = new Chapter();
+	
 	@XmlAttribute(name="Id")
 	private Long id;
 

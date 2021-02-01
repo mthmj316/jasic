@@ -105,7 +105,7 @@ public enum DatabaseService {
 
 		Chapter result = getOrgChapter(id); 
 
-		if(result != null) {
+		if(result != Chapter.NULL_CHAPTER) {
 
 			result = result.copy();
 			this.linkChapterContent(result);
@@ -173,7 +173,18 @@ public enum DatabaseService {
 			return result;
 		}
 
-		return null;
+		return Chapter.NULL_CHAPTER;
+	}
+	
+	public Chapter getParentChapter(final long childId) {
+		
+		Chapter child = this.getChapter(childId);
+		
+		if(child.getParentId() == 0) {
+			return Chapter.NULL_CHAPTER;
+		}
+		
+		return this.getChapter(child.getParentId());
 	}
 
 	public IndexEntry getIndexEntry(final long id) {

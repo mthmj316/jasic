@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import de.mthoma.jasic.data.database.DatabaseService;
@@ -31,12 +29,16 @@ public class KnowledgeBaseController {
 	
 	private long currentlySelectedChapter = 0l;
 	
-//	@PostMapping(value = "/Zurück")
 	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "back")
-	public String cancelUpdateUser(HttpServletRequest request) {
-	    
-		System.out.println("Hello back");
-		return "";
+	public String cancelUpdateUser(Model model) {
+		
+		Chapter chapter2Load = DatabaseService.DATABASE.getParentChapter(this.currentlySelectedChapter);
+		
+		if(chapter2Load == Chapter.NULL_CHAPTER) {
+			return this.tableOfContents(model);
+		} else {
+			return this.applyPage(model, chapter2Load.getId());
+		}
 	}
 	
 	@ResponseBody
@@ -48,16 +50,14 @@ public class KnowledgeBaseController {
 		return indexEntry.getExplanation();
 	}
 	
-//	@PostMapping(params = "/save")
 	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "save")
 	public String saveChange(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
-		System.out.println("Hello save");
-//		try {
-//			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
-//		} catch (JAXBException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			DatabaseService.DATABASE.updateChapterContent(this.currentlySelectedChapter, selectedChapter.getContent());
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
 		
 		this.setPageParameter(model, false, this.currentlySelectedChapter);
 		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
@@ -70,9 +70,14 @@ public class KnowledgeBaseController {
 		
 		long parentId = Long.parseLong(requestUri.substring(SELECTED_CHAPTER_URI_PREFIX_LENGTH));
 		
-		this.currentlySelectedChapter = parentId;
+		return this.applyPage(model, parentId);
+	}
+	
+	private String applyPage(Model model, long pageId2Load) {
 		
-		this.setPageParameter(model, false, parentId);
+		this.currentlySelectedChapter = pageId2Load;
+		
+		this.setPageParameter(model, false, pageId2Load);
 		
 		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
 	}
@@ -93,15 +98,18 @@ public class KnowledgeBaseController {
 		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
 	}
 	
-	private void setPageParameter(Model model, boolean isRoot, long parentId) {
+	private void setPageParameter(Model model, boolean isRoot, long chapterId) {
 		
 		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getSubChapter(this.currentlySelectedChapter));
 		model.addAttribute("isRoot", isRoot);
 		
-		Chapter parent = DatabaseService.DATABASE.getChapter(parentId);
-		model.addAttribute("selectedChapter", parent);
+		Chapter chapter = DatabaseService.DATABASE.getChapter(chapterId);
 		
-		String headerAppendix = parent != null ? parent.getChapterName() : "Übersicht";
+		if(chapter != Chapter.NULL_CHAPTER) {
+			model.addAttribute("selectedChapter", chapter);
+		}
+		
+		String headerAppendix = chapter != null ? chapter.getChapterName() : "Übersicht";
 		
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, headerAppendix));
 	}
