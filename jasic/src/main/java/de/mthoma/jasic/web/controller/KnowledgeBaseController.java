@@ -18,16 +18,60 @@ import de.mthoma.jasic.data.entities.IndexEntry;
 @Controller
 public class KnowledgeBaseController {
 	
-	private static final String KNOWLEDGE_BASE_UPDATE_ENTRY = "/knowledge_base/update_entry";
+	public static final String KNOWLEDGE_BASE_UPDATE_ENTRY = "/knowledge_base/update_entry";
 	private static final String PERFORM_CREATE_CHAPTER = "/perform_create_chapter";
 	private static final String KNOWLEDGE_BASE_ROOT = "/knowledge_base/knowledge_base";
-	private static final String KNOWLEDGE_CREATE_ENTRY = "/knowledge_base/create_chapter";
 	private static final int SELECTED_CHAPTER_URI_PREFIX_LENGTH = 16;
 	private static final String CHAPTERS = "chapters";
 	private static final String KNOWLEDGE_BASE_KNOWLEDGE_BASE = "knowledge_base/knowledge_base";
 	private static final String HEADER_TEMPLATE = "Physik Grundlagen: %s";
 	
+	public static final String INDEX_PAGE = "index";
+	
 	private long currentlySelectedChapter = 0l;
+	
+	@PostMapping(value = PERFORM_CREATE_CHAPTER, params = "cancel")
+	public String performCancelCreateChapter(Model model) {
+		
+		this.setPageParameter(model, this.currentlySelectedChapter == 0, this.currentlySelectedChapter);
+		
+		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+	}
+	
+	@PostMapping(value = PERFORM_CREATE_CHAPTER, params = "create")
+	public String performCreateChapter(@ModelAttribute  Chapter newChapter, Model model) {
+		
+		try {
+			newChapter.setParentId(this.currentlySelectedChapter);
+			DatabaseService.DATABASE.writeChapter(newChapter);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+		
+		this.setPageParameter(model, newChapter.getParentId() == 0, this.currentlySelectedChapter);
+		
+		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+	}
+	
+	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "createIndexEntry")
+	public String index(Model model) {
+		
+		model.addAttribute("indexEntry", new IndexEntry());
+		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
+		
+		return INDEX_PAGE;
+	}
+
+	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "createChapter")
+	public String createEntry(Model model) {
+		
+		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getAllChapters());
+		
+		Chapter newChapter = new Chapter();
+		model.addAttribute("newChapter", newChapter);
+		
+		return "knowledge_base/create_entry";
+	}
 	
 	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "back")
 	public String cancelUpdateUser(Model model) {
@@ -82,21 +126,6 @@ public class KnowledgeBaseController {
 		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
 	}
 	
-	@PostMapping(PERFORM_CREATE_CHAPTER)
-	public String performCreateEntry(@ModelAttribute  Chapter newChapter, Model model) {
-		
-		try {
-			newChapter.setParentId(this.currentlySelectedChapter);
-			DatabaseService.DATABASE.writeChapter(newChapter);
-		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.setPageParameter(model, newChapter.getParentId() == 0, this.currentlySelectedChapter);
-		
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
-	}
 	
 	private void setPageParameter(Model model, boolean isRoot, long chapterId) {
 		
@@ -112,17 +141,6 @@ public class KnowledgeBaseController {
 		String headerAppendix = chapter != null ? chapter.getChapterName() : "Übersicht";
 		
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, headerAppendix));
-	}
-
-	@PostMapping(value = KNOWLEDGE_CREATE_ENTRY)
-	public String createEntry(Model model) {
-		
-		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getAllChapters());
-		
-		Chapter newChapter = new Chapter();
-		model.addAttribute("newChapter", newChapter);
-		
-		return "knowledge_base/create_entry";
 	}
 	
 	@GetMapping(value = KNOWLEDGE_BASE_ROOT)

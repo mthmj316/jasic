@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import de.mthoma.jasic.data.database.DatabaseService;
 import de.mthoma.jasic.data.entities.IndexEntry;
@@ -15,13 +16,18 @@ import de.mthoma.jasic.data.entities.IndexEntry;
 @Controller
 public class IndexController {
 
-	private static final String INDEX_URL = "/index";
-	
-	private static final String INDEX_PAGE = "index";
+//	private static final String INDEX_URL = "/index";
 	
 	private static final String CREATE_INDEX_ENTRY_URL = "/create_index_entry";
 	
-	@PostMapping(value = CREATE_INDEX_ENTRY_URL)
+	@PostMapping(value = CREATE_INDEX_ENTRY_URL, params = "back")
+	public ModelAndView back2KnowlegeBase(Model model) {
+
+		
+		return new ModelAndView("redirect:" + KnowledgeBaseController.KNOWLEDGE_BASE_UPDATE_ENTRY + "/back");
+	}
+	
+	@PostMapping(value = CREATE_INDEX_ENTRY_URL, params = "save")
 	public String createEntry(@ModelAttribute  IndexEntry indexEntry, Model model) {
 		
 		try {
@@ -33,7 +39,7 @@ public class IndexController {
 		model.addAttribute("indexEntry", new IndexEntry());
 		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
 		
-		return INDEX_PAGE;
+		return KnowledgeBaseController.INDEX_PAGE;
 	}
 	
 	@GetMapping(value = "/getKeywordExplanation4**")
@@ -50,16 +56,7 @@ public class IndexController {
 		model.addAttribute("indexEntry", entry2Load);
 		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
 		
-		return INDEX_PAGE;
+		return KnowledgeBaseController.INDEX_PAGE;
 	
-	}
-	
-	@GetMapping(value = INDEX_URL)
-	public String index(Model model) {
-		
-		model.addAttribute("indexEntry", new IndexEntry());
-		model.addAttribute("index", DatabaseService.DATABASE.getAllIndexEntries());
-		
-		return INDEX_PAGE;
 	}
 }
