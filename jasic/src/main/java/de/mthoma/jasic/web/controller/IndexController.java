@@ -21,10 +21,10 @@ public class IndexController {
 	private static final String CREATE_INDEX_ENTRY_URL = "/create_index_entry";
 	
 	@PostMapping(value = CREATE_INDEX_ENTRY_URL, params = "back")
-	public ModelAndView back2KnowlegeBase(Model model) {
-
+	public String back2KnowlegeBase(Model model) {
 		
-		return new ModelAndView("redirect:" + KnowledgeBaseController.KNOWLEDGE_BASE_UPDATE_ENTRY + "/back");
+		//return new ModelAndView("redirect:/backFromIndex"); 
+		return "redirect:/backFromIndex"; 
 	}
 	
 	@PostMapping(value = CREATE_INDEX_ENTRY_URL, params = "save")

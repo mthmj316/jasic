@@ -12,7 +12,7 @@
 		<textarea id="explanation" cols="100" rows="10" th:field="*{explanation}"></textarea><br>
 		<input id="saveBtn" name="save" type="submit" value="Speichern" /> 
 		<input id="cancelBtn" type="button" value="Abbrechen" onclick="onCancel()" />
-		<input id="backBtn" name="back" type="button" value="Zurück" />
+		<input id="backBtn" name="back" type="submit" value="Zurück" />
 	</form>
 	<table>
 		<tr th:each="indexEntry : ${index}">

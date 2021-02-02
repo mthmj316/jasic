@@ -29,6 +29,15 @@ public class KnowledgeBaseController {
 	public static final String INDEX_PAGE = "index";
 	
 	private long currentlySelectedChapter = 0l;
+
+	
+	@GetMapping(value = "/backFromIndex")
+	public String backFromIndex(Model model) {
+		
+		this.setPageParameter(model, this.currentlySelectedChapter == 0, this.currentlySelectedChapter);
+		
+		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+	}
 	
 	@PostMapping(value = PERFORM_CREATE_CHAPTER, params = "cancel")
 	public String performCancelCreateChapter(Model model) {
@@ -138,7 +147,7 @@ public class KnowledgeBaseController {
 			model.addAttribute("selectedChapter", chapter);
 		}
 		
-		String headerAppendix = chapter != null ? chapter.getChapterName() : "Übersicht";
+		String headerAppendix = chapter != Chapter.NULL_CHAPTER ? chapter.getChapterName() : "Übersicht";
 		
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, headerAppendix));
 	}
