@@ -19,6 +19,17 @@ export function differentiateWithRespectTo(expression, variable){
  */
 function splitMathSumExpression(expression){
 	
+	expression = expression.replaceAll("-", "$-");
+	
+	var splitExpression = expression.split("$");
+	
+	var result = {};
+	
+	splitExpression.forEach(function(entry){
+		result.concat(entry.split("+"));
+	});
+	
+	return result;
 }
 
 /*
@@ -30,21 +41,114 @@ function splitMathSumExpression(expression){
  */
 function reduceFraction(fraction){
 	
+	//Separate numerator and denominator 
+	var splitFraction = fraction.split("/");	
+	var numerator = parseInt(splitFraction[0]);
+	var denominator = parseInt(splitFraction[1]);
+	
+	//Contains the max. possible common factor
+	var factor;
+	
+	if (numerator > denominator){
+		//Numerator is greater than the denominator -> factor must be <= denominator
+		factor = denominator;		
+	} else {		
+		//Denominator is greater than the numerator -> factor must be <= numerator#
+		factor = numerator;
+	}
+	
+	//Search for max. possible factor.
+	for(i = factor; i > 0; i--){
+		
+		if((numerator % i) == 0 && (denominator % i) == 0 ){
+			//When this is entered  for the  The first time, i must be the max. possible common factor. when 
+			//This clause will be latest entered, when i == 1, that means the fraction cannot be reduced.
+			factor = i;
+			break;
+		}
+	}
+	
+	//Reduce the numerator and denominator
+	numerator = numerator / factor;
+	denominator = denominator / factor;
+	
+	//Built reduced fraction.
+	var result = numerator + "/" + denominator;
+	
+	return result;
 }
 
 /*
- * Mult
+ * Multiplies the given fractions. If it is possible the result will be reduced.
+ * If the result is whole-number the number will returned and not a fraction.
+ * It is not checked if the given fractions are valid.
  */
 function multiplyFractions(fraction1, fraction2){
 	
+	var splitFraction1 = fraction1.split("/");
+	var splitFraction2 = fraction2.split("/");
+	
+	//Calculate the the numerator and denominator of the result fraction.
+	var resultNumerator = parseInt(splitFraction1[0]) * parseInt(splitFraction2[0]);
+	var resultDenominator = parseInt(splitFraction1[1]) * parseInt(splitFraction2[1]);
+	
+	if (resultNumerator % resultDenominator == 0){
+		//In this case the result is whole-number.
+		return (resultNumerator / resultDenominator).toString();
+		
+	} else {
+		//The result is again a fraction. 
+		return reduceFraction(resultNumerator + "/" + resultDenominator);
+	}
 }
 
+/*
+ * Multiplies the given multipliers.
+ * The multiplier may be whole-numbers or fraction.
+ * It is checked if the multipliers are valied. If one of them is not an error while be raised.
+ */
 function multiply(multiplier1, multiplier2){
 	
+	var m1Ok = isNumberOrFraction(multiplier1);
+	var m2Ok = isNumberOrFraction(multiplier2);
+	
+	if(!m1Ok || !m2Ok){
+		
+		throw "Check your input: " + multiplier1 + " and/or " + multiplier2  + "  is not a valid number or fraction.";
+	}
+	
+	if(!multiplier1.includes("/")){
+		//Make a fraction of multiplier1.
+		multiplier1 = multiplier1 + "/1";
+	}
+	
+	if(!multiplier2.includes("/")){
+		//Make a fraction of multiplier2.
+		multiplier2 = multiplier2 + "/1";
+	}
+	
+	return multiplyFractions(multiplier1, multiplier2);
 }
 
+/*
+ * Checks if the given term is either a  valid whole-number or a valid fraction.
+ */
 function isNumberOrFraction(term){
 	
+	if(term.includes("/")){
+		//Must be a fraction.
+		
+		var splitTerm = term.split("/");
+		var numerator = parseInt(splitTerm[0]);
+		var denominator = parseInt(splitTerm[1]);
+		
+		return !isNaN(numerator) && !isNaN(denominator);
+		
+	} else {
+		//Must be whole-number.
+	
+		return !isNaN(term);
+	}
 }
 
 function differentiatePartial(partialExpression, variable){
