@@ -2,8 +2,56 @@
  * http://usejsdoc.org/
  */
 
+/**
+ * Differentiates the given expression with respect to the given variable.<br>
+ * If one of the parameters is not set (which means is undefined or empty) an error will
+ * be raised.<br>
+ *  <ul>
+ *  Derivative Rules:
+ *  <li>expression contains variable    -> return 0 </li>
+ *  <li> expression is only the variable -> return 1</li>
+ *  <li> expression is only variable^k    -> return kvariable^(k-1)</li>
+ *  <li> expression is avariable^k          -> return nvaribale^(k-1)           (n == product of k and a)</li>
+ *  <li>expression is a/bvariable^k      -> return n/bvariable^(k-1)       (n == product of k and a) </li>
+ *  Rules for the expressions:
+ *  <li>exponent is a fraction is not allowed</li>
+ *  <li>factors are only allowed before the variable</li>
+ *  <li>expression is a fraction is not allowed</li>
+ *  <li>other variables beside the function variable are not allowed, e.g avariable^2; a  must  be number or a fraction</li>
+ *  <li>products before the variable, e.g. 3*2variable^3 or 3*1/4variable^1, are not allowed</li>
+ *  <li>the only allowed operators in the expression are: "+", "-" and "^"</li>
+ *  <li>only numbers are allowed in the fraction before the variable; no variables no operations.</li>
+ *  </ul>
+ */
 export function differentiateWithRespectTo(expression, variable){
 	
+	if(expression == null || expression.length == 0){
+		throw "expression not set: >" + expression + "<!";
+	}
+	
+	if(variable == null || variable.length == 0){
+		throw "variable not set: >" + variable + "<!";
+	}
+	
+	var partialExpressions = splitMathSumExpression(expression);
+	
+	var diffPartialExpression = "";
+	
+	var diffPartial;
+	
+	partialExpressions.forEach(function(partialExpression){
+		
+		diffPartial = differentiatePartial(partialExpression, variable);
+		
+		if(!diffPartial.startWith("-") && diffPartialExpression.length > 0){
+			
+			diffPartialExpression = diffPartialExpression + "+";
+		}
+		
+		diffPartialExpression = diffPartialExpression + partialExpression;
+	});
+	
+	return diffPartialExpression;
 }
 
 //#####################################################
