@@ -188,7 +188,6 @@ function differentiatePartial(partialExpression, variable){
 		} else {
 			//any other expression (e.g. 3x³) -> return 9x² 
 			var factor = parseInt(splitPartialEx[0].replace(variable, ""));
-			
 			var newFactor = multiply(factor, exponent);
 			var newExponent = exponent - 1;
 			
