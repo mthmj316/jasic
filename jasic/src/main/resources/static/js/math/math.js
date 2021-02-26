@@ -43,13 +43,17 @@ export function differentiateWithRespectTo(expression, variable){
 		
 		diffPartial = differentiatePartial(partialExpression, variable);
 		
-		if(!diffPartial.startWith("-") && diffPartialExpression.length > 0){
+		if(!diffPartial.startsWith("-") && diffPartialExpression.length > 0){
 			
 			diffPartialExpression = diffPartialExpression + "+";
 		}
 		
 		diffPartialExpression = diffPartialExpression + partialExpression;
 	});
+	
+	if(diffPartialExpression.length == 0){
+		diffPartialExpression = "0";
+	}
 	
 	return diffPartialExpression;
 }
@@ -67,14 +71,14 @@ export function differentiateWithRespectTo(expression, variable){
  */
 function splitMathSumExpression(expression){
 	
-	expression = expression.replaceAll("-", "$-");
+	expression = expression.replace(/-/g, "$-");
 	
 	var splitExpression = expression.split("$");
 	
-	var result = {};
+	var result = [];
 	
 	splitExpression.forEach(function(entry){
-		result.concat(entry.split("+"));
+		result.push(entry.split("+"));
 	});
 	
 	return result;
