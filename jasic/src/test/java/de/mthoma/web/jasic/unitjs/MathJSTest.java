@@ -8,22 +8,17 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
 import org.mozilla.javascript.JavaScriptException;
 import org.mozilla.javascript.Scriptable;
-import org.unbescape.javascript.JavaScriptEscape;
+import org.mozilla.javascript.tools.shell.Global;
 
 class MathJSTest {
 	
@@ -43,7 +38,8 @@ class MathJSTest {
 //		invocable = (Invocable) JS_ENGINE;
 		
 		ctx = Context.enter();
-		globalScope = ctx.initStandardObjects();
+		ctx.getWrapFactory().setJavaPrimitiveWrap(true);
+		globalScope = new Global(ctx); //ctx.initStandardObjects();
 		ctx.evaluateString(globalScope, javaScript, "math.js", 1, null);
 		
 		fct = (Function)globalScope.get("differentiateWithRespectTo", globalScope);
@@ -56,7 +52,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void testfall001ExpressionUndefined() {
+	void Testfall001ExpressionUndefined() {
 		
 		String expression = null;
 		String variable = "x";
@@ -68,7 +64,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void testfall002VariableUndefined() {
+	void Testfall002VariableUndefined() {
 		
 		String expression = "2x^2";
 		String variable = null;
@@ -80,7 +76,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void testfall003ExpressionEmpty() {
+	void Testfall003ExpressionEmpty() {
 		
 		String expression = "";
 		String variable = "x";
@@ -92,7 +88,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void testfall004VariableEmpty() {
+	void Testfall004VariableEmpty() {
 		
 		String expression = "2x^2";
 		String variable = "";
@@ -104,7 +100,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void testfall006DifferentiateNumber() throws NoSuchMethodException, ScriptException {
+	void Testfall006DifferentiateNumber() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2";
 		String variable = "x";
@@ -112,6 +108,146 @@ class MathJSTest {
 		String expected = "0";
 		
 		Object[] params = new Object[] {expression, variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall007Differentiate_x() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "x";
+		String variable = "x";
+		
+		String expected = "1";
+		
+		Object[] params = new Object[] {expression, variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall008Differentiate_xpow1() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "x^1";
+		String variable = "x";
+		
+		String expected = "1";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall008Differentiate_xpow2() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "x^2";
+		String variable = "x";
+		
+		String expected = "2x";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_010_Differentiate_2x() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2x";
+		String variable = "x";
+		
+		String expected = "2";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_011_Differentiate_2xpow1() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2x^1";
+		String variable = "x";
+		
+		String expected = "2";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_012_Differentiate_2xpow2() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2x^2";
+		String variable = "x";
+		
+		String expected = "4x";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_012_Differentiate_minus2xpow2() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "-2x^2";
+		String variable = "x";
+		
+		String expected = "-4x";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_014_Differentiate_2xplus2() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2x+2";
+		String variable = "x";
+		
+		String expected = "2";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_015_Differentiate_2xminus2() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2x-2";
+		String variable = "x";
+		
+		String expected = "2";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_019_Differentiate_2xpow3plus4xplus3() throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2x^3+4x+3";
+		String variable = "x";
+		
+		String expected = "6x2+4";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
 		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
 		
 		assertEquals(expected, actual);
