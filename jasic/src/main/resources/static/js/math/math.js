@@ -38,34 +38,63 @@ export function differentiateWithRespectTo(expression, variable){
 	
 	var partialExpressions = splitMathSumExpression(expression);
 	
-	var diffPartialExpression = "";
-	
-	var diffPartial;
-	
+	var diffPartialExpressions =  [];
+	var diff;
 	partialExpressions.forEach(function(partialExpression){
 		
-		diffPartial = differentiatePartial(partialExpression, variable);
+		diff = differentiatePartial(partialExpression, variable);
 		
-		print("differentiateWithRespectTo	diffPartial=" + diffPartial );
-		
-		if(diffPartial.length > 0 && !diffPartial.startsWith("-") && diffPartialExpression.length > 0){
-			
-			diffPartialExpression =  "+" + diffPartialExpression ;
+		if(diff.length > 0){
+			diffPartialExpressions.push(diff);
 		}
-		
-		diffPartialExpression = diffPartialExpression + diffPartial;
 	});
 	
-	if(diffPartialExpression.length == 0){
-		diffPartialExpression = "0";
+	var diffExpression = concatPartialExpressions(diffPartialExpressions);
+	
+	print("differentiateWithRespectTo	diffExpression=" + diffExpression );
+	
+	if(diffExpression.length == 0){
+		diffExpression = "0";
 	}
 	
-	return diffPartialExpression;
+	print("differentiateWithRespectTo	diffExpression=" + diffExpression );
+	
+	return diffExpression;
 }
 
 //#####################################################
 // private functions #########################################
 //#####################################################
+/*
+ * Concatenates the given partialExpressions to one expression.
+ */
+function concatPartialExpressions(partialExpressions){
+	
+	print("concatPartialExpressions 	partialExpressions=" + partialExpressions );
+	
+	var concatExpression = "";
+	var sep = "";
+	
+	partialExpressions.forEach(function(partialExpression){
+		
+		print("concatPartialExpressions 	partialExpression=" + partialExpression );
+		
+		if(concatExpression.length == 0 ){
+			sep = "";
+		} else {
+			if(partialExpressions.toString().startsWith("-")){
+				sep = "";
+			} else {
+				sep = "+"
+			}
+		}
+		concatExpression = concatExpression + sep + partialExpression;
+		
+		print("concatPartialExpressions 	concatExpression=" + concatExpression );
+	});
+	
+	return concatExpression;
+}
 
 /*
  * Splits the given expression in its summands.
@@ -157,6 +186,9 @@ function reduceFraction(fraction){
  */
 function multiplyFractions(fraction1, fraction2){
 	
+	print("multiplyFractions	fraction1=" + fraction1);
+	print("multiplyFractions	fraction2=" + fraction2);
+	
 	var splitFraction1 = fraction1.split("/");
 	var splitFraction2 = fraction2.split("/");
 	
@@ -166,12 +198,15 @@ function multiplyFractions(fraction1, fraction2){
 	
 	if (resultNumerator % resultDenominator == 0){
 		//In this case the result is whole-number.
-		return (resultNumerator / resultDenominator).toString();
-		
+		var result = (resultNumerator / resultDenominator).toString();
 	} else {
 		//The result is again a fraction. 
-		return reduceFraction(resultNumerator + "/" + resultDenominator);
+		var result = reduceFraction(resultNumerator + "/" + resultDenominator);
 	}
+	
+	print("multiplyFractions	result=" + result);
+	
+	return result;
 }
 
 /*
@@ -202,7 +237,11 @@ function multiply(multiplier1, multiplier2){
 		multiplier2 = multiplier2 + "/1";
 	}
 	
-	return multiplyFractions(multiplier1, multiplier2);
+	var result = multiplyFractions(multiplier1, multiplier2);
+	
+	print("multiply	result=" + result);
+	
+	return result;
 }
 
 /*
@@ -241,27 +280,28 @@ function differentiatePartial(partialExpression, variable){
 	
 	if(!partialExpression.toString().includes(variable)){
 		
-		print("differentiatePartial	no varibale included");
+		print("differentiatePartial	result=<empty>");
 		//partialExpression doesn't contains variable (e.g. 4) -> return ""
 		return "";
 	} else if (!partialExpression.toString().includes("^")){
-		
-		print("differentiatePartial	no ^  included");
 	
 		//partialExpression doesn't conatins "^" (e.g. 4x or x)		-> return  4 or 1
 		if(partialExpression.toString().length == variable.toString().length){
 			
-			print("differentiatePartial	partialExpression == varibale");
+			print("differentiatePartial	result=1");
 			
 			//e.g . partialExpression == x
 			return "1";
 		} else {
 			//e.g . partialExpression == 4x
 			
-			print("differentiatePartial	partialExpression == some factor + varibale");
-			
 			var result = partialExpression.toString().replace(variable, "");
 			print("differentiatePartial	result=" +  result);
+			
+			if(result.toString().includes("/")){
+				result = reduceFraction(result);
+				print("differentiatePartial	result=" +  result);
+			}
 			
 			return result;
 		}
@@ -305,9 +345,10 @@ function differentiatePartial(partialExpression, variable){
 			var result = newFactor.toString() + variable;
 			
 			if(newExponent > 1){
-				result = "^" + newExponent;
+				result = result + "^" + newExponent;
 			}
 			
+			print("differentiatePartial	result=" +  result);
 			return result;
 		}
 	}
