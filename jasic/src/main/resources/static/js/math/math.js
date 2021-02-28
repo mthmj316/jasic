@@ -33,8 +33,8 @@ export function differentiateWithRespectTo(expression, variable){
 		throw "variable not set: >" + variable + "<!";
 	}
 	
-	print("differentiateWithRespectTo	expression=" + expression );
-	print("differentiateWithRespectTo	variable=" + variable );
+	//print("differentiateWithRespectTo	expression=" + expression );
+	//print("differentiateWithRespectTo	variable=" + variable );
 	
 	var partialExpressions = splitMathSumExpression(expression);
 	
@@ -51,13 +51,13 @@ export function differentiateWithRespectTo(expression, variable){
 	
 	var diffExpression = concatPartialExpressions(diffPartialExpressions);
 	
-	print("differentiateWithRespectTo	diffExpression=" + diffExpression );
+	//print("differentiateWithRespectTo	diffExpression=" + diffExpression );
 	
 	if(diffExpression.length == 0){
 		diffExpression = "0";
 	}
 	
-	print("differentiateWithRespectTo	diffExpression=" + diffExpression );
+	//print("differentiateWithRespectTo	diffExpression=" + diffExpression );
 	
 	return diffExpression;
 }
@@ -70,19 +70,19 @@ export function differentiateWithRespectTo(expression, variable){
  */
 function concatPartialExpressions(partialExpressions){
 	
-	print("concatPartialExpressions 	partialExpressions=" + partialExpressions );
+	//print("concatPartialExpressions 	partialExpressions=" + partialExpressions );
 	
 	var concatExpression = "";
 	var sep = "";
 	
 	partialExpressions.forEach(function(partialExpression){
 		
-		print("concatPartialExpressions 	partialExpression=" + partialExpression );
+		//print("concatPartialExpressions 	partialExpression=" + partialExpression );
 		
 		if(concatExpression.length == 0 ){
 			sep = "";
 		} else {
-			if(partialExpressions.toString().startsWith("-")){
+			if(partialExpression.toString().startsWith("-")){
 				sep = "";
 			} else {
 				sep = "+"
@@ -90,7 +90,7 @@ function concatPartialExpressions(partialExpressions){
 		}
 		concatExpression = concatExpression + sep + partialExpression;
 		
-		print("concatPartialExpressions 	concatExpression=" + concatExpression );
+		//print("concatPartialExpressions 	concatExpression=" + concatExpression );
 	});
 	
 	return concatExpression;
@@ -105,30 +105,30 @@ function concatPartialExpressions(partialExpressions){
  */
 function splitMathSumExpression(expression){
 	
-	print("splitMathSumExpression	expression=" + expression );
+	//print("splitMathSumExpression	expression=" + expression );
 	
 	expression = expression.replace(/-/g, "$-");
 	
-	print("splitMathSumExpression	expression=" + expression );
+	//print("splitMathSumExpression	expression=" + expression );
 	
 	var splitExpression = expression.split("$");
 	
-	print("splitMathSumExpression	splitExpression=" + splitExpression );
+	//print("splitMathSumExpression	splitExpression=" + splitExpression );
 	
 	var result = new Array();
 	
 	splitExpression.forEach(function(entry){
 		
-		print("splitMathSumExpression	entry=" + entry );
+		//print("splitMathSumExpression	entry=" + entry );
 		
 		var splitEntry = entry.split("+");
 		
-		print("splitMathSumExpression	splitEntry=" + splitEntry );
+		//print("splitMathSumExpression	splitEntry=" + splitEntry );
 		
 		Array.prototype.push.apply(result, splitEntry); //result.push(... splitEntry);
 	});
 	
-	print("splitMathSumExpression	result=" + result );
+	//print("splitMathSumExpression	result=" + result );
 	
 	return result;
 }
@@ -142,20 +142,25 @@ function splitMathSumExpression(expression){
  */
 function reduceFraction(fraction){
 	
+	//print("reduceFraction	fraction=" + fraction );
+	
 	//Separate numerator and denominator 
 	var splitFraction = fraction.split("/");	
 	var numerator = parseInt(splitFraction[0]);
 	var denominator = parseInt(splitFraction[1]);
 	
+	//print("reduceFraction	numerator=" + numerator );
+	//print("reduceFraction	denominator=" + denominator );
+	
 	//Contains the max. possible common factor
 	var factor;
 	
-	if (numerator > denominator){
+	if (Math.abs(numerator) > Math.abs(denominator)){
 		//Numerator is greater than the denominator -> factor must be <= denominator
-		factor = denominator;		
+		factor = Math.abs(denominator);		
 	} else {		
 		//Denominator is greater than the numerator -> factor must be <= numerator#
-		factor = numerator;
+		factor = Math.abs(numerator);
 	}
 	
 	//Search for max. possible factor.
@@ -169,12 +174,16 @@ function reduceFraction(fraction){
 		}
 	}
 	
+	//print("reduceFraction	factor=" + factor );
+	
 	//Reduce the numerator and denominator
 	numerator = numerator / factor;
 	denominator = denominator / factor;
 	
 	//Built reduced fraction.
 	var result = numerator + "/" + denominator;
+	
+	//print("reduceFraction	result=" + result );
 	
 	return result;
 }
@@ -186,8 +195,8 @@ function reduceFraction(fraction){
  */
 function multiplyFractions(fraction1, fraction2){
 	
-	print("multiplyFractions	fraction1=" + fraction1);
-	print("multiplyFractions	fraction2=" + fraction2);
+	//print("multiplyFractions	fraction1=" + fraction1);
+	//print("multiplyFractions	fraction2=" + fraction2);
 	
 	var splitFraction1 = fraction1.split("/");
 	var splitFraction2 = fraction2.split("/");
@@ -195,6 +204,9 @@ function multiplyFractions(fraction1, fraction2){
 	//Calculate the the numerator and denominator of the result fraction.
 	var resultNumerator = parseInt(splitFraction1[0]) * parseInt(splitFraction2[0]);
 	var resultDenominator = parseInt(splitFraction1[1]) * parseInt(splitFraction2[1]);
+	
+	//print("multiplyFractions	resultNumerator=" + resultNumerator);
+	//print("multiplyFractions	resultDenominator=" + resultDenominator);
 	
 	if (resultNumerator % resultDenominator == 0){
 		//In this case the result is whole-number.
@@ -204,7 +216,7 @@ function multiplyFractions(fraction1, fraction2){
 		var result = reduceFraction(resultNumerator + "/" + resultDenominator);
 	}
 	
-	print("multiplyFractions	result=" + result);
+	//print("multiplyFractions	result=" + result);
 	
 	return result;
 }
@@ -216,8 +228,8 @@ function multiplyFractions(fraction1, fraction2){
  */
 function multiply(multiplier1, multiplier2){
 	
-	print("multiply	multiplier1=" + multiplier1);
-	print("multiply	multiplier2=" + multiplier2);
+	//print("multiply	multiplier1=" + multiplier1);
+	//print("multiply	multiplier2=" + multiplier2);
 	
 	var m1Ok = isNumberOrFraction(multiplier1);
 	var m2Ok = isNumberOrFraction(multiplier2);
@@ -239,7 +251,7 @@ function multiply(multiplier1, multiplier2){
 	
 	var result = multiplyFractions(multiplier1, multiplier2);
 	
-	print("multiply	result=" + result);
+	//print("multiply	result=" + result);
 	
 	return result;
 }
@@ -275,12 +287,12 @@ function isNumberOrFraction(term){
  */
 function differentiatePartial(partialExpression, variable){
 	
-	print("differentiatePartial	partialExpression=" + partialExpression);
-	print("differentiatePartial	variable=" + variable);
+	//print("differentiatePartial	partialExpression=" + partialExpression);
+	//print("differentiatePartial	variable=" + variable);
 	
 	if(!partialExpression.toString().includes(variable)){
 		
-		print("differentiatePartial	result=<empty>");
+		//print("differentiatePartial	result=<empty>");
 		//partialExpression doesn't contains variable (e.g. 4) -> return ""
 		return "";
 	} else if (!partialExpression.toString().includes("^")){
@@ -288,7 +300,7 @@ function differentiatePartial(partialExpression, variable){
 		//partialExpression doesn't conatins "^" (e.g. 4x or x)		-> return  4 or 1
 		if(partialExpression.toString().length == variable.toString().length){
 			
-			print("differentiatePartial	result=1");
+			//print("differentiatePartial	result=1");
 			
 			//e.g . partialExpression == x
 			return "1";
@@ -296,11 +308,11 @@ function differentiatePartial(partialExpression, variable){
 			//e.g . partialExpression == 4x
 			
 			var result = partialExpression.toString().replace(variable, "");
-			print("differentiatePartial	result=" +  result);
+			//print("differentiatePartial	result=" +  result);
 			
 			if(result.toString().includes("/")){
 				result = reduceFraction(result);
-				print("differentiatePartial	result=" +  result);
+				//print("differentiatePartial	result=" +  result);
 			}
 			
 			return result;
@@ -310,7 +322,7 @@ function differentiatePartial(partialExpression, variable){
 		
 		var splitPartialEx = partialExpression.toString().split("^");
 		
-		print("differentiatePartial	splitPartialEx=" +  splitPartialEx);
+		//print("differentiatePartial	splitPartialEx=" +  splitPartialEx);
 		
 		var exponent = parseInt(splitPartialEx[1]);
 		
@@ -323,7 +335,7 @@ function differentiatePartial(partialExpression, variable){
 				result = "1";
 			}
 			
-			print("differentiatePartial	result=" +  result);
+			//print("differentiatePartial	result=" +  result);
 			
 			return result;
 			
@@ -336,10 +348,9 @@ function differentiatePartial(partialExpression, variable){
 				sfactor = "1";
 			}
 			
-			print("differentiatePartial	sfactor=" +  sfactor);
+			//print("differentiatePartial	sfactor=" +  sfactor);
 			
-			var factor = parseInt(sfactor);
-			var newFactor = multiply(factor, exponent);
+			var newFactor = multiply(sfactor, exponent.toString());
 			var newExponent = exponent - 1;
 			
 			var result = newFactor.toString() + variable;
@@ -348,7 +359,7 @@ function differentiatePartial(partialExpression, variable){
 				result = result + "^" + newExponent;
 			}
 			
-			print("differentiatePartial	result=" +  result);
+			//print("differentiatePartial	result=" +  result);
 			return result;
 		}
 	}
