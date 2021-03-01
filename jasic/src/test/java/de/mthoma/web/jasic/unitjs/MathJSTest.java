@@ -294,4 +294,32 @@ class MathJSTest {
 		
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	void Testfall_045_Differentiate_2Dot04xpow2pl1Dot5x()throws NoSuchMethodException, ScriptException {
+		
+		String expression = "2.04x^2+1.5x";
+		String variable = "x";
+		
+		String expected = "102/25x+3/2";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_045_Differentiate_mi2Dot04xpow2mi1Dot5x()throws NoSuchMethodException, ScriptException {
+		
+		String expression = "-2.04x^2-1.5x";
+		String variable = "x";
+		
+		String expected = "102/25x+3/2";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	} 
 }

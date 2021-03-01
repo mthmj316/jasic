@@ -363,4 +363,56 @@ function differentiatePartial(partialExpression, variable){
 			return result;
 		}
 	}
+	
+	/*
+	 * Transforms the expression to standardized term:
+	 * e.g: 2.5x -> 5/2x^1
+	 */
+	function normalize4Diff(expression, variable){
+		
+		//print("normalize4Diff	expression=" +  expression);
+		//print("normalize4Diff	variable=" +  variable);
+		
+		if(!expression.toString().includes("^")){
+			expression = expression + "^1";
+			//print("normalize4Diff	expression=" +  expression);
+		}
+	}
+	
+	/*
+	 * Transforms the given term to fraction.
+	 * e.g 4 -> 4/1
+	 * e.g. 4.1 -> 41/10
+	 * It is not checked if the term is already a term.
+	 * It is expected that is done by the consumer.
+	 */
+	function transform2Fraction(term){
+		
+		//print("transform2Fraction	term=" +  term);
+		
+		if(term.toString().includes(".")){
+			
+			const termSplit = term.toString().split(".");
+			
+			const numerator = termSplit[0].replace(".", "");
+			const denominator = "1" + "0".repeat(termSplit.length);
+			
+			const fraction = numerator + "/" +  denominator;
+			
+			//print("transform2Fraction	fraction=" +  fraction);
+			
+			const reducedFraction = reduceFraction(fraction);
+			
+			//print("transform2Fraction	reducedFraction=" +  reducedFraction);
+			
+			return reducedFraction;
+			
+		} else {
+		
+			const result = term + "/1";
+			
+			//print("transform2Fraction	result=" +  result);
+			return result;
+		}
+	}
 }
