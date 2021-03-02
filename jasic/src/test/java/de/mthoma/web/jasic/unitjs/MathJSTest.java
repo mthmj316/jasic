@@ -315,7 +315,7 @@ class MathJSTest {
 		String expression = "-2.04x^2-1.5x";
 		String variable = "x";
 		
-		String expected = "102/25x+3/2";
+		String expected = "-102/25x-3/2";
 		
 		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
 		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
