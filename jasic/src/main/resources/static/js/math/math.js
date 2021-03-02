@@ -295,30 +295,9 @@ function differentiatePartial(partialExpression, variable){
 		//print("differentiatePartial	result=<empty>");
 		//partialExpression doesn't contains variable (e.g. 4) -> return ""
 		return "";
-	} else if (!partialExpression.toString().includes("^")){
-	
-		//partialExpression doesn't conatins "^" (e.g. 4x or x)		-> return  4 or 1
-		if(partialExpression.toString().length == variable.toString().length){
-			
-			//print("differentiatePartial	result=1");
-			
-			//e.g . partialExpression == x
-			return "1";
-		} else {
-			//e.g . partialExpression == 4x
-			
-			var result = partialExpression.toString().replace(variable, "");
-			//print("differentiatePartial	result=" +  result);
-			
-			if(result.toString().includes("/")){
-				result = reduceFraction(result);
-				//print("differentiatePartial	result=" +  result);
-			}
-			
-			return result;
-		}
-		
 	} else {
+		
+		partialExpression = normalize4Diff(partialExpression, variable);
 		
 		var splitPartialEx = partialExpression.toString().split("^");
 		
