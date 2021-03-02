@@ -375,11 +375,13 @@ function differentiatePartial(partialExpression, variable){
 				const factorAsAFraction = transform2Fraction(factor);
 				//print("normalize4Diff	factorAsAFraction=" +  factorAsAFraction);
 				
-				result = factorAsAFraction + variable + splitExpression[1];
+				result = factorAsAFraction;
 				
 			} else {
-				result = variable + splitExpression[1];
+				result = "1/1";
 			}
+			
+			result = result + variable + splitExpression[1];
 			//print("normalize4Diff	result=" +  result);
 			return result;
 		}
