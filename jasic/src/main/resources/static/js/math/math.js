@@ -377,6 +377,26 @@ function differentiatePartial(partialExpression, variable){
 			expression = expression + "^1";
 			//print("normalize4Diff	expression=" +  expression);
 		}
+		
+		const splitExpression = expression.toString().split(variable);
+		
+		const factor = splitExpression[0];
+		//print("normalize4Diff	factor=" +  factor);
+		
+		if(factor.toString().includes("/")){
+			//Factor is already a fraction -> return the expression as it is.
+			//print("normalize4Diff	result=" +  expression);
+			return expression;
+		} else {
+		
+			//Transform the factor to fraction
+			const factorAsAFraction = transform2Fraction(factor);
+			//print("normalize4Diff	factorAsAFraction=" +  factorAsAFraction);
+			
+			const result = factorAsAFraction + variable + splitExpression[1];
+			//print("normalize4Diff	result=" +  result);
+			return result;
+		}
 	}
 	
 	/*
