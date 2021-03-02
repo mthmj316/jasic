@@ -309,21 +309,21 @@ function differentiatePartial(partialExpression, variable){
 		
 		partialExpression = normalize4Diff(partialExpression, variable);
 		
-		 print("differentiatePartial partialExpression=" + partialExpression + " (normalized)");
+		//print("differentiatePartial partialExpression=" + partialExpression + " (normalized)");
 		
 		const splitPartialEx = partialExpression.toString().split("^");
 		const oldFactor = splitPartialEx[0].replace(variable, "");
 		const oldExponent = splitPartialEx[1];
 		
-		 print("differentiatePartial splitPartialEx=" + splitPartialEx);
-		print("differentiatePartial oldFactor=" + oldFactor);
-		print("differentiatePartial oldExponent=" + oldExponent);
+		//print("differentiatePartial splitPartialEx=" + splitPartialEx);
+		//print("differentiatePartial oldFactor=" + oldFactor);
+		//print("differentiatePartial oldExponent=" + oldExponent);
 		
 		const newExponent = parseInt(oldExponent) - 1;
 		const newFactor = multiply(oldFactor, oldExponent);
 		
-		print("differentiatePartial newExponent=" + newExponent);
-		print("differentiatePartial newFactor=" + newFactor);
+		//print("differentiatePartial newExponent=" + newExponent);
+		//print("differentiatePartial newFactor=" + newFactor);
 		
 		var exponentPart;
 		
@@ -339,12 +339,12 @@ function differentiatePartial(partialExpression, variable){
 		
 		const sFactor = (newFactor == "1" && newExponent >0) ? "" : newFactor;
 		
-		print("differentiatePartial exponentPart=" + exponentPart);
-		print("differentiatePartial sFactor=" + sFactor);
+		//print("differentiatePartial exponentPart=" + exponentPart);
+		//print("differentiatePartial sFactor=" + sFactor);
 		
 		const result = sFactor + variable + exponentPart;
 		
-		print("differentiatePartial result=" + result);
+		//print("differentiatePartial result=" + result);
 		
 		return result;
 	}
@@ -355,22 +355,22 @@ function differentiatePartial(partialExpression, variable){
 	 */
 	function normalize4Diff(expression, variable){
 		
-		print("normalize4Diff expression=" + expression);
-		print("normalize4Diff variable=" + variable);
+		//print("normalize4Diff expression=" + expression);
+		//print("normalize4Diff variable=" + variable);
 		
 		if(!expression.toString().includes("^")){
 			expression = expression + "^1";
-			print("normalize4Diff expression=" + expression);
+			//print("normalize4Diff expression=" + expression);
 		}
 		
 		const splitExpression = expression.toString().split(variable);
 		
 		const factor = splitExpression[0];
-		print("normalize4Diff factor=" + factor);
+		//print("normalize4Diff factor=" + factor);
 		
 		if(factor.toString().includes("/")){
 			// Factor is already a fraction -> return the expression as it is.
-			print("normalize4Diff result=" + expression);
+			//print("normalize4Diff result=" + expression);
 			return expression;
 		} else {
 		
@@ -379,7 +379,7 @@ function differentiatePartial(partialExpression, variable){
 			if(factor.length > 0){
 				// Transform the factor to fraction
 				const factorAsAFraction = transform2Fraction(factor);
-				print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
+				//print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
 				
 				result = factorAsAFraction;
 				
@@ -388,7 +388,7 @@ function differentiatePartial(partialExpression, variable){
 			}
 			
 			result = result + variable + splitExpression[1];
-			print("normalize4Diff result=" + result);
+			//print("normalize4Diff result=" + result);
 			return result;
 		}
 	}
@@ -400,7 +400,7 @@ function differentiatePartial(partialExpression, variable){
 	 */
 	function transform2Fraction(term){
 		
-		print("transform2Fraction term=" + term);
+		//print("transform2Fraction term=" + term);
 		
 		if(term.toString().includes(".")){
 			
@@ -411,11 +411,11 @@ function differentiatePartial(partialExpression, variable){
 			
 			const fraction = numerator + "/" +  denominator;
 			
-			print("transform2Fraction fraction=" + fraction);
+			//print("transform2Fraction fraction=" + fraction);
 			
 			const reducedFraction = reduceFraction(fraction);
 			
-			print("transform2Fraction reducedFraction=" + reducedFraction);
+			//print("transform2Fraction reducedFraction=" + reducedFraction);
 			
 			return reducedFraction;
 			
@@ -423,7 +423,7 @@ function differentiatePartial(partialExpression, variable){
 		
 			const result = term + "/1";
 			
-			print("transform2Fraction result=" + result);
+			//print("transform2Fraction result=" + result);
 			return result;
 		}
 }
