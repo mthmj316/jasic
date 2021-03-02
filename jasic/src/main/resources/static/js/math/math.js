@@ -299,49 +299,30 @@ function differentiatePartial(partialExpression, variable){
 		
 		partialExpression = normalize4Diff(partialExpression, variable);
 		
-		var splitPartialEx = partialExpression.toString().split("^");
+		const splitPartialEx = partialExpression.toString().split("^");
+		const oldFactor = splitPartialEx[0].replace(variable, "");
+		const oldExponent = splitPartialEx[1];
 		
 		//print("differentiatePartial	splitPartialEx=" +  splitPartialEx);
+		//print("differentiatePartial	oldFactor=" +  oldFactor);
+		//print("differentiatePartial	oldExponent=" +  oldExponent);
 		
-		var exponent = parseInt(splitPartialEx[1]);
+		const newExponent = parseInt(oldExponent);
+		const newFactor = multiply(oldFactor, oldExponent);
 		
-		if(exponent == 1){
-			//e.g . partialExpression == 4x¹ or x¹
-			
-			var result = multiply(splitPartialEx[0].replace(variable, ""), "1");
-			
-			if(result.length == 0){
-				result = "1";
-			}
-			
-			//print("differentiatePartial	result=" +  result);
-			
-			return result;
-			
-		} else {
-			//any other expression (e.g. 3x³) -> return 9x² 
-			
-			var sfactor = splitPartialEx[0].replace(variable, "");
-			
-			if(sfactor.length == 0){
-				sfactor = "1";
-			}
-			
-			//print("differentiatePartial	sfactor=" +  sfactor);
-			
-			var newFactor = multiply(sfactor, exponent.toString());
-			var newExponent = exponent - 1;
-			
-			var result = newFactor.toString() + variable;
-			
-			if(newExponent > 1){
-				result = result + "^" + newExponent;
-			}
-			
-			//print("differentiatePartial	result=" +  result);
-			return result;
-		}
+		const exponentPart = newExponent == 1 ? "" : ("^" + newExponent);
+		const sFactor = newfactor == "1" ? "" : newFactor;
+		
+		//print("differentiatePartial	exponentPart=" +  exponentPart);
+		//print("differentiatePartial	sFactor=" +  sFactor);
+		
+		result = sFactor = + variable + exponentPart;
+		
+		//print("differentiatePartial	result=" +  result);
+		
+		return result;
 	}
+}
 	
 	/*
 	 * Transforms the expression to standardized term:
