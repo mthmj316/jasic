@@ -308,7 +308,7 @@ function differentiatePartial(partialExpression, variable){
 		if(exponent == 1){
 			//e.g . partialExpression == 4x¹ or x¹
 			
-			var result = splitPartialEx[0].replace(variable, "");
+			var result = multiply(splitPartialEx[0].replace(variable, ""), "1");
 			
 			if(result.length == 0){
 				result = "1";
@@ -368,11 +368,18 @@ function differentiatePartial(partialExpression, variable){
 			return expression;
 		} else {
 		
-			//Transform the factor to fraction
-			const factorAsAFraction = transform2Fraction(factor);
-			//print("normalize4Diff	factorAsAFraction=" +  factorAsAFraction);
+			var result;
 			
-			const result = factorAsAFraction + variable + splitExpression[1];
+			if(factor.length > 0){
+				//Transform the factor to fraction
+				const factorAsAFraction = transform2Fraction(factor);
+				//print("normalize4Diff	factorAsAFraction=" +  factorAsAFraction);
+				
+				result = factorAsAFraction + variable + splitExpression[1];
+				
+			} else {
+				result = variable + splitExpression[1];
+			}
 			//print("normalize4Diff	result=" +  result);
 			return result;
 		}
@@ -410,7 +417,7 @@ function differentiatePartial(partialExpression, variable){
 		
 			const result = term + "/1";
 			
-			//print("transform2Fraction	result=" +  result);
+//			print("transform2Fraction	result=" +  result);
 			return result;
 		}
 	}
