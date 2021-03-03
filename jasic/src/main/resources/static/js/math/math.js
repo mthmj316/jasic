@@ -239,8 +239,8 @@ function multiplyFractions(fraction1, fraction2){
  */
 function multiply(multiplier1, multiplier2){
 	
-	 print("multiply multiplier1=" + multiplier1);
-	 print("multiply multiplier2=" + multiplier2);
+	 //print("multiply multiplier1=" + multiplier1);
+	 //print("multiply multiplier2=" + multiplier2);
 	
 	var m1Ok = isNumberOrFraction(multiplier1);
 	var m2Ok = isNumberOrFraction(multiplier2);
@@ -262,7 +262,7 @@ function multiply(multiplier1, multiplier2){
 	
 	var result = multiplyFractions(multiplier1, multiplier2);
 	
-	print("multiply result=" + result);
+	//print("multiply result=" + result);
 	
 	return result;
 }
