@@ -322,4 +322,18 @@ class MathJSTest {
 		
 		assertEquals(expected, actual);
 	} 
+	
+	@Test
+	void Testfall_047_Differentiate_0Dot003xPow3Plus0Dot04xPow2Minus0Dot1xPlus0Dot231()throws NoSuchMethodException, ScriptException {
+		
+		String expression = "0.003x^3+0.04x^2-0.1x+0.231";
+		String variable = "x";
+		
+		String expected = "9/1000x^2+2/25x-1/10";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	} 
 }
