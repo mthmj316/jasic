@@ -310,7 +310,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_045_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
+	void Testfall_046_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
 		
 		String expression = "-2.04x^2-1.5x";
 		String variable = "x";
