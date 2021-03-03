@@ -1,0 +1,5 @@
+testCase,expression,variable,contains
+Testfall_004,2x^2,"",variable
+Testfall_003,"",x,expression
+Testfall_001,,x,expression
+Testfall_002,2x^2,,variable
