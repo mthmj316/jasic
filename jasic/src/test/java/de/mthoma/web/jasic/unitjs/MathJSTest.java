@@ -24,8 +24,6 @@ import org.mozilla.javascript.tools.shell.Global;
 
 class MathJSTest {
 	
-//	private static final ScriptEngine JS_ENGINE = new ScriptEngineManager().getEngineByName("JavaScript");
-//	private static Invocable invocable;
 	private static Context ctx;
 	private static Scriptable globalScope;
 	private static Function fct;
@@ -35,9 +33,6 @@ class MathJSTest {
 		String javaScript = FileUtils.readFileToString(new File("src/main/resources/static/js/math/math.js"), StandardCharsets.UTF_8);
 		
 		javaScript = javaScript.replaceAll(Pattern.quote("export function"), "function");
-//		
-//		JS_ENGINE.eval(javaScript);
-//		invocable = (Invocable) JS_ENGINE;
 		
 		ctx = Context.enter();
 		ctx.getWrapFactory().setJavaPrimitiveWrap(true);
