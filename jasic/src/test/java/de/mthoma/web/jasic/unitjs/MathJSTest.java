@@ -198,7 +198,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_012_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
+	void Testfall_013_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "-2x^2";
 		String variable = "x";
