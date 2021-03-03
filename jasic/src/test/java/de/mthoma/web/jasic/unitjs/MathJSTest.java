@@ -52,7 +52,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_001_ExpressionUndefined() {
+	void Testfall_001_DifferentiateWithRespectTo() {
 		
 		String expression = null;
 		String variable = "x";
@@ -64,7 +64,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_002_VariableUndefined() {
+	void Testfall_002_DifferentiateWithRespectTo() {
 		
 		String expression = "2x^2";
 		String variable = null;
@@ -76,7 +76,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_003_ExpressionEmpty() {
+	void Testfall_003_DifferentiateWithRespectTo() {
 		
 		String expression = "";
 		String variable = "x";
@@ -88,7 +88,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_004_VariableEmpty() {
+	void Testfall_004_DifferentiateWithRespectTo() {
 		
 		String expression = "2x^2";
 		String variable = "";
@@ -100,7 +100,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_006_DifferentiateNumber() throws NoSuchMethodException, ScriptException {
+	void Testfall_006_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2";
 		String variable = "x";
@@ -114,7 +114,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_007_Differentiate_x() throws NoSuchMethodException, ScriptException {
+	void Testfall_007_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "x";
 		String variable = "x";
@@ -128,7 +128,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_008_Differentiate_xpow1() throws NoSuchMethodException, ScriptException {
+	void Testfall_008_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "x^1";
 		String variable = "x";
@@ -142,7 +142,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_008_Differentiate_xpow2() throws NoSuchMethodException, ScriptException {
+	void Testfall_008_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "x^2";
 		String variable = "x";
@@ -156,7 +156,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_010_Differentiate_2x() throws NoSuchMethodException, ScriptException {
+	void Testfall_010_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2x";
 		String variable = "x";
@@ -170,7 +170,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_011_Differentiate_2xpow1() throws NoSuchMethodException, ScriptException {
+	void Testfall_011_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2x^1";
 		String variable = "x";
@@ -184,7 +184,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_012_Differentiate_2xpow2() throws NoSuchMethodException, ScriptException {
+	void Testfall_012_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2x^2";
 		String variable = "x";
@@ -198,7 +198,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_012_Differentiate_minus2xpow2() throws NoSuchMethodException, ScriptException {
+	void Testfall_012_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "-2x^2";
 		String variable = "x";
@@ -212,7 +212,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_014_Differentiate_2xplus2() throws NoSuchMethodException, ScriptException {
+	void Testfall_014_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2x+2";
 		String variable = "x";
@@ -226,7 +226,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_015_Differentiate_2xminus2() throws NoSuchMethodException, ScriptException {
+	void Testfall_015_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2x-2";
 		String variable = "x";
@@ -240,7 +240,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_019_Differentiate_2xpow3plus4xplus3() throws NoSuchMethodException, ScriptException {
+	void Testfall_019_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2x^3+4x+3";
 		String variable = "x";
@@ -254,7 +254,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_016_Differentiate_3xpow2plus2div4xplus3() throws NoSuchMethodException, ScriptException {
+	void Testfall_016_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "3x^2+2/4x+3";
 		String variable = "x";
@@ -268,7 +268,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_017_Differentiate_xpow3minus5div2xpow2plus4xminus4() throws NoSuchMethodException, ScriptException {
+	void Testfall_017_DifferentiateWithRespectTo() throws NoSuchMethodException, ScriptException {
 		
 		String expression = "x^3-5/2x^2+4x-4";
 		String variable = "x";
@@ -282,7 +282,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_020_Differentiate_mi3div4qwertzpow10mi7div9qwertzpow9mi2div4qwertzmi100000000()throws NoSuchMethodException, ScriptException {
+	void Testfall_020_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
 		
 		String expression = "-3/4qwertz^10-7/9qwertz^9-2/4qwertz-100000000";
 		String variable = "qwertz";
@@ -296,7 +296,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_045_Differentiate_2Dot04xpow2pl1Dot5x()throws NoSuchMethodException, ScriptException {
+	void Testfall_045_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
 		
 		String expression = "2.04x^2+1.5x";
 		String variable = "x";
@@ -310,7 +310,7 @@ class MathJSTest {
 	}
 	
 	@Test
-	void Testfall_045_Differentiate_mi2Dot04xpow2mi1Dot5x()throws NoSuchMethodException, ScriptException {
+	void Testfall_045_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
 		
 		String expression = "-2.04x^2-1.5x";
 		String variable = "x";
@@ -324,7 +324,7 @@ class MathJSTest {
 	} 
 	
 	@Test
-	void Testfall_047_Differentiate_0Dot003xPow3Plus0Dot04xPow2Minus0Dot1xPlus0Dot231()throws NoSuchMethodException, ScriptException {
+	void Testfall_047_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
 		
 		String expression = "0.003x^3+0.04x^2-0.1x+0.231";
 		String variable = "x";
