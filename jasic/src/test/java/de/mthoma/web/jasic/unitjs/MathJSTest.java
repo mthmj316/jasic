@@ -335,5 +335,19 @@ class MathJSTest {
 		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
 		
 		assertEquals(expected, actual);
+	}
+	
+	@Test
+	void Testfall_048_DifferentiateWithRespectTo()throws NoSuchMethodException, ScriptException {
+		
+		String expression = "0.100000x^2";
+		String variable = "x";
+		
+		String expected = "1/5x";
+		
+		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
+		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
 	} 
 }
