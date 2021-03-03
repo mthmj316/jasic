@@ -1,0 +1,7 @@
+testCase,function,variable,variableValue,contains
+Testfall_021,,x,2,function is not set properly
+Testfall_022,x^2,,2,variable is not set properly
+Testfall_023,x^2,x,,variableValue is not set properly
+Testfall_024,"",x,2,function is not set properly
+Testfall_025,x^2,"",2,variable is not set properly
+Testfall_026,x^2,x,"",variableValue is not set properly
