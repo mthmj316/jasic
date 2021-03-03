@@ -406,7 +406,7 @@ function differentiatePartial(partialExpression, variable){
 			
 			const termSplit = term.toString().split(".");
 			
-			const numerator = term.replace(".", "");
+			const numerator = term.replace(".", "").replace(/^0+/, "");
 			const denominator = "1" + "0".repeat(termSplit[1].length);
 			
 			const fraction = numerator + "/" +  denominator;
