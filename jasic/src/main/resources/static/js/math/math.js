@@ -2,6 +2,10 @@
  * http://usejsdoc.org/
  */
 
+export function calulateFunctionValue(function_,variable,variableValue){
+	
+}
+
 /**
  * Differentiates the given expression with respect to the given variable.<br>
  * If one of the parameters is not set (which means is undefined or empty) an
