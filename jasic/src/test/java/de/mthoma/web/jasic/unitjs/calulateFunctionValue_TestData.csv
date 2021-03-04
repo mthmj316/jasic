@@ -16,3 +16,6 @@ Testfall_041,10x^3+2x^2+7x+10,x,3,319
 Testfall_042,10x^3+2x^2+7x+10,x,-3,-263
 Testfall_043,2x^2+x,x,0,0
 Testfall_044,2x^2+x-6,x,0,-6
+Testfall_049,2x^2,x,0.02,1/1250
+Testfall_050,2x^2,x,-0.02,1/1250
+Testfall_051,2x^3,x,-0.02,-1/62500
