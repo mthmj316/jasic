@@ -26,7 +26,8 @@ class MathJSTest {
 	
 	private static Context ctx;
 	private static Scriptable globalScope;
-	private static Function fct;
+	private static Function differentiateWithRespectTo;
+	private static Function calulateFunctionValue;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {		
@@ -36,10 +37,11 @@ class MathJSTest {
 		
 		ctx = Context.enter();
 		ctx.getWrapFactory().setJavaPrimitiveWrap(true);
-		globalScope = new Global(ctx); //ctx.initStandardObjects();
+		globalScope = new Global(ctx);
 		ctx.evaluateString(globalScope, javaScript, "math.js", 1, null);
 		
-		fct = (Function)globalScope.get("differentiateWithRespectTo", globalScope);
+		differentiateWithRespectTo = (Function)globalScope.get("differentiateWithRespectTo", globalScope);
+		calulateFunctionValue = (Function)globalScope.get("calulateFunctionValue", globalScope);
 	}
 
 	@AfterAll
@@ -53,7 +55,7 @@ class MathJSTest {
 	void testErrorDifferentiateWithRespectTo(String testCase, String expression, String variable, String contains)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {expression, variable};
-		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> fct.call(ctx, globalScope, globalScope, params));
+		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> differentiateWithRespectTo.call(ctx, globalScope, globalScope, params));
 		
 		assertTrue(exception.getMessage().contains(contains));
 	}
@@ -64,8 +66,29 @@ class MathJSTest {
 	void testDifferentiateWithRespectTo(String testCase, String expression, String variable, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {Context.javaToJS(expression, globalScope), variable};
-		String actual = String.valueOf(fct.call(ctx, globalScope, globalScope, params));
+		String actual = String.valueOf(differentiateWithRespectTo.call(ctx, globalScope, globalScope, params));
 		
 		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "calulateFunctionValue_TestData.csv", numLinesToSkip = 1)
+	void testCalulateFunctionValue(String testCase, String function, String variable, 
+			String variableValue, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {function, variable, variableValue};
+		String actual = String.valueOf(calulateFunctionValue.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "calulateFunctionValue_ErrorTestData.csv", numLinesToSkip = 1)
+	void testErrorCalulateFunctionValue(String testCase, String function, String variable, String variableValue, String contains)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {function, variable, variableValue};
+		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> differentiateWithRespectTo.call(ctx, globalScope, globalScope, params));
+		
+		assertTrue(exception.getMessage().contains(contains));
 	}
 }
