@@ -17,4 +17,4 @@ Testfall_009,x^2,x,2x
 Testfall_008,x^1,x,1
 Testfall_007,x,x,1
 Testfall_006,4,x,0
-Testfall_053,1/2x^4,2x
+Testfall_053,1/2x^4,x,2x
