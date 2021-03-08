@@ -2,8 +2,41 @@
  * http://usejsdoc.org/
  */
 
+/**
+* Calculates for the given function_, variable, and variableValue the function value.
+* function_ - the function for which the value must be calculated: x^2 + x + 3
+* variable - the function variable: x
+* variableValue - the value which must set for the variable.
+*/
 export function calulateFunctionValue(function_,variable,variableValue){
 	
+	//Validate the input date
+	validateFunction(function_);
+	validateFunctionVariable(variable);
+	
+	//Disaggregate the function in its summands
+	const splitFunction = splitMathSumExpression(function_);
+	
+	//Initialize return value
+	var sum = 0;
+	
+	//Build sum over all function summands.
+	splitFunction.forEach(function(summand){
+		
+		if(summand.toString().includes(variable)){
+			
+			summand = normalize4Diff(summand, variable);
+			
+			//operands[0] = factor of variable
+			//operands[1] = exponent
+			const operands = summand.split(variable + "^");
+		
+		} else {
+			sum = sum(sum, summand);
+		}
+	});
+	
+	return sum;
 }
 
 /**
@@ -75,7 +108,49 @@ export function differentiateWithRespectTo(expression, variable){
 // private functions #########################################
 // #####################################################
 /*
+* Validates the given variable.
+* An error is thrown if the variable is not valid.
+*/
+function validateFunctionVariable(){
+
+}
+/*
+* Validates if the given function is a valid expression.
+* An error is thrown if the function_ is not valid.
+*/
+function validateFunction(function_){
+
+}
+/*
+* Sums the given sumands.
+*/
+function sum(sumand_1, sumand_2){
+}
+	
+/*
+* Raises the given base to the given power.
+*/
+function power(base, power){
+	
+}
+/*
+* Brings both fractions to the same denominator.
+*/
+function equalDenominator(fraction1, fraction2){
+	
+}
+
+/*
+* Converts the given fraction to a whole number if possible.
+*/
+function convert2WholeNumber(fraction){
+	
+}
+
+/*
  * Concatenates the given partialExpressions to one expression.
+ * If a partialExpression starts with "-" the operator will be "-"
+ * otherwise "+"
  */
 function concatPartialExpressions(partialExpressions){
 	
