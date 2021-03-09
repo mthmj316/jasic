@@ -10,12 +10,17 @@
 */
 export function calulateFunctionValue(function_,variable,variableValue){
 	
+	// print("calulateFunctionValue function_=" + function_);
+	// print("calulateFunctionValue variable=" + variable);
+	// print("calulateFunctionValue variableValue=" + variableValue);
+	
 	//Validate the input date
 	validateFunction(function_);
 	validateFunctionVariable(variable);
 	
 	//Disaggregate the function in its summands
 	const splitFunction = splitMathSumExpression(function_);
+	// print("calulateFunctionValue splitFunction=" + splitFunction);
 	
 	//Initialize return value
 	var sum = 0;
@@ -30,10 +35,20 @@ export function calulateFunctionValue(function_,variable,variableValue){
 			//operands[0] = factor of variable
 			//operands[1] = exponent
 			const operands = summand.split(variable + "^");
+			// print("calulateFunctionValue operands=" + operands);
+			
+			const power = power(variableValue, operands[1]);
+			// print("calulateFunctionValue power=" + power);
+			const product = multiply(power, operands[0]);
+			// print("calulateFunctionValue product=" + product);
+			
+			sum = sum(sum, product);
 		
 		} else {
 			sum = sum(sum, summand);
 		}
+		
+		// print("calulateFunctionValue sum=" + sum);
 	});
 	
 	return sum;
