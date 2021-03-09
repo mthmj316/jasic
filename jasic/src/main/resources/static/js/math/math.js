@@ -153,6 +153,46 @@ function power(base, power){
 */
 function equalDenominator(fraction1, fraction2){
 	
+	// print("equalDenominator fraction1=" + fraction1);
+	// print("equalDenominator fraction2=" + fraction2);
+	
+	//Split Fractions
+	const fraction1Split = fraction1.split("/");
+	const fraction2Split = fraction2.split("/");
+	
+	//Expand Fraction Elements
+	var f1Numerator = parseInt(fraction1Split[0]);
+	var f1Denominator = parseInt(fraction1Split[1]);
+	const f1DenominatorBeforeExtension = f1Denominator;
+	
+	var f2Numerator = parseInt(fraction2Split[0]);
+	var f2Denominator = parseInt(fraction2Split[1]);
+	
+	// print("equalDenominator f1Numerator=" + f1Numerator);
+	// print("equalDenominator f1Denominator=" + f1Denominator);
+	// print("equalDenominator f2Numerator=" + f2Numerator);
+	// print("equalDenominator f2Denominator=" + f2Denominator);
+	
+	var f1Numerator *= f2Denominator;
+	var f1Denominator *= f2Denominator;
+		
+	var f2Numerator *= f1DenominatorBeforeExtension;
+	var f2Denominator *= f1DenominatorBeforeExtension;
+	
+	// print("equalDenominator f1Numerator=" + f1Numerator);
+	// print("equalDenominator f1Denominator=" + f1Denominator);
+	// print("equalDenominator f2Numerator=" + f2Numerator);
+	// print("equalDenominator f2Denominator=" + f2Denominator);
+	
+	//Created Expanded Fractions And Result Array
+	const f1Expanded = f1Numerator + "/" + f1Denominator,
+	const f2Expanded = f2Numerator + "/" + f2Denominator;
+	
+	const result = {f1Expanded, f2Expanded};
+	
+	// print("equalDenominator result=" + result);
+	
+	return result;
 }
 
 /*
@@ -160,6 +200,35 @@ function equalDenominator(fraction1, fraction2){
 */
 function convert2WholeNumber(fraction){
 	
+	// print("convert2WholeNumber fraction=" + fraction);
+	
+	//Check if fraction
+	if(!fraction.toString().includes("/")){
+		
+		//It is already a whole number -> return the fraction variable
+		return fraction;
+	}
+	
+	const fractionSplit = fraction.split("/");	
+	// print("convert2WholeNumber fractionSplit=" + fractionSplit);
+	
+	//Check if the fraction can be converted to a whole number
+	
+	const numerator = parseInt(fractionSplit[0]);
+	const denominator = parseInt(fractionSplit[1]);
+	// print("convert2WholeNumber numerator=" + numerator);
+	// print("convert2WholeNumber denominator=" + denominator);
+	
+	if(numerator % denominator != 0) {
+
+		//fraction cannot be converted to a whole number.
+		return fraction;
+	}		
+	
+	const result = numerator / denominator;
+	// print("convert2WholeNumber result=" + result);
+	
+	return result.toString();
 }
 
 /*
@@ -177,7 +246,7 @@ function concatPartialExpressions(partialExpressions){
 	partialExpressions.forEach(function(partialExpression){
 		
 		// print("concatPartialExpressions partialExpression=" +
-		// partialExpression );
+		// partialExpression);
 		
 		if(concatExpression.length == 0 ){
 			sep = "";
@@ -190,8 +259,7 @@ function concatPartialExpressions(partialExpressions){
 		}
 		concatExpression = concatExpression + sep + partialExpression;
 		
-		// print("concatPartialExpressions concatExpression=" + concatExpression
-		// );
+		// print("concatPartialExpressions concatExpression=" + concatExpression);
 	});
 	
 	return concatExpression;
@@ -519,4 +587,4 @@ function differentiatePartial(partialExpression, variable){
 			//print("transform2Fraction result=" + result);
 			return result;
 		}
-}
+	}
