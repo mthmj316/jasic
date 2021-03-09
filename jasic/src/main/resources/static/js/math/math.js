@@ -82,6 +82,9 @@ export function calulateFunctionValue(function_,variable,variableValue){
  */
 export function differentiateWithRespectTo(expression, variable){
 	
+	// print("differentiateWithRespectTo expression=" + expression );
+	// print("differentiateWithRespectTo variable=" + variable );
+	
 	if(expression == null || expression.length == 0){
 		throw "expression not set: >" + expression + "<!";
 	}
@@ -89,9 +92,6 @@ export function differentiateWithRespectTo(expression, variable){
 	if(variable == null || variable.length == 0){
 		throw "variable not set: >" + variable + "<!";
 	}
-	
-	// print("differentiateWithRespectTo expression=" + expression );
-	// print("differentiateWithRespectTo variable=" + variable );
 	
 	var partialExpressions = splitMathSumExpression(expression);
 	
@@ -169,8 +169,7 @@ function convert2WholeNumber(fraction){
  */
 function concatPartialExpressions(partialExpressions){
 	
-	// print("concatPartialExpressions partialExpressions=" + partialExpressions
-	// );
+	// print("concatPartialExpressions partialExpressions=" + partialExpressions);
 	
 	var concatExpression = "";
 	var sep = "";
