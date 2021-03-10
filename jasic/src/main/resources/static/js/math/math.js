@@ -168,7 +168,7 @@ function validateFunctionVariable(variable){
 function validateFunction(function_){
 	
 	//Validate sting if undefined or empty
-	if(!validateString(function_){
+	if(!validateString(function_)){
 	
 		throw "function is not set properly";
 	}
