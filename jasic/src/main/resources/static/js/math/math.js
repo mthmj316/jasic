@@ -304,7 +304,7 @@ function equalDenominator(fraction1, fraction2){
 	// print("equalDenominator f2Denominator=" + f2Denominator);
 	
 	//Created Expanded Fractions And Result Array
-	const f1Expanded = f1Numerator + "/" + f1Denominator,
+	const f1Expanded = f1Numerator + "/" + f1Denominator;
 	const f2Expanded = f2Numerator + "/" + f2Denominator;
 	
 	const result = {f1Expanded, f2Expanded};
