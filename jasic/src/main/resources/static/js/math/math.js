@@ -182,12 +182,12 @@ function sum(summand1, summand2){
 	// print("sum summand2=" + summand2);
 	
 	//Check if both summands are fraction and if not transform them
-	if(!summand1.toString()includes("/")){
+	if(!summand1.toString().includes("/")){
 		summand1 = transform2Fraction(summand1);	
 		// print("sum summand1=" + summand1);
 	}
 	
-	if(!summand2.toString()includes("/")){
+	if(!summand2.toString().includes("/")){
 		summand2 = transform2Fraction(summand2);
 	// print("sum summand2=" + summand2);	
 	}
