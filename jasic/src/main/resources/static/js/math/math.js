@@ -123,23 +123,103 @@ export function differentiateWithRespectTo(expression, variable){
 // private functions #########################################
 // #####################################################
 /*
+* Check if the given number is either a whole number or a fraction.
+* If not an error will be thrown.
+*/
+function validateNumber(number){
+	
+	//Validate string if undefined or empty
+	if(!validateString(number)){
+		throw "number is not set properly";
+	}	
+	
+	//Validate if number or fraction
+	if(!isNumberOrFraction(number)){
+		throw "number is not a number or fraction";
+	}
+}
+
+/*
+* Return false if the given string is null/undefined or empty.
+*/
+function validateString(string){
+
+	//Check if string is null/undefind or empty
+	return !(string == null || string.length == 0);
+}
+
+/*
 * Validates the given variable.
 * An error is thrown if the variable is not valid.
 */
-function validateFunctionVariable(){
+function validateFunctionVariable(variable){
 
+	//Check if null or empty
+	if(!validateString(variable)){
+		throw "variable is not set properly";
+	}
 }
 /*
 * Validates if the given function is a valid expression.
 * An error is thrown if the function_ is not valid.
+* Check:
+*	If function_ in null or empty.
 */
 function validateFunction(function_){
-
+	
+	//Validate sting if undefined or empty
+	if(!validateString(function_){
+	
+		throw "function is not set properly";
+	}
 }
 /*
 * Sums the given sumands.
 */
-function sum(sumand_1, sumand_2){
+function sum(summand1, summand2){
+	
+	// print("sum summand1=" + summand1);
+	// print("sum summand2=" + summand2);
+	
+	//Check if both summands are fraction and if not transform them
+	if(!summand1.toString()includes("/")){
+		summand1 = transform2Fraction(summand1);	
+		// print("sum summand1=" + summand1);
+	}
+	
+	if(!summand2.toString()includes("/")){
+		summand2 = transform2Fraction(summand2);
+	// print("sum summand2=" + summand2);	
+	}
+	
+	//Bring the both summands to equal denominator
+	const equalledFractions = equalDenominator(summand1, summand2);
+	
+	const f1ExpandedSplit = equalledFractions[0].split("/");
+	const f2ExpandedSplit = equalledFractions[1].split("/");
+	
+	const f1Numerator = parseInt(f1ExpandedSplit[0]);
+	const f2Numerator = parseInt(f2ExpandedSplit[0]);
+	const resultDenominator = parseInt(f2ExpandedSplit[1]);
+	
+	// print("sum f1Numerator=" + f1Numerator);
+	// print("sum f2Numerator=" + f2Numerator);
+	// print("sum resultDenominator=" + resultDenominator);
+	
+	//Sum up and reduce the result fraction
+	const resultNumerator = f1Numerator - f2Numerator;
+	// print("sum resultNumerator=" + resultNumerator);
+	
+	var result = resultNumerator + "/" + resultDenominator;
+	// print("sum result=" + result);
+	
+	result = reduceFraction(result);
+	// print("sum result=" + result);
+	
+	result = convert2WholeNumber(result);
+	// print("sum result=" + result);
+	
+	return result;
 }
 	
 /*
@@ -212,11 +292,11 @@ function equalDenominator(fraction1, fraction2){
 	// print("equalDenominator f2Numerator=" + f2Numerator);
 	// print("equalDenominator f2Denominator=" + f2Denominator);
 	
-	var f1Numerator *= f2Denominator;
-	var f1Denominator *= f2Denominator;
+	var f1Numerator = f1Numerator * f2Denominator;
+	var f1Denominator = f1Denominator * f2Denominator;
 		
-	var f2Numerator *= f1DenominatorBeforeExtension;
-	var f2Denominator *= f1DenominatorBeforeExtension;
+	var f2Numerator = f2Numerator * f1DenominatorBeforeExtension;
+	var f2Denominator = f2Denominator * f1DenominatorBeforeExtension;
 	
 	// print("equalDenominator f1Numerator=" + f1Numerator);
 	// print("equalDenominator f1Denominator=" + f1Denominator);
