@@ -147,6 +147,45 @@ function sum(sumand_1, sumand_2){
 */
 function power(base, power){
 	
+	// print("power base=" + base);
+	// print("power power=" + power);
+	
+	//Check if fraction and if not transform it
+	if(!base.toString().includes("/")){
+		base = transform2Fraction(base);
+		// print("power base=" + base);
+	}
+	
+	//Split fraction and parse it to integer
+	const baseSplit = base.split("/");
+	const numerator = parseInt(baseSplit[0]);
+	const denominator = parseInt(baseSplit[1]);
+	
+	// print("power baseSplit=" + baseSplit);
+	// print("power numerator=" + numerator);
+	// print("power denominator=" + denominator);
+	
+	//Power the fraction parts and create the result fraction
+	const iPower = parseInt(power);
+	const resultNumerator = Math.pow(numerator, iPower);
+	const resultDenominator = Math.pow(denominator, iPower);
+	
+	// print("power resultNumerator=" + resultNumerator);
+	// print("power resultDenominator=" + resultDenominator);
+	
+	var result = resultNumerator + "/"/ + resultDenominator;
+	
+	// print("power result=" + result);
+	
+	result = reduceFraction(result);
+	
+	// print("power result=" + result);
+	
+	result = convert2WholeNumber(result);
+	
+	// print("power result=" + result);
+	
+	return result;
 }
 /*
 * Brings both fractions to the same denominator.
@@ -380,13 +419,19 @@ function multiplyFractions(fraction1, fraction2){
 	// print("multiplyFractions resultNumerator=" + resultNumerator);
 	// print("multiplyFractions resultDenominator=" + resultDenominator);
 	
+	var result;
+	
 	if (resultNumerator % resultDenominator == 0){
 		// In this case the result is whole-number.
-		var result = (resultNumerator / resultDenominator).toString();
+		result = (resultNumerator / resultDenominator).toString();
 	} else {
 		// The result is again a fraction.
-		var result = reduceFraction(resultNumerator + "/" + resultDenominator);
+		result = reduceFraction(resultNumerator + "/" + resultDenominator);
 	}
+	
+	// print("multiplyFractions result=" + result);
+	
+	result = convert2WholeNumber(result);
 	
 	// print("multiplyFractions result=" + result);
 	
@@ -511,80 +556,80 @@ function differentiatePartial(partialExpression, variable){
 	}
 }
 	
-	/*
-	 * Transforms the expression to standardized term: e.g: 2.5x -> 5/2x^1
-	 */
-	function normalize4Diff(expression, variable){
-		
+/*
+ * Transforms the expression to standardized term: e.g: 2.5x -> 5/2x^1
+ */
+function normalize4Diff(expression, variable){
+	
+	//print("normalize4Diff expression=" + expression);
+	//print("normalize4Diff variable=" + variable);
+	
+	if(!expression.toString().includes("^")){
+		expression = expression + "^1";
 		//print("normalize4Diff expression=" + expression);
-		//print("normalize4Diff variable=" + variable);
-		
-		if(!expression.toString().includes("^")){
-			expression = expression + "^1";
-			//print("normalize4Diff expression=" + expression);
-		}
-		
-		const splitExpression = expression.toString().split(variable);
-		
-		const factor = splitExpression[0];
-		//print("normalize4Diff factor=" + factor);
-		
-		if(factor.toString().includes("/")){
-			// Factor is already a fraction -> return the expression as it is.
-			//print("normalize4Diff result=" + expression);
-			return expression;
-		} else {
-		
-			var result;
-			
-			if(factor.length > 0){
-				// Transform the factor to fraction
-				const factorAsAFraction = transform2Fraction(factor);
-				//print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
-				
-				result = factorAsAFraction;
-				
-			} else {
-				result = "1/1";
-			}
-			
-			result = result + variable + splitExpression[1];
-			//print("normalize4Diff result=" + result);
-			return result;
-		}
 	}
 	
-	/*
-	 * Transforms the given term to fraction. e.g 4 -> 4/1 e.g. 4.1 -> 41/10 It
-	 * is not checked if the term is already a term. It is expected that is done
-	 * by the consumer.
-	 */
-	function transform2Fraction(term){
+	const splitExpression = expression.toString().split(variable);
+	
+	const factor = splitExpression[0];
+	//print("normalize4Diff factor=" + factor);
+	
+	if(factor.toString().includes("/")){
+		// Factor is already a fraction -> return the expression as it is.
+		//print("normalize4Diff result=" + expression);
+		return expression;
+	} else {
+	
+		var result;
 		
-		//print("transform2Fraction term=" + term);
-		
-		if(term.toString().includes(".")){
+		if(factor.length > 0){
+			// Transform the factor to fraction
+			const factorAsAFraction = transform2Fraction(factor);
+			//print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
 			
-			const termSplit = term.toString().split(".");
-			
-			const numerator = term.replace(".", "").replace(/^0+/, "");
-			const denominator = "1" + "0".repeat(termSplit[1].length);
-			
-			const fraction = numerator + "/" +  denominator;
-			
-			//print("transform2Fraction fraction=" + fraction);
-			
-			const reducedFraction = reduceFraction(fraction);
-			
-			//print("transform2Fraction reducedFraction=" + reducedFraction);
-			
-			return reducedFraction;
+			result = factorAsAFraction;
 			
 		} else {
-		
-			const result = term + "/1";
-			
-			//print("transform2Fraction result=" + result);
-			return result;
+			result = "1/1";
 		}
+		
+		result = result + variable + splitExpression[1];
+		//print("normalize4Diff result=" + result);
+		return result;
 	}
+}
+
+/*
+ * Transforms the given term to fraction. e.g 4 -> 4/1 e.g. 4.1 -> 41/10 It
+ * is not checked if the term is already a term. It is expected that is done
+ * by the consumer.
+ */
+function transform2Fraction(term){
+	
+	//print("transform2Fraction term=" + term);
+	
+	if(term.toString().includes(".")){
+		
+		const termSplit = term.toString().split(".");
+		
+		const numerator = term.replace(".", "").replace(/^0+/, "");
+		const denominator = "1" + "0".repeat(termSplit[1].length);
+		
+		const fraction = numerator + "/" +  denominator;
+		
+		//print("transform2Fraction fraction=" + fraction);
+		
+		const reducedFraction = reduceFraction(fraction);
+		
+		//print("transform2Fraction reducedFraction=" + reducedFraction);
+		
+		return reducedFraction;
+		
+	} else {
+	
+		const result = term + "/1";
+		
+		//print("transform2Fraction result=" + result);
+		return result;
+	}
+}
