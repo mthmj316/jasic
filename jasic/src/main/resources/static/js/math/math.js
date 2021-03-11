@@ -211,6 +211,11 @@ function sum(summand1, summand2){
 	const resultNumerator = f1Numerator + f2Numerator;
 	print("sum resultNumerator=" + resultNumerator);
 	
+	if(resultNumerator == 0){
+		print("sum result=" + result);
+		return "0";
+	}
+	
 	var result = resultNumerator + "/" + resultDenominator;
 	print("sum result=" + result);
 	
@@ -224,12 +229,12 @@ function sum(summand1, summand2){
 }
 	
 /*
-* Raises the given base to the given power.
+* Raises the given base to the given exponent.
 */
-function power(base, power){
+function power(base, exponent){
 	
 	print("power base=" + base);
-	print("power power=" + power);
+	print("power exponent=" + exponent);
 	
 	//Check if fraction and if not transform it
 	if(!base.toString().includes("/")){
@@ -245,14 +250,24 @@ function power(base, power){
 	print("power baseSplit=" + baseSplit);
 	print("power numerator=" + numerator);
 	print("power denominator=" + denominator);
+
+	//Check if base and exponent is 0
+	if(exponent == "0" && numerator == 0){
+		throw "Zero to the power of zero is indeterminate.";
+	}
 	
 	//Power the fraction parts and create the result fraction
-	const iPower = parseInt(power);
-	const resultNumerator = Math.pow(numerator, iPower);
-	const resultDenominator = Math.pow(denominator, iPower);
+	const iexponent = parseInt(exponent);
+	const resultNumerator = Math.pow(numerator, iexponent);
+	const resultDenominator = Math.pow(denominator, iexponent);
 	
 	print("power resultNumerator=" + resultNumerator);
 	print("power resultDenominator=" + resultDenominator);
+	
+	if(resultNumerator == 0){
+		print("power result=0");
+		return "0";
+	}
 	
 	var result = resultNumerator + "/" + resultDenominator;
 	
@@ -429,7 +444,7 @@ function splitMathSumExpression(expression){
  */
 function reduceFraction(fraction){
 	
-	//print("reduceFraction fraction=" + fraction );
+	print("reduceFraction fraction=" + fraction );
 	
 	// Separate numerator and denominator
 	var splitFraction = fraction.split("/");	
@@ -489,12 +504,18 @@ function multiplyFractions(fraction1, fraction2){
 	print("multiplyFractions fraction1=" + fraction1);
 	print("multiplyFractions fraction2=" + fraction2);
 	
-	var splitFraction1 = fraction1.split("/");
-	var splitFraction2 = fraction2.split("/");
+	var splitF1 = fraction1.split("/");
+	var splitF2 = fraction2.split("/");
+	
+	//Check if at least one numerator is zero
+	if(splitF1[0] == "0" || splitF2[0] == "0"){
+		print("multiplyFractions result=0");
+		return "0";
+	}
 	
 	// Calculate the the numerator and denominator of the result fraction.
-	var resultNumerator = parseInt(splitFraction1[0]) * parseInt(splitFraction2[0]);
-	var resultDenominator = parseInt(splitFraction1[1]) * parseInt(splitFraction2[1]);
+	var resultNumerator = parseInt(splitF1[0]) * parseInt(splitF2[0]);
+	var resultDenominator = parseInt(splitF1[1]) * parseInt(splitF2[1]);
 	
 	print("multiplyFractions resultNumerator=" + resultNumerator);
 	print("multiplyFractions resultDenominator=" + resultDenominator);
@@ -525,8 +546,8 @@ function multiplyFractions(fraction1, fraction2){
  */
 function multiply(multiplier1, multiplier2){
 	
-	 //print("multiply multiplier1=" + multiplier1);
-	 //print("multiply multiplier2=" + multiplier2);
+	 print("multiply multiplier1=" + multiplier1);
+	 print("multiply multiplier2=" + multiplier2);
 	
 	var m1Ok = isNumberOrFraction(multiplier1);
 	var m2Ok = isNumberOrFraction(multiplier2);
@@ -548,7 +569,7 @@ function multiply(multiplier1, multiplier2){
 	
 	var result = multiplyFractions(multiplier1, multiplier2);
 	
-	//print("multiply result=" + result);
+	print("multiply result=" + result);
 	
 	return result;
 }
@@ -595,21 +616,21 @@ function differentiatePartial(partialExpression, variable){
 		
 		partialExpression = normalize4Diff(partialExpression, variable);
 		
-		//print("differentiatePartial partialExpression=" + partialExpression + " (normalized)");
+		print("differentiatePartial partialExpression=" + partialExpression + " (normalized)");
 		
 		const splitPartialEx = partialExpression.toString().split("^");
 		const oldFactor = splitPartialEx[0].replace(variable, "");
 		const oldExponent = splitPartialEx[1];
 		
-		//print("differentiatePartial splitPartialEx=" + splitPartialEx);
-		//print("differentiatePartial oldFactor=" + oldFactor);
-		//print("differentiatePartial oldExponent=" + oldExponent);
+		print("differentiatePartial splitPartialEx=" + splitPartialEx);
+		print("differentiatePartial oldFactor=" + oldFactor);
+		print("differentiatePartial oldExponent=" + oldExponent);
 		
 		const newExponent = parseInt(oldExponent) - 1;
 		const newFactor = multiply(oldFactor, oldExponent);
 		
-		//print("differentiatePartial newExponent=" + newExponent);
-		//print("differentiatePartial newFactor=" + newFactor);
+		print("differentiatePartial newExponent=" + newExponent);
+		print("differentiatePartial newFactor=" + newFactor);
 		
 		var exponentPart;
 		
@@ -625,12 +646,12 @@ function differentiatePartial(partialExpression, variable){
 		
 		const sFactor = (newFactor == "1" && newExponent >0) ? "" : newFactor;
 		
-		//print("differentiatePartial exponentPart=" + exponentPart);
-		//print("differentiatePartial sFactor=" + sFactor);
+		print("differentiatePartial exponentPart=" + exponentPart);
+		print("differentiatePartial sFactor=" + sFactor);
 		
 		const result = sFactor + variable + exponentPart;
 		
-		//print("differentiatePartial result=" + result);
+		print("differentiatePartial result=" + result);
 		
 		return result;
 	}
@@ -641,22 +662,22 @@ function differentiatePartial(partialExpression, variable){
  */
 function normalize4Diff(expression, variable){
 	
-	//print("normalize4Diff expression=" + expression);
-	//print("normalize4Diff variable=" + variable);
+	print("normalize4Diff expression=" + expression);
+	print("normalize4Diff variable=" + variable);
 	
 	if(!expression.toString().includes("^")){
 		expression = expression + "^1";
-		//print("normalize4Diff expression=" + expression);
+		print("normalize4Diff expression=" + expression);
 	}
 	
 	const splitExpression = expression.toString().split(variable);
 	
 	const factor = splitExpression[0];
-	//print("normalize4Diff factor=" + factor);
+	print("normalize4Diff factor=" + factor);
 	
 	if(factor.toString().includes("/")){
 		// Factor is already a fraction -> return the expression as it is.
-		//print("normalize4Diff result=" + expression);
+		print("normalize4Diff result=" + expression);
 		return expression;
 	} else {
 	
@@ -665,7 +686,7 @@ function normalize4Diff(expression, variable){
 		if(factor.length > 0){
 			// Transform the factor to fraction
 			const factorAsAFraction = transform2Fraction(factor);
-			//print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
+			print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
 			
 			result = factorAsAFraction;
 			
@@ -674,7 +695,7 @@ function normalize4Diff(expression, variable){
 		}
 		
 		result = result + variable + splitExpression[1];
-		//print("normalize4Diff result=" + result);
+		print("normalize4Diff result=" + result);
 		return result;
 	}
 }
@@ -686,7 +707,7 @@ function normalize4Diff(expression, variable){
  */
 function transform2Fraction(term){
 	
-	//print("transform2Fraction term=" + term);
+	print("transform2Fraction term=" + term);
 	
 	if(term.toString().includes(".")){
 		
@@ -697,11 +718,11 @@ function transform2Fraction(term){
 		
 		const fraction = numerator + "/" +  denominator;
 		
-		//print("transform2Fraction fraction=" + fraction);
+		print("transform2Fraction fraction=" + fraction);
 		
 		const reducedFraction = reduceFraction(fraction);
 		
-		//print("transform2Fraction reducedFraction=" + reducedFraction);
+		print("transform2Fraction reducedFraction=" + reducedFraction);
 		
 		return reducedFraction;
 		
@@ -709,7 +730,7 @@ function transform2Fraction(term){
 	
 		const result = term + "/1";
 		
-		//print("transform2Fraction result=" + result);
+		print("transform2Fraction result=" + result);
 		return result;
 	}
 }
