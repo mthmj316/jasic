@@ -428,7 +428,7 @@ function splitMathSumExpression(expression){
 		
 		print("splitMathSumExpression splitEntry=" + splitEntry );
 		
-		Array.prototype.push.apply(result, splitEntry); // result.push(splitEntry);
+		Array.prototype.push.apply(result, splitEntry);
 	});
 	
 	print("splitMathSumExpression result=" + result );
