@@ -416,6 +416,10 @@ function splitMathSumExpression(expression){
 	
 	var splitExpression = expression.split("$");
 	
+	splitExpression = splitExpression.filter(function (el) {
+		return el != null && el.length > 0;
+	});
+	
 	print("splitMathSumExpression splitExpression=" + splitExpression );
 	
 	var result = new Array();
@@ -682,15 +686,14 @@ function normalize4Diff(expression, variable){
 	
 		var result;
 		
-		if(factor.length > 0){
+		if(factor.length == 0 || factor == "-"){
+			result = factor + "1/1";
+		} else {
 			// Transform the factor to fraction
 			const factorAsAFraction = transform2Fraction(factor);
 			print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
 			
 			result = factorAsAFraction;
-			
-		} else {
-			result = "1/1";
 		}
 		
 		result = result + variable + splitExpression[1];
