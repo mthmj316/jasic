@@ -10,9 +10,9 @@
 */
 export function calulateFunctionValue(function_,variable,variableValue){
 	
-	print("calulateFunctionValue function_=" + function_);
-	print("calulateFunctionValue variable=" + variable);
-	print("calulateFunctionValue variableValue=" + variableValue);
+	//print("calulateFunctionValue function_=" + function_);
+	//print("calulateFunctionValue variable=" + variable);
+	//print("calulateFunctionValue variableValue=" + variableValue);
 	
 	//Validate the input date
 	validateFunction(function_);
@@ -21,7 +21,7 @@ export function calulateFunctionValue(function_,variable,variableValue){
 	
 	//Disaggregate the function in its summands
 	const splitFunction = splitMathSumExpression(function_);
-	print("calulateFunctionValue splitFunction=" + splitFunction);
+	//print("calulateFunctionValue splitFunction=" + splitFunction);
 	
 	//Initialize return value
 	var sum_ = 0;
@@ -36,12 +36,12 @@ export function calulateFunctionValue(function_,variable,variableValue){
 			//operands[0] = factor of variable
 			//operands[1] = exponent
 			const operands = summand.split(variable + "^");
-			print("calulateFunctionValue operands=" + operands);
+			//print("calulateFunctionValue operands=" + operands);
 			
 			const power_ = power(variableValue, operands[1]);
-			print("calulateFunctionValue power=" + power_);
+			//print("calulateFunctionValue power=" + power_);
 			const product = multiply(power_, operands[0]);
-			print("calulateFunctionValue product=" + product);
+			//print("calulateFunctionValue product=" + product);
 			
 			sum_ = sum(sum_, product);
 		
@@ -49,7 +49,7 @@ export function calulateFunctionValue(function_,variable,variableValue){
 			sum_ = sum(sum_, summand);
 		}
 		
-		print("calulateFunctionValue sum=" + sum_);
+		//print("calulateFunctionValue sum=" + sum_);
 	});
 	
 	return sum_;
@@ -83,8 +83,8 @@ export function calulateFunctionValue(function_,variable,variableValue){
  */
 export function differentiateWithRespectTo(expression, variable){
 	
-	print("differentiateWithRespectTo expression=" + expression );
-	print("differentiateWithRespectTo variable=" + variable );
+	//print("differentiateWithRespectTo expression=" + expression );
+	//print("differentiateWithRespectTo variable=" + variable );
 	
 	if(expression == null || expression.length == 0){
 		throw "expression not set: >" + expression + "<!";
@@ -109,13 +109,13 @@ export function differentiateWithRespectTo(expression, variable){
 	
 	var diffExpression = concatPartialExpressions(diffPartialExpressions);
 	
-	print("differentiateWithRespectTo diffExpression=" + diffExpression );
+	//print("differentiateWithRespectTo diffExpression=" + diffExpression );
 	
 	if(diffExpression.length == 0){
 		diffExpression = "0";
 	}
 	
-	print("differentiateWithRespectTo diffExpression=" + diffExpression );
+	//print("differentiateWithRespectTo diffExpression=" + diffExpression );
 	
 	return diffExpression;
 }
@@ -179,18 +179,18 @@ function validateFunction(function_){
 */
 function sum(summand1, summand2){
 	
-	print("sum summand1=" + summand1);
-	print("sum summand2=" + summand2);
+	//print("sum summand1=" + summand1);
+	//print("sum summand2=" + summand2);
 	
 	//Check if both summands are fraction and if not transform them
 	if(!summand1.toString().includes("/")){
 		summand1 = transform2Fraction(summand1);	
-		print("sum summand1=" + summand1);
+		//print("sum summand1=" + summand1);
 	}
 	
 	if(!summand2.toString().includes("/")){
 		summand2 = transform2Fraction(summand2);
-	print("sum summand2=" + summand2);	
+	//print("sum summand2=" + summand2);	
 	}
 	
 	//Bring the both summands to equal denominator
@@ -203,27 +203,27 @@ function sum(summand1, summand2){
 	const f2Numerator = parseInt(f2ExpandedSplit[0]);
 	const resultDenominator = parseInt(f2ExpandedSplit[1]);
 	
-	print("sum f1Numerator=" + f1Numerator);
-	print("sum f2Numerator=" + f2Numerator);
-	print("sum resultDenominator=" + resultDenominator);
+	//print("sum f1Numerator=" + f1Numerator);
+	//print("sum f2Numerator=" + f2Numerator);
+	//print("sum resultDenominator=" + resultDenominator);
 	
 	//Sum up and reduce the result fraction
 	const resultNumerator = f1Numerator + f2Numerator;
-	print("sum resultNumerator=" + resultNumerator);
+	//print("sum resultNumerator=" + resultNumerator);
 	
 	if(resultNumerator == 0){
-		print("sum result=" + result);
+		//print("sum result=" + result);
 		return "0";
 	}
 	
 	var result = resultNumerator + "/" + resultDenominator;
-	print("sum result=" + result);
+	//print("sum result=" + result);
 	
 	result = reduceFraction(result);
-	print("sum result=" + result);
+	//print("sum result=" + result);
 	
 	result = convert2WholeNumber(result);
-	print("sum result=" + result);
+	//print("sum result=" + result);
 	
 	return result;
 }
@@ -233,13 +233,13 @@ function sum(summand1, summand2){
 */
 function power(base, exponent){
 	
-	print("power base=" + base);
-	print("power exponent=" + exponent);
+	//print("power base=" + base);
+	//print("power exponent=" + exponent);
 	
 	//Check if fraction and if not transform it
 	if(!base.toString().includes("/")){
 		base = transform2Fraction(base);
-		print("power base=" + base);
+		//print("power base=" + base);
 	}
 	
 	//Split fraction and parse it to integer
@@ -247,9 +247,9 @@ function power(base, exponent){
 	const numerator = parseInt(baseSplit[0]);
 	const denominator = parseInt(baseSplit[1]);
 	
-	print("power baseSplit=" + baseSplit);
-	print("power numerator=" + numerator);
-	print("power denominator=" + denominator);
+	//print("power baseSplit=" + baseSplit);
+	//print("power numerator=" + numerator);
+	//print("power denominator=" + denominator);
 
 	//Check if base and exponent is 0
 	if(exponent == "0" && numerator == 0){
@@ -261,25 +261,25 @@ function power(base, exponent){
 	const resultNumerator = Math.pow(numerator, iexponent);
 	const resultDenominator = Math.pow(denominator, iexponent);
 	
-	print("power resultNumerator=" + resultNumerator);
-	print("power resultDenominator=" + resultDenominator);
+	//print("power resultNumerator=" + resultNumerator);
+	//print("power resultDenominator=" + resultDenominator);
 	
 	if(resultNumerator == 0){
-		print("power result=0");
+		//print("power result=0");
 		return "0";
 	}
 	
 	var result = resultNumerator + "/" + resultDenominator;
 	
-	print("power result=" + result);
+	//print("power result=" + result);
 	
 	result = reduceFraction(result);
 	
-	print("power result=" + result);
+	//print("power result=" + result);
 	
 	result = convert2WholeNumber(result);
 	
-	print("power result=" + result);
+	//print("power result=" + result);
 	
 	return result;
 }
@@ -288,8 +288,8 @@ function power(base, exponent){
 */
 function equalDenominator(fraction1, fraction2){
 	
-	print("equalDenominator fraction1=" + fraction1);
-	print("equalDenominator fraction2=" + fraction2);
+	//print("equalDenominator fraction1=" + fraction1);
+	//print("equalDenominator fraction2=" + fraction2);
 	
 	//Split Fractions
 	const fraction1Split = fraction1.split("/");
@@ -303,10 +303,10 @@ function equalDenominator(fraction1, fraction2){
 	var f2Numerator = parseInt(fraction2Split[0]);
 	var f2Denominator = parseInt(fraction2Split[1]);
 	
-	print("equalDenominator f1Numerator=" + f1Numerator);
-	print("equalDenominator f1Denominator=" + f1Denominator);
-	print("equalDenominator f2Numerator=" + f2Numerator);
-	print("equalDenominator f2Denominator=" + f2Denominator);
+	//print("equalDenominator f1Numerator=" + f1Numerator);
+	//print("equalDenominator f1Denominator=" + f1Denominator);
+	//print("equalDenominator f2Numerator=" + f2Numerator);
+	//print("equalDenominator f2Denominator=" + f2Denominator);
 	
 	var f1Numerator = f1Numerator * f2Denominator;
 	var f1Denominator = f1Denominator * f2Denominator;
@@ -314,10 +314,10 @@ function equalDenominator(fraction1, fraction2){
 	var f2Numerator = f2Numerator * f1DenominatorBeforeExtension;
 	var f2Denominator = f2Denominator * f1DenominatorBeforeExtension;
 	
-	print("equalDenominator f1Numerator=" + f1Numerator);
-	print("equalDenominator f1Denominator=" + f1Denominator);
-	print("equalDenominator f2Numerator=" + f2Numerator);
-	print("equalDenominator f2Denominator=" + f2Denominator);
+	//print("equalDenominator f1Numerator=" + f1Numerator);
+	//print("equalDenominator f1Denominator=" + f1Denominator);
+	//print("equalDenominator f2Numerator=" + f2Numerator);
+	//print("equalDenominator f2Denominator=" + f2Denominator);
 	
 	//Created Expanded Fractions And Result Array
 	const f1Expanded = f1Numerator + "/" + f1Denominator;
@@ -325,7 +325,7 @@ function equalDenominator(fraction1, fraction2){
 	
 	const result = [f1Expanded, f2Expanded];
 	
-	print("equalDenominator result=" + result);
+	//print("equalDenominator result=" + result);
 	
 	return result;
 }
@@ -335,7 +335,7 @@ function equalDenominator(fraction1, fraction2){
 */
 function convert2WholeNumber(fraction){
 	
-	print("convert2WholeNumber fraction=" + fraction);
+	//print("convert2WholeNumber fraction=" + fraction);
 	
 	//Check if fraction
 	if(!fraction.toString().includes("/")){
@@ -345,14 +345,14 @@ function convert2WholeNumber(fraction){
 	}
 	
 	const fractionSplit = fraction.split("/");	
-	print("convert2WholeNumber fractionSplit=" + fractionSplit);
+	//print("convert2WholeNumber fractionSplit=" + fractionSplit);
 	
 	//Check if the fraction can be converted to a whole number
 	
 	const numerator = parseInt(fractionSplit[0]);
 	const denominator = parseInt(fractionSplit[1]);
-	print("convert2WholeNumber numerator=" + numerator);
-	print("convert2WholeNumber denominator=" + denominator);
+	//print("convert2WholeNumber numerator=" + numerator);
+	//print("convert2WholeNumber denominator=" + denominator);
 	
 	if(numerator % denominator != 0) {
 
@@ -361,7 +361,7 @@ function convert2WholeNumber(fraction){
 	}		
 	
 	const result = numerator / denominator;
-	print("convert2WholeNumber result=" + result);
+	//print("convert2WholeNumber result=" + result);
 	
 	return result.toString();
 }
@@ -373,14 +373,14 @@ function convert2WholeNumber(fraction){
  */
 function concatPartialExpressions(partialExpressions){
 	
-	print("concatPartialExpressions partialExpressions=" + partialExpressions);
+	//print("concatPartialExpressions partialExpressions=" + partialExpressions);
 	
 	var concatExpression = "";
 	var sep = "";
 	
 	partialExpressions.forEach(function(partialExpression){
 		
-		print("concatPartialExpressions partialExpression="  + partialExpression);
+		//print("concatPartialExpressions partialExpression="  + partialExpression);
 		
 		if(concatExpression.length == 0 ){
 			sep = "";
@@ -393,7 +393,7 @@ function concatPartialExpressions(partialExpressions){
 		}
 		concatExpression = concatExpression + sep + partialExpression;
 		
-		print("concatPartialExpressions concatExpression=" + concatExpression);
+		//print("concatPartialExpressions concatExpression=" + concatExpression);
 	});
 	
 	return concatExpression;
@@ -408,11 +408,11 @@ function concatPartialExpressions(partialExpressions){
  */
 function splitMathSumExpression(expression){
 	
-	print("splitMathSumExpression expression=" + expression );
+	//print("splitMathSumExpression expression=" + expression );
 	
 	expression = expression.replace(/-/g, "$-");
 	
-	print("splitMathSumExpression expression=" + expression );
+	//print("splitMathSumExpression expression=" + expression );
 	
 	var splitExpression = expression.split("$");
 	
@@ -420,22 +420,22 @@ function splitMathSumExpression(expression){
 		return el != null && el.length > 0;
 	});
 	
-	print("splitMathSumExpression splitExpression=" + splitExpression );
+	//print("splitMathSumExpression splitExpression=" + splitExpression );
 	
 	var result = new Array();
 	
 	splitExpression.forEach(function(entry){
 		
-		print("splitMathSumExpression entry=" + entry );
+		//print("splitMathSumExpression entry=" + entry );
 		
 		var splitEntry = entry.split("+");
 		
-		print("splitMathSumExpression splitEntry=" + splitEntry );
+		//print("splitMathSumExpression splitEntry=" + splitEntry );
 		
 		Array.prototype.push.apply(result, splitEntry); // result.push(splitEntry);
 	});
 	
-	print("splitMathSumExpression result=" + result );
+	//print("splitMathSumExpression result=" + result );
 	
 	return result;
 }
@@ -447,15 +447,15 @@ function splitMathSumExpression(expression){
  */
 function reduceFraction(fraction){
 	
-	print("reduceFraction fraction=" + fraction );
+	//print("reduceFraction fraction=" + fraction );
 	
 	// Separate numerator and denominator
 	var splitFraction = fraction.split("/");	
 	var numerator = parseInt(splitFraction[0]);
 	var denominator = parseInt(splitFraction[1]);
 	
-	print("reduceFraction numerator=" + numerator );
-	print("reduceFraction denominator=" + denominator );
+	//print("reduceFraction numerator=" + numerator );
+	//print("reduceFraction denominator=" + denominator );
 	
 	// Contains the max. possible common factor
 	var factor;
@@ -483,7 +483,7 @@ function reduceFraction(fraction){
 		}
 	}
 	
-	print("reduceFraction factor=" + factor );
+	//print("reduceFraction factor=" + factor );
 	
 	// Reduce the numerator and denominator
 	numerator = numerator / factor;
@@ -492,7 +492,7 @@ function reduceFraction(fraction){
 	// Built reduced fraction.
 	var result = numerator + "/" + denominator;
 	
-	print("reduceFraction result=" + result );
+	//print("reduceFraction result=" + result );
 	
 	return result;
 }
@@ -504,15 +504,15 @@ function reduceFraction(fraction){
  */
 function multiplyFractions(fraction1, fraction2){
 	
-	print("multiplyFractions fraction1=" + fraction1);
-	print("multiplyFractions fraction2=" + fraction2);
+	//print("multiplyFractions fraction1=" + fraction1);
+	//print("multiplyFractions fraction2=" + fraction2);
 	
 	var splitF1 = fraction1.split("/");
 	var splitF2 = fraction2.split("/");
 	
 	//Check if at least one numerator is zero
 	if(splitF1[0] == "0" || splitF2[0] == "0"){
-		print("multiplyFractions result=0");
+		//print("multiplyFractions result=0");
 		return "0";
 	}
 	
@@ -520,8 +520,8 @@ function multiplyFractions(fraction1, fraction2){
 	var resultNumerator = parseInt(splitF1[0]) * parseInt(splitF2[0]);
 	var resultDenominator = parseInt(splitF1[1]) * parseInt(splitF2[1]);
 	
-	print("multiplyFractions resultNumerator=" + resultNumerator);
-	print("multiplyFractions resultDenominator=" + resultDenominator);
+	//print("multiplyFractions resultNumerator=" + resultNumerator);
+	//print("multiplyFractions resultDenominator=" + resultDenominator);
 	
 	var result;
 	
@@ -533,11 +533,11 @@ function multiplyFractions(fraction1, fraction2){
 		result = reduceFraction(resultNumerator + "/" + resultDenominator);
 	}
 	
-	print("multiplyFractions result=" + result);
+	//print("multiplyFractions result=" + result);
 	
 	result = convert2WholeNumber(result);
 	
-	print("multiplyFractions result=" + result);
+	//print("multiplyFractions result=" + result);
 	
 	return result;
 }
@@ -549,8 +549,8 @@ function multiplyFractions(fraction1, fraction2){
  */
 function multiply(multiplier1, multiplier2){
 	
-	 print("multiply multiplier1=" + multiplier1);
-	 print("multiply multiplier2=" + multiplier2);
+	 //print("multiply multiplier1=" + multiplier1);
+	 //print("multiply multiplier2=" + multiplier2);
 	
 	var m1Ok = isNumberOrFraction(multiplier1);
 	var m2Ok = isNumberOrFraction(multiplier2);
@@ -572,7 +572,7 @@ function multiply(multiplier1, multiplier2){
 	
 	var result = multiplyFractions(multiplier1, multiplier2);
 	
-	print("multiply result=" + result);
+	//print("multiply result=" + result);
 	
 	return result;
 }
@@ -607,33 +607,33 @@ function isNumberOrFraction(term){
  */
 function differentiatePartial(partialExpression, variable){
 	
-	print("differentiatePartial partialExpression=" + partialExpression);
-	print("differentiatePartial variable=" + variable);
+	//print("differentiatePartial partialExpression=" + partialExpression);
+	//print("differentiatePartial variable=" + variable);
 	
 	if(!partialExpression.toString().includes(variable)){
 		
-		print("differentiatePartial result=<empty>");
+		//print("differentiatePartial result=<empty>");
 		// partialExpression doesn't contains variable (e.g. 4) -> return ""
 		return "";
 	} else {
 		
 		partialExpression = normalize4Diff(partialExpression, variable);
 		
-		print("differentiatePartial partialExpression=" + partialExpression + " (normalized)");
+		//print("differentiatePartial partialExpression=" + partialExpression + " (normalized)");
 		
 		const splitPartialEx = partialExpression.toString().split("^");
 		const oldFactor = splitPartialEx[0].replace(variable, "");
 		const oldExponent = splitPartialEx[1];
 		
-		print("differentiatePartial splitPartialEx=" + splitPartialEx);
-		print("differentiatePartial oldFactor=" + oldFactor);
-		print("differentiatePartial oldExponent=" + oldExponent);
+		//print("differentiatePartial splitPartialEx=" + splitPartialEx);
+		//print("differentiatePartial oldFactor=" + oldFactor);
+		//print("differentiatePartial oldExponent=" + oldExponent);
 		
 		const newExponent = parseInt(oldExponent) - 1;
 		const newFactor = multiply(oldFactor, oldExponent);
 		
-		print("differentiatePartial newExponent=" + newExponent);
-		print("differentiatePartial newFactor=" + newFactor);
+		//print("differentiatePartial newExponent=" + newExponent);
+		//print("differentiatePartial newFactor=" + newFactor);
 		
 		var exponentPart;
 		
@@ -649,12 +649,12 @@ function differentiatePartial(partialExpression, variable){
 		
 		const sFactor = (newFactor == "1" && newExponent >0) ? "" : newFactor;
 		
-		print("differentiatePartial exponentPart=" + exponentPart);
-		print("differentiatePartial sFactor=" + sFactor);
+		//print("differentiatePartial exponentPart=" + exponentPart);
+		//print("differentiatePartial sFactor=" + sFactor);
 		
 		const result = sFactor + variable + exponentPart;
 		
-		print("differentiatePartial result=" + result);
+		//print("differentiatePartial result=" + result);
 		
 		return result;
 	}
@@ -665,22 +665,22 @@ function differentiatePartial(partialExpression, variable){
  */
 function normalize4Diff(expression, variable){
 	
-	print("normalize4Diff expression=" + expression);
-	print("normalize4Diff variable=" + variable);
+	//print("normalize4Diff expression=" + expression);
+	//print("normalize4Diff variable=" + variable);
 	
 	if(!expression.toString().includes("^")){
 		expression = expression + "^1";
-		print("normalize4Diff expression=" + expression);
+		//print("normalize4Diff expression=" + expression);
 	}
 	
 	const splitExpression = expression.toString().split(variable);
 	
 	const factor = splitExpression[0];
-	print("normalize4Diff factor=" + factor);
+	//print("normalize4Diff factor=" + factor);
 	
 	if(factor.toString().includes("/")){
 		// Factor is already a fraction -> return the expression as it is.
-		print("normalize4Diff result=" + expression);
+		//print("normalize4Diff result=" + expression);
 		return expression;
 	} else {
 	
@@ -691,13 +691,13 @@ function normalize4Diff(expression, variable){
 		} else {
 			// Transform the factor to fraction
 			const factorAsAFraction = transform2Fraction(factor);
-			print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
+			//print("normalize4Diff factorAsAFraction=" + factorAsAFraction);
 			
 			result = factorAsAFraction;
 		}
 		
 		result = result + variable + splitExpression[1];
-		print("normalize4Diff result=" + result);
+		//print("normalize4Diff result=" + result);
 		return result;
 	}
 }
@@ -709,7 +709,7 @@ function normalize4Diff(expression, variable){
  */
 function transform2Fraction(term){
 	
-	print("transform2Fraction term=" + term);
+	//print("transform2Fraction term=" + term);
 	
 	if(term.toString().includes(".")){
 		
@@ -720,11 +720,11 @@ function transform2Fraction(term){
 		
 		const fraction = numerator + "/" +  denominator;
 		
-		print("transform2Fraction fraction=" + fraction);
+		//print("transform2Fraction fraction=" + fraction);
 		
 		const reducedFraction = reduceFraction(fraction);
 		
-		print("transform2Fraction reducedFraction=" + reducedFraction);
+		//print("transform2Fraction reducedFraction=" + reducedFraction);
 		
 		return reducedFraction;
 		
@@ -732,7 +732,7 @@ function transform2Fraction(term){
 	
 		const result = term + "/1";
 		
-		print("transform2Fraction result=" + result);
+		//print("transform2Fraction result=" + result);
 		return result;
 	}
 }
