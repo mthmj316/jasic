@@ -87,7 +87,7 @@ class MathJSTest {
 	void testErrorCalulateFunctionValue(String testCase, String function, String variable, String variableValue, String contains)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {function, variable, variableValue};
-		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> differentiateWithRespectTo.call(ctx, globalScope, globalScope, params));
+		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> calulateFunctionValue.call(ctx, globalScope, globalScope, params));
 		
 		assertTrue(exception.getMessage().contains(contains));
 	}

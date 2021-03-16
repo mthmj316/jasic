@@ -1,7 +1,12 @@
 testCase,function,variable,variableValue,contains
 Testfall_021,,x,2,function is not set properly
 Testfall_022,x^2,,2,variable is not set properly
-Testfall_023,x^2,x,,variableValue is not set properly
+Testfall_023,x^2,x,,is not set properly
 Testfall_024,"",x,2,function is not set properly
 Testfall_025,x^2,"",2,variable is not set properly
-Testfall_026,x^2,x,"",variableValue is not set properly
+Testfall_026,x^2,x,"",is not set properly
+Testfall_054,x^2,x,not a number, is not a number or fraction
+Testfall_055,x^2,x,nan/7, is not a number or fraction
+Testfall_056,x^2,x,7/nan, is not a number or fraction
+Testfall_057,x^2,x,nan/nan, is not a number or fraction
+Testfall_059,x^0,x,0,Zero to the power of zero is indeterminate

@@ -19,3 +19,7 @@ Testfall_044,2x^2+x-6,x,0,-6
 Testfall_049,2x^2,x,0.02,1/1250
 Testfall_050,2x^2,x,-0.02,1/1250
 Testfall_051,2x^3,x,-0.02,-1/62500
+Testfall_058,x^2,x,0,0
+Testfall_061,x^0,x,5,1
+Testfall_062,4x^2,x,0,0
+Testfall_063,4x^2-4,x,0,-4
