@@ -10,6 +10,32 @@ export function convert2MathJax(rawExpression){
 // private functions ###################################
 // #####################################################
 /*
+* Converts the <base>^<exponent> notation
+* to the mathjax notation {base}^{exponent}
+*/
+function convertPower(power){
+	
+	//print("convertPower power=" + power);
+	
+	//Check if the expression is a valid power notation
+	if(!power.toString().includes("^")){
+		//It is not power expression, hence nothing to do.
+		//print("convertPower result=" + power);
+		return power;
+	}
+	
+	//Separate base from exponent
+	const splitPower = power.split("^");
+	//print("convertPower splitPower=" + splitPower);
+	
+	//Build mathjax expression
+	const mathjaxExpression = "{" + splitPower[0] + "}^{" + splitPower[1] +  "}";
+	//print("convertPower result=" + mathjaxExpression);
+	
+	return mathjaxExpression;
+}
+
+/*
 * Converts the <numerator>/<denominator> notation
 * to the mathjax notation {{numerator}\over{denominator}}
 */
