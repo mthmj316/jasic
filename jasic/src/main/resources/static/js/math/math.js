@@ -121,7 +121,7 @@ export function differentiateWithRespectTo(expression, variable){
 }
 
 // #####################################################
-// private functions #########################################
+// private functions ###################################
 // #####################################################
 /*
 * Check if the given number is either a whole number or a fraction.

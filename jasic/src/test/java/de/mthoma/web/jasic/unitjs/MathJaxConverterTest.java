@@ -52,18 +52,6 @@ class MathJaxConverterTest {
 		Context.exit();
 	}
 	
-	/*
-	@ParameterizedTest
-	@CsvFileSource(resources = "convert2MathJax_ErrorTestData.csv", numLinesToSkip = 1)
-	void testErrorconvert2MathJax(String testCase, String expression, String variable, String contains)throws NoSuchMethodException, ScriptException {
-		
-		Object[] params = new Object[] {expression, variable};
-		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> convert2MathJax.call(ctx, globalScope, globalScope, params));
-		
-		assertTrue(exception.getMessage().contains(contains));
-	}
-	*/
-	
 	@ParameterizedTest
 	@CsvFileSource(resources = "convert2MathJax_TestData.csv", numLinesToSkip = 1)
 	void testconvert2MathJax(String testCase, String rawExpression, String expected)throws NoSuchMethodException, ScriptException {
