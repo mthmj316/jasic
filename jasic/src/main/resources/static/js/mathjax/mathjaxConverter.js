@@ -10,6 +10,48 @@ export function convert2MathJax(rawExpression){
 // private functions ###################################
 // #####################################################
 /*
+*
+* Searches for all fractions in the given expression,
+* and converts it to a mathjax notation fraction.
+*/
+function replaceFractions(expression){
+	
+	//print("replaceFractions expression=" + expression);
+	
+	//Extract all fractions from the expression and check if there is one
+	const fractions = expression.match(/\d+[/]\d+/g);
+	
+	//print("replaceFractions expression=" + expression);
+	
+	if(fractions == null){
+		
+		//print("replaceFractions return=" + expression);
+		
+		return expression;
+	}
+	
+	var mathjaxExpression = expression;
+	
+	//print("replaceFractions mathjaxExpression=" + mathjaxExpression);
+	
+	//fractions.forEach(call: convertFraction -> replace the fraction with the mathjax notation)
+	fractions.forEach(function(fraction){
+		
+		const mathjaxFraction = convertFraction(fraction);
+		
+		//print("replaceFractions mathjaxFraction=" + mathjaxFraction);
+		
+		mathjaxExpression = mathjaxExpression.replace(fraction, mathjaxFraction);
+		
+		//print("replaceFractions mathjaxExpression=" + mathjaxExpression);
+	});
+	
+	//print("replaceFractions return=" + mathjaxExpression);
+	
+	return mathjaxExpression;
+}
+
+/*
 * Converts the <base>^<exponent> notation
 * to the mathjax notation {base}^{exponent}
 */
