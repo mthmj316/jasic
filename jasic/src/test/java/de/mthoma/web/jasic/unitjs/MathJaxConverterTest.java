@@ -30,7 +30,7 @@ class MathJaxConverterTest {
 	private static Function calulateFunctionValue;
 	
 	private static final String JS_FILE = "mathjaxConverter.js";
-	private static final String PATH_2_JS = "src\main\resources\static\js\mathjax\" + JS_FILE;
+	private static final String PATH_2_JS = "src/main/resources/static/js/mathjax/" + JS_FILE;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {		
