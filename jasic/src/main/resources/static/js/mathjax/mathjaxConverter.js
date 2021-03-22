@@ -3,7 +3,41 @@
 */
 export function convert2MathJax(rawExpression){
 	
-	return "";
+	//print("convert2MathJax rawExpression=" + rawExpression);
+	
+	var mathjaxExpression = "$$";
+	
+	//Process invalid input data
+	if(rawExpression == null || rawExpression.length == 0){
+		
+		mathjaxExpression = mathjaxExpression + "$$";
+		
+		//print("convert2MathJax result=" + rawExpression);
+		
+		return mathjaxExpression;
+	}
+	
+	//replace x from f
+	rawExpression = replaceXfromF(rawExpression);
+	
+	//print("convert2MathJax rawExpression=" + rawExpression);
+	
+	//replace fractions
+	rawExpression = replaceFractions(rawExpression);
+	
+	//print("convert2MathJax rawExpression=" + rawExpression);
+	
+	//replace powers
+	rawExpression = replacePowers(rawExpression);
+	
+	//print("convert2MathJax rawExpression=" + rawExpression);
+	
+	//Close mathjaxExpression
+	mathjaxExpression = mathjaxExpression + rawExpression + "$$";
+	
+	//print("convert2MathJax result=" + rawExpression);
+	
+	return mathjaxExpression;
 }
 
 // #####################################################
