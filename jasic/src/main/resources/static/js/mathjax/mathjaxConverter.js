@@ -11,6 +11,48 @@ export function convert2MathJax(rawExpression){
 // #####################################################
 /*
 *
+* Searches for all powers in the given expression,
+* and converts it to a mathjax notation power.
+*/
+function replacePowers(expression){
+	
+	//print("replacePowers expression=" + expression);
+	
+	const mathjaxExpression = expression;
+	
+	//Exract all powers from the expression and if none is contained return just the expression.
+	const powers = mathjaxExpression.match(/[a-zA-Z]+\^\d+/g);
+	//print("replacePowers powers=" + powers);
+	
+	if(powers == null){
+		//print("replacePowers expression=" + mathjaxExpression);
+		
+		return mathjaxExpression; 
+	}
+	
+	//Convert each power to a mathjax power notation.
+	
+	powers.forEach(function(power){
+		
+		//print("replacePowers power=" + power);
+	
+		const mathjaxPower = convertPower(power);
+	
+		//print("replacePowers mathjaxPower=" + mathjaxPower);
+	
+		mathjaxExpression = mathjaxExpression.replace(power, mathjaxPower);
+		
+		
+		//print("replacePowers mathjaxExpression=" + mathjaxExpression);
+	});
+	
+	
+	//print("replacePowers result=" + mathjaxExpression);
+	
+	return mathjaxExpression;
+}
+/*
+*
 * Searches for all fractions in the given expression,
 * and converts it to a mathjax notation fraction.
 */
@@ -71,7 +113,7 @@ function convertPower(power){
 	//print("convertPower splitPower=" + splitPower);
 	
 	//Build mathjax expression
-	const mathjaxExpression = "{" + splitPower[0] + "}^{" + splitPower[1] +  "}";
+	const mathjaxExpression = splitPower[0] + "^{" + splitPower[1] +  "}";
 	//print("convertPower result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
