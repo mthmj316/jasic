@@ -52,14 +52,14 @@ function replacePowers(expression){
 	
 	//print("replacePowers expression=" + expression);
 	
-	const mathjaxExpression = expression;
+	var mathjaxExpression = expression;
 	
 	//Exract all powers from the expression and if none is contained return just the expression.
 	const powers = mathjaxExpression.match(/[a-zA-Z]+\^\d+/g);
-	//print("replacePowers powers=" + powers);
+//	print("replacePowers powers=" + powers);
 	
 	if(powers == null){
-		//print("replacePowers expression=" + mathjaxExpression);
+//		print("replacePowers expression=" + mathjaxExpression);
 		
 		return mathjaxExpression; 
 	}
@@ -68,20 +68,18 @@ function replacePowers(expression){
 	
 	powers.forEach(function(power){
 		
-		//print("replacePowers power=" + power);
+//		print("replacePowers power=" + power);
 	
 		const mathjaxPower = convertPower(power);
 	
-		//print("replacePowers mathjaxPower=" + mathjaxPower);
+//		print("replacePowers mathjaxPower=" + mathjaxPower);
 	
 		mathjaxExpression = mathjaxExpression.replace(power, mathjaxPower);
 		
-		
-		//print("replacePowers mathjaxExpression=" + mathjaxExpression);
+//		print("replacePowers mathjaxExpression=" + mathjaxExpression);
 	});
 	
-	
-	//print("replacePowers result=" + mathjaxExpression);
+//	print("replacePowers result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
 }
@@ -133,7 +131,7 @@ function replaceFractions(expression){
 */
 function convertPower(power){
 	
-	//print("convertPower power=" + power);
+	print("convertPower power=" + power);
 	
 	//Check if the expression is a valid power notation
 	if(!power.toString().includes("^")){
@@ -173,7 +171,7 @@ function convertFraction(fraction) {
 	//print("convertFraction splitFraction=" + splitFraction);
 	
 	//Build the mathjax expression.
-	const mathjaxExpression = "{{" + splitFraction[0].toString().trim() + "}\over{" + splitFraction[1].toString().trim() + "}}"
+	const mathjaxExpression = "{{" + splitFraction[0].toString().trim() + "}\\over{" + splitFraction[1].toString().trim() + "}}"
 	//print("convertFraction result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
@@ -192,7 +190,7 @@ function replaceXfromF(expression){
 	//print("replaceXfromF expression=" + expression);
 	
 	//Check if X from f is in the expression.
-	if(!expression.toString.includes("->")){
+	if(!expression.toString().includes("->")){
 		//Doesn't contain: f->x, hence no replacement needed.
 		//print("replaceXfromF return=" + expression);
 		return expression;
@@ -210,7 +208,7 @@ function replaceXfromF(expression){
 	//print("replaceXfromF splitXFromF=" + splitXFromF);
 	
 	//Build mathjax expression
-	const mathjaxExpression = splitXFromF[0].toString().trim() + "_{(" + splitXFromF[0].toString().trim() + ")}";	
+	const mathjaxExpression = splitXFromF[0].toString().trim() + "_{(" + splitXFromF[1].toString().trim() + ")}=" + splitExpression[1];	
 	//print("replaceXfromF result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
