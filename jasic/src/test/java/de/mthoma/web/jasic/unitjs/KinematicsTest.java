@@ -22,14 +22,14 @@ import org.mozilla.javascript.JavaScriptException;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.tools.shell.Global;
 
-class MathJaxConverterTest {
+class KinematicsTest {
 	
 	private static Context ctx;
 	private static Scriptable globalScope;
-	private static Function convert2MathJax;
+	private static Function calculatePathTimeFunction;
 	
-	private static final String JS_FILE = "mathjaxConverter.js";
-	private static final String PATH_2_JS = "src/main/resources/static/js/mathjax/" + JS_FILE;
+	private static final String JS_FILE = "kinematics.js";
+	private static final String PATH_2_JS = "src/main/resources/static/js/" + JS_FILE;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {		
@@ -42,21 +42,23 @@ class MathJaxConverterTest {
 		globalScope = new Global(ctx);
 		ctx.evaluateString(globalScope, javaScript, JS_FILE, 1, null);
 		
-		convert2MathJax = (Function)globalScope.get("convert2MathJax", globalScope);
+		calculatePathTimeFunction = (Function)globalScope.get("calculatePathTimeFunction", globalScope);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		
 		Context.exit();
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "convert2MathJax_TestData.csv", numLinesToSkip = 1)
-	void testconvert2MathJax(String testCase, String rawExpression, String expected)throws NoSuchMethodException, ScriptException {
+	@CsvFileSource(resources = "calculatePathTimeFunction_TestData.csv", numLinesToSkip = 1)
+	void testCalculatePathTimeFunction(
+		String testcase, String s_t_input, String t_input, String mathjax_s_t, String mathjax_s_t_result,
+		String mathjax_v_t, String mathjax_v_t_result, String mathjax_a_t, String mathjax_a_t_result)
+		throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {Context.javaToJS(rawExpression, globalScope)};
-		String actual = String.valueOf(convert2MathJax.call(ctx, globalScope, globalScope, params));
+		String actual = String.valueOf(calculatePathTimeFunction.call(ctx, globalScope, globalScope, params));
 		
 		assertEquals(expected, actual);
 	}
