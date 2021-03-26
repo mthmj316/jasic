@@ -12,15 +12,16 @@ import {calulateFunctionValue,differentiateWithRespectTo}  from  "/js/math/math.
 * return the the following dictionary:
 * {mjax:functionMathJax,value:functionValue,derivation:derivation_}
 */
-function diffCalculateTimeFunction(rawFunction, t){
+function diffCalculateTimeFunction(rawFunction, t, functionValueVar){
 	
 	//print("diffCalculateTimeFunction rawFunction=" + rawFunction);
 	//print("diffCalculateTimeFunction t=" + t);
+	//print("diffCalculateTimeFunction functionValueVar=" + functionValueVar);
 	
 	const derivation_ = differentiateWithRespectTo(rawFunction, "t");
 	//print("diffCalculateTimeFunction derivation_=" + derivation_);
 	
-	const result = calculateTimeFunction(derivation_, t);
+	const result = calculateTimeFunction(functionValueVar + "->t=" + derivation_, t);
 	//print("diffCalculateTimeFunction result=" + result);
 	
 	result[derivation] = derivation_;
