@@ -57,9 +57,9 @@ class KinematicsTest {
 		String mathjax_v_t, String mathjax_v_t_result, String mathjax_a_t, String mathjax_a_t_result)
 		throws NoSuchMethodException, ScriptException {
 		
-		Object[] params = new Object[] {Context.javaToJS(rawExpression, globalScope)};
-		String actual = String.valueOf(calculatePathTimeFunction.call(ctx, globalScope, globalScope, params));
+		Object[] params = new Object[] {s_t_input,t_input};
+		Object actual = String.valueOf(calculatePathTimeFunction.call(ctx, globalScope, globalScope, params));
 		
-		assertEquals(expected, actual);
+		assertEquals(null, actual);
 	}
 }

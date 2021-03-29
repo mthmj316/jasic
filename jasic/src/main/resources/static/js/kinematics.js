@@ -1,5 +1,5 @@
-import {convert2MathJax}  from  "/js/mathjax/mathjaxConverter.js";
 import {calulateFunctionValue,differentiateWithRespectTo}  from  "/js/math/math.js";
+import {convert2MathJax}  from  "/js/mathjax/mathjaxConverter.js";
 
 const PATH_TIME_FUNCTION_ERROR = {	
 		mathjax_s_t:"error", 
@@ -8,7 +8,7 @@ const PATH_TIME_FUNCTION_ERROR = {
 		mathjax_v_t_result:"error",
 		mathjax_a_t:"error",
 		mathjax_a_t_result:"error"
-	}
+};
 
 /**
 * Calculates for the given pathTimeFunctionRaw the velocity time
@@ -59,7 +59,7 @@ function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 	//print("calculatePathTimeFunction aResult=" + aResult);
 	
 	//Build result dictionary
-	const result = = {	
+	const result = {	
 		mathjax_s_t:sResult[mjax], 
 		mathjax_s_t_result:sResult[value],
 		mathjax_v_t:vResult[mjax],
