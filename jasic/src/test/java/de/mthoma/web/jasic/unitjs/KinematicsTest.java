@@ -28,19 +28,34 @@ class KinematicsTest {
 	private static Scriptable globalScope;
 	private static Function calculatePathTimeFunction;
 	
+	private static final String JS_ROOT = "src/main/resources/static/js/";
 	private static final String JS_FILE = "kinematics.js";
-	private static final String PATH_2_JS = "src/main/resources/static/js/" + JS_FILE;
+	private static final String PATH_2_JS = JS_ROOT + JS_FILE;
+	
+	private static final String JS_FILE_MATHJAX_CONVERTER = "mathjaxConverter.js";
+	private static final String PATH_MATHJAX_CONVERTER = JS_ROOT + "mathjax/" + JS_FILE_MATHJAX_CONVERTER;
+	
+	private static final String JS_FILE_MATH = "math.js";
+	private static final String PATH_MATH = JS_ROOT +  "math/" + JS_FILE_MATH;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {		
 		String javaScript = FileUtils.readFileToString(new File(PATH_2_JS), StandardCharsets.UTF_8);
-		
 		javaScript = javaScript.replaceAll(Pattern.quote("export function"), "function");
+		javaScript = javaScript.replaceAll(Pattern.quote("import"), "//import");
+		
+		String mathjaxConverter = FileUtils.readFileToString(new File(PATH_MATHJAX_CONVERTER), StandardCharsets.UTF_8);
+		mathjaxConverter = mathjaxConverter.replaceAll(Pattern.quote("export function"), "function");
+		
+		String math = FileUtils.readFileToString(new File(PATH_MATH), StandardCharsets.UTF_8);
+		math = math.replaceAll(Pattern.quote("export function"), "function");
 		
 		ctx = Context.enter();
 		ctx.getWrapFactory().setJavaPrimitiveWrap(true);
 		globalScope = new Global(ctx);
 		ctx.evaluateString(globalScope, javaScript, JS_FILE, 1, null);
+		ctx.evaluateString(globalScope, mathjaxConverter, JS_FILE_MATHJAX_CONVERTER, 1, null);
+		ctx.evaluateString(globalScope, math, JS_FILE_MATH, 1, null);
 		
 		calculatePathTimeFunction = (Function)globalScope.get("calculatePathTimeFunction", globalScope);
 	}
