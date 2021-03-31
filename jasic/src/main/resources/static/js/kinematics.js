@@ -41,11 +41,7 @@ function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 		return PATH_TIME_FUNCTION_ERROR;
 	}
 	
-	//Create mathjax for s(t), calculate s for user input t and create mathjax
-	const sFromTRaw = "s->t=" + pathTimeFunctionRaw;
-	print("calculatePathTimeFunction sFromTRaw=" + sFromTRaw);
-	
-	const sResult = calculateTimeFunction(sFromTRaw, t);
+	const sResult = calculateTimeFunction(pathTimeFunctionRaw, t, "s");
 	print("calculatePathTimeFunction sResult=" + sResult);
 	
 	//differentiate input function -> v(t), create mathjax for v(t)
@@ -92,10 +88,7 @@ function diffCalculateTimeFunction(rawFunction, t, functionValueVar){
 	const derivation_ = differentiateWithRespectTo(rawFunction, "t");
 	print("diffCalculateTimeFunction derivation_=" + derivation_);
 	
-	const derivationExtended = functionValueVar + "->t=";
-	print("diffCalculateTimeFunction derivationExtended=" + derivationExtended);
-	
-	const result = calculateTimeFunction(derivationExtended + derivation_, t);
+	const result = calculateTimeFunction(derivation_, t, functionValueVar);
 	print("diffCalculateTimeFunction result=" + result);
 	
 	result[derivation] = derivation_;
@@ -113,12 +106,16 @@ function diffCalculateTimeFunction(rawFunction, t, functionValueVar){
 * if t i not a number:
 * {mjax:functionMathJax,value:""}
 */
-function calculateTimeFunction(rawFunction, t){
+function calculateTimeFunction(rawFunction, t, functionValueVar){
 	
 	print("calculateTimeFunction rawFunction=" + rawFunction);
 	print("calculateTimeFunction t=" + t);
+	print("calculateTimeFunction functionValueVar=" + functionValueVar);
 
-	const functionMathJax = convert2MathJax(rawFunction);
+	const rawFunctionExtended = functionValueVar + "->t=" + rawFunction;
+	print("calculateTimeFunction rawFunctionExtended=" + rawFunctionExtended);
+
+	const functionMathJax = convert2MathJax(rawFunctionExtended);
 	print("calculateTimeFunction t=" + t);
 	
 	var functionValue = "";
