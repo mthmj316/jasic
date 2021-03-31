@@ -30,7 +30,7 @@ const PATH_TIME_FUNCTION_ERROR = {
 *
 * if pathTimeFunctionRaw is not set correctly, the dictionary PATH_TIME_FUNCTION_ERROR will be returned.
 */
-function calculatePathTimeFunction(pathTimeFunctionRaw, t){
+export function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 	
 	print("calculatePathTimeFunction pathTimeFunctionRaw=" + pathTimeFunctionRaw);
 	print("calculatePathTimeFunction t=" + t);
