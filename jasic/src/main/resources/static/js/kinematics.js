@@ -91,7 +91,7 @@ function diffCalculateTimeFunction(rawFunction, t, functionValueVar){
 	const result = calculateTimeFunction(derivation_, t, functionValueVar);
 	print("diffCalculateTimeFunction result=" + result);
 	
-	result[derivation] = derivation_;
+	result.derivation = derivation_;
 	print("diffCalculateTimeFunction result=" + result);
 	
 	return result;
