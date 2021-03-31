@@ -3,7 +3,7 @@
 */
 export function convert2MathJax(rawExpression){
 	
-	//print("convert2MathJax rawExpression=" + rawExpression);
+	print("convert2MathJax rawExpression=" + rawExpression);
 	
 	var mathjaxExpression = "$$";
 	
@@ -12,7 +12,7 @@ export function convert2MathJax(rawExpression){
 		
 		mathjaxExpression = mathjaxExpression + "$$";
 		
-		//print("convert2MathJax result=" + rawExpression);
+		print("convert2MathJax result=" + rawExpression);
 		
 		return mathjaxExpression;
 	}
@@ -20,22 +20,22 @@ export function convert2MathJax(rawExpression){
 	//replace x from f
 	rawExpression = replaceXfromF(rawExpression);
 	
-	//print("convert2MathJax rawExpression=" + rawExpression);
+	print("convert2MathJax rawExpression=" + rawExpression);
 	
 	//replace fractions
 	rawExpression = replaceFractions(rawExpression);
 	
-	//print("convert2MathJax rawExpression=" + rawExpression);
+	print("convert2MathJax rawExpression=" + rawExpression);
 	
 	//replace powers
 	rawExpression = replacePowers(rawExpression);
 	
-	//print("convert2MathJax rawExpression=" + rawExpression);
+	print("convert2MathJax rawExpression=" + rawExpression);
 	
 	//Close mathjaxExpression
 	mathjaxExpression = mathjaxExpression + rawExpression + "$$";
 	
-	//print("convert2MathJax result=" + rawExpression);
+	print("convert2MathJax result=" + rawExpression);
 	
 	return mathjaxExpression;
 }
@@ -50,7 +50,7 @@ export function convert2MathJax(rawExpression){
 */
 function replacePowers(expression){
 	
-	//print("replacePowers expression=" + expression);
+	print("replacePowers expression=" + expression);
 	
 	var mathjaxExpression = expression;
 	
@@ -90,37 +90,37 @@ function replacePowers(expression){
 */
 function replaceFractions(expression){
 	
-	//print("replaceFractions expression=" + expression);
+	print("replaceFractions expression=" + expression);
 	
 	//Extract all fractions from the expression and check if there is one
 	const fractions = expression.match(/\d+[/]\d+/g);
 	
-	//print("replaceFractions expression=" + expression);
+	print("replaceFractions expression=" + expression);
 	
 	if(fractions == null){
 		
-		//print("replaceFractions return=" + expression);
+		print("replaceFractions return=" + expression);
 		
 		return expression;
 	}
 	
 	var mathjaxExpression = expression;
 	
-	//print("replaceFractions mathjaxExpression=" + mathjaxExpression);
+	print("replaceFractions mathjaxExpression=" + mathjaxExpression);
 	
 	//fractions.forEach(call: convertFraction -> replace the fraction with the mathjax notation)
 	fractions.forEach(function(fraction){
 		
 		const mathjaxFraction = convertFraction(fraction);
 		
-		//print("replaceFractions mathjaxFraction=" + mathjaxFraction);
+		print("replaceFractions mathjaxFraction=" + mathjaxFraction);
 		
 		mathjaxExpression = mathjaxExpression.replace(fraction, mathjaxFraction);
 		
-		//print("replaceFractions mathjaxExpression=" + mathjaxExpression);
+		print("replaceFractions mathjaxExpression=" + mathjaxExpression);
 	});
 	
-	//print("replaceFractions return=" + mathjaxExpression);
+	print("replaceFractions return=" + mathjaxExpression);
 	
 	return mathjaxExpression;
 }
@@ -136,17 +136,17 @@ function convertPower(power){
 	//Check if the expression is a valid power notation
 	if(!power.toString().includes("^")){
 		//It is not power expression, hence nothing to do.
-		//print("convertPower result=" + power);
+		print("convertPower result=" + power);
 		return power;
 	}
 	
 	//Separate base from exponent
 	const splitPower = power.split("^");
-	//print("convertPower splitPower=" + splitPower);
+	print("convertPower splitPower=" + splitPower);
 	
 	//Build mathjax expression
 	const mathjaxExpression = splitPower[0] + "^{" + splitPower[1] +  "}";
-	//print("convertPower result=" + mathjaxExpression);
+	print("convertPower result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
 }
@@ -157,22 +157,22 @@ function convertPower(power){
 */
 function convertFraction(fraction) {
 	
-	//print("convertFraction fraction=" + fraction);
+	print("convertFraction fraction=" + fraction);
 	
 	//Check if fraction is valid
 	if(!fraction.toString().includes("/")){
 		//Is not a fraction, hence nothing to do.
-		//print("convertFraction result=" + fraction);
+		print("convertFraction result=" + fraction);
 		return fraction;
 	}
 	
 	//Separate numerator from denominator
 	const splitFraction = fraction.split("/");
-	//print("convertFraction splitFraction=" + splitFraction);
+	print("convertFraction splitFraction=" + splitFraction);
 	
 	//Build the mathjax expression.
 	const mathjaxExpression = "{{" + splitFraction[0].toString().trim() + "}\\over{" + splitFraction[1].toString().trim() + "}}"
-	//print("convertFraction result=" + mathjaxExpression);
+	print("convertFraction result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
 }
@@ -187,29 +187,29 @@ function convertFraction(fraction) {
 */
 function replaceXfromF(expression){
 	
-	//print("replaceXfromF expression=" + expression);
+	print("replaceXfromF expression=" + expression);
 	
 	//Check if X from f is in the expression.
 	if(!expression.toString().includes("->")){
 		//Doesn't contain: f->x, hence no replacement needed.
-		//print("replaceXfromF return=" + expression);
+		print("replaceXfromF return=" + expression);
 		return expression;
 	}
 	
 	//Separate the x from f part from the expression
 	const splitExpression = expression.split("=");
-	//print("replaceXfromF splitExpression=" + splitExpression);
+	print("replaceXfromF splitExpression=" + splitExpression);
 	
 	const xFromF = splitExpression[0];
-	//print("replaceXfromF xFromF=" + xFromF);
+	print("replaceXfromF xFromF=" + xFromF);
 	
 	//Separate x from f
 	const splitXFromF = xFromF.split("->");
-	//print("replaceXfromF splitXFromF=" + splitXFromF);
+	print("replaceXfromF splitXFromF=" + splitXFromF);
 	
 	//Build mathjax expression
 	const mathjaxExpression = splitXFromF[0].toString().trim() + "_{(" + splitXFromF[1].toString().trim() + ")}=" + splitExpression[1];	
-	//print("replaceXfromF result=" + mathjaxExpression);
+	print("replaceXfromF result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
 }
