@@ -32,8 +32,8 @@ const PATH_TIME_FUNCTION_ERROR = {
 */
 export function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 	
-	print("calculatePathTimeFunction pathTimeFunctionRaw=" + pathTimeFunctionRaw);
-	print("calculatePathTimeFunction t=" + t);
+	//print("calculatePathTimeFunction pathTimeFunctionRaw=" + pathTimeFunctionRaw);
+	//print("calculatePathTimeFunction t=" + t);
 	
 	//Check user input
 	if(pathTimeFunctionRaw == null || pathTimeFunctionRaw.length == 0){
@@ -120,8 +120,7 @@ function calculateTimeFunction(rawFunction, t, functionValueVar){
 	
 	var functionValue = "";
 	
-	if(!isNaN(t)){
-		
+	if(t != null && t.length > 0){
 		functionValue = calulateFunctionValue(rawFunction, "t", t);
 	}
 	//print("calculateTimeFunction functionValue=" + functionValue);
