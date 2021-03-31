@@ -37,33 +37,33 @@ function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 	
 	//Check user input
 	if(pathTimeFunctionRaw == null || pathTimeFunctionRaw.length == 0){
-		print("calculatePathTimeFunction result=" + PATH_TIME_FUNCTION_ERROR);
+		//print("calculatePathTimeFunction result=" + PATH_TIME_FUNCTION_ERROR);
 		return PATH_TIME_FUNCTION_ERROR;
 	}
 	
 	const sResult = calculateTimeFunction(pathTimeFunctionRaw, t, "s");
-	print("calculatePathTimeFunction sResult=" + sResult);
+	//print("calculatePathTimeFunction sResult=" + sResult);
 	
 	//differentiate input function -> v(t), create mathjax for v(t)
 	//and calculate s for user input t and create mathjax
 	const vResult = diffCalculateTimeFunction(pathTimeFunctionRaw, t, "v");
-	print("calculatePathTimeFunction vResult=" + vResult);
+	//print("calculatePathTimeFunction vResult=" + vResult);
 	
 	//differentiate v(t) to a(t), create mathjax for a(t) 
 	//calculate a for user input t  and create mathjax
-	const aResult = diffCalculateTimeFunction(vResult[derivation], t, "a"); 
-	print("calculatePathTimeFunction aResult=" + aResult);
+	const aResult = diffCalculateTimeFunction(vResult.derivation, t, "a"); 
+	//print("calculatePathTimeFunction aResult=" + aResult);
 	
 	//Build result dictionary
 	const result = {	
-		mathjax_s_t:sResult[mjax], 
-		mathjax_s_t_result:sResult[value],
-		mathjax_v_t:vResult[mjax],
-		mathjax_v_t_result:vResult[value],
-		mathjax_a_t:aResult[mjax],
-		mathjax_a_t_result:aResult[value]
+		mathjax_s_t:sResult.mjax, 
+		mathjax_s_t_result:sResult.value,
+		mathjax_v_t:vResult.mjax,
+		mathjax_v_t_result:vResult.value,
+		mathjax_a_t:aResult.mjax,
+		mathjax_a_t_result:aResult.value
 	}
-	print("calculatePathTimeFunction result=" + result);
+	//print("calculatePathTimeFunction result=" + result);
 	
 	return result;
 }
@@ -81,18 +81,18 @@ function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 */
 function diffCalculateTimeFunction(rawFunction, t, functionValueVar){
 	
-	print("diffCalculateTimeFunction rawFunction=" + rawFunction);
-	print("diffCalculateTimeFunction t=" + t);
-	print("diffCalculateTimeFunction functionValueVar=" + functionValueVar);
+	//print("diffCalculateTimeFunction rawFunction=" + rawFunction);
+	//print("diffCalculateTimeFunction t=" + t);
+	//print("diffCalculateTimeFunction functionValueVar=" + functionValueVar);
 	
 	const derivation_ = differentiateWithRespectTo(rawFunction, "t");
-	print("diffCalculateTimeFunction derivation_=" + derivation_);
+	//print("diffCalculateTimeFunction derivation_=" + derivation_);
 	
 	const result = calculateTimeFunction(derivation_, t, functionValueVar);
-	print("diffCalculateTimeFunction result=" + result);
+	//print("diffCalculateTimeFunction result=" + result);
 	
 	result.derivation = derivation_;
-	print("diffCalculateTimeFunction result=" + result);
+	//print("diffCalculateTimeFunction result=" + result);
 	
 	return result;
 }
@@ -108,15 +108,15 @@ function diffCalculateTimeFunction(rawFunction, t, functionValueVar){
 */
 function calculateTimeFunction(rawFunction, t, functionValueVar){
 	
-	print("calculateTimeFunction rawFunction=" + rawFunction);
-	print("calculateTimeFunction t=" + t);
-	print("calculateTimeFunction functionValueVar=" + functionValueVar);
+	//print("calculateTimeFunction rawFunction=" + rawFunction);
+	//print("calculateTimeFunction t=" + t);
+	//print("calculateTimeFunction functionValueVar=" + functionValueVar);
 
 	const rawFunctionExtended = functionValueVar + "->t=" + rawFunction;
-	print("calculateTimeFunction rawFunctionExtended=" + rawFunctionExtended);
+	//print("calculateTimeFunction rawFunctionExtended=" + rawFunctionExtended);
 
 	const functionMathJax = convert2MathJax(rawFunctionExtended);
-	print("calculateTimeFunction t=" + t);
+	//print("calculateTimeFunction functionMathJax=" + functionMathJax);
 	
 	var functionValue = "";
 	
@@ -124,13 +124,15 @@ function calculateTimeFunction(rawFunction, t, functionValueVar){
 		
 		functionValue = calulateFunctionValue(rawFunction, "t", t);
 	}
-	print("calculateTimeFunction functionValue=" + functionValue);
+	//print("calculateTimeFunction functionValue=" + functionValue);
+	
+	const functionValueMathJax = convert2MathJax(functionValue);
 	
 	const result = {
 		mjax:functionMathJax,
-		value:functionValue
+		value:functionValueMathJax
 	};
-	print("calculateTimeFunction result=" + result);
+	//print("calculateTimeFunction result=" + result);
 	
 	return result;
 }

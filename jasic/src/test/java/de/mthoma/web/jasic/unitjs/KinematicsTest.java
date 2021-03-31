@@ -6,6 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.AbstractMap.SimpleEntry;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
 import javax.script.ScriptException;
@@ -19,8 +25,11 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
 import org.mozilla.javascript.JavaScriptException;
+import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.tools.shell.Global;
+
+import com.fasterxml.jackson.databind.ser.impl.MapEntrySerializer;
 
 class KinematicsTest {
 	
@@ -72,9 +81,21 @@ class KinematicsTest {
 		String mathjax_v_t, String mathjax_v_t_result, String mathjax_a_t, String mathjax_a_t_result)
 		throws NoSuchMethodException, ScriptException {
 		
-		Object[] params = new Object[] {s_t_input,t_input};
-		Object actual = String.valueOf(calculatePathTimeFunction.call(ctx, globalScope, globalScope, params));
+		Map<Object, Object> expected = new HashMap<Object,Object>();
+		expected.put("mathjax_s_t", mathjax_s_t);
+		expected.put("mathjax_s_t_result", mathjax_s_t_result);
+		expected.put("mathjax_v_t", mathjax_v_t);
+		expected.put("mathjax_v_t_result", mathjax_v_t_result);
+		expected.put("mathjax_a_t", mathjax_a_t);
+		expected.put("mathjax_a_t_result", mathjax_a_t_result);
 		
-		assertEquals(null, actual);
+		Object[] params = new Object[] {s_t_input,t_input};
+		NativeObject actual = (NativeObject) calculatePathTimeFunction.call(ctx, globalScope, globalScope, params);
+		
+		Set<Entry<Object, Object>> actualSet = actual.entrySet();
+		
+		for(Entry<Object, Object> entry : actualSet) {
+			assertEquals(String.valueOf(expected.get(entry.getKey())), String.valueOf(entry.getValue()));
+		}
 	}
 }
