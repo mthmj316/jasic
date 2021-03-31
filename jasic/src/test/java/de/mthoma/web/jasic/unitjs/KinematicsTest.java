@@ -75,6 +75,31 @@ class KinematicsTest {
 	}
 	
 	@ParameterizedTest
+	@CsvFileSource(resources = "calculatePathTimeFunction_ErrorTestData.csv", numLinesToSkip = 1)
+	void testCalculatePathTimeFunctionError(
+		String testcase, String s_t_input, String t_input, String mathjax_s_t, String mathjax_s_t_result,
+		String mathjax_v_t, String mathjax_v_t_result, String mathjax_a_t, String mathjax_a_t_result)
+		throws NoSuchMethodException, ScriptException {
+		
+		Map<Object, Object> expected = new HashMap<Object,Object>();
+		expected.put("mathjax_s_t", mathjax_s_t);
+		expected.put("mathjax_s_t_result", mathjax_s_t_result);
+		expected.put("mathjax_v_t", mathjax_v_t);
+		expected.put("mathjax_v_t_result", mathjax_v_t_result);
+		expected.put("mathjax_a_t", mathjax_a_t);
+		expected.put("mathjax_a_t_result", mathjax_a_t_result);
+		
+		Object[] params = new Object[] {s_t_input,t_input};
+		NativeObject actual = (NativeObject) calculatePathTimeFunction.call(ctx, globalScope, globalScope, params);
+		
+		Set<Entry<Object, Object>> actualSet = actual.entrySet();
+		
+		for(Entry<Object, Object> entry : actualSet) {
+			assertEquals(String.valueOf(expected.get(entry.getKey())), String.valueOf(entry.getValue()));
+		}
+	}
+	
+	@ParameterizedTest
 	@CsvFileSource(resources = "calculatePathTimeFunction_TestData.csv", numLinesToSkip = 1)
 	void testCalculatePathTimeFunction(
 		String testcase, String s_t_input, String t_input, String mathjax_s_t, String mathjax_s_t_result,
