@@ -39,7 +39,7 @@ class KinematicsTest {
 	
 	private static final String JS_ROOT = "src/main/resources/static/js/";
 	private static final String JS_FILE = "kinematics.js";
-	private static final String PATH_2_JS = JS_ROOT + JS_FILE;
+	private static final String PATH_2_JS = JS_ROOT + "model/" + JS_FILE;
 	
 	private static final String JS_FILE_MATHJAX_CONVERTER = "mathjaxConverter.js";
 	private static final String PATH_MATHJAX_CONVERTER = JS_ROOT + "mathjax/" + JS_FILE_MATHJAX_CONVERTER;
