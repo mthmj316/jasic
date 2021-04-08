@@ -471,7 +471,7 @@ function reduceFraction(fraction){
 	}
 	
 	// Search for max. possible factor.
-	for(i = factor; i > 0; i--){
+	for(var i = factor; i > 0; i--){
 		
 		if((numerator % i) == 0 && (denominator % i) == 0 ){
 			// When this is entered for the The first time, i must be the max.

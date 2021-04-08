@@ -16,7 +16,7 @@ import de.mthoma.jasic.data.entities.Chapter;
 import de.mthoma.jasic.data.entities.IndexEntry;
 
 @Controller
-public class KnowledgeBaseController {
+public class KnowledgeBaseController extends JasicController{
 	
 	public static final String THEORY_UPDATE_ENTRY = "/theory/update_entry";
 	private static final String PERFORM_CREATE_CHAPTER = "/perform_create_chapter";
@@ -84,6 +84,11 @@ public class KnowledgeBaseController {
 	
 	@PostMapping(value = THEORY_UPDATE_ENTRY, params = "back")
 	public String cancelUpdateUser(Model model) {
+		
+		if(this.currentlySelectedChapter == 0) {
+			
+			return super.redirect2MainPage();
+		}
 		
 		Chapter chapter2Load = DatabaseService.DATABASE.getParentChapter(this.currentlySelectedChapter);
 		
