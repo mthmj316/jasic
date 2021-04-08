@@ -18,12 +18,12 @@ import de.mthoma.jasic.data.entities.IndexEntry;
 @Controller
 public class KnowledgeBaseController {
 	
-	public static final String KNOWLEDGE_BASE_UPDATE_ENTRY = "/knowledge_base/update_entry";
+	public static final String THEORY_UPDATE_ENTRY = "/theory/update_entry";
 	private static final String PERFORM_CREATE_CHAPTER = "/perform_create_chapter";
-	private static final String KNOWLEDGE_BASE_ROOT = "/knowledge_base/knowledge_base";
+	public static final String KNOWLEDGE_BASE_URL = "/theory/knowledge_base";
 	private static final int SELECTED_CHAPTER_URI_PREFIX_LENGTH = 16;
 	private static final String CHAPTERS = "chapters";
-	private static final String KNOWLEDGE_BASE_KNOWLEDGE_BASE = "knowledge_base/knowledge_base";
+	private static final String THEORY_KNOWLEDGE_PAGE = "theory/knowledge_base";
 	private static final String HEADER_TEMPLATE = "Physik Grundlagen: %s";
 	
 	public static final String INDEX_PAGE = "index";
@@ -36,7 +36,7 @@ public class KnowledgeBaseController {
 		
 		this.setPageParameter(model, this.currentlySelectedChapter == 0, this.currentlySelectedChapter);
 		
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+		return THEORY_KNOWLEDGE_PAGE;
 	}
 	
 	@PostMapping(value = PERFORM_CREATE_CHAPTER, params = "cancel")
@@ -44,7 +44,7 @@ public class KnowledgeBaseController {
 		
 		this.setPageParameter(model, this.currentlySelectedChapter == 0, this.currentlySelectedChapter);
 		
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+		return THEORY_KNOWLEDGE_PAGE;
 	}
 	
 	@PostMapping(value = PERFORM_CREATE_CHAPTER, params = "create")
@@ -59,10 +59,10 @@ public class KnowledgeBaseController {
 		
 		this.setPageParameter(model, newChapter.getParentId() == 0, this.currentlySelectedChapter);
 		
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+		return THEORY_KNOWLEDGE_PAGE;
 	}
 	
-	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "createIndexEntry")
+	@PostMapping(value = THEORY_UPDATE_ENTRY, params = "createIndexEntry")
 	public String index(Model model) {
 		
 		model.addAttribute("indexEntry", new IndexEntry());
@@ -71,7 +71,7 @@ public class KnowledgeBaseController {
 		return INDEX_PAGE;
 	}
 
-	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "createChapter")
+	@PostMapping(value = THEORY_UPDATE_ENTRY, params = "createChapter")
 	public String createEntry(Model model) {
 		
 		model.addAttribute(CHAPTERS, DatabaseService.DATABASE.getAllChapters());
@@ -79,10 +79,10 @@ public class KnowledgeBaseController {
 		Chapter newChapter = new Chapter();
 		model.addAttribute("newChapter", newChapter);
 		
-		return "knowledge_base/create_entry";
+		return "theory/create_entry";
 	}
 	
-	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "back")
+	@PostMapping(value = THEORY_UPDATE_ENTRY, params = "back")
 	public String cancelUpdateUser(Model model) {
 		
 		Chapter chapter2Load = DatabaseService.DATABASE.getParentChapter(this.currentlySelectedChapter);
@@ -103,7 +103,7 @@ public class KnowledgeBaseController {
 		return indexEntry.getExplanation();
 	}
 	
-	@PostMapping(value = KNOWLEDGE_BASE_UPDATE_ENTRY, params = "save")
+	@PostMapping(value = THEORY_UPDATE_ENTRY, params = "save")
 	public String saveChange(@ModelAttribute  Chapter selectedChapter, Model model) {
 		
 		try {
@@ -113,7 +113,7 @@ public class KnowledgeBaseController {
 		}
 		
 		this.setPageParameter(model, false, this.currentlySelectedChapter);
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+		return THEORY_KNOWLEDGE_PAGE;
 	}
 
 	@GetMapping("/getSubChapters4**")
@@ -132,7 +132,7 @@ public class KnowledgeBaseController {
 		
 		this.setPageParameter(model, false, pageId2Load);
 		
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+		return THEORY_KNOWLEDGE_PAGE;
 	}
 	
 	
@@ -152,7 +152,7 @@ public class KnowledgeBaseController {
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, headerAppendix));
 	}
 	
-	@GetMapping(value = KNOWLEDGE_BASE_ROOT)
+	@GetMapping(value = KNOWLEDGE_BASE_URL)
 	public String tableOfContents(Model model) {
 		
 		this.currentlySelectedChapter = 0;
@@ -161,6 +161,6 @@ public class KnowledgeBaseController {
 		model.addAttribute("header", String.format(HEADER_TEMPLATE, "Übersicht"));
 		model.addAttribute("isRoot", true);
 		
-		return KNOWLEDGE_BASE_KNOWLEDGE_BASE;
+		return THEORY_KNOWLEDGE_PAGE;
 	}
 }
