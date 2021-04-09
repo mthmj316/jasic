@@ -17,6 +17,9 @@ export function convert2MathJax(rawExpression){
 		return mathjaxExpression;
 	}
 	
+	//Process spaces
+	rawExpression = replaceSpaces(rawExpression);
+	
 	//replace x from f
 	rawExpression = replaceXfromF(rawExpression);
 	
@@ -43,6 +46,37 @@ export function convert2MathJax(rawExpression){
 // #####################################################
 // private functions ###################################
 // #####################################################
+/*
+* Replaces the spaces in the rawExpression as follows:
+* 
+* Any double space by "\;"
+* Any single spce by "\,"
+*
+*/
+function replaceSpaces(rawExpression){
+	
+	//print("replaceSpaces rawExpression=" + rawExpression);
+	
+	var result = rawExpression.toString();
+	//print("replaceSpaces result=" + result);
+	
+	//Check for double spaces and replace them
+	if(result.includes("  ")){
+		result = result.replace(/  /g, "\\;");
+		//print("replaceSpaces result=" + result);
+	}
+	
+	//Check for single spaces and replace them
+	if(result.includes(" ")){
+		result = result.replace(/ /g, "\\,");
+		//print("replaceSpaces result=" + result);
+	}
+	
+	//print("replaceSpaces result=" + result);
+	
+	return result;
+}
+
 /*
 *
 * Searches for all powers in the given expression,
