@@ -1,3 +1,3 @@
 testcase,s_t_input,t_input,mathjax_s_t,mathjax_s_t_result,mathjax_v_t,mathjax_v_t_result,mathjax_a_t,mathjax_a_t_result
-IntegTest_0000,2t^3,2,$$s_{(t)}=2t^{3}$$,$$16$$,$$v_{(t)}=6t^{2}$$,$$24$$,$$a_{(t)}=12t$$,$$24$$
+IntegTest_0000,2t^3,2,$$s_{(t)}=2t^{3}$$,"$$s_{(t=2)}=16\,m$$",$$v_{(t)}=6t^{2}$$,"$$v_{(t)}=24\,{{m}\over{s}}$$",$$a_{(t)}=12t$$,"$$a_{(t)}=24\,{{m}\over{s^2}}$$"
 IntegTest_0001,2t^3,,$$s_{(t)}=2t^{3}$$,$$$$,$$v_{(t)}=6t^{2}$$,$$$$,$$a_{(t)}=12t$$,$$$$
