@@ -1,6 +1,9 @@
 import {calulateFunctionValue,differentiateWithRespectTo}  from  "/js/math/math.js";
 import {convert2MathJax}  from  "/js/mathjax/mathjaxConverter.js";
 
+/*
+* Error return object for calculatePathTimeFunction
+*/
 const PATH_TIME_FUNCTION_ERROR = {	
 		mathjax_s_t:"error", 
 		mathjax_s_t_result:"error",
@@ -8,6 +11,15 @@ const PATH_TIME_FUNCTION_ERROR = {
 		mathjax_v_t_result:"error",
 		mathjax_a_t:"error",
 		mathjax_a_t_result:"error"
+};
+
+/*
+* Mapping function value variable to its unit.
+*/
+const FUNCTION_VALUE_VAR_UNIT_DICT = {
+	s:"m",
+	v:"{{m}\\over{s}}",
+	a:"{{m}\\over{s^2}}"
 };
 
 /**
@@ -117,15 +129,9 @@ function calculateTimeFunction(rawFunction, t, functionValueVar){
 
 	const functionMathJax = convert2MathJax(rawFunctionExtended);
 	//print("calculateTimeFunction functionMathJax=" + functionMathJax);
-	
-	var functionValue = "";
-	
-	if(t != null && t.length > 0){
-		functionValue = calulateFunctionValue(rawFunction, "t", t);
-	}
-	//print("calculateTimeFunction functionValue=" + functionValue);
-	
-	const functionValueMathJax = convert2MathJax(functionValue);
+
+	const functionValueMathJax = convertFunctionValue2MathJax(rawFunction, t, functionValueVar);
+	//print("calculateTimeFunction functionValueMathJax=" + functionValueMathJax);
 	
 	const result = {
 		mjax:functionMathJax,
@@ -134,4 +140,38 @@ function calculateTimeFunction(rawFunction, t, functionValueVar){
 	//print("calculateTimeFunction result=" + result);
 	
 	return result;
+}
+
+/*
+* Calculates for t the corrsponding function value and creates
+* the term as follows: e.g. s(t=<t>)= 4 m as mathjax notation.
+*
+* If t is not set, an empty mathjax notation only will be returned
+*/
+function convertFunctionValue2MathJax(rawFunction, t, functionValueVar){
+	
+	//print("convertFunctionValue2MathJax rawFunction=" + rawFunction);
+	//print("convertFunctionValue2MathJax t=" + t);
+	//print("convertFunctionValue2MathJax functionValueVar=" + functionValueVar);
+	
+	var rawFunctionValue = "";
+		
+	if(t != null && t.length > 0){
+		rawFunctionValue = functionValueVar + "->X=" + calulateFunctionValue(rawFunction, "t", t) + " U";
+	}
+	
+	//print("convertFunctionValue2MathJax rawFunctionValue=" + rawFunctionValue);
+	
+	var mathjaxFunctionValue = convert2MathJax(rawFunctionValue);
+	
+	//print("convertFunctionValue2MathJax mathjaxFunctionValue=" + mathjaxFunctionValue);
+	
+	if(rawFunctionValue != ""){
+		mathjaxFunctionValue = mathjaxFunctionValue.replace("U", FUNCTION_VALUE_VAR_UNIT_DICT[functionValueVar]);
+		mathjaxFunctionValue = mathjaxFunctionValue.replace("X", "t=" + t);
+	}
+	
+	//print("convertFunctionValue2MathJax result=" + mathjaxFunctionValue);
+	
+	return mathjaxFunctionValue;
 }

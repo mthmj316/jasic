@@ -1,0 +1,3 @@
+testcase,s_t_input,t_input,errorMsg
+SystemTest_0004,"",4,s(t) ist nicht definiert!
+SystemTest_0005,2t^2,a,'a' ist kein erlaubter Wert!

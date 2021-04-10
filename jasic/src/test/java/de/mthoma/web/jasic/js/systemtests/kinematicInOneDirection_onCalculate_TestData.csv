@@ -1,0 +1,2 @@
+testcase,s_t_input,t_input,mathjax_s_t,mathjax_s_t_result,mathjax_v_t,mathjax_v_t_result,mathjax_a_t,mathjax_a_t_result
+SystemTest_0003,2t^2,4,$$s_{(t)}=2t^{2}$$,"$$s_{(t=4)}=32\,m$$",$$v_{(t)}=4t$$,"$$v_{(t=4)}=16\,{{s}\over{s}}$$",$$a_{(t)}=4$$,"$$a_{(t=4)}=4\,{{m}\over{s^2}}$$"

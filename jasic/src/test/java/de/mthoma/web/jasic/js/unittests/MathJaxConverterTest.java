@@ -1,4 +1,4 @@
-package de.mthoma.web.jasic.unitjs;
+package de.mthoma.web.jasic.js.unittests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

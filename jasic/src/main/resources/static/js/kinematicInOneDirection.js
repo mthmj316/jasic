@@ -16,7 +16,8 @@ window.onCalculate = function onCalculate(document){
 	//Get t from user input and check if it is a number.
 	const t = document.getElementById("time_value_input").value;	
 	if(t.length > 0 && isNaN(t)){
-		window.alert("'" + t + "' is kein erlaubter Wert!")
+		window.alert("'" + t + "' ist kein erlaubter Wert!")
+		return;
 	}
 	
 	//Perform the calculation, check the result for error, and write the results to the front end
