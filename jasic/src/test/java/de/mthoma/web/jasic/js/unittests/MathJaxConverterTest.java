@@ -1,4 +1,4 @@
-package de.mthoma.web.jasic.unitjs;
+package de.mthoma.web.jasic.js.unittests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,7 +27,6 @@ class MathJaxConverterTest {
 	private static Context ctx;
 	private static Scriptable globalScope;
 	private static Function convert2MathJax;
-	private static Function calulateFunctionValue;
 	
 	private static final String JS_FILE = "mathjaxConverter.js";
 	private static final String PATH_2_JS = "src/main/resources/static/js/mathjax/" + JS_FILE;

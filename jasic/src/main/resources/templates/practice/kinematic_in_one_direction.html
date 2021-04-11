@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Kinematik in eine Raumrichtung</title>
+<script defer src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="module" th:src="@{/js/kinematicInOneDirection.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h3><u>Kinematik in eine Raumrichtung</u></h3>
+<!-- 	<label for="way_function_input">s<sub>(t)</sub> = </label> -->
+<!-- 	<input id="way_function_input" type="text"> -->
+<!-- 	<label for="time_value_input">t = </label> -->
+<!-- 	<input id="time_value_input" type="text"> -->
+<!-- 	<br> -->
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<label for="way_function_input">s<sub>(t)</sub> = </label>
+					<input id="way_function_input" type="text">					
+				</td>
+				<td nowrap>
+					<label for="time_value_input">t = </label>
+					<input id="time_value_input" type="text">
+				</td>
+				<td>$$[s]$$</td>
+			</tr>
+			<tr>
+				<td id="way_function_mathjax"></td>
+				<td id="way_for_time_value_input"></td>
+			</tr>
+			<tr>
+				<td id="speed_function_mathjax"></td>
+				<td id="speed_for_time_value_input"></td>
+			</tr>
+			<tr>
+				<td id="acceleration_function_mathjax"></td>
+				<td id="acceleration_for_time_value_input"></td>
+			</tr>
+		</tbody>
+	</table>
+    <form action="/kinematic_in_one_direction" method="post">
+		<input type="submit" value="Zurück" name="back2PracticeMain">
+		<input id="id_calculate_submit" name="calculate" type="button" value="Berechnen" onclick="onCalculate(document);" />
+    </form>
+</body>

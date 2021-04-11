@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Praxisübersicht</title>
+</head>
+<body>
+<h3>Praxis</h3>
+	<a th:href="@{/practice/kinematic_in_one_direction}">Kinematik in einer Raumrichtung</a>
+	<form action="/practice_main" method="post">
+		<input type="submit" value="Zurück" name="back">
+	</form>
+</body>
+</html>

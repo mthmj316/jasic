@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>de.mthoma.web</groupId>
 	<artifactId>jasic</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.5.0-SNAPSHOT</version>
 	<name>jasic</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -93,6 +93,12 @@
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>javax.activation-api</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		    <version>3.141.59</version>
 		</dependency>
 	</dependencies>
 

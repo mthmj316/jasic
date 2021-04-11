@@ -12,10 +12,13 @@ export function convert2MathJax(rawExpression){
 		
 		mathjaxExpression = mathjaxExpression + "$$";
 		
-		//print("convert2MathJax result=" + rawExpression);
+		//print("convert2MathJax result=" + mathjaxExpression);
 		
 		return mathjaxExpression;
 	}
+	
+	//Process spaces
+	rawExpression = replaceSpaces(rawExpression);
 	
 	//replace x from f
 	rawExpression = replaceXfromF(rawExpression);
@@ -44,6 +47,37 @@ export function convert2MathJax(rawExpression){
 // private functions ###################################
 // #####################################################
 /*
+* Replaces the spaces in the rawExpression as follows:
+* 
+* Any double space by "\;"
+* Any single spce by "\,"
+*
+*/
+function replaceSpaces(rawExpression){
+	
+	//print("replaceSpaces rawExpression=" + rawExpression);
+	
+	var result = rawExpression.toString();
+	//print("replaceSpaces result=" + result);
+	
+	//Check for double spaces and replace them
+	if(result.includes("  ")){
+		result = result.replace(/  /g, "\\;");
+		//print("replaceSpaces result=" + result);
+	}
+	
+	//Check for single spaces and replace them
+	if(result.includes(" ")){
+		result = result.replace(/ /g, "\\,");
+		//print("replaceSpaces result=" + result);
+	}
+	
+	//print("replaceSpaces result=" + result);
+	
+	return result;
+}
+
+/*
 *
 * Searches for all powers in the given expression,
 * and converts it to a mathjax notation power.
@@ -56,10 +90,10 @@ function replacePowers(expression){
 	
 	//Exract all powers from the expression and if none is contained return just the expression.
 	const powers = mathjaxExpression.match(/[a-zA-Z]+\^\d+/g);
-//	print("replacePowers powers=" + powers);
+//	//print("replacePowers powers=" + powers);
 	
 	if(powers == null){
-//		print("replacePowers expression=" + mathjaxExpression);
+//		//print("replacePowers expression=" + mathjaxExpression);
 		
 		return mathjaxExpression; 
 	}
@@ -68,18 +102,18 @@ function replacePowers(expression){
 	
 	powers.forEach(function(power){
 		
-//		print("replacePowers power=" + power);
+//		//print("replacePowers power=" + power);
 	
 		const mathjaxPower = convertPower(power);
 	
-//		print("replacePowers mathjaxPower=" + mathjaxPower);
+//		//print("replacePowers mathjaxPower=" + mathjaxPower);
 	
 		mathjaxExpression = mathjaxExpression.replace(power, mathjaxPower);
 		
-//		print("replacePowers mathjaxExpression=" + mathjaxExpression);
+//		//print("replacePowers mathjaxExpression=" + mathjaxExpression);
 	});
 	
-//	print("replacePowers result=" + mathjaxExpression);
+//	//print("replacePowers result=" + mathjaxExpression);
 	
 	return mathjaxExpression;
 }
@@ -131,7 +165,7 @@ function replaceFractions(expression){
 */
 function convertPower(power){
 	
-	print("convertPower power=" + power);
+	//print("convertPower power=" + power);
 	
 	//Check if the expression is a valid power notation
 	if(!power.toString().includes("^")){
