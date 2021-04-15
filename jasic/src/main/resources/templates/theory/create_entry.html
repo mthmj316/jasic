@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Kapitel anlegen</title>
+</head>
+<body>
+<h1>Kapitel anlegen</h1>
+<div>
+	<form method="post" action="#" th:action="@{/perform_create_chapter}" th:object="${newChapter}">
+    	<label for="chapter_name">Kapitelname:</label>
+    	<input id="chapter_name" type="text" th:field="*{chapterName}">
+    	<br>
+    	<input name="create" type="submit" value="Anlegen" />
+    	<input name="cancel" type="submit" value="Abbrechen" />
+	</form>
+</div>
+</body>
+</html>

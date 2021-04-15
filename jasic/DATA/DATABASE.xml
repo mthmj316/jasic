@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JasicDatabase>
+    <Index>
+        <IndexEntry Id="1611330291432">
+            <Keyword>Analogie</Keyword>
+            <Explanation>Sich-Ähnlich- bzw. Sich-gleich-Sein in bestimmten Verhältnissen.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1611330561920">
+            <Keyword>Phänomen</Keyword>
+            <Explanation>Etwas, was sich beobachten bzw. wahrnehmen lässt.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1611332527159">
+            <Keyword>Model</Keyword>
+            <Explanation>Ein Model ist eine Art von Analogie oder geistigem Bild eines Phänomens in der Sprache von etwas uns Bekanntem (z.B. Licht-Wellenmodell). Ein Model soll es erleichtern, eine Vorstellung von etwas, das wir noch nicht verstehen oder ein tieferes Verständnis von etwas Bekanntem, zu bekommen.&#13;
+&#13;
+Der Unterschied zur Theorie ist, dass ein Model simpler ist und nur eine strukturelle Ähnlichkeit mit dem beobachteten Phänomen liefert.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613067628530">
+            <Keyword>Kinematik</Keyword>
+            <Explanation>Kinematik beschreibt die Bewegung von Körpern.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613067742282">
+            <Keyword>Dynamik</Keyword>
+            <Explanation>Die Dynamik beschäftig sich mit der Kraft und der Frage, warum sich Körper in einer bestimmten Art und Weise bewegen.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613067878998">
+            <Keyword>Translationsbewegung</Keyword>
+            <Explanation>Unter Translationsbewegung versteht man eine Bewegung ohne Drehimpuls.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613067960252">
+            <Keyword>Massenpunkt</Keyword>
+            <Explanation>Ein Massenpunkt ist ein mathematischer Punkt ohne räumliche Ausdehnung.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613068250364">
+            <Keyword>Bezugsystem</Keyword>
+            <Explanation>Ein Bezugssystem ist ein gedachtes raum-zeitliches Gebilde, das erforderlich ist, um das Verhalten ortsabhängiger Größen eindeutig und vollständig zu beschreiben. Insbesondere kann die Lage und Bewegung von physikalischen Körpern nur relativ zu einem Bezugssystem angegeben werden.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613068471262">
+            <Keyword>Vektor</Keyword>
+            <Explanation>Ein Vektor ist eine Größe, die sowohl einen Betrag als auch eine Richtung hat.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613068477241">
+            <Keyword>Vektor</Keyword>
+            <Explanation>Ein Vektor ist eine Größe, die sowohl einen Betrag als auch eine Richtung hat.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613068564427">
+            <Keyword>Skalar</Keyword>
+            <Explanation>Eine Zahl wird auch als Skalar bezeichnet.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613143358711">
+            <Keyword>Quotient</Keyword>
+            <Explanation>Der Quotient ein Zahlenausdruck, der aus einem Zähler1 und einem Nenner besteht</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613143749191">
+            <Keyword>Quotient</Keyword>
+            <Explanation>Der Quotient ein Zahlenausdruck, der aus einem Zähler und einem Nenner besteht</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613222426095">
+            <Keyword>Hypotenuse</Keyword>
+            <Explanation>Als Hypotenuse wird die Seite des rechtwinkligen Dreiecks bezeichnet, die dem rechten Winkel gegenüberliegt. Sie ist die längste Seite des Dreiecks.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613222721328">
+            <Keyword>Gegenkathete</Keyword>
+            <Explanation>Als Gegenkathete wird die Seite des rechtwinkligen Dreiecks bezeichnet, die dem gegebenen Winkel gegenüberliegt. </Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1613222799174">
+            <Keyword>Ankathete</Keyword>
+            <Explanation>Als Ankathete wird die Seite des rechtwinkligen Dreiecks bezeichnet, die benachbart ist zum gegebenen Winkel.</Explanation>
+        </IndexEntry>
+        <IndexEntry Id="1615558196887">
+            <Keyword>Quotient</Keyword>
+            <Explanation>Der Quotient ein Zahlenausdruck, der aus einem Zähler und einem Nenner besteht</Explanation>
+        </IndexEntry>
+    </Index>
+    <Chapters>
+        <Chapter Id="1611326065348" ParentId="0">
+            <ChapterName>Einführung, Messungen, Abschätzungen</ChapterName>
+            <Content>&lt;p&gt;Gebiete der klassischen Physik:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Klassische Mechanik&lt;/li&gt;&lt;li&gt;Strömungslehre&lt;/li&gt;&lt;li&gt;Thermodynamik&lt;/li&gt;&lt;li&gt;Akustik&lt;/li&gt;&lt;li&gt;Optik&lt;/li&gt;&lt;li&gt;Elektrizität&lt;/li&gt;&lt;li&gt;Magnetismus&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Gebiete der modernen Physik:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Quantenmechanik&lt;/li&gt;&lt;li&gt;Relativitätstheorie&lt;/li&gt;&lt;li&gt;Atomphysik&lt;/li&gt;&lt;li&gt;Festkörperphysik&lt;/li&gt;&lt;li&gt;Kernphysik&lt;/li&gt;&lt;li&gt;Teilchenphysik&lt;/li&gt;&lt;li&gt;Astrophysik&lt;/li&gt;&lt;/ul&gt;</Content>
+        </Chapter>
+        <Chapter Id="1611327072905" ParentId="1611326065348">
+            <ChapterName>Das Wesen der Wissenschaft</ChapterName>
+            <Content>&lt;p&gt;Wichtige Aspekte der Wissenschaft:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Beobachtung von Ereignissen, ausführen von Experimenten und Messungen.&lt;/li&gt;&lt;li&gt;Entscheiden, was von dem Beobachteten und den Experimenten relevant ist.&lt;/li&gt;&lt;li&gt;Erstellen von Theorien, die das Beobachtete, die Experimente und Messungen erklären.&lt;/li&gt;&lt;li&gt;Prüfung der Theorien, ob sie den Vorhersagen der Experimenten standhalten.&lt;/li&gt;&lt;/ul&gt;</Content>
+        </Chapter>
+        <Chapter Id="1611328274903" ParentId="1611326065348">
+            <ChapterName>Modelle, Theorien und Gesetze</ChapterName>
+            <Content>&lt;p&gt;Ein Model ist eine Art von Analogie oder geistigem Bild eines Phänomens in der Sprache von etwas uns Bekanntem (z.B. Licht-Wellenmodell).&amp;nbsp;&lt;/p&gt;&lt;p&gt;Ein Model soll es erleichtern, eine Vorstellung von etwas, das wir noch nicht verstehen oder ein tieferes Verständnis von etwas Bekanntem, zu bekommen. Der Unterschied zur Theorie ist, dass ein Model simpler ist und nur eine strukturelle Ähnlichkeit mit dem beobachteten Phänomen liefert.&lt;/p&gt;&lt;p&gt;Eine Theorie ist breiter angelegt und detaillierter.&lt;/p&gt;&lt;p&gt;Sehr häufig führen Modelle zu Theorien.&lt;/p&gt;&lt;p&gt;Gesetzte sind allgemeine Aussagen über das Verhalten von Materie. Man kann sich aber trotzdem nicht sicher sein, ob ein Gesetzt absolut wahr ist. Im Gegensatz zu politischen Gesetzten, die festlegen wie sich jemand bzw. etwas zu verhalten hat (&lt;i&gt;präskriptive&lt;/i&gt;), beschreiben wissenschaftliche Gesetzt wie sich etwas verhält (&lt;i&gt;deskriptiv&lt;/i&gt;).&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1612210727393" ParentId="1611326065348">
+            <ChapterName>Messungen und Messfehler</ChapterName>
+        </Chapter>
+        <Chapter Id="1612210756198" ParentId="1612210727393">
+            <ChapterName>Messfehler</ChapterName>
+            <Content>&lt;p&gt;Häufigsten Messfehler:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Falschmessung&lt;/li&gt;&lt;li&gt;Begrenzte Genauigkeit des Messinstruments&lt;/li&gt;&lt;li&gt;Ablesen von der Messskala in der kleinsten Einteilung&amp;nbsp;&lt;/li&gt;&lt;/ul&gt;</Content>
+        </Chapter>
+        <Chapter Id="1612211232894" ParentId="1612210756198">
+            <ChapterName>Zufälliger Messfehler</ChapterName>
+            <Content>&lt;p&gt;Als zufällige Messfehler werden die Abweichungen der Messwerte von ihrem Mittelwert bezeichnet. Zufällige Abweichungen streuen in Betrag und Vorzeichen.&lt;br&gt;&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1612211397150" ParentId="1612210756198">
+            <ChapterName>Systematischer Messfehler</ChapterName>
+            <Content>&lt;p&gt;Unter systematischen Messfehlern versteht man diejenige Abweichung eines Messwerts einer Messgröße von ihrem wahren Wert, die einseitig gerichtet und durch im Prinzip feststellbare Ursachen bedingt ist. Sie lässt sich bei unter gleichen Bedingungen wiederholten Messungen nicht erkennen. Beispiel für die Ursache eines systematischen Fehlers wäre die Fehlertoleranz von dem verwendeten Messgerät.&lt;br&gt;&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1612211721011" ParentId="1612210756198">
+            <ChapterName>Relativer Messfehler</ChapterName>
+            <Content>&lt;p&gt;Der relative Messefehler ist das Verhältnis des Messfehlers zum gemessen Wert in Prozent.&lt;/p&gt;&lt;p&gt;$${Messfehler \over gemessener Wert} \times 100 = relativer Messfehler [\%]$$&lt;/p&gt;&lt;p&gt;Beispiel:&lt;/p&gt;&lt;p&gt;Messfehler: 0.2&lt;/p&gt;&lt;p&gt;gemessener Wert: 20.3&lt;/p&gt;&lt;p&gt;&lt;span style="color: rgb(51, 51, 51);"&gt;$${0.2 \over 20.3} \times 100 \thickapprox 1 \%$$&lt;/span&gt;&lt;br&gt;&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1612212186962" ParentId="1612210727393">
+            <ChapterName>Signifikante Stellen</ChapterName>
+            <Content>&lt;p&gt;Signifikate Stellen sind die Anzahl der sicheren Stellen.&lt;/p&gt;&lt;p&gt;Die Anzahl der signifikanten Stellen ist nicht immer klar ersichtlich:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;23,21 - signifikante Stellen = 4&lt;/li&gt;&lt;li&gt;80 - signifikante Stellen = 1, wenn die Angabe nur eine ungefähre Angabe ist, z.B. die ungefähre Entfernung zwischen zwei Orten.&lt;/li&gt;&lt;li&gt;80 - signifikante Stellen = 2,&amp;nbsp;&lt;span style="color: rgb(51, 51, 51);"&gt;wenn die Angabe eine exakte Angabe ist, z.B. die Geschwindigkeit eines Autos.&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color: rgb(51, 51, 51);"&gt;0,062 - signifikante Stellen = 2, die Nullen sind nur Platzhalter, die dem Dezimalkomma ihren Platz zuweisen.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Bei Antworten werden immer nur die signifikanten Stellen angegeben.&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1612522009372" ParentId="1611326065348">
+            <ChapterName>Einheiten, Standards und das SI-System</ChapterName>
+        </Chapter>
+        <Chapter Id="1613067499964" ParentId="0">
+            <ChapterName>Kinematik in einer Raumrichtung</ChapterName>
+        </Chapter>
+        <Chapter Id="1613068785540" ParentId="1613067499964">
+            <ChapterName>Durchschnittsgeschwindigkeit</ChapterName>
+            <Content>&lt;p&gt;Die Durchschnittsgeschwindigkeit eines Massenpunktes ist als Quotient aus dem zurückgelegten Gesamtweg und der Zeit, die für diesen Weg benötigt wird, definiert.&lt;/p&gt;&lt;p&gt;$$\bar v = {x_2 - x_1 \over t_2 - t_1}={\Delta s \over \Delta t}$$&lt;br&gt;&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1613143963338" ParentId="1613067499964">
+            <ChapterName>Momentangeschwindigkeit</ChapterName>
+            <Content>&lt;p&gt;Unter Momentangeschwindigkeit versteht man die Geschwindigkeit zu einem beliebigen Zeitpunkt. Anders ausgedrückt, ist die Momentangeschwindigkeit zu jedem beliebigen Moment definiert, als die Durchschnittsgeschwindigkeit über ein unendlich kleines Zeitintervall.&lt;/p&gt;&lt;p&gt;$$v = \lim_{\Delta t\to 0}{\Delta s \over \Delta t}$$&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color: rgb(51, 51, 51);"&gt;$$v = \lim_{\Delta t\to 0}{\Delta x \over \Delta t} = {dx \over dt} = {ds \over dt}$$&lt;/span&gt;&lt;br&gt;&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1613224688764" ParentId="0">
+            <ChapterName>Mathematische Formeln</ChapterName>
+            <Content></Content>
+        </Chapter>
+        <Chapter Id="1613224710801" ParentId="1613224688764">
+            <ChapterName>Ableitung</ChapterName>
+            <Content>&lt;p style="margin-left: 0px;"&gt;$${d \over dt} {(Ct^n)} = nCt^{n-1}$$&lt;/p&gt;&lt;p&gt;$$\text{ und } {dC\over dt} = 0$$&lt;br&gt;&lt;/p&gt;&lt;p&gt;$$\text{C ist jede beliebige Konstante.}$$&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1617894553163" ParentId="0">
+            <ChapterName>Neues Kapitel</ChapterName>
+            <Content>&lt;p&gt;Das ist ein Test&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;$$ x = 2^3$$&lt;/p&gt;</Content>
+        </Chapter>
+    </Chapters>
+</JasicDatabase>

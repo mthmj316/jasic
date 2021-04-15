@@ -1,0 +1,15 @@
+testCase,rawExpression,expected
+Testfall_064,2,$$2$$
+Testfall_065,x=2,$$x=2$$
+Testfall_066,y=x+3,$$y=x+3$$
+Testfall_067,f->x=x,$$f_{(x)}=x$$
+Testfall_068,f->x=x^2+3,$$f_{(x)}=x^{2}+3$$
+Testfall_069,f->x=1/2x^2+0.5x+1,$$f_{(x)}={{1}\over{2}}x^{2}+0.5x+1$$
+Testfall_070,,$$$$
+Testfall_071,,$$$$
+Testfall_073,f->x=1/2x^2+0.5x+1/2,$$f_{(x)}={{1}\over{2}}x^{2}+0.5x+{{1}\over{2}}$$
+Testfall_074,f->x=2x^2+x^2,$$f_{(x)}=2x^{2}+x^{2}$$
+Testfall_0077,2  m,$$2\;m$$
+Testfall_0078,2 m,"$$2\,m$$"
+Testfall_0079,2  m n  3 m,"$$2\;m\,n\;3\,m$$"
+Testfall_0080,f->x=2 s,"$$f_{(x)}=2\,s$$"

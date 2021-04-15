@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Physik - Stichwortverzeichnis</title>
+</head>
+<body>
+	<h1>Stichwortverzeichnis</h1>
+	<form action="/create_index_entry" method="post" th:object="${indexEntry}">
+		<label for="index_keyword">Stichwort:</label>
+    	<input id="index_keyword" type="text" th:field="*{keyword}"><br>
+		<textarea id="explanation" cols="100" rows="10" th:field="*{explanation}"></textarea><br>
+		<input id="saveBtn" name="save" type="submit" value="Speichern" /> 
+		<input id="cancelBtn" type="button" value="Abbrechen" onclick="onCancel()" />
+		<input id="backBtn" name="back" type="submit" value="Zurück" />
+	</form>
+	<table>
+		<tr th:each="indexEntry : ${index}">
+			<td>
+				<a th:href="@{'/getKeywordExplanation4' + ${indexEntry.id}}" th:text="${indexEntry.keyword}">view</a>
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">		
+		function onCancel(){
+			document.getElementById('index_keyword').value = "";
+			document.getElementById('explanation').value = "";
+		}
+		
+// 		function popupWindow(url, windowName, win, w, h) {
+// 		    const y = win.top.outerHeight / 2 + win.top.screenY - ( h / 2);
+// 		    const x = win.top.outerWidth / 2 + win.top.screenX - ( w / 2);
+// 		    return win.open(url, windowName, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`);
+// 		}
+	</script>
+</body>
+</html>
