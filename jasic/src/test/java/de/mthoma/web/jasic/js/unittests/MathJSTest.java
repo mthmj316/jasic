@@ -27,6 +27,8 @@ class MathJSTest {
 	private static Scriptable globalScope;
 	private static Function differentiateWithRespectTo;
 	private static Function calulateFunctionValue;
+	private static Function sum;
+	private static Function divide;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {		
@@ -41,12 +43,54 @@ class MathJSTest {
 		
 		differentiateWithRespectTo = (Function)globalScope.get("differentiateWithRespectTo", globalScope);
 		calulateFunctionValue = (Function)globalScope.get("calulateFunctionValue", globalScope);
+		sum = (Function)globalScope.get("sum", globalScope);
+		divide = (Function)globalScope.get("divide", globalScope);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		
 		Context.exit();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "math_divide_TestData.csv", numLinesToSkip = 1)
+	void testDivide(String testCase, String numerator, String denominator, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {numerator, denominator};
+		String actual = String.valueOf(divide.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "math_divide_ErrorTestData.csv", numLinesToSkip = 1)
+	void testErrorDivide(String testCase, String numerator, String denominator, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {numerator, denominator};
+		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> divide.call(ctx, globalScope, globalScope, params));
+		
+		assertTrue(exception.getMessage().startsWith(expected));
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "math_sum_TestData.csv", numLinesToSkip = 1)
+	void testSum(String testCase, String summand1, String summand2, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {summand1, summand2};
+		String actual = String.valueOf(sum.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "math_sum_ErrorTestData.csv", numLinesToSkip = 1)
+	void testErrorSum(String testCase, String summand1, String summand2, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {summand1, summand2};
+		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> sum.call(ctx, globalScope, globalScope, params));
+		
+		assertTrue(exception.getMessage().startsWith(expected));
 	}
 	
 	@ParameterizedTest
