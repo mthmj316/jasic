@@ -19,6 +19,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
+import org.mozilla.javascript.NativeArray;
 import org.mozilla.javascript.NativeObject;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.tools.shell.Global;
@@ -28,6 +29,7 @@ class KinematicsTest {
 	private static Context ctx;
 	private static Scriptable globalScope;
 	private static Function calculatePathTimeFunction;
+	private static Function calculateWVAWithT1T2;
 	
 	private static final String JS_ROOT = "src/main/resources/static/js/";
 	private static final String JS_FILE = "kinematics.js";
@@ -59,11 +61,49 @@ class KinematicsTest {
 		ctx.evaluateString(globalScope, math, JS_FILE_MATH, 1, null);
 		
 		calculatePathTimeFunction = (Function)globalScope.get("calculatePathTimeFunction", globalScope);
+		calculateWVAWithT1T2 = (Function)globalScope.get("calculateWVAWithT1T2", globalScope);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		Context.exit();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "kinematics_calculateWVAWithT1T2_TestData.csv", numLinesToSkip = 1)
+	void testCalculateWVAWithT1T2(String testcase, 
+		String sFromT, String t1, String t2, 
+		String s2, String v2, String a2, 
+		String s_t1_t2, String v_t1_t2, String a_t1_t2)
+		throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {sFromT,t1};
+		calculatePathTimeFunction.call(ctx, globalScope, globalScope, params);
+		
+		Map<Object, Object> expectedWVA4T2 = new HashMap<Object,Object>();
+		expectedWVA4T2.put("s2", s2);
+		expectedWVA4T2.put("v2", v2);
+		expectedWVA4T2.put("a2", a2);
+		
+		Map<Object, Object> expectedDeltasAverages = new HashMap<Object,Object>();
+		expectedDeltasAverages.put("s_t1_t2", s_t1_t2);
+		expectedDeltasAverages.put("v_t1_t2", v_t1_t2);
+		expectedDeltasAverages.put("a_t1_t2", a_t1_t2);
+		
+		params = new Object[] {t1,t2};
+		NativeArray actual = (NativeArray) calculateWVAWithT1T2.call(ctx, globalScope, globalScope, params);
+		
+		assertEquals(2, actual.getLength());
+		
+		Set<Entry<Object, Object>> actualWVA4T2Set = ((NativeObject) actual.get(0)).entrySet();
+		for(Entry<Object, Object> entry : actualWVA4T2Set) {
+			assertEquals(String.valueOf(expectedWVA4T2.get(entry.getKey())), String.valueOf(entry.getValue()));
+		}
+		
+		Set<Entry<Object, Object>> actualDeltaAverageSet = ((NativeObject) actual.get(1)).entrySet();
+		for(Entry<Object, Object> entry : actualDeltaAverageSet) {
+			assertEquals(String.valueOf(expectedDeltasAverages.get(entry.getKey())), String.valueOf(entry.getValue()));
+		}
 	}
 	
 	@ParameterizedTest

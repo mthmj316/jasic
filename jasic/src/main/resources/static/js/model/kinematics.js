@@ -22,6 +22,13 @@ const FUNCTION_VALUE_VAR_UNIT_DICT = {
 	a:"{{m}\\over{s^2}}"
 };
 
+export function calculateWVAWithT1T2(sFromT, t1, t2){
+	
+	
+	
+	return [PATH_TIME_FUNCTION_ERROR,FUNCTION_VALUE_VAR_UNIT_DICT];	
+}
+
 /**
 * Calculates for the given pathTimeFunctionRaw the velocity time
 * and the acceleration time function.
