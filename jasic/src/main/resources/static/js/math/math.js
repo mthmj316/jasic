@@ -1,11 +1,39 @@
 /**
  * http://usejsdoc.org/
  */
+/**
+ * Divides the given numerator by the given denominator.
+ * If the result is whole number, this whole number will be rturned.
+ * Otherwise the reduced fraction.
+ */
+export function divide(numerator,denominator){
+	
+	//print("divide numerator=" + numerator);
+	//print("divide denominator=" + denominator);
+	
+	validateNumber(numerator);
+	validateNumber(denominator);
+	
+	if(denominator == 0){
+		throw "Division by zero is not permitted";
+	}
+	
+	const fraction = numerator + "/" + denominator;
+	//print("divide fraction=" + fraction);
+	
+	var result = reduceFraction(fraction);
+	//print("divide result=" + result);
+	
+	result = convert2WholeNumber(result);
+	//print("divide result=" + result);
+	
+	return result;
+}
 
 /** 
 * Sums the given sumands.
 */
-function sum(summand1, summand2){
+export function sum(summand1, summand2){
 	
 	//print("sum summand1=" + summand1);
 	//print("sum summand2=" + summand2);
@@ -459,6 +487,16 @@ function reduceFraction(fraction){
 	
 	//print("reduceFraction numerator=" + numerator );
 	//print("reduceFraction denominator=" + denominator );
+	
+	if(numerator == 0){
+		//print("reduceFraction result=" + fraction );
+		return fraction;
+	}
+	
+	if (denominator < 0){
+		numerator = numerator * -1;
+		denominator = denominator * -1;
+	}
 	
 	// Contains the max. possible common factor
 	var factor;

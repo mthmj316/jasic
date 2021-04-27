@@ -4,5 +4,5 @@ Testfall_0096,"",4,number is not set properly
 Testfall_0097,3,"",number is not set properly
 Testfall_0098,,4,number is not set properly
 Testfall_0099,3,,number is not set properly
-Testfall_0100,a,4,number is not set properly
-Testfall_0101,3,a,number is not set properly
+Testfall_0100,a,4,number is not a number or fraction
+Testfall_0101,3,a,number is not a number or fraction
