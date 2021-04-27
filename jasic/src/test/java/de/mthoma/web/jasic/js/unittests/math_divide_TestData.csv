@@ -1,0 +1,10 @@
+testCase,numerator,denominator,expected
+Testfall_0102,6,3,2
+Testfall_0103,-4,2,-2
+Testfall_0104,4,-2,-2
+Testfall_0106,-3,-3,1
+Testfall_0107,0,3,0
+Testfall_0108,3,9,1/3
+Testfall_0109,182,-4,-91/2
+Testfall_0110,-22,4,-11/2
+Testfall_0111,-3,-9,1/3
