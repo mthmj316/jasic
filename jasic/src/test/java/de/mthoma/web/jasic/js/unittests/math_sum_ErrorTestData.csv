@@ -1,0 +1,7 @@
+testCase,summand1,summand2,expected
+Testfall_0085,a,4,number is not a number or fraction
+Testfall_0086,3,a,number is not a number or fraction
+Testfall_0087,,4,number is not set properly
+Testfall_0088,3,,number is not set properly
+Testfall_0089,"",4,number is not set properly
+Testfall_0090,3,"",number is not set properly

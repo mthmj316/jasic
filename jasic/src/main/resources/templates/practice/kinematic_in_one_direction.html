@@ -9,11 +9,6 @@
 </head>
 <body>
 	<h3><u>Kinematik in eine Raumrichtung</u></h3>
-<!-- 	<label for="way_function_input">s<sub>(t)</sub> = </label> -->
-<!-- 	<input id="way_function_input" type="text"> -->
-<!-- 	<label for="time_value_input">t = </label> -->
-<!-- 	<input id="time_value_input" type="text"> -->
-<!-- 	<br> -->
 	<table>
 		<tbody>
 			<tr>
@@ -21,23 +16,34 @@
 					<label for="way_function_input">s<sub>(t)</sub> = </label>
 					<input id="way_function_input" type="text">					
 				</td>
-				<td nowrap>
-					<label for="time_value_input">t = </label>
-					<input id="time_value_input" type="text">
+				<td>
+					<label for="t1_value_input">t<sub>1</sub> = </label>
+					<input id="t1_value_input" type="text">
+				</td>
+				<td>$$[s]$$</td>
+				<td>
+					<label for="t2_value_input">t<sub>2</sub> = </label>
+					<input id="t2_value_input" type="text">
 				</td>
 				<td>$$[s]$$</td>
 			</tr>
 			<tr>
 				<td id="way_function_mathjax"></td>
-				<td id="way_for_time_value_input"></td>
+				<td id="way_for_t1"></td>
+				<td id="way_for_t2"></td>
+				<td id="way_between_t1_and_t2"></td>
 			</tr>
 			<tr>
 				<td id="speed_function_mathjax"></td>
-				<td id="speed_for_time_value_input"></td>
+				<td id="speed_for_t1"></td>
+				<td id="speed_for_t2"></td>
+				<td id="average_speed_between_t1_and_t2"></td>
 			</tr>
 			<tr>
 				<td id="acceleration_function_mathjax"></td>
-				<td id="acceleration_for_time_value_input"></td>
+				<td id="acceleration_for_t1"></td>
+				<td id="acceleration_for_t2"></td>
+				<td id="average_acceleration_between_t1_and_t2"></td>
 			</tr>
 		</tbody>
 	</table>

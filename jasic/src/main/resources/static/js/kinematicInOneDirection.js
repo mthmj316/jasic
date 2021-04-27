@@ -14,7 +14,7 @@ window.onCalculate = function onCalculate(document){
 	}
 	
 	//Get t from user input and check if it is a number.
-	const t = document.getElementById("time_value_input").value;	
+	const t = document.getElementById("t1_value_input").value;	
 	if(t.length > 0 && isNaN(t)){
 		window.alert("'" + t + "' ist kein erlaubter Wert!")
 		return;
@@ -31,13 +31,13 @@ window.onCalculate = function onCalculate(document){
 		}
 		
 		document.getElementById("way_function_mathjax").innerText = resultDict.mathjax_s_t;
-		document.getElementById("way_for_time_value_input").innerText = resultDict.mathjax_s_t_result;
+		document.getElementById("way_for_t1").innerText = resultDict.mathjax_s_t_result;
 		
 		document.getElementById("speed_function_mathjax").innerText = resultDict.mathjax_v_t;
-		document.getElementById("speed_for_time_value_input").innerText = resultDict.mathjax_v_t_result;
+		document.getElementById("speed_for_t1").innerText = resultDict.mathjax_v_t_result;
 		
 		document.getElementById("acceleration_function_mathjax").innerText = resultDict.mathjax_a_t;
-		document.getElementById("acceleration_for_time_value_input").innerText = resultDict.mathjax_a_t_result;
+		document.getElementById("acceleration_for_t1").innerText = resultDict.mathjax_a_t_result;
 		
 		MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
 		
