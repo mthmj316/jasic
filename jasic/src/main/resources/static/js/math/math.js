@@ -213,7 +213,7 @@ export function differentiateWithRespectTo(expression, variable){
 */
 function validateNumber(number){
 	
-	print("validateNumber number=" + number);
+	//print("validateNumber number=" + number);
 	
 	//Validate string if undefined or empty
 	if(!validateString(number)){
