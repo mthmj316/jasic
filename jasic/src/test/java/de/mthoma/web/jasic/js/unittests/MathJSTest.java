@@ -29,6 +29,7 @@ class MathJSTest {
 	private static Function calulateFunctionValue;
 	private static Function sum;
 	private static Function divide;
+	private static Function subtract;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {		
@@ -45,12 +46,33 @@ class MathJSTest {
 		calulateFunctionValue = (Function)globalScope.get("calulateFunctionValue", globalScope);
 		sum = (Function)globalScope.get("sum", globalScope);
 		divide = (Function)globalScope.get("divide", globalScope);
+		subtract = (Function)globalScope.get("subtract", globalScope);
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 		
 		Context.exit();
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "math_subtract_TestData.csv", numLinesToSkip = 1)
+	void testSubtract(String testCase, String minuend, String subtrahend, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {minuend, subtrahend};
+		String actual = String.valueOf(subtract.call(ctx, globalScope, globalScope, params));
+		
+		assertEquals(expected, actual);
+	}
+	
+	@ParameterizedTest
+	@CsvFileSource(resources = "math_subtract_ErrorTestData.csv", numLinesToSkip = 1)
+	void testErrorSubtract(String testCase, String minuend, String subtrahend, String expected)throws NoSuchMethodException, ScriptException {
+		
+		Object[] params = new Object[] {minuend, subtrahend};
+		JavaScriptException exception = assertThrows(JavaScriptException.class, () -> subtract.call(ctx, globalScope, globalScope, params));
+		
+		assertTrue(exception.getMessage().startsWith(expected));
 	}
 	
 	@ParameterizedTest

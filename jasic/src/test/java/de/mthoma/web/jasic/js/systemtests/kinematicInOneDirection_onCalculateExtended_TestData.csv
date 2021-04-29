@@ -1,0 +1,2 @@
+testcase,sFromT,t1,t2,mjaxSFromT,mjaxST1,mjaxST2,mjaxDS,mjaxVFromT,mjaxVT1,mjaxVT2,mjaxAV,mjaxAFromT,mjaxAT1,mjaxAT2,mjaxAA
+SystemTest_0009,2t^2,2,5,"$$s_{(t)}=2t^{2}$$","$$s_{(t=2)}=8\,m$$","$$s_{(t=5)}=50\,m$$","$$\Delta s=42\,m$$","$$v_{(t)}=4t$$","$$v_{(t=2)}=8\,{{m}\over{s}}$$","$$v_{(t=5)}=20\,{{m}\over{s}}$$","$$\bar{v}={{42} \over {5}} \,{{m}\over{s}}$$","$$a_{(t)}=4$$","$$a_{(t=4)}=4\,{{m}\over{s^2}}$$","$$a_{(t=4)}=4\,{{m}\over{s^2}}$$","$$\bar{a}=4\,{{m}\over{s^2}}$$"

@@ -2,6 +2,28 @@
  * http://usejsdoc.org/
  */
 /**
+ * Subtracts the subtrahend from the minuend.
+ */
+export function subtract(minuend, subtrahend){
+	
+	//Check input
+	validateNumber(minuend);
+	validateNumber(subtrahend);
+	
+	//Inverte the algebraic sign of the subtrahend
+	if(subtrahend.toString().includes("-")){
+		subtrahend = subtrahend.replace("-", "");
+	} else {
+		subtrahend = "-" + subtrahend;
+	}
+	
+	//Call sum and return call result
+	const difference = sum(minuend, subtrahend);
+	
+	return difference;
+}
+
+/**
  * Divides the given numerator by the given denominator.
  * If the result is whole number, this whole number will be rturned.
  * Otherwise the reduced fraction.

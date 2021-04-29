@@ -1,4 +1,4 @@
-import {calulateFunctionValue,differentiateWithRespectTo,sum, divide}  from  "/js/math/math.js";
+import {calulateFunctionValue,differentiateWithRespectTo,sum,divide,subtract}  from  "/js/math/math.js";
 import {convert2MathJax}  from  "/js/mathjax/mathjaxConverter.js";
 
 /*
@@ -67,15 +67,9 @@ export function calculateWVAWithT1T2(t1, t2){
 		return [wvaForT2, deltaAndAverage];
 	}
 	
-	if(t1.toString().startsWith("-")){		
-		t1 = t1.substring(1);		
-	} else {
-		t1 = "-" + t1;
-	}
-	
 	//print("calculateWVAWithT1T2 t1=" + t1);
 	
-	const deltaT = sum(t2,t1);
+	const deltaT = subtract(t2,t1);
 	//print("calculateWVAWithT1T2 deltaT=" + deltaT);
 	
 	//Calculate s, v, and a for t2
@@ -94,21 +88,14 @@ export function calculateWVAWithT1T2(t1, t2){
 	
 	//Calculate s, v, and a between t1 and t2
 	
-	const deltaS = sum(sT2Result.value, parseInt(S_FOR_T1) * -1);
+	const deltaS = subtract(sT2Result.value, S_FOR_T1);
 	//print("calculateWVAWithT1T2 deltaS=" + deltaS);
 	const averageV = divide(deltaS, deltaT);
 	//print("calculateWVAWithT1T2 averageV=" + averageV);
-	
-	const vSummand1 = vT2Result.value + "/" + deltaT;
-	//print("calculateWVAWithT1T2 vSummand1=" + vSummand1);
-	const vSummand2 = (parseInt(V_FOR_T1) * -1) + "/" + deltaT;
-	//print("calculateWVAWithT1T2 vSummand2=" + vSummand2);
-	
-	const averageA = sum(vSummand1, vSummand2);
+	const averageA = subtract(vT2Result.value + "/" + deltaT, V_FOR_T1 + "/" + deltaT);
 	//print("calculateWVAWithT1T2 averageA=" + averageA);
 	
 	//Create result array with its dictionaries for wva for T2 and delta/avarage wva
-	
 	wvaForT2.s2 = sT2Result.mjax;
 	wvaForT2.v2 = vT2Result.mjax;
 	wvaForT2.a2 = aT2Result.mjax;
@@ -125,7 +112,7 @@ export function calculateWVAWithT1T2(t1, t2){
 	//print("calculateWVAWithT1T2 wvaForT2.v2=" + wvaForT2.v2);
 	//print("calculateWVAWithT1T2 wvaForT2.a2=" + wvaForT2.a2);
 	
-	//print("calculateWVAWithT1T2 deltaAndAverage.s_t1_t2=" + deltaAndAverage.s_t1_t2);
+	print("calculateWVAWithT1T2 deltaAndAverage.s_t1_t2=" + deltaAndAverage.s_t1_t2);
 	//print("calculateWVAWithT1T2 deltaAndAverage.v_s1_s2=" + deltaAndAverage.v_t1_t2);
 	//print("calculateWVAWithT1T2 deltaAndAverage.a_v1_v2=" + deltaAndAverage.a_t1_t2);
 	
