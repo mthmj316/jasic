@@ -1,4 +1,18 @@
 /**
+ * Converts a result line like v=50m/s.
+ * 
+ * The following can be converted:
+ * - bar over the left side of the equal sign, if it starts with "B." (eg. B.v=...)
+ * - delta before the digit before the left side, if it starts wit "D." (eg. D.v=...)
+ * - fraction on the right side of the equal sign. (eg. D.v= 1/2)
+ * - unit on the right side of the equal sign, if it is between [] (eg. D.a=1/2[m/s^2])
+ */
+export function convertResultLine(rawExpression){
+	
+	return "";
+}
+
+/**
 * Converts the given rawExpression into a mathjax expression. 
 */
 export function convert2MathJax(rawExpression){
@@ -46,6 +60,42 @@ export function convert2MathJax(rawExpression){
 // #####################################################
 // private functions ###################################
 // #####################################################
+/*
+ * Converts a raw fraction notation into mathjax notation.
+ * Supporting, letters in the fraction and power expressions.
+ * if the complexFraction doesn't conatins a "=" the complexFraction
+ * will be returned.
+ */
+function convertComplexFraction(complexFraction){
+	
+	//Check if fraction - if not return rawExpression
+	if(/\//.test(complexFraction)){
+		return complexFraction;
+	}
+	
+	//Check if actually complex fraction - -if not call replaceFraction
+	if(/\^/.test(complexFraction)){
+		return convertFraction(complexFraction);
+	}
+	
+	//Split into numerator and denominator - process replacePowers on them
+	const splitComplexFraction = complexFraction.split(/\//);
+	
+	const mjaxNumerator = splitComplexFraction[0];
+	const mjaxDenominator = splitComplexFraction[1];
+	
+	//Create dummy fraction - process it with convertFraction
+	const dummyFraction = "N/D";
+	
+	const mjaxDummyFraction = convertFraction(dummyFraction);
+	
+	//Replace the numerator and denominator of the processed dummy fraction
+	//with replacePowers processed numerator and denominator
+	var result = mjaxDummyFraction.replace("N", mjaxNumerator);
+	result = result.replace("N", mjaxDenominator);
+	
+	return result
+}
 /*
 * Replaces the spaces in the rawExpression as follows:
 * 

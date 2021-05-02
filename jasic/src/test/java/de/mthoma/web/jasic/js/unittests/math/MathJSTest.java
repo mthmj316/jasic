@@ -1,4 +1,4 @@
-package de.mthoma.web.jasic.js.unittests;
+package de.mthoma.web.jasic.js.unittests.math;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -56,7 +56,7 @@ class MathJSTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "math_subtract_TestData.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "subtract_TestData.csv", numLinesToSkip = 1)
 	void testSubtract(String testCase, String minuend, String subtrahend, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {minuend, subtrahend};
@@ -66,7 +66,7 @@ class MathJSTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "math_subtract_ErrorTestData.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "subtract_ErrorTestData.csv", numLinesToSkip = 1)
 	void testErrorSubtract(String testCase, String minuend, String subtrahend, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {minuend, subtrahend};
@@ -76,7 +76,7 @@ class MathJSTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "math_divide_TestData.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "divide_TestData.csv", numLinesToSkip = 1)
 	void testDivide(String testCase, String numerator, String denominator, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {numerator, denominator};
@@ -86,7 +86,7 @@ class MathJSTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "math_divide_ErrorTestData.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "divide_ErrorTestData.csv", numLinesToSkip = 1)
 	void testErrorDivide(String testCase, String numerator, String denominator, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {numerator, denominator};
@@ -96,7 +96,7 @@ class MathJSTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "math_sum_TestData.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "sum_TestData.csv", numLinesToSkip = 1)
 	void testSum(String testCase, String summand1, String summand2, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {summand1, summand2};
@@ -106,7 +106,7 @@ class MathJSTest {
 	}
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "math_sum_ErrorTestData.csv", numLinesToSkip = 1)
+	@CsvFileSource(resources = "sum_ErrorTestData.csv", numLinesToSkip = 1)
 	void testErrorSum(String testCase, String summand1, String summand2, String expected)throws NoSuchMethodException, ScriptException {
 		
 		Object[] params = new Object[] {summand1, summand2};
