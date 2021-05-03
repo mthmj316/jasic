@@ -1,5 +1,5 @@
 import {calulateFunctionValue,differentiateWithRespectTo,sum,divide,subtract}  from  "/js/math/math.js";
-import {convert2MathJax}  from  "/js/mathjax/mathjaxConverter.js";
+import {convert2MathJax,convertResultLine}  from  "/js/mathjax/mathjaxConverter.js";
 
 /*
 * Error return object for calculatePathTimeFunction
@@ -217,14 +217,15 @@ function createMjax4WVADeltaAndAverage(deltaAndAverage){
 		return mjaxDeltaAndAverage;
 	}
 	
-	//Create mjax for s_t1_t2
-	const mjaxST1T2 = "$$\\Delta{s}=" + deltaAndAverage.s_t1_t2 + "\\," + FUNCTION_VALUE_VAR_UNIT_DICT.s + "$$"
+	//Create raw expression for s_t1_t2, v_t1_t2, and a_t1_t2
+	const rawST1T2 = "D.s=" + deltaAndAverage.s_t1_t2 + "[" + FUNCTION_VALUE_VAR_UNIT_DICT.s + "]";
+	const rawVT1T2 = "B.v=" + deltaAndAverage.v_t1_t2 + "[" + FUNCTION_VALUE_VAR_UNIT_DICT.v + "]";
+	const rawAT1T2 = "B.a=" + deltaAndAverage.a_t1_t2 + "[" + FUNCTION_VALUE_VAR_UNIT_DICT.a + "]";
 	
-	//Create mjax for v_t1_t2
-	const mjaxVT1T2 = "$$\\bar{v}=" + deltaAndAverage.v_t1_t2 + "\\," + FUNCTION_VALUE_VAR_UNIT_DICT.v + "$$"
-	
-	//Create mjax for a_t1_t2
-	const mjaxAT1T2 = "$$\\bar{a}=" + deltaAndAverage.a_t1_t2 + "\\," + FUNCTION_VALUE_VAR_UNIT_DICT.a + "$$"
+	//Create mjax notation for s_t1_t2, v_t1_t2, and a_t1_t2
+	const mjaxST1T2 = convertResultLine(rawST1T2);
+	const mjaxVT1T2 = convertResultLine(rawVT1T2);
+	const mjaxAT1T2 = convertResultLine(rawAT1T2);
 	
 	//Set mjax values in the result dictionary
 	mjaxDeltaAndAverage.s_t1_t2 = mjaxST1T2;
