@@ -1,7 +1,45 @@
 /**
  * 
  */
-import {calculatePathTimeFunction}  from  "/js/model/kinematics.js";
+import {calculatePathTimeFunction, calculateWVAWithT1T2}  from  "/js/model/kinematics.js";
+                              
+window.onCalculateExtended = function onCalculateExtended(document){
+	
+	const t1 = document.getElementById("t1_value_input").value;	
+	if(t1.length == 0){
+		return;
+	}
+	
+	const t2 = document.getElementById("t2_value_input").value;
+	
+	if(t2.length > 0 && isNaN(t2)){
+		window.alert("'" + t2 + "' ist kein erlaubter Wert!")
+		return;
+	}
+	
+	try {
+		
+		const resultArray = calculateWVAWithT1T2(t1, t2);
+		
+		const wvaForT2 = resultArray[0];
+		const deltaAndAverage = resultArray[1];
+		
+		document.getElementById("way_for_t2").innerText = wvaForT2.s2;
+		document.getElementById("way_between_t1_and_t2").innerText = deltaAndAverage.s_t1_t2;
+		
+		document.getElementById("speed_for_t2").innerText = wvaForT2.v2;
+		document.getElementById("average_speed_between_t1_and_t2").innerText = deltaAndAverage.v_t1_t2;
+		
+		document.getElementById("acceleration_for_t2").innerText = wvaForT2.a2;
+		document.getElementById("average_acceleration_between_t1_and_t2").innerText = deltaAndAverage.a_t1_t2;
+				
+		MathJax.Hub.Queue(['Typeset',MathJax.Hub]);
+		
+	} catch (error){
+		window.alert("Ein unerwarteter Fehler ist aufgetreten.\nBitte notieren Sie Ihre Eingabe und melden den Fehler: " + error);
+		return;
+	}
+}
 
 window.onCalculate = function onCalculate(document){
 	

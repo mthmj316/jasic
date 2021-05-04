@@ -2,6 +2,28 @@
  * http://usejsdoc.org/
  */
 /**
+ * Subtracts the subtrahend from the minuend.
+ */
+export function subtract(minuend, subtrahend){
+	
+	//Check input
+	validateNumber(minuend);
+	validateNumber(subtrahend);
+	
+	//Inverte the algebraic sign of the subtrahend
+	if(subtrahend.toString().includes("-")){
+		subtrahend = subtrahend.replace("-", "");
+	} else {
+		subtrahend = "-" + subtrahend;
+	}
+	
+	//Call sum and return call result
+	const difference = sum(minuend, subtrahend);
+	
+	return difference;
+}
+
+/**
  * Divides the given numerator by the given denominator.
  * If the result is whole number, this whole number will be rturned.
  * Otherwise the reduced fraction.
@@ -18,13 +40,21 @@ export function divide(numerator,denominator){
 		throw "Division by zero is not permitted";
 	}
 	
-	const fraction = numerator + "/" + denominator;
-	//print("divide fraction=" + fraction);
+	//Create reverse break of the denominator.
 	
-	var result = reduceFraction(fraction);
-	//print("divide result=" + result);
 	
-	result = convert2WholeNumber(result);
+	var denominatorReverseBreak;
+	
+	if(/\//.test(denominator)){
+		
+		denominatorReverseBreak = denominator.split(/\//)[1] + "/" + denominator.split(/\//)[0];
+		
+	} else {
+		
+		denominatorReverseBreak = "1/" + denominator;
+	}
+	
+	const result = multiply(numerator, denominatorReverseBreak);
 	//print("divide result=" + result);
 	
 	return result;
@@ -212,6 +242,8 @@ export function differentiateWithRespectTo(expression, variable){
 * If not an error will be thrown.
 */
 function validateNumber(number){
+	
+	//print("validateNumber number=" + number);
 	
 	//Validate string if undefined or empty
 	if(!validateString(number)){

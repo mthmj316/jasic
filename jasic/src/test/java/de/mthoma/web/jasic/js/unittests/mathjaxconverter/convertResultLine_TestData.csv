@@ -1,0 +1,5 @@
+testcase,rawExpression,expected
+Testfall_0127,x=4,$$x=4$$
+Testfall_0128,"D.s=5/10[m]","$$\Delta{s}={{5}\over{10}}\,m$$"
+Testfall_0129,"B.v=10[m/s]","$$\bar{v}=10\,{{m}\over{s}}$$"
+Testfall_0134,"x=4[f^2/e^4]","$$x=4\,{{f^2}\over{e^4}}$$"
