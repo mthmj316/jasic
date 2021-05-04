@@ -1,0 +1,4 @@
+testcase,sFromT,t1,t2,expected
+SystemTest_0006,"",4,"",s(t) ist nicht definiert!
+SystemTest_0007,2t^2,a,"","'a' ist kein erlaubter Wert!"
+SystemTest_0008,2t^2,2,a,"'a' ist kein erlaubter Wert!"
