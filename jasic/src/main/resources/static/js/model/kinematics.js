@@ -92,7 +92,11 @@ export function calculateWVAWithT1T2(t1, t2){
 	//print("calculateWVAWithT1T2 deltaS=" + deltaS);
 	const averageV = divide(deltaS, deltaT);
 	//print("calculateWVAWithT1T2 averageV=" + averageV);
-	const averageA = subtract(vT2Result.value + "/" + deltaT, V_FOR_T1 + "/" + deltaT);
+	
+	const deltaV = subtract(vT2Result.value, V_FOR_T1);
+	//print("calculateWVAWithT1T2 deltaV=" + deltaV);
+	
+	const averageA = divide(deltaV, deltaT);
 	//print("calculateWVAWithT1T2 averageA=" + averageA);
 	
 	//Create result array with its dictionaries for wva for T2 and delta/avarage wva
@@ -112,7 +116,7 @@ export function calculateWVAWithT1T2(t1, t2){
 	//print("calculateWVAWithT1T2 wvaForT2.v2=" + wvaForT2.v2);
 	//print("calculateWVAWithT1T2 wvaForT2.a2=" + wvaForT2.a2);
 	
-	print("calculateWVAWithT1T2 deltaAndAverage.s_t1_t2=" + deltaAndAverage.s_t1_t2);
+	//print("calculateWVAWithT1T2 deltaAndAverage.s_t1_t2=" + deltaAndAverage.s_t1_t2);
 	//print("calculateWVAWithT1T2 deltaAndAverage.v_s1_s2=" + deltaAndAverage.v_t1_t2);
 	//print("calculateWVAWithT1T2 deltaAndAverage.a_v1_v2=" + deltaAndAverage.a_t1_t2);
 	
@@ -171,6 +175,7 @@ export function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 	//print("calculatePathTimeFunction aResult=" + aResult);
 	
 	A_FROM_T = aResult.derivation;
+	//print("calculatePathTimeFunction A_FROM_T=" + A_FROM_T);
 	
 	S_FOR_T1 = sResult.rawValue;
 	V_FOR_T1 = vResult.rawValue;
