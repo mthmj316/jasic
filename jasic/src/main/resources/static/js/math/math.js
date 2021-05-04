@@ -1,7 +1,121 @@
 /**
  * http://usejsdoc.org/
  */
+/**
+ * Subtracts the subtrahend from the minuend.
+ */
+export function subtract(minuend, subtrahend){
+	
+	//Check input
+	validateNumber(minuend);
+	validateNumber(subtrahend);
+	
+	//Inverte the algebraic sign of the subtrahend
+	if(subtrahend.toString().includes("-")){
+		subtrahend = subtrahend.replace("-", "");
+	} else {
+		subtrahend = "-" + subtrahend;
+	}
+	
+	//Call sum and return call result
+	const difference = sum(minuend, subtrahend);
+	
+	return difference;
+}
 
+/**
+ * Divides the given numerator by the given denominator.
+ * If the result is whole number, this whole number will be rturned.
+ * Otherwise the reduced fraction.
+ */
+export function divide(numerator,denominator){
+	
+	//print("divide numerator=" + numerator);
+	//print("divide denominator=" + denominator);
+	
+	validateNumber(numerator);
+	validateNumber(denominator);
+	
+	if(denominator == 0){
+		throw "Division by zero is not permitted";
+	}
+	
+	//Create reverse break of the denominator.
+	
+	
+	var denominatorReverseBreak;
+	
+	if(/\//.test(denominator)){
+		
+		denominatorReverseBreak = denominator.split(/\//)[1] + "/" + denominator.split(/\//)[0];
+		
+	} else {
+		
+		denominatorReverseBreak = "1/" + denominator;
+	}
+	
+	const result = multiply(numerator, denominatorReverseBreak);
+	//print("divide result=" + result);
+	
+	return result;
+}
+
+/** 
+* Sums the given sumands.
+*/
+export function sum(summand1, summand2){
+	
+	//print("sum summand1=" + summand1);
+	//print("sum summand2=" + summand2);
+	
+	validateNumber(summand1);
+	validateNumber(summand2);
+	
+	//Check if both summands are fraction and if not transform them
+	if(!summand1.toString().includes("/")){
+		summand1 = transform2Fraction(summand1);	
+		//print("sum summand1=" + summand1);
+	}
+	
+	if(!summand2.toString().includes("/")){
+		summand2 = transform2Fraction(summand2);
+	//print("sum summand2=" + summand2);	
+	}
+	
+	//Bring the both summands to equal denominator
+	const equalledFractions = equalDenominator(summand1, summand2);
+	
+	const f1ExpandedSplit = equalledFractions[0].split("/");
+	const f2ExpandedSplit = equalledFractions[1].split("/");
+	
+	const f1Numerator = parseInt(f1ExpandedSplit[0]);
+	const f2Numerator = parseInt(f2ExpandedSplit[0]);
+	const resultDenominator = parseInt(f2ExpandedSplit[1]);
+	
+	//print("sum f1Numerator=" + f1Numerator);
+	//print("sum f2Numerator=" + f2Numerator);
+	//print("sum resultDenominator=" + resultDenominator);
+	
+	//Sum up and reduce the result fraction
+	const resultNumerator = f1Numerator + f2Numerator;
+	//print("sum resultNumerator=" + resultNumerator);
+	
+	if(resultNumerator == 0){
+		//print("sum result=" + result);
+		return "0";
+	}
+	
+	var result = resultNumerator + "/" + resultDenominator;
+	//print("sum result=" + result);
+	
+	result = reduceFraction(result);
+	//print("sum result=" + result);
+	
+	result = convert2WholeNumber(result);
+	//print("sum result=" + result);
+	
+	return result;
+}
 /**
 * Calculates for the given function_, variable, and variableValue the function value.
 * function_ - the function for which the value must be calculated: x^2 + x + 3
@@ -129,6 +243,8 @@ export function differentiateWithRespectTo(expression, variable){
 */
 function validateNumber(number){
 	
+	//print("validateNumber number=" + number);
+	
 	//Validate string if undefined or empty
 	if(!validateString(number)){
 		throw "number is not set properly";
@@ -173,59 +289,6 @@ function validateFunction(function_){
 	
 		throw "function is not set properly";
 	}
-}
-/*
-* Sums the given sumands.
-*/
-function sum(summand1, summand2){
-	
-	//print("sum summand1=" + summand1);
-	//print("sum summand2=" + summand2);
-	
-	//Check if both summands are fraction and if not transform them
-	if(!summand1.toString().includes("/")){
-		summand1 = transform2Fraction(summand1);	
-		//print("sum summand1=" + summand1);
-	}
-	
-	if(!summand2.toString().includes("/")){
-		summand2 = transform2Fraction(summand2);
-	//print("sum summand2=" + summand2);	
-	}
-	
-	//Bring the both summands to equal denominator
-	const equalledFractions = equalDenominator(summand1, summand2);
-	
-	const f1ExpandedSplit = equalledFractions[0].split("/");
-	const f2ExpandedSplit = equalledFractions[1].split("/");
-	
-	const f1Numerator = parseInt(f1ExpandedSplit[0]);
-	const f2Numerator = parseInt(f2ExpandedSplit[0]);
-	const resultDenominator = parseInt(f2ExpandedSplit[1]);
-	
-	//print("sum f1Numerator=" + f1Numerator);
-	//print("sum f2Numerator=" + f2Numerator);
-	//print("sum resultDenominator=" + resultDenominator);
-	
-	//Sum up and reduce the result fraction
-	const resultNumerator = f1Numerator + f2Numerator;
-	//print("sum resultNumerator=" + resultNumerator);
-	
-	if(resultNumerator == 0){
-		//print("sum result=" + result);
-		return "0";
-	}
-	
-	var result = resultNumerator + "/" + resultDenominator;
-	//print("sum result=" + result);
-	
-	result = reduceFraction(result);
-	//print("sum result=" + result);
-	
-	result = convert2WholeNumber(result);
-	//print("sum result=" + result);
-	
-	return result;
 }
 	
 /*
@@ -456,6 +519,16 @@ function reduceFraction(fraction){
 	
 	//print("reduceFraction numerator=" + numerator );
 	//print("reduceFraction denominator=" + denominator );
+	
+	if(numerator == 0){
+		//print("reduceFraction result=" + fraction );
+		return fraction;
+	}
+	
+	if (denominator < 0){
+		numerator = numerator * -1;
+		denominator = denominator * -1;
+	}
 	
 	// Contains the max. possible common factor
 	var factor;

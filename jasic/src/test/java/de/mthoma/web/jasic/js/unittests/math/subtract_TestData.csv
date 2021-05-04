@@ -1,0 +1,10 @@
+testcase,minuend,subtrahend,expected
+Testfall_0118,10,3,7
+Testfall_0119,3,10,-7
+Testfall_0120,5,5,0
+Testfall_0121,5,-5,10
+Testfall_0122,0,0,0
+Testfall_0123,1/2,-1/2,1
+Testfall_0124,-3/4,1/4,-1
+Testfall_0125,5/3,12/6,-1/3
+Testfall_0126,55.3,21.7,168/5

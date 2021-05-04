@@ -1,0 +1,9 @@
+testCase,summand1,summand2,expected
+Testfall_0081,3,4,7
+Testfall_0082,3,-4,-1
+Testfall_0083,-3,4,1
+Testfall_0084,-3,-4,-7
+Testfall_0091,5/2,1/2,3
+Testfall_0092,3,8/4,5
+Testfall_0093,3/4,1/2,5/4
+Testfall_0094,1/2,-1/2,0

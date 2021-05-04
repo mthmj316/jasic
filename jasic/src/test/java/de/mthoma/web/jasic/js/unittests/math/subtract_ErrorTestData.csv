@@ -1,0 +1,7 @@
+testcase,minuend,subtrahend,expected
+Testfall_0112,,2,number is not set properly
+Testfall_0113,"",2,number is not set properly
+Testfall_0114,4,,number is not set properly
+Testfall_0115,4,"",number is not set properly
+Testfall_0116,a/2,1/2,number is not a number or fraction
+Testfall_0117,1/2,a/4,number is not a number or fraction

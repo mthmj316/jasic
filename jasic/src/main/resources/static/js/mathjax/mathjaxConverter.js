@@ -1,3 +1,67 @@
+
+/**Contains the mapping for the raw key and the corresponding mathjax noation
+ * {raw.key:"mathjax notation"}
+ */
+const KEYS_FOR_MJAX = {D:"\\Delta",B:"\\bar"}
+
+/**
+ * Converts a result line like v=50m/s.
+ * 
+ * The following can be converted:
+ * - bar over the left side of the equal sign, if it starts with "B." (eg. B.v=...)
+ * - delta before the digit before the left side, if it starts wit "D." (eg. D.v=...)
+ * - fraction on the right side of the equal sign. (eg. D.v= 1/2)
+ * - unit on the right side of the equal sign, if it is between [] (eg. D.a=1/2[m/s^2])
+ */
+export function convertResultLine(rawExpression){
+	
+	//Check if rawExpression is a result line
+	//If not return the input variable.
+	if (/=/.test(rawExpression) != true){
+		return rawExpression;
+	}
+	
+	//Split the rawExpression into left and rigth of the equal sign
+	const splitRawExpression = rawExpression.split(/=/);
+	
+	const left = splitRawExpression[0];
+	const right = splitRawExpression[1];
+	
+	//Check if the left side starts with B. or D. and apply the corrsponding mjax notation
+	var mjaxLeft; 
+	if(/\./.test(left) == true){
+		const splitLeft = left.split(/\./);
+		//D -> \Delta{<left side>}, B -> \Bar{<left side>}, None -> <left side>
+		mjaxLeft = KEYS_FOR_MJAX[splitLeft[0]]  + "{" + splitLeft[1] + "}";
+	} else {
+		mjaxLeft = left;
+	}
+	
+	//Check if right side contains unit, if so separate it and create mjax for it.
+	//Unit is between '[' and ']'
+	const unitMatch = /\[(.*?)\]/.exec(right);
+	//unitMatch == "[unit],unit" or null => unitMatch[1] needed
+
+	var mjaxUnit;
+	var mjaxUnitSep;
+	
+	if(unitMatch != null){
+		mjaxUnit = convertComplexFraction(unitMatch[1]);
+		mjaxUnitSep = "\\,";
+	} else {
+		mjaxUnit = "";
+		mjaxUnitSep = "";
+	}
+	
+	//Create mjax result notation.
+	
+	const mjaxRightWOUnit = convertComplexFraction(right.split(/\[/)[0]);
+	
+	const result = "$$" + mjaxLeft + "=" + mjaxRightWOUnit + mjaxUnitSep + mjaxUnit + "$$"
+	
+	return result;
+}
+
 /**
 * Converts the given rawExpression into a mathjax expression. 
 */
@@ -46,6 +110,42 @@ export function convert2MathJax(rawExpression){
 // #####################################################
 // private functions ###################################
 // #####################################################
+/*
+ * Converts a raw fraction notation into mathjax notation.
+ * Supporting, letters in the fraction and power expressions.
+ * if the complexFraction doesn't conatins a "=" the complexFraction
+ * will be returned.
+ */
+function convertComplexFraction(complexFraction){
+	
+	//Check if fraction - if not return rawExpression
+	if(/\//.test(complexFraction) == false){
+		return complexFraction;
+	}
+	
+	//Check if actually complex fraction - -if not call replaceFraction
+	if(/\^/.test(complexFraction) == false){
+		return convertFraction(complexFraction);
+	}
+	
+	//Split into numerator and denominator - process replacePowers on them
+	const splitComplexFraction = complexFraction.split(/\//);
+	
+	const mjaxNumerator = splitComplexFraction[0];
+	const mjaxDenominator = splitComplexFraction[1];
+	
+	//Create dummy fraction - process it with convertFraction
+	const dummyFraction = "N/D";
+	
+	const mjaxDummyFraction = convertFraction(dummyFraction);
+	
+	//Replace the numerator and denominator of the processed dummy fraction
+	//with replacePowers processed numerator and denominator
+	var result = mjaxDummyFraction.replace("N", mjaxNumerator);
+	result = result.replace("D", mjaxDenominator);
+	
+	return result
+}
 /*
 * Replaces the spaces in the rawExpression as follows:
 * 

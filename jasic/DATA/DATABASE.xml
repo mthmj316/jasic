@@ -130,9 +130,17 @@ Der Unterschied zur Theorie ist, dass ein Model simpler ist und nur eine struktu
             <ChapterName>Ableitung</ChapterName>
             <Content>&lt;p style="margin-left: 0px;"&gt;$${d \over dt} {(Ct^n)} = nCt^{n-1}$$&lt;/p&gt;&lt;p&gt;$$\text{ und } {dC\over dt} = 0$$&lt;br&gt;&lt;/p&gt;&lt;p&gt;$$\text{C ist jede beliebige Konstante.}$$&lt;/p&gt;</Content>
         </Chapter>
-        <Chapter Id="1617894553163" ParentId="0">
-            <ChapterName>Neues Kapitel</ChapterName>
-            <Content>&lt;p&gt;Das ist ein Test&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;$$ x = 2^3$$&lt;/p&gt;</Content>
+        <Chapter Id="1618239542469" ParentId="1613067499964">
+            <ChapterName>Beschleunigung</ChapterName>
+            <Content>&lt;p&gt;Von Beschleunigung spricht man, wenn ein Massenpunkt seine Geschwindigkeit ändert.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Beschleunigen: Geschwindigkeit und Beschleunigung sind gleichgerichtet.&lt;/li&gt;&lt;li&gt;Bremsen: Geschwindigkeit und Beschleunigung sind entgegengerichtet.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;i&gt;Hinweis: Bremsen bedeutet nicht zwangsläufig, dass die Beschleunigung negativ ist. Sie ist nur dann negativ, wenn sich der Massenpunkt auf der x-Achse von links nach rechts bewegt.&lt;/i&gt;&lt;/p&gt;&lt;p&gt;Als Einheit der Beschleunigung wird für gewöhnlich:&amp;nbsp;\( m \over s^2 \)&amp;nbsp;verwendet.&lt;/p&gt;&lt;p&gt;Beispiel:&amp;nbsp;\( 5\,{{m} \over {s^2}} = 5\,{{m \over s} \over s} \)&lt;/p&gt;&lt;p&gt;&lt;span style="color: rgb(51, 51, 51);"&gt;Bedeutung: Die Geschwindigkeit erhöht sich um \( 5\,{m \over s} \) pro Sekunde.&lt;/span&gt;&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1618239873566" ParentId="1618239542469">
+            <ChapterName>Durchschnittsbeschleunigung</ChapterName>
+            <Content>&lt;p&gt;Die Durchschnittsbeschleunigung ist der Quotient aus der Geschwindigkeitsänderung und der Zeit, die für diese Änderung benötigt wird.&lt;/p&gt;&lt;p&gt;$$\bar a = {v_2 - v_1 \over t_2 - t_1}={\Delta v \over \Delta t}$$&lt;/p&gt;</Content>
+        </Chapter>
+        <Chapter Id="1618245445025" ParentId="1618239542469">
+            <ChapterName>Momentanbescchleunigung</ChapterName>
+            <Content>&lt;p style="margin-left: 0px;"&gt;Unter Momentanbeschleunigung &lt;i&gt;a&lt;/i&gt; versteht man die Beschleunigung zu einem beliebigen Zeitpunkt. Anders ausgedrückt, ist die Momentanbeschleunigung zu jedem beliebigen Moment definiert, als die Durchschnittsbeschleunigung über ein unendlich kleines Zeitintervall.&lt;/p&gt;&lt;p&gt;$$a = \lim_{\Delta t\to 0}{\Delta v \over \Delta t}$$&lt;br&gt;&lt;/p&gt;&lt;p&gt;$$v = \lim_{\Delta t\to 0}{\Delta v \over \Delta t} = {d \over dt} \biggl( {ds \over dt} \biggr) = {d^2s \over dt^2}$$&lt;/p&gt;</Content>
         </Chapter>
     </Chapters>
 </JasicDatabase>

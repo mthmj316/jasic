@@ -1,5 +1,5 @@
-import {calulateFunctionValue,differentiateWithRespectTo}  from  "/js/math/math.js";
-import {convert2MathJax}  from  "/js/mathjax/mathjaxConverter.js";
+import {calulateFunctionValue,differentiateWithRespectTo,sum,divide,subtract}  from  "/js/math/math.js";
+import {convert2MathJax,convertResultLine}  from  "/js/mathjax/mathjaxConverter.js";
 
 /*
 * Error return object for calculatePathTimeFunction
@@ -21,6 +21,107 @@ const FUNCTION_VALUE_VAR_UNIT_DICT = {
 	v:"{{m}\\over{s}}",
 	a:"{{m}\\over{s^2}}"
 };
+
+/*
+* Contains the pathTimeFunctionRaw value of the last 
+* calculatePathTimeFunction function call. 
+*/
+var S_FROM_T = "";
+
+/*
+* Contains the first derivative of the last S_FROM_T. 
+*/
+var V_FROM_T = "";
+
+/*
+* Contains the second derivative of the last S_FROM_T. 
+*/
+var A_FROM_T = "";
+
+/*
+* Contains s for t1 of the last S_FROM_T. 
+*/
+var S_FOR_T1 = "";
+
+/*
+* Contains v for t1 of the last V_FROM_T. 
+*/
+var V_FOR_T1 = "";
+
+/*
+* Contains a for t1 of the last A_FROM_T. 
+*/
+var A_FOR_T1 = "";
+
+export function calculateWVAWithT1T2(t1, t2){
+	
+	//print("calculateWVAWithT1T2 t1=" + t1);
+	//print("calculateWVAWithT1T2 t2=" + t2);
+	
+	const wvaForT2 = {s2:"", v2:"", a2:""};
+	var deltaAndAverage = {s_t1_t2:"", v_t1_t2:"", a_t1_t2:""};
+	
+	//Check if t2 is set, convert the algebraic sign of t1, and calculate delta t.  
+	
+	if(t2.length == 0){
+		return [wvaForT2, deltaAndAverage];
+	}
+	
+	//print("calculateWVAWithT1T2 t1=" + t1);
+	
+	const deltaT = subtract(t2,t1);
+	//print("calculateWVAWithT1T2 deltaT=" + deltaT);
+	
+	//Calculate s, v, and a for t2
+	
+	const sT2Result = convertFunctionValue2MathJax(S_FROM_T, t2, "s");
+	//print("calculateWVAWithT1T2 sT2Result.mjax=" + sT2Result.mjax);
+	//print("calculateWVAWithT1T2 sT2Result.value=" + sT2Result.value);
+	
+	const vT2Result = convertFunctionValue2MathJax(V_FROM_T, t2, "v");
+	//print("calculateWVAWithT1T2 vT2Result.mjax=" + vT2Result.mjax);
+	//print("calculateWVAWithT1T2 vT2Result.value=" + vT2Result.value);
+	
+	const aT2Result = convertFunctionValue2MathJax(A_FROM_T, t2, "a");
+	//print("calculateWVAWithT1T2 aT2Result.mjax=" + aT2Result.mjax);
+	//print("calculateWVAWithT1T2 aT2Result.value=" + aT2Result.value);
+	
+	//Calculate s, v, and a between t1 and t2
+	
+	const deltaS = subtract(sT2Result.value, S_FOR_T1);
+	//print("calculateWVAWithT1T2 deltaS=" + deltaS);
+	const averageV = divide(deltaS, deltaT);
+	//print("calculateWVAWithT1T2 averageV=" + averageV);
+	
+	const deltaV = subtract(vT2Result.value, V_FOR_T1);
+	//print("calculateWVAWithT1T2 deltaV=" + deltaV);
+	
+	const averageA = divide(deltaV, deltaT);
+	//print("calculateWVAWithT1T2 averageA=" + averageA);
+	
+	//Create result array with its dictionaries for wva for T2 and delta/avarage wva
+	wvaForT2.s2 = sT2Result.mjax;
+	wvaForT2.v2 = vT2Result.mjax;
+	wvaForT2.a2 = aT2Result.mjax;
+	
+	deltaAndAverage.s_t1_t2 = deltaS;
+	deltaAndAverage.v_t1_t2 = averageV;
+	deltaAndAverage.a_t1_t2 = averageA;
+	
+	deltaAndAverage = createMjax4WVADeltaAndAverage(deltaAndAverage);
+	
+	const result = [wvaForT2, deltaAndAverage];
+	
+	//print("calculateWVAWithT1T2 wvaForT2.s2=" + wvaForT2.s2);
+	//print("calculateWVAWithT1T2 wvaForT2.v2=" + wvaForT2.v2);
+	//print("calculateWVAWithT1T2 wvaForT2.a2=" + wvaForT2.a2);
+	
+	//print("calculateWVAWithT1T2 deltaAndAverage.s_t1_t2=" + deltaAndAverage.s_t1_t2);
+	//print("calculateWVAWithT1T2 deltaAndAverage.v_s1_s2=" + deltaAndAverage.v_t1_t2);
+	//print("calculateWVAWithT1T2 deltaAndAverage.a_v1_v2=" + deltaAndAverage.a_t1_t2);
+	
+	return result;	
+}
 
 /**
 * Calculates for the given pathTimeFunctionRaw the velocity time
@@ -53,27 +154,45 @@ export function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 		return PATH_TIME_FUNCTION_ERROR;
 	}
 	
+	S_FROM_T = pathTimeFunctionRaw;
+	//print("calculatePathTimeFunction S_FROM_T=" + S_FROM_T);
+	
 	const sResult = calculateTimeFunction(pathTimeFunctionRaw, t, "s");
-	//print("calculatePathTimeFunction sResult=" + sResult);
+//	print("calculatePathTimeFunction sResult.mjax=" + sResult.mjax);
+//	print("calculatePathTimeFunction sResult.mjaxValue=" + sResult.mjaxValue);
 	
 	//differentiate input function -> v(t), create mathjax for v(t)
 	//and calculate s for user input t and create mathjax
 	const vResult = diffCalculateTimeFunction(pathTimeFunctionRaw, t, "v");
 	//print("calculatePathTimeFunction vResult=" + vResult);
 	
+	V_FROM_T = vResult.derivation;
+	//print("calculatePathTimeFunction V_FROM_T=" + V_FROM_T);
+	
 	//differentiate v(t) to a(t), create mathjax for a(t) 
 	//calculate a for user input t  and create mathjax
 	const aResult = diffCalculateTimeFunction(vResult.derivation, t, "a"); 
 	//print("calculatePathTimeFunction aResult=" + aResult);
 	
+	A_FROM_T = aResult.derivation;
+	//print("calculatePathTimeFunction A_FROM_T=" + A_FROM_T);
+	
+	S_FOR_T1 = sResult.rawValue;
+	V_FOR_T1 = vResult.rawValue;
+	A_FOR_T1 = aResult.rawValue;
+	
+//	print("calculatePathTimeFunction S_FOR_T1=" + S_FOR_T1);
+//	print("calculatePathTimeFunction V_FOR_T1=" + V_FOR_T1);
+//	print("calculatePathTimeFunction A_FOR_T1=" + A_FOR_T1);
+	
 	//Build result dictionary
 	const result = {	
 		mathjax_s_t:sResult.mjax, 
-		mathjax_s_t_result:sResult.value,
+		mathjax_s_t_result:sResult.mjaxValue,
 		mathjax_v_t:vResult.mjax,
-		mathjax_v_t_result:vResult.value,
+		mathjax_v_t_result:vResult.mjaxValue,
 		mathjax_a_t:aResult.mjax,
-		mathjax_a_t_result:aResult.value
+		mathjax_a_t_result:aResult.mjaxValue
 	}
 	//print("calculatePathTimeFunction result=" + result);
 	
@@ -83,6 +202,43 @@ export function calculatePathTimeFunction(pathTimeFunctionRaw, t){
 // #####################################################
 // private functions ###################################
 // #####################################################
+/*
+* Helper methode for calculateWVAWithT1T2 to create the mjax
+* notations for the delta and average values.
+*/
+function createMjax4WVADeltaAndAverage(deltaAndAverage){
+	
+	//print("createMjax4WVADeltaAndAverage deltaAndAverage.s_t1_t2=" + deltaAndAverage.s_t1_t2);
+	//print("createMjax4WVADeltaAndAverage deltaAndAverage.v_t1_t2=" + deltaAndAverage.v_t1_t2);
+	//print("createMjax4WVADeltaAndAverage deltaAndAverage.a_t1_t2=" + deltaAndAverage.a_t1_t2);
+	
+	
+	//Initialies result dictionary
+	const mjaxDeltaAndAverage = {s_t1_t2:"", v_t1_t2:"", a_t1_t2:""}
+	
+	//Check if s_t1_t2 is set -> if not return the initilized result dictionray
+	if(!("s_t1_t2" in deltaAndAverage)){
+		
+		return mjaxDeltaAndAverage;
+	}
+	
+	//Create raw expression for s_t1_t2, v_t1_t2, and a_t1_t2
+	const rawST1T2 = "D.s=" + deltaAndAverage.s_t1_t2 + "[" + FUNCTION_VALUE_VAR_UNIT_DICT.s + "]";
+	const rawVT1T2 = "B.v=" + deltaAndAverage.v_t1_t2 + "[" + FUNCTION_VALUE_VAR_UNIT_DICT.v + "]";
+	const rawAT1T2 = "B.a=" + deltaAndAverage.a_t1_t2 + "[" + FUNCTION_VALUE_VAR_UNIT_DICT.a + "]";
+	
+	//Create mjax notation for s_t1_t2, v_t1_t2, and a_t1_t2
+	const mjaxST1T2 = convertResultLine(rawST1T2);
+	const mjaxVT1T2 = convertResultLine(rawVT1T2);
+	const mjaxAT1T2 = convertResultLine(rawAT1T2);
+	
+	//Set mjax values in the result dictionary
+	mjaxDeltaAndAverage.s_t1_t2 = mjaxST1T2;
+	mjaxDeltaAndAverage.v_t1_t2 = mjaxVT1T2; 
+	mjaxDeltaAndAverage.a_t1_t2 = mjaxAT1T2;
+	
+	return mjaxDeltaAndAverage;
+}
 /*
 * Differntiates the given rawFunction and afterwards
 * it calls the function calculateTimeFunction(rawFunction, t)
@@ -127,15 +283,17 @@ function calculateTimeFunction(rawFunction, t, functionValueVar){
 	const rawFunctionExtended = functionValueVar + "->t=" + rawFunction;
 	//print("calculateTimeFunction rawFunctionExtended=" + rawFunctionExtended);
 
-	const functionMathJax = convert2MathJax(rawFunctionExtended);
-	//print("calculateTimeFunction functionMathJax=" + functionMathJax);
+	const functionConversionResult = convert2MathJax(rawFunctionExtended);
+	//print("calculateTimeFunction functionConversionResult=" + functionConversionResult);
 
-	const functionValueMathJax = convertFunctionValue2MathJax(rawFunction, t, functionValueVar);
-	//print("calculateTimeFunction functionValueMathJax=" + functionValueMathJax);
+	const functionValueConversionResult = convertFunctionValue2MathJax(rawFunction, t, functionValueVar);
+	//print("calculateTimeFunction functionValueConversionResult.mathjax=" + functionValueConversionResult.mjax);
+	//print("calculateTimeFunction functionValueConversionResult.value=" + functionValueConversionResult.value);
 	
 	const result = {
-		mjax:functionMathJax,
-		value:functionValueMathJax
+		mjax:functionConversionResult,
+		mjaxValue:functionValueConversionResult.mjax,
+		rawValue:functionValueConversionResult.value
 	};
 	//print("calculateTimeFunction result=" + result);
 	
@@ -155,9 +313,12 @@ function convertFunctionValue2MathJax(rawFunction, t, functionValueVar){
 	//print("convertFunctionValue2MathJax functionValueVar=" + functionValueVar);
 	
 	var rawFunctionValue = "";
+	
+	var value = "";
 		
 	if(t != null && t.length > 0){
-		rawFunctionValue = functionValueVar + "->X=" + calulateFunctionValue(rawFunction, "t", t) + " U";
+		value = calulateFunctionValue(rawFunction, "t", t);
+		rawFunctionValue = functionValueVar + "->X=" + value + " U";
 	}
 	
 	//print("convertFunctionValue2MathJax rawFunctionValue=" + rawFunctionValue);
@@ -171,7 +332,14 @@ function convertFunctionValue2MathJax(rawFunction, t, functionValueVar){
 		mathjaxFunctionValue = mathjaxFunctionValue.replace("X", "t=" + t);
 	}
 	
-	//print("convertFunctionValue2MathJax result=" + mathjaxFunctionValue);
+	//print("convertFunctionValue2MathJax mathjaxFunctionValue=" + mathjaxFunctionValue);
 	
-	return mathjaxFunctionValue;
+	const result = {
+		mjax:mathjaxFunctionValue,
+		value:value
+	};
+	
+	//print("convertFunctionValue2MathJax result=" + result);
+	
+	return result;
 }
