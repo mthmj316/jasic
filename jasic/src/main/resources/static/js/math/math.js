@@ -40,13 +40,21 @@ export function divide(numerator,denominator){
 		throw "Division by zero is not permitted";
 	}
 	
-	const fraction = numerator + "/" + denominator;
-	//print("divide fraction=" + fraction);
+	//Create reverse break of the denominator.
 	
-	var result = reduceFraction(fraction);
-	//print("divide result=" + result);
 	
-	result = convert2WholeNumber(result);
+	var denominatorReverseBreak;
+	
+	if(/\//.test(denominator)){
+		
+		denominatorReverseBreak = denominator.split(/\//)[1] + "/" + denominator.split(/\//)[0];
+		
+	} else {
+		
+		denominatorReverseBreak = "1/" + denominator;
+	}
+	
+	const result = multiply(numerator, denominatorReverseBreak);
 	//print("divide result=" + result);
 	
 	return result;
