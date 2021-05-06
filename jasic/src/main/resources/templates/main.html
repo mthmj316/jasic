@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Jasic</title>
 </head>
 <body>
-	<h1>Jasic - Physik</h1>
-	<form action="enter_application" method="post">
-		<input id="id_theory_submit" type="submit" value="Theorie" name="theory"> 
-		<input id="id_practice_submit" type="submit" value="Praxis" name="practice">
-	</form>
+	<header>
+		<h1>Jasic - Physik</h1>
+	</header>
+	<nav>
+		<p>
+			<a href="#">Klassiche Mechanik</a>
+			<a href="#">Elektrodynamik und Optik</a>
+			<a href="#">Thermodynamik</a>
+			<a href="#">Relativitätstheorie</a>
+			<a href="#">Quantenphysik</a>
+			<a href="#">Atom- und Kernphysik</a>
+			<a href="#">Astrophysik und Kosmologie</a>
+<!-- 			<a href="#">Kondensierte Materie und Fluiddynamik</a>			 -->
+		</p>
+	</nav>
+	<main>
+		<form action="enter_application" method="post">
+			<input id="id_theory_submit" type="submit" value="Theorie" name="theory"> 
+			<input id="id_practice_submit" type="submit" value="Praxis" name="practice">
+		</form>
+	</main>
+	<footer>
+		<p>
+			<a href="#">Kontakt</a>
+			<a href="#">FQA</a>
+			<a href="#">Über mich</a>
+			<a href="#">Fehler melden!</a>
+		</p>
+		<p><small>Since 2020</small></p>
+	</footer>
 </body>
 </html>
