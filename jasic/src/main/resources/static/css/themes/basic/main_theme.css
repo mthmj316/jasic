@@ -1,0 +1,36 @@
+@charset "UTF-8";
+.cls_main_container{
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;	
+}
+
+.cls_main_container_horizontal {
+	background-color: #F1F1F1;
+	display: table-cell;
+	vertical-align: middle;
+}		
+
+.cls_main_container_vertical {	
+	background-color: #E0FFFF;
+	margin: auto;
+	width: 400px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #3D6DA9;
+	height: 250px;
+	padding: 20px;
+}
+
+.cls_main_header{
+	font-weight: bold;
+}	
+
+.cls_button {
+	background: #778899;
+	width: 20%;
+	height: 30px;
+}
