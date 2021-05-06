@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>de.mthoma.web</groupId>
 	<artifactId>jasic</artifactId>
-	<version>0.5.0-SNAPSHOT</version>
+	<version>v0.6.1-SNAPSHOT</version>
 	<name>jasic</name>
 	<description>Demo project for Spring Boot</description>
 
