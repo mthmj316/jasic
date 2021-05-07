@@ -3,8 +3,8 @@
 	list-style-type: none;
 	margin:0;
   	padding:0;
-  	columns: 100px 4;
-  	column-gap:0;
+/*   	columns: 100px 4; */
+/*   	column-gap:0; */
 }
 
 .cls_main_nav_item a {
