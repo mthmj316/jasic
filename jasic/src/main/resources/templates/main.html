@@ -7,67 +7,16 @@
 	href="css/themes/basic/main_theme.css" />
 </head>
 <body>
-	<header>
-		<h1>Jasic - Physik</h1>
-	</header>
-	<nav>
-		<ul class="cls_nav_1st">
-			<li >
-				<a href="#">Klassiche Mechanik</a>
-				<ul class="cls_nav_2nd">
-					<li>
-						<a  href="#">Kinematik</a>
-						<ul class="cls_nav_3rd">
-							<li><a  href="#">Gleichförmige Bewegung</a></li>
-						</ul>
-					</li>
-					<li><a  href="#">Dynamik</a>
-						<ul class="cls_nav_3rd">
-							<li><a  href="#">keine Themen</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li >
-				<a href="#">Elektrodynamik und Optik</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="#">keine Themen</a></li>
-				</ul>
-			<li>
-				<a href="#">Thermodynamik</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="#">keine Themen</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">Atom- und Kernphysik</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="#">keine Themen</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">Fortgeschrittene Themen</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="#">keine Themen</a></li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
+	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
+	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
 	<main>
+			
+<!-- 			<link rel="import" th:href="@{no_subject_available.html}"> -->
 <!-- 		<form action="enter_application" method="post"> -->
 <!-- 			<input id="id_theory_submit" type="submit" value="Theorie" -->
 <!-- 				name="theory"> <input id="id_practice_submit" type="submit" -->
 <!-- 				value="Praxis" name="practice"> -->
 <!-- 		</form> -->
 	</main>
-	<footer>
-<!-- 		<p> -->
-<!-- 			<a href="#">Kontakt</a> <a href="#">FQA</a> <a href="#">Über mich</a> -->
-<!-- 			<a href="#">Fehler melden!</a> -->
-<!-- 		</p> -->
-<!-- 		<p> -->
-<!-- 			<small>Since 2020</small> -->
-<!-- 		</p> -->
-	</footer>
 </body>
 </html>

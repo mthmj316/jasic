@@ -1,5 +1,5 @@
 @charset "UTF-8";
-nav > ul {
+nav ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -15,7 +15,7 @@ nav li {
 }
 
 @media (min-width: 45em) {
-	nav > ul {
+	nav  ul {
 		flex-direction: row;
 		height: 3em;
 	}
@@ -31,59 +31,65 @@ nav a {
 	text-decoration: none;
 	font-weight: bold;
 	text-align: center;
-	border: 1px solid darkblue;
-	border-radius: 10px;
-	box-shadow: 0 5px 10px white inset;
-	color: gold;
-	background-color: darkblue;
-	transition: all .25s ease-in;
+	border: 1px solid gray;
+	border-radius: 5px;
+/* 	box-shadow: 0 5px 10px white inset; */
+	color: black;
+	background-color: gray;
+	transition: all .1s ease-in;
 }
 
 nav a:focus,
 nav a:hover {
-	color: darkblue;
-	background-color: gold;
+	color: black;
+	background-color: lightgray;
 }
 /*     cls_nav_2nd navigation links      */
 
 nav .cls_nav_2nd  {
-	visibility: hidden;
+/* 	visibility: hidden; */
+	display: none;
 	height: 0;
 	z-index: 1000;
 }
 
 nav .cls_nav_3rd  {
-	visibility: hidden;
+/* 	visibility: hidden; */
+	display: none;
 	height: 0;
 	z-index: 1000;
 }
 
-nav .cls_nav_2nd li {
-	display: block;
-	/* width: 15em; */
-}
+/* nav .cls_nav_2nd li { */
+/* 	display: block; */
+/* 	/* width: 15em; */ */
+/* } */
 /**     Show the cls_nav_2nd on hover, focus     * */
 
-nav li:hover .cls_nav_2nd,
+/* nav li:hover .cls_nav_2nd, */
 nav li:active .cls_nav_2nd,
 nav li:focus .cls_nav_2nd {
-	visibility: visible;
+/* 	visibility: visible; */
+	display: block;
 	height: auto;
 }
 
 nav li:focus-within .cls_nav_2nd {
-	visibility: visible;
+/* 	visibility: visible; */
+	display: block;
 	height: auto;
 }
 
-nav .cls_nav_2nd:hover .cls_nav_3rd,
-nav .cls_nav_2nd:active .cls_nav_3rd,
-nav .cls_nav_2nd:focus .cls_nav_3rd {
-	visibility: visible;
+/* nav .cls_nav_2nd li:hover .cls_nav_3rd, */
+nav .cls_nav_2nd li:active .cls_nav_3rd,
+nav .cls_nav_2nd li:focus .cls_nav_3rd {
+/* 	visibility: visible; */
+	display: block;
 	height: auto;
 }
 
-nav .cls_nav_2nd:focus-within .cls_nav_3rd {
-	visibility: visible;
+nav .cls_nav_2nd li:focus-within .cls_nav_3rd {
+/* 	visibility: visible; */
+	display: block;
 	height: auto;
 }
