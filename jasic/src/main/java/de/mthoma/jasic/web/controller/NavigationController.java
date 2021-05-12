@@ -16,7 +16,6 @@ public class NavigationController extends JasicController{
 	@GetMapping(value = NO_SUBJECT_AVAILABLE_URL)
 	public String getNoSubjectAvailablePage(Model model) {
 		
-		return MAIN_PAGE;
+		return NO_SUBJECT_AVAILABLE_PAGE;
 	}
-	
 }
