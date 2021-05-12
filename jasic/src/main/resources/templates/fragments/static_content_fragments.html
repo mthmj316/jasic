@@ -1,3 +1,9 @@
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<title>Jasic</title>
+	<link rel="stylesheet" th:href="@{css/themes/basic/main_theme.css}" />
+</head>
+
 <div th:fragment="header">
 	<header>
 		<h1>Jasic - Physik</h1>
@@ -10,12 +16,12 @@
 			<li >
 				<a href="#">Klassiche Mechanik</a>
 				<ul class="cls_nav_2nd">
+					<li><a  href="/mechanics/introduction">Einführung</a></li>
 					<li>
 						<a  href="#">Kinematik</a>
 						<ul class="cls_nav_3rd">
-							<li><a  href="#">Gleichförmige Bewegung</a></li>
-							<li><a  href="#">Gleichförmige Beschleunigung</a></li>
-							<li><a  href="#">Ungleichförmige Beschleunigung</a></li>
+							<li><a  href="/mechanics/kinematics/introduction">Einführung</a></li>
+							<li><a  href="/mechanics/kinematics/in_one_direction">In einer Raumrichtung</a></li>
 						</ul>
 					</li>
 					<li><a  href="#">Dynamik</a>

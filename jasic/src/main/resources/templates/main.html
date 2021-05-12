@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Jasic</title>
-<link id="link_main_theme" type="text/css" rel="stylesheet"
-	href="css/themes/basic/main_theme.css" />
-</head>
+<head th:include="fragments/static_content_fragments.html :: head"></head>
 <body>
 	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
 	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>

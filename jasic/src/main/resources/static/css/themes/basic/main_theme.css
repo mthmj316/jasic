@@ -98,4 +98,13 @@ nav .cls_nav_2nd li:focus-within .cls_nav_3rd {
 footer {
 	position: relative;
 	z-index: 0;
+	margin: 5%;
+}
+
+main {
+	margin: 5%;
+}
+
+body {
+	background-color: #E8E8E8;
 }
