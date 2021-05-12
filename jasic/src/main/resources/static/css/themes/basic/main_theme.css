@@ -1,36 +1,101 @@
 @charset "UTF-8";
-.cls_main_container{
-	display: table;
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;	
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
 }
 
-.cls_main_container_horizontal {
-	background-color: #F1F1F1;
-	display: table-cell;
-	vertical-align: middle;
-}		
-
-.cls_main_container_vertical {	
-	background-color: #E0FFFF;
-	margin: auto;
-	width: 400px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #3D6DA9;
-	height: 250px;
-	padding: 20px;
+nav li {
+	margin: 0.5em;
+	padding: 0;
+	font-size: 1.5rem;
+	flex: 1 1 0%;
 }
 
-.cls_main_header{
+@media (min-width: 45em) {
+	nav  ul {
+		flex-direction: row;
+		height: 3em;
+	}
+	nav li {
+		flex: 1;
+		font-size: 1em;
+	}
+}
+
+nav a {
+	display: block;
+	padding: 0.4em;
+	text-decoration: none;
 	font-weight: bold;
-}	
+	text-align: center;
+	border: 1px solid gray;
+	border-radius: 5px;
+	color: black;
+	background-color: gray;
+	transition: all .1s ease-in;
+}
 
-.cls_button {
-	background: #778899;
-	width: 20%;
-	height: 30px;
+nav a:focus,
+nav a:hover {
+	color: black;
+	background-color: lightgray;
+}
+/*     cls_nav_2nd navigation links      */
+
+nav .cls_nav_2nd  {
+/* 	visibility: hidden; */
+	display: none;
+	height: 0;
+	position: relative;
+	z-index: 1000;
+}
+
+nav .cls_nav_3rd  {
+/* 	visibility: hidden; */
+	display: none;
+	height: 0;
+	position: relative;
+	z-index: 1000;
+}
+
+/* nav .cls_nav_2nd li { */
+/* 	display: block; */
+/* 	/* width: 15em; */ */
+/* } */
+/**     Show the cls_nav_2nd on hover, focus     * */
+
+/* nav li:hover .cls_nav_2nd, */
+nav li:active .cls_nav_2nd,
+nav li:focus .cls_nav_2nd {
+/* 	visibility: visible; */
+	display: block;
+	height: auto;
+}
+
+nav li:focus-within .cls_nav_2nd {
+/* 	visibility: visible; */
+	display: block;
+	height: auto;
+}
+
+/* nav .cls_nav_2nd li:hover .cls_nav_3rd, */
+nav .cls_nav_2nd li:active .cls_nav_3rd,
+nav .cls_nav_2nd li:focus .cls_nav_3rd {
+/* 	visibility: visible; */
+	display: block;
+	height: auto;
+}
+
+nav .cls_nav_2nd li:focus-within .cls_nav_3rd {
+/* 	visibility: visible; */
+	display: block;
+	height: auto;
+}
+
+footer {
+	position: relative;
+	z-index: 0;
 }
