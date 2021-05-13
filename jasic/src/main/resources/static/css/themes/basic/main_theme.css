@@ -108,3 +108,17 @@ main {
 body {
 	background-color: #E8E8E8;
 }
+
+.cls_content_top_header {
+	text-decoration: underline;
+}
+
+.cls_content_text_enum:before {
+	content: "- ";
+	margin-left: 2%;
+}
+
+.cls_reference {
+	font-size: small;
+	font-style: italic;
+}
