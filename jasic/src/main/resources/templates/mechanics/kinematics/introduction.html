@@ -12,6 +12,37 @@
 	<main class="cls_content">
 		<div th:insert="fragments/static_content_fragments.html :: content_top_header(content='Kinematik')"> </div>
 		<section>
+			<p class="cls_content_text">
+			Die Kinematik oder auch Bewegungslehre ist ein Teilgebiet der Mechanik, das sich mit der Bewegung von Körpern befasst.
+			</p>
+			<p  class="cls_content_text">
+			Folgenden Bewegungsarten werden unterschieden:
+			</p>
+			<p class="cls_content_text cls_content_text_enum">Geradlinige Bewegung (Translation)</p>
+			<p class="cls_content_text cls_content_text_enum">Drehbewegung (Rotation)</p>
+			<p  class="cls_content_text">
+			Folgende vektorielle Größen werden verwendet:
+			</p>
+			<p class="cls_content_text cls_content_text_enum">Weg s, Geschwindigkeit v, Beschleunigung a und</p>
+			<p class="cls_content_text cls_content_text_enum">Winkelgeschwindigkeit ω und Winkelbeschleunigung α bei der Rotation.</p>
+			<p  class="cls_content_text">
+			Unberücksichtigt bleiben die Kraft, die Masse der Körper und alle davon abgeleiteten Größen wie Impuls oder Energie.
+			</p>
+		</section>
+		<section>
+			<cite class="cls_reference"> <sub
+				th:insert="fragments/reference_fragments :: reference_label">
+			</sub> <sub
+				th:insert="fragments/reference_fragments :: reference_physic_horst_kuchling">
+			</sub> <sub th:insert="fragments/reference_fragments :: reference_sep">
+			</sub> <sub
+				th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+			</sub> <sub th:insert="fragments/reference_fragments :: reference_sep">
+			</sub> 
+			<sub
+				th:insert="fragments/reference_fragments :: reference_wikipedia_kinematic">
+			</sub>
+			</cite>
 		</section>
 	</main>
 	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
