@@ -111,6 +111,7 @@ body {
 
 .cls_content_top_header {
 	text-decoration: underline;
+	font-size: large;
 }
 
 .cls_content_text_enum:before {
@@ -119,6 +120,6 @@ body {
 }
 
 .cls_reference {
-	font-size: small;
-	font-style: italic;
+/* 	font-size: small; */
+/* 	font-style: italic; */
 }

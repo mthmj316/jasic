@@ -10,8 +10,9 @@
 	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
 	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
 	<main class="cls_content">
-		<h2>Kinematik Einführung</h2>
-		<p>Hallo </p>
+		<div th:insert="fragments/static_content_fragments.html :: content_top_header(content='Kinematik')"> </div>
+		<section>
+		</section>
 	</main>
 	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
 </body>

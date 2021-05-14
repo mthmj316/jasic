@@ -9,8 +9,8 @@
 	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
 	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
 	<main>
+		<div th:insert="fragments/static_content_fragments.html :: content_top_header(content='Klassische Mechanik')"> </div>
 		<section>
-			<h1 class="cls_content_top_header">Klassische Mechanik</h1>
 			<p class="cls_content_text">Die klassische Mechanik oder
 				Newtonsche Mechanik ist ein Teilgebiet der Physik. Sie wurde im 16.
 				und 17. Jahrhundert maßgeblich von Galileo Galilei und Isaac Newton
@@ -28,12 +28,15 @@
 				Hydrodynamik, Aerodynamik, Statik und Biomechanik.</p>
 		</section>
 		<section>
-			<p class="cls_reference">
-				Quellen:<cite>
-				<a 	href="https://de.wikipedia.org/wiki/Physik" target="_blank">Wikipedia:Phyisk</a>, 
-				<a 	href="https://de.wikipedia.org/wiki/Klassische_Mechanik" target="_blank">Wikipedia:Klassische Mechanik</a>
-				</cite>
-			</p>
+			<cite class="cls_reference"> <sub
+				th:insert="fragments/reference_fragments :: reference_label">
+			</sub> <sub
+				th:insert="fragments/reference_fragments :: reference_wikipedia_phyisc">
+			</sub> <sub th:insert="fragments/reference_fragments :: reference_sep">
+			</sub> <sub
+				th:insert="fragments/reference_fragments :: reference_wikipedia_klassische_mechanik">
+			</sub>
+			</cite>
 		</section>
 	</main>
 	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
