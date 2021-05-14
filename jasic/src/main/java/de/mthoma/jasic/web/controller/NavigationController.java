@@ -10,8 +10,8 @@ public class NavigationController extends JasicController{
 	private static final String NO_SUBJECT_AVAILABLE_URL = "/no_subject_available";	
 	private static final String NO_SUBJECT_AVAILABLE_PAGE = "no_subject_available";
 	
-	private static final String KINEMATICS_IN_ONE_DIRECTION_URL = "/mechanics/kinematics/in_one_direction";
-	private static final String KINEMATICS_IN_ONE_DIRECTION_PAGE = "mechanics/kinematics/in_one_direction";
+	private static final String KINEMATICS_RECTILINEAR_MOTION_URL = "/mechanics/kinematics/rectilinear_motion";
+	private static final String KINEMATICS_RECTILINEAR_MOTION_PAGE = "mechanics/kinematics/rectilinear_motion";
 	
 	private static final String KINEMATICS_INTRODUCTION_URL = "/mechanics/kinematics/introduction";
 	private static final String KINEMATICS_INTRODUCTION_PAGE = "mechanics/kinematics/introduction";
@@ -39,9 +39,9 @@ public class NavigationController extends JasicController{
 		return NO_SUBJECT_AVAILABLE_PAGE;
 	}
 	
-	@GetMapping(value = KINEMATICS_IN_ONE_DIRECTION_URL)
-	public String kinematicsInOneDirection(Model model) {
+	@GetMapping(value = KINEMATICS_RECTILINEAR_MOTION_URL)
+	public String kinematicsRectilinearMotion(Model model) {
 		
-		return KINEMATICS_IN_ONE_DIRECTION_PAGE;
+		return KINEMATICS_RECTILINEAR_MOTION_PAGE;
 	}
 }
