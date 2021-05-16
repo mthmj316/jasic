@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bezugssystem</title>
+<link id="link_main_theme" type="text/css" rel="stylesheet"
+	th:href="@{../../css/themes/basic/main_theme.css}" />
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body>
+	<div th:insert="fragments/static_content_fragments.html :: content_top_header(content='Kinematik')"> </div>
+	<section>
+		<p class="cls_content_text">Ein Bezugssystem kann als orts- und
+			zeitabhängiger Punkt gesehen werden, von dem aus ein bestimmter
+			Vorgang beobachtet wird.</p>
+		<p  class="cls_content_text">Je nachdem von welchem Bezugssystem
+			(Beobachtungspunkt) ein Vorgang beobachtet wird, können Messungen
+			unterschiedliche Ergebnisse liefern.</p>
+		<p  class="cls_content_text">Beispiel für unterschiedliche
+			Bezugssysteme:</p>
+		<p class="cls_content_text">Wenn sich eine Person in einem
+			fahrenden Zug (Geschwindigkeit des Zugs = 100km/h) mit einer
+			Geschwindigkeit von 3 km/h bewegt, dann ist die beobachtete
+			Geschwindigkeit der Person für jemanden im Zug niedriger als für
+			jemanden im Bahnhof, der beobachtet, wie der Zug vorbeifährt.</p>
+		<p class="cls_content_text">In diesem Fall gibt es also zwei
+			Bezugssysteme (Beobachtungspunkte):
+			<ol>
+				<li>innerhalb des Zuges (\(v_{Person} = 3 {{km}\over{h}} \)) und</li>
+				<li>im Bahnhof \((v_{Person} = 100 {{km}\over{h}} + 3 {{km}\over{h}} = 103 {{km}\over{h}})\)</li>
+			</ol>
+		</p>
+	</section>
+</body>
+</html>
