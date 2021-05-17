@@ -5,39 +5,7 @@
 <title>Jasic</title>
 <link id="link_main_theme" type="text/css" rel="stylesheet"
 	th:href="@{../../../css/themes/basic/main_theme.css}" />
-
-<style type="text/css">
-#popup {
-	display: none;
-	border: 1px gray solid;
-	width: 90%;
-	height: 90%;
-	top: 20px;
-	left: 20px;
-	background-color: white;
-	z-index: 10;
-	/*   padding: 2em; */
-	position: fixed;
-}
-
-#popup iframe {
-	border: 0;
-	height: 100%;
-	width: 100%;
-	left: 0;
-	position: relative;
-	top: 0;
-}
-
-#iframe {
-	border: 0;
-}
-
-#iframe_close_btn {
-	width: 100%;
-	position: relative;
-}
-</style>
+<th:block th:insert="fragments/modal_window_fragments.html :: modal_css"></th:block>
 </head>
 <body>
 	<div th:insert="fragments/static_content_fragments.html :: header">
@@ -51,36 +19,15 @@
 		</div>
 		<section>
 			<p class="cls_content_text">
-				Das 
-<!-- 				<sub>  -->
-					<a class="cls_indexed_term" href="javascript:openPopup('/index/reference_system')">Bezugssystem</a>
-<!-- 				</sub> -->
+				Das
+				<th:block
+					th:insert="fragments/modal_window_fragments.html :: modal_link(content='Bezugssystem',index_link='/index/reference_system')"></th:block>
 				ist ein super system.
 			</p>
 			
 		</section>
 	</main>
-	<div id="popup"> 
-		<iframe id="iframe"></iframe>
-		<button id="iframe_close_btn">Schließen</button>
-	</div>
 	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
-	<script>
-		window.onload = function() {
-
-			document.getElementById('popup').onclick = function() {
-				if (document.getElementById("popup").style.display == "block") {
-					document.getElementById("popup").style.display = "none";
-				}
-			};
-		}
-
-		function openPopup(ref) {
-			document.getElementById("popup").style.display = "block";
-			document.getElementById('iframe').src = ref;
-		}
-
-	</script>
-
+	<sub th:insert="fragments/modal_window_fragments.html :: modal_iframe_and_script"></sub>
 </body>
 </html>

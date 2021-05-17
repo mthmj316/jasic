@@ -123,3 +123,9 @@ body {
 /* 	font-size: small; */
 /* 	font-style: italic; */
 }
+
+.cls_indexed_term  {
+	color: black;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
