@@ -114,6 +114,11 @@ body {
 	font-size: large;
 }
 
+.content_section_header {
+	text-decoration: underline;
+	font-size: medium;
+}
+
 .cls_content_text_enum:before {
 	content: "- ";
 	margin-left: 2%;

@@ -5,6 +5,8 @@
 <title>Jasic</title>
 <link id="link_main_theme" type="text/css" rel="stylesheet"
 	th:href="@{../../../css/themes/basic/main_theme.css}" />
+<script type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <th:block th:insert="fragments/modal_window_fragments.html :: modal_css"></th:block>
 </head>
 <body>
@@ -15,16 +17,43 @@
 	</div>
 	<main>
 		<div
-			th:insert="fragments/static_content_fragments.html :: content_top_header(content='Geradliniege Bewegung')">
+			th:insert="fragments/static_content_fragments.html :: content_top_header(content='Geradlinige Bewegung')">
 		</div>
 		<section>
+			<div
+				th:insert="fragments/static_content_fragments.html :: content_section_header(content='Weg')">
+			</div>
+			<p class="cls_content_text">Wenn wir die Bewegung eines Körpers
+				angeben, ist nicht nur dessen Geschwindigkeit, sondern auch dessen
+				Bewegungsrichtung wichtig.</p>
 			<p class="cls_content_text">
-				Das
+				Bei einer geradlinigen Bewegung, bewegt sich ein Körper in nur eine
+				Raumrichtung. In der Physik verwenden wir zur Darstellung des
 				<th:block
 					th:insert="fragments/modal_window_fragments.html :: modal_link(content='Bezugssystem',index_link='/index/reference_system')"></th:block>
-				ist ein super system.
+				ein Koordinatensystem. In diesem Fall, bewegt sich ein Körper nur
+				entlang der x-Achse. Somit kann jeder Ort des Körpers zu einem
+				beliebigen Zeitpunkt, durch einen Wert auf der x-Achse angegeben
+				werden.
 			</p>
-			
+			<p class="cls_content_text">Wenn wir ermitteln wollen, welchen Weg
+				ein Körper in einem bestimmten Zeitintervall zurückgelegt hat,
+				müssen wir den x-Wert zum Zeitpunkt des Starts (\(t_1\)) vom x-Wert
+				zum Zeitpunkt des Endes des Zeitintervalls (\(t_2\)) abziehen: 
+				$$s = x_2 - x_1= \Delta{x}$$
+				$$s = 20,0\,m - 10,0\,m=10,0\,m$$
+				In diesem Fall hat sich der Körper im
+				Koordinatensystem von \(x_1=10\) nach \(x_2=20\)
+				bewegt.</p>
+			<p class="cls_content_text">Der Weg ist eine vektorielle Größe,
+				d.h. er besitzt einen Betrag (z.B. 30m) und eine Richtung (z.B. nach
+				Süden). Bewegt sich ein Körper im Koordinatensystem von links nach
+				rechts ergibt sich ein positiver Betrag des Weges. Bewegt sich der
+				Körper aber von rechts nach links (\(x_2 < x_1\)), ergibt sich ein
+				negativer Betrag des Weges. 
+				$$s = 10,0\,m - 30,0\,m=-20,0\,m$$
+				In diesem Fall hat sich der Körper im
+				Koordinatensystem von \(x_1=30\) nach \(x_2=10\) bewegt.</p>
 		</section>
 	</main>
 	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
