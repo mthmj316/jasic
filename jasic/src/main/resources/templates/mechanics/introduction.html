@@ -2,30 +2,21 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Jasic</title>
+<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
 <link id="link_main_theme" type="text/css" rel="stylesheet"
 	th:href="@{../../../css/themes/basic/main_theme.css}" />
 </head><body>
 	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
 	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
 	<main>
-		<div th:insert="fragments/static_content_fragments.html :: content_top_header(content='Klassische Mechanik')"> </div>
+		<div th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{CLASSIC.MECHANICS})"> </div>
 		<section>
-			<p class="cls_content_text">Die klassische Mechanik oder
-				Newtonsche Mechanik ist ein Teilgebiet der Physik. Sie wurde im 16.
-				und 17. Jahrhundert maßgeblich von Galileo Galilei und Isaac Newton
-				begründet. Normallerweiße wird die Mechanik in die Bereiche Kinematik und Dynamik aufgeteilt.</p>
-			<p class="cls_content_text">Sie beschreibt:	</p>
-			<p class="cls_content_text cls_content_text_enum">Bewegung von
-				festen, flüssigen oder gasförmigen Körpern unter dem Einfluss von
-				Kräften.</p>
-			<p class="cls_content_text cls_content_text_enum">Trägheitsbewegung
-				in Abwesenheit einer Kraft.</p>
-			<p class="cls_content_text cls_content_text_enum">Statisches
-				Gleichgewicht in Anwesenheit einer Kraft.</p>
-			<p class="cls_content_text">Typische Anwendungsfälle sind:
-				Himmelsmechanik, Technische Mechanik,
-				Hydrodynamik, Aerodynamik, Statik und Biomechanik.</p>
+			<p class="cls_content_text" th:text="#{TEXT00000}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00001}"></p>
+			<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00002}"></p>
+			<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00003}"></p>
+			<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00004}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00005}"></p>
 		</section>
 		<section>
 			<cite class="cls_reference"> <sub

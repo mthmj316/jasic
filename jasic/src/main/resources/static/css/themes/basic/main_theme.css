@@ -112,16 +112,23 @@ body {
 .cls_content_top_header {
 	text-decoration: underline;
 	font-size: large;
+	text-align: center;
 }
 
-.content_section_header {
+.cls_content_section_header {
 	text-decoration: underline;
 	font-size: medium;
+	text-align: center;
+}
+
+.cls_content_text {
+	text-align: justify;
 }
 
 .cls_content_text_enum:before {
 	content: "- ";
 	margin-left: 2%;
+	text-align: justify;
 }
 
 .cls_reference {

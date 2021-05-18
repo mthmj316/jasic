@@ -2,10 +2,10 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Jasic</title>
-<link id="link_main_theme" type="text/css" rel="stylesheet"
-	th:href="@{../../../css/themes/basic/main_theme.css}" />
-</head><body>
+<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
+<link rel="stylesheet" th:href="@{css/themes/basic/main_theme.css}" />
+</head>
+<body>
 	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
 	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
 	<main>
