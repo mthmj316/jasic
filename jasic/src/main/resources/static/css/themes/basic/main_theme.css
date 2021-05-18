@@ -134,3 +134,26 @@ body {
 	text-decoration: underline;
 	text-decoration-style: dotted;
 }
+
+.cls_visible_section {
+	display: block;
+}
+
+.cls_invisible_section {
+	display: none;
+}
+
+.cls_page_flip_btn {
+	height: 100px;
+	width: 37px;
+	cursor: pointer;
+	border: none;
+}
+
+.cls_page_flip_btn_left {
+	background: url(/image/arrow_left.png) no-repeat;
+}
+
+.cls_page_flip_btn_right {
+	background: url(/image/arrow_right.png) no-repeat;
+}
