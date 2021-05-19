@@ -23,19 +23,22 @@
 			<p class="cls_content_text" th:text="#{TEXT00013}"></p>
 		</section>
 		<section>
-			<cite class="cls_reference"> <sub
+			<span
 				th:insert="fragments/reference_fragments :: reference_label">
-			</sub> <sub
+			</span> 
+			<span
 				th:insert="fragments/reference_fragments :: reference_physic_horst_kuchling">
-			</sub> <sub th:insert="fragments/reference_fragments :: reference_sep">
-			</sub> <sub
+			</span> 
+			<span th:insert="fragments/reference_fragments :: reference_sep">
+			</span> 
+			<span
 				th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
-			</sub> <sub th:insert="fragments/reference_fragments :: reference_sep">
-			</sub> 
-			<sub
+			</span> 
+			<span th:insert="fragments/reference_fragments :: reference_sep">
+			</span> 
+			<span
 				th:insert="fragments/reference_fragments :: reference_wikipedia_kinematic">
-			</sub>
-			</cite>
+			</span>
 		</section>
 	</main>
 	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>

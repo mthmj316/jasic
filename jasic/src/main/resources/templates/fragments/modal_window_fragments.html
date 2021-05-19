@@ -1,4 +1,4 @@
-<sub th:fragment="modal_iframe_and_script">
+<span th:fragment="modal_iframe_and_script">
 	<div id="popup">
 		<iframe id="iframe"></iframe>
 		<button id="iframe_close_btn">Schließen</button>
@@ -18,7 +18,7 @@
 			document.getElementById('iframe').src = ref;
 		}
 	</script>
-</sub>
+</span>
 
 <a  th:fragment="modal_link(index_link,content)" class="cls_indexed_term" th:href="'javascript:openPopup(&quot;' + ${index_link} + '&quot;)'"
 	th:text="${content}"></a>

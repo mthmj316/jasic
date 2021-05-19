@@ -31,6 +31,13 @@
 						<p class="cls_content_text" th:utext="#{TEXT00015}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00016}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00017}"></p>
+						<section>
+							<span
+								th:insert="fragments/reference_fragments :: reference_label">
+							</span> </span> <span
+								th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+							</span>
+						</section>
 					</section>
 					<section class="cls_visible_section">
 						<div
@@ -44,11 +51,10 @@
 				</td>
 			</tr>
 		</table>
-
 	</main>
 	<div th:insert="fragments/static_content_fragments.html :: footer">
 	</div>
-	<sub
-		th:insert="fragments/modal_window_fragments.html :: modal_iframe_and_script"></sub>
+	<span
+		th:insert="fragments/modal_window_fragments.html :: modal_iframe_and_script"></span>
 </body>
 </html>

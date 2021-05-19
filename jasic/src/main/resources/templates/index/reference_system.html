@@ -5,22 +5,33 @@
 <title th:text="#{REFERENCE_SYSTEM}"></title>
 <link id="link_main_theme" type="text/css" rel="stylesheet"
 	th:href="@{../../css/themes/basic/main_theme.css}" />
-<th:block th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
 </script>
 </head>
 <body>
-	<div th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{REFERENCE_SYSTEM})"> </div>
-	<section>
-		<p class="cls_content_text" th:text="#{TEXT00018}"></p>
-		<p class="cls_content_text" th:text="#{TEXT00019}"></p>
-		<p class="cls_content_text" th:text="#{TEXT00020}"></p>
-		<p class="cls_content_text" th:text="#{TEXT00021}"></p>
-		<p class="cls_content_text" th:text="#{TEXT00022}">
+	<main>
+		<div
+			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{REFERENCE_SYSTEM})">
+		</div>
+		<section>
+			<p class="cls_content_text" th:text="#{TEXT00018}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00019}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00020}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00021}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00022}">
 			<ol>
 				<li th:text="#{TEXT00023}"></li>
 				<li th:text="#{TEXT00024}"></li>
 			</ol>
-		</p>
-	</section>
+			</p>
+		</section>
+		<section>
+			<span th:insert="fragments/reference_fragments :: reference_label">
+			</span> </span> <span
+				th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+			</span>
+		</section>
+	</main>
 </body>
 </html>
