@@ -31,6 +31,9 @@
 						<p class="cls_content_text" th:utext="#{TEXT00015}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00016}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00017}"></p>
+
+						<th:block															
+							th:insert="fragments/modal_window_fragments.html :: modal_link(index_link='/examples/mechanics/kinematics/rectilinear_motion_path',content='Beispiel')"></th:block>
 						<section class="csl_slide_cite">
 							<span
 								th:insert="fragments/reference_fragments :: reference_label">

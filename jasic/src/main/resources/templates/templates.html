@@ -9,3 +9,26 @@
 	<section class="csl_slide_cite">
 	</section>
 </section>
+
+<table>
+	<tr>
+		<td>
+			<button class="cls_page_flip_btn cls_page_flip_btn_left"></button>
+		</td>
+		<td>
+			<div
+				th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{???})">
+			</div>
+			<section class="csl_slide_cite">
+				<div
+					th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{???})">
+				</div>
+
+				<section class="csl_slide_cite"></section>
+			</section>
+		</td>
+		<td>
+			<button class="cls_page_flip_btn cls_page_flip_btn_right"></button>
+		</td>
+	</tr>
+</table>

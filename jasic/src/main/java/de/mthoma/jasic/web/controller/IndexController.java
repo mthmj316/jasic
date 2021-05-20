@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 	
-	
 	private static final String INDEX_REFERENCE_SYSTEM_URL = "/index/reference_system";
 	private static final String INDEX_REFERENCE_SYSTEM_PAGE = "index/reference_system";
 	
