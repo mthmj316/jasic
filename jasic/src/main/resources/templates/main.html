@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/static_content_fragments.html :: head"></head>
+<head>
+<meta charset="UTF-8">
+<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='')"></th:block>
+</head>
 <body>
-	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
-	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
+	<div th:insert="fragments/static_content_fragments.html :: header">
+	</div>
+	<div
+		th:insert="fragments/static_content_fragments.html :: navigation_bar">
+	</div>
 	<main>
+		<section class="csl_slide">
+
+			<section class="csl_slide_cite"></section>
+		</section>
 	</main>
-	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
+	<div th:insert="fragments/static_content_fragments.html :: footer">
+	</div>
 </body>
 </html>

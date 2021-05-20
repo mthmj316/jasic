@@ -158,8 +158,10 @@ body {
 
 .cls_page_flip_btn_left {
 	background: url(/image/arrow_left.png) no-repeat;
+	margin-right: 10px;
 }
 
 .cls_page_flip_btn_right {
 	background: url(/image/arrow_right.png) no-repeat;
+	margin-left: 10px
 }

@@ -4,6 +4,8 @@
 	<link rel="stylesheet" th:href="@{css/themes/basic/main_theme.css}" />
 </head>
 
+<link th:fragment="style(pathPrefix)" rel="stylesheet" th:href="@{${pathPrefix} + 'css/themes/basic/main_theme.css'}" />
+
 <title th:fragment="title"  th:text="#{HEADER.TITLE}"></title>
 
 <script th:fragment="mjax_script" type="text/javascript" async

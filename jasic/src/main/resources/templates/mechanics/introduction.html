@@ -3,36 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
-<link id="link_main_theme" type="text/css" rel="stylesheet"
-	th:href="@{../../../css/themes/basic/main_theme.css}" />
-</head><body>
-	<div th:insert="fragments/static_content_fragments.html :: header"> </div>
-	<div th:insert="fragments/static_content_fragments.html :: navigation_bar"> </div>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='../../../')"></th:block>
+</head>
+<body>
+	<div th:insert="fragments/static_content_fragments.html :: header">
+	</div>
+	<div
+		th:insert="fragments/static_content_fragments.html :: navigation_bar">
+	</div>
 	<main>
-		<div th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{CLASSIC.MECHANICS})"> </div>
-		<section>
+		<div
+			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{CLASSIC.MECHANICS})">
+		</div>
+		<section class="csl_slide">
 			<p class="cls_content_text" th:text="#{TEXT00000}"></p>
 			<p class="cls_content_text" th:text="#{TEXT00001}"></p>
-			<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00002}"></p>
-			<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00003}"></p>
-			<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00004}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00002}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00003}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00004}"></p>
 			<p class="cls_content_text" th:text="#{TEXT00005}"></p>
-		</section>
-		<section>
-			<span
-				th:insert="fragments/reference_fragments :: reference_label">
-			</span> <span
-				th:insert="fragments/reference_fragments :: reference_wikipedia_phyisc">
-			</span> <span th:insert="fragments/reference_fragments :: reference_sep">
-			</span> <span
-				th:insert="fragments/reference_fragments :: reference_wikipedia_klassische_mechanik">
-			</span> <span th:insert="fragments/reference_fragments :: reference_sep">
-			</span> 
-			<span
-				th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
-			</span>
+			<section class="csl_slide_cite">
+				<span th:insert="fragments/reference_fragments :: reference_label">
+				</span> <span
+					th:insert="fragments/reference_fragments :: reference_wikipedia_phyisc">
+				</span> <span th:insert="fragments/reference_fragments :: reference_sep">
+				</span> <span
+					th:insert="fragments/reference_fragments :: reference_wikipedia_klassische_mechanik">
+				</span> <span th:insert="fragments/reference_fragments :: reference_sep">
+				</span> <span
+					th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+				</span>
+			</section>
 		</section>
 	</main>
-	<div th:insert="fragments/static_content_fragments.html :: footer"> </div>
+	<div th:insert="fragments/static_content_fragments.html :: footer">
+	</div>
 </body>
 </html>
