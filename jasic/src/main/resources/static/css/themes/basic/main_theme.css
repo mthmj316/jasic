@@ -165,3 +165,16 @@ body {
 	background: url(/image/arrow_right.png) no-repeat;
 	margin-left: 10px
 }
+
+.cls_example_link {
+	width: 100%;
+	text-align: right;
+}
+
+table{
+    width:100%;
+}
+
+.cls_main_td {
+    width:100%;	
+}

@@ -19,22 +19,15 @@
 				<td>
 					<button class="cls_page_flip_btn cls_page_flip_btn_left"></button>
 				</td>
-				<td>
+				<td class="cls_main_td">
 					<div
 						th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{RECTILINEAR.MOTION})">
 					</div>
-					<section class="csl_slide_cite">
-						<div
-							th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{PATH})">
-						</div>
+<!-- 					Basic information about rectilinear motion -->
+					<section class="cls_slide_cite">
 						<p class="cls_content_text" th:text="#{TEXT00014}"></p>
 						<p class="cls_content_text" th:utext="#{TEXT00015}"></p>
-						<p class="cls_content_text" th:text="#{TEXT00016}"></p>
-						<p class="cls_content_text" th:text="#{TEXT00017}"></p>
-
-						<th:block															
-							th:insert="fragments/modal_window_fragments.html :: modal_link(index_link='/examples/mechanics/kinematics/rectilinear_motion_path',content='Beispiel')"></th:block>
-						<section class="csl_slide_cite">
+						<section class="cls_slide_cite">
 							<span
 								th:insert="fragments/reference_fragments :: reference_label">
 							</span> </span> <span
@@ -42,14 +35,33 @@
 							</span>
 						</section>
 					</section>
-					<section class="csl_slide_cite">
+<!-- 					Path -->
+					<section class="cls_slide_cite">
+						<div
+							th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{PATH})">
+						</div>
+						<p class="cls_content_text" th:text="#{TEXT00016}"></p>
+						<p class="cls_content_text" th:text="#{TEXT00017}"></p>
+
+						<th:block															
+							th:insert="fragments/example_fragments.html :: example_link(example_link='/examples/mechanics/kinematics/rectilinear_motion_path')"></th:block>
+						<section class="cls_slide_cite">
+							<span
+								th:insert="fragments/reference_fragments :: reference_label">
+							</span> </span> <span
+								th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+							</span>
+						</section>
+					</section>
+<!-- 					Speed -->
+					<section class="cls_slide_cite">
 						<div
 							th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{SPEED})">
 						</div>
 						<p class="cls_content_text" th:text="#{TEXT00025}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00026}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00027}"></p>
-						<section class="csl_slide_cite">
+						<section class="cls_slide_cite">
 							<span
 								th:insert="fragments/reference_fragments :: reference_label">
 							</span> </span> <span
@@ -57,18 +69,16 @@
 							</span>
 						</section>
 					</section>
-					<section class="csl_slide_cite">
+<!-- 					Average speed -->
+					<section class="cls_slide_cite">
 						<div
 							th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{AVERAGE.SPEED})">
 						</div>
 						<p class="cls_content_text" th:text="#{TEXT00028}"></p>
 						<p class="cls_content_text" th:text="#{TEXT00029}"></p>
-						<p class="cls_content_text" th:text="#{TEXT00030}"></p>
-						<p class="cls_content_text cls_content_text_enum"
-							th:text="#{TEXT00031}"></p>
-						<p class="cls_content_text cls_content_text_enum"
-							th:text="#{TEXT00032}"></p>
-						<section class="csl_slide_cite">
+						<th:block															
+							th:insert="fragments/example_fragments.html :: example_link(example_link='/examples/mechanics/kinematics/rectilinear_motion_average_speed')"></th:block>
+						<section class="cls_slide_cite">
 							<span
 								th:insert="fragments/reference_fragments :: reference_label">
 							</span> </span> <span

@@ -13,7 +13,7 @@
 
 
 		<div
-			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{PATH})">
+			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{AVERAGE.SPEED})">
 		</div>
 		<table>
 			<tr>
@@ -23,16 +23,16 @@
 				<td class="cls_main_td">
 					<section class="csl_slide">
 						<div
-							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 1: ' + #{POSITIVE.PATH})">
+							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 1: ' + #{POSITIVE.AVERAGE.SPEED})">
 						</div>
-						<p class="cls_content_text" th:text="#{TEXT00033}"></p>
+						<p class="cls_content_text" th:text="#{TEXT00030}"></p>
 						<section class="cls_slide_cite"></section>
 					</section>
 					<section class="csl_slide">
 						<div
-							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 2: ' + #{NEGATIVE.PATH})">
+							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 2: ' + #{NEGATIVE.AVERAGE.SPEED})">
 						</div>
-						<p class="cls_content_text" th:text="#{TEXT00034}"></p>
+						<p class="cls_content_text" th:text="#{TEXT00031}"></p>
 						<section class="cls_slide_cite"></section>
 					</section>
 				</td>
