@@ -12,6 +12,15 @@ public class ExampleController {
 	public static final String KINEMATICS_RECTILINEAR_MOTION_AVERAGE_SPEED_URL = "/examples/mechanics/kinematics/rectilinear_motion_average_speed";
 	public static final String KINEMATICS_RECTILINEAR_MOTION_AVERAGE_SPEED_PAGE = "examples/mechanics/kinematics/rectilinear_motion_average_speed";
 	
+	public static final String NO_EXAMPLES_AVAILABLE_URL = "/examples/no_examples_available";
+	public static final String NO_EXAMPLES_AVAILABLE_PAGE = "examples/no_examples_available";
+	
+	@GetMapping(value = NO_EXAMPLES_AVAILABLE_URL)
+	public String noExamplesAvailable() {
+		
+		return NO_EXAMPLES_AVAILABLE_PAGE;
+	}
+	
 	@GetMapping(value = KINEMATICS_RECTILINEAR_MOTION_AVERAGE_SPEED_URL)
 	public String kinematicsRectilinearMotionAverageSpeed() {
 		

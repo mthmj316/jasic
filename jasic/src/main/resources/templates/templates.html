@@ -1,19 +1,26 @@
 
 <th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
-<th:block th:insert="fragments/static_content_fragments.html :: style(pathPrefix='???')"></th:block>
-<th:block th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>	
+<th:block
+	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='???')"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
 <th:block th:insert="fragments/modal_window_fragments.html :: modal_css"></th:block>
 
 <!-- Don't forget to add the example page to the ExampleController -->
-<th:block th:insert="fragments/example_fragments.html :: example_link(example_link='/examples/???')"></th:block>
+<th:block
+	th:insert="fragments/slide_fragments.html :: slide_botton_menu(example_link='/examples/???' , exercise_link='/exercises/???')"></th:block>
 
-<!-- Don't forget to add the index page to the IndexController -->			
+<!-- Don't forget to add the index page to the IndexController -->
 <a class="cls_indexed_term" href="javascript:openPopup('/index/???')">???</a>
-						
-<section class="csl_slide">
 
-	<section class="cls_slide_cite">
-	</section>
+<section class="csl_slide">
+	<div
+		th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{???})">
+	</div>
+	<p class="cls_content_text" th:text="#{???}"></p>
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_botton_menu(example_link='/examples/???' , exercise_link='/exercises/???')"></th:block>
+	<section class="cls_slide_cite"></section>
 </section>
 
 <table>
@@ -25,11 +32,13 @@
 			<div
 				th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{???})">
 			</div>
-			<section class="cls_slide_cite">
+			<section class="csl_slide">
 				<div
 					th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{???})">
 				</div>
 				<p class="cls_content_text" th:text="#{???}"></p>
+				<th:block
+					th:insert="fragments/slide_fragments.html :: slide_botton_menu(example_link='/examples/???' , exercise_link='/exercises/???')"></th:block>
 				<section class="cls_slide_cite"></section>
 			</section>
 		</td>

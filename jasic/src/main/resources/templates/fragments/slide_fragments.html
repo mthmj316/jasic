@@ -1,0 +1,6 @@
+<p th:fragment="slide_botton_menu()" 
+	th:with="example_link=${example_link} ?: '/examples/no_examples_available', exercise_link=${exercise_link} ?: '/exercises/no_exercises_available'" 
+	class="cls_slide_botton_menu">
+	<a class="cls_slide_botton_menu_item" th:href="'javascript:openPopup(&quot;' + ${example_link} + '&quot;)'" th:text="#{EXAMPLE}"></a>
+	<a class="cls_slide_botton_menu_item" th:href="'javascript:openPopup(&quot;' + ${exercise_link} + '&quot;)'" th:text="#{EXERCISES}"></a>
+</p>
