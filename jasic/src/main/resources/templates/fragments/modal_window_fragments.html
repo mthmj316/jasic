@@ -1,0 +1,54 @@
+<span th:fragment="modal_iframe_and_script">
+	<div id="popup">
+		<iframe id="iframe"></iframe>
+		<button id="iframe_close_btn">Schließen</button>
+	</div> 
+	<script>
+		window.onload = function() {
+
+			document.getElementById('popup').onclick = function() {
+				if (document.getElementById("popup").style.display == "block") {
+					document.getElementById("popup").style.display = "none";
+				}
+			};
+		}
+
+		function openPopup(ref) {
+			document.getElementById("popup").style.display = "block";
+			document.getElementById('iframe').src = ref;
+		}
+	</script>
+</span>
+
+<style th:fragment="modal_css" type="text/css">
+#popup {
+	display: none;
+	border: 1px gray solid;
+	width: 90%;
+	height: 90%;
+	top: 20px;
+	left: 20px;
+	background-color: white;
+	z-index: 10;
+	/*   padding: 2em; */
+	position: fixed;
+}
+
+#popup iframe {
+	border: 0;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	position: relative;
+	top: 0;
+}
+
+#iframe {
+	border: 0;
+}
+
+#iframe_close_btn {
+	width: 100%;
+	position: relative;
+}
+</style>

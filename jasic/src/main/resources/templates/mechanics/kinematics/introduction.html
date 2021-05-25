@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='../../../')"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
+</head>
+<body>
+	<div th:insert="fragments/static_content_fragments.html :: header">
+	</div>
+	<div
+		th:insert="fragments/static_content_fragments.html :: navigation_bar">
+	</div>
+	<main class="cls_content">
+		<div
+			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{KINEMATICS})">
+		</div>
+		<section class="csl_slide">
+			<p class="cls_content_text" th:text="#{TEXT00006}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00007}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00008}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00009}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00010}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00011}"></p>
+			<p class="cls_content_text cls_content_text_enum"
+				th:text="#{TEXT00012}"></p>
+			<p class="cls_content_text" th:text="#{TEXT00013}"></p>
+			<section class="cls_slide_cite">
+				<span th:insert="fragments/reference_fragments :: reference_label">
+				</span> <span
+					th:insert="fragments/reference_fragments :: reference_physic_horst_kuchling">
+				</span> <span th:insert="fragments/reference_fragments :: reference_sep">
+				</span> <span
+					th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+				</span> <span th:insert="fragments/reference_fragments :: reference_sep">
+				</span> <span
+					th:insert="fragments/reference_fragments :: reference_wikipedia_kinematic">
+				</span>
+			</section>
+		</section>
+	</main>
+	<div th:insert="fragments/static_content_fragments.html :: footer">
+	</div>
+</body>
+</html>

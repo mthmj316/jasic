@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='../../')"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
+</head>
+<body>
+	<main>
+		<div
+			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{TEXT00043})">
+		</div>
+	</main>
+</body>
+</html>

@@ -1,56 +1,63 @@
-<div th:fragment="header">
-	<header>
-		<h1>Jasic - Physik</h1>
-	</header>
-</div>
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<title th:text="#{HEADER.TITLE}"></title>
+	<link rel="stylesheet" th:href="@{css/themes/basic/main_theme.css}" />
+</head>
 
-<div th:fragment="navigation_bar">
-	<nav>
-		<ul class="cls_nav_1st">
-			<li >
-				<a href="#">Klassiche Mechanik</a>
-				<ul class="cls_nav_2nd">
-					<li>
-						<a  href="#">Kinematik</a>
-						<ul class="cls_nav_3rd">
-							<li><a  href="#">Gleichförmige Bewegung</a></li>
-							<li><a  href="#">Gleichförmige Beschleunigung</a></li>
-							<li><a  href="#">Ungleichförmige Beschleunigung</a></li>
-						</ul>
-					</li>
-					<li><a  href="#">Dynamik</a>
-						<ul class="cls_nav_3rd">
-							<li><a  href="/no_subject_available">keine Themen</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li >
-				<a href="#">Elektrodynamik und Optik</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="/no_subject_available">keine Themen</a></li>
-				</ul>
-			<li>
-				<a href="#">Thermodynamik</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="/no_subject_available">keine Themen</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">Atom- und Kernphysik</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="/no_subject_available">keine Themen</a></li>
-				</ul>
-			</li>
-			<li>
-				<a href="#">Fortgeschrittene Themen</a>
-				<ul class="cls_nav_2nd">
-					<li><a  href="/no_subject_available">keine Themen</a></li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
-</div>
+<link th:fragment="style(pathPrefix)" rel="stylesheet" th:href="@{${pathPrefix} + 'css/themes/basic/main_theme.css'}" />
+
+<title th:fragment="title"  th:text="#{HEADER.TITLE}"></title>
+
+<script th:fragment="mjax_script" type="text/javascript" async
+	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<header th:fragment="header">
+	<h1 th:utext="#{HEADER.MAIN}"></h1>
+</header>
+
+<nav th:fragment="navigation_bar">
+	<ul class="cls_nav_1st">
+		<li><a href="#" th:text="#{CLASSIC.MECHANICS}"></a>
+			<ul class="cls_nav_2nd">
+				<li><a href="/mechanics/introduction" th:text="#{INTRODUCTION}"></a></li>
+				<li><a href="#" th:text="#{KINEMATICS}"></a>
+					<ul class="cls_nav_3rd">
+						<li><a href="/mechanics/kinematics/introduction"
+							th:text="#{INTRODUCTION}"></a></li>
+						<li><a href="/mechanics/kinematics/rectilinear_motion"
+							th:text="#{RECTILINEAR.MOTION}"></a></li>
+					</ul></li>
+				<li><a href="#" th:text="#{DYNAMICS}"></a>
+					<ul class="cls_nav_3rd">
+						<li><a href="/no_subject_available" th:text="#{NO_TOPICS}"></a></li>
+					</ul></li>
+			</ul></li>
+		<li><a href="#" th:text="#{ELECTRODYNAMICS.OPTICS}"></a>
+			<ul class="cls_nav_2nd">
+				<li><a href="/no_subject_available" th:text="#{NO_TOPICS}"></a></li>
+			</ul>
+		<li><a href="#" th:text="#{THERMODYNAMICS}"></a>
+			<ul class="cls_nav_2nd">
+				<li><a href="/no_subject_available" th:text="#{NO_TOPICS}"></a></li>
+			</ul></li>
+		<li><a href="#" th:text="#{ATOMIC.NUCLEAR.PHYSICS}"></a>
+			<ul class="cls_nav_2nd">
+				<li><a href="/no_subject_available" th:text="#{NO_TOPICS}"></a></li>
+			</ul></li>
+		<li><a href="#" th:text="#{ADVANCED.TOPICS}"></a>
+			<ul class="cls_nav_2nd">
+				<li><a href="/no_subject_available" th:text="#{NO_TOPICS}"></a></li>
+			</ul></li>
+	</ul>
+</nav>
+
+<span  th:fragment="content_top_header(content)">
+	<h1 class="cls_content_top_header" th:text="${content}"></h1>
+</span>
+
+<span  th:fragment="content_section_header(content)">
+	<h2 class="cls_content_section_header" th:text="${content}"></h2>
+</span>
 
 <div th:fragment="footer">
 		<footer>
@@ -59,7 +66,7 @@
 <!-- 			<a href="#">Fehler melden!</a> -->
 <!-- 		</p> -->
 		<p>
-			<small>Since 2020</small>
+			<small th:text="#{SINCE.2020}"></small>
 		</p>
 	</footer>
 </div>

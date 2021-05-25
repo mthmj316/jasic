@@ -98,4 +98,87 @@ nav .cls_nav_2nd li:focus-within .cls_nav_3rd {
 footer {
 	position: relative;
 	z-index: 0;
+	margin: 5%;
+}
+
+main {
+	margin: 5%;
+}
+
+body {
+	background-color: #E8E8E8;
+}
+
+.cls_content_top_header {
+	text-decoration: underline;
+	font-size: large;
+	text-align: center;
+}
+
+.cls_content_section_header {
+	text-decoration: underline;
+	font-size: medium;
+	text-align: center;
+}
+
+.cls_content_text {
+	text-align: justify;
+}
+
+.cls_content_text_enum:before {
+	content: "- ";
+	margin-left: 2%;
+	text-align: justify;
+}
+
+.cls_reference {
+	font-size: small;
+}
+
+.cls_indexed_term  {
+	color: black;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+}
+
+.cls_visible_section {
+	display: block;
+}
+
+.cls_invisible_section {
+	display: none;
+}
+
+.cls_page_flip_btn {
+	height: 100px;
+	width: 37px;
+	cursor: pointer;
+	border: none;
+}
+
+.cls_page_flip_btn_left {
+	background: url(/image/arrow_left.png) no-repeat;
+	margin-right: 10px;
+}
+
+.cls_page_flip_btn_right {
+	background: url(/image/arrow_right.png) no-repeat;
+	margin-left: 10px
+}
+
+.cls_slide_botton_menu {
+	width: 100%;
+	text-align: right;
+}
+
+.cls_slide_botton_menu_item {
+	color: darkgreen;
+}
+
+table{
+    width:100%;
+}
+
+.cls_main_td {
+    width:100%;	
 }
