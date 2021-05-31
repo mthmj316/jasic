@@ -17,14 +17,14 @@
 
 <nav th:fragment="navigation_bar">
 	<ul class="cls_nav_1st">
-		<li><a href="#" th:text="#{CLASSIC.MECHANICS}"></a>
+		<li><a id="mechanics" href="#" th:text="#{CLASSIC.MECHANICS}"></a>
 			<ul class="cls_nav_2nd">
 				<li><a href="/mechanics/introduction" th:text="#{INTRODUCTION}"></a></li>
-				<li><a href="#" th:text="#{KINEMATICS}"></a>
+				<li><a  id="mechanics_kinematics" href="#" th:text="#{KINEMATICS}"></a>
 					<ul class="cls_nav_3rd">
 						<li><a href="/mechanics/kinematics/introduction"
 							th:text="#{INTRODUCTION}"></a></li>
-						<li><a href="/mechanics/kinematics/rectilinear_motion"
+						<li><a id="mechanics_kinematics_rectilinear_motion" href="/mechanics/kinematics/rectilinear_motion"
 							th:text="#{RECTILINEAR.MOTION}"></a></li>
 					</ul></li>
 				<li><a href="#" th:text="#{DYNAMICS}"></a>

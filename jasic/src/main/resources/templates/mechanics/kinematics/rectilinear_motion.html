@@ -21,7 +21,7 @@
 		<table>
 			<tr>
 				<td>
-					<button class="cls_page_flip_btn cls_page_flip_btn_left" onclick="previous(document)"></button>
+					<button id="page_flip_btn_left" class="cls_page_flip_btn cls_page_flip_btn_left" onclick="previous(document)"></button>
 				</td>
 				<td class="cls_main_td">
 					<div
@@ -41,6 +41,8 @@
 							</div>
 							<p class="cls_content_text" th:text="#{TEXT00014}"></p>
 							<p class="cls_content_text" th:utext="#{TEXT00015}"></p>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_botton_menu()"></th:block>
 							<section class="cls_slide_cite">
 								<span
 									th:insert="fragments/reference_fragments :: reference_label">
@@ -75,6 +77,8 @@
 							<p class="cls_content_text" th:text="#{TEXT00025}"></p>
 							<p class="cls_content_text" th:text="#{TEXT00026}"></p>
 							<p class="cls_content_text" th:text="#{TEXT00027}"></p>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_botton_menu()"></th:block>
 							<section class="cls_slide_cite">
 								<span
 									th:insert="fragments/reference_fragments :: reference_label">
@@ -103,7 +107,7 @@
 					</section>
 				</td>
 				<td>
-					<button class="cls_page_flip_btn cls_page_flip_btn_right" onclick="next(document)"></button>
+					<button id="page_flip_btn_right" class="cls_page_flip_btn cls_page_flip_btn_right" onclick="next(document)"></button>
 				</td>
 			</tr>
 		</table>
