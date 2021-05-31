@@ -67,9 +67,15 @@ public class SlideControllerTest {
 			this.checkSlideVisibility(slideContainer.findElements(By.xpath("*")), "slide_" + (i == SLIDE_COUNT ? 0 : i));
 		}
 		
-		//Check go to index
-		
+		//Slide show should be at slide_0 (index)
+
 		//Check previous button
+		for(int i = (SLIDE_COUNT - 1); i >= 0; i--) {
+
+			DRIVER.findElement(By.id("page_flip_btn_left")).click();
+			
+			this.checkSlideVisibility(slideContainer.findElements(By.xpath("*")), "slide_" + i);
+		}	
 	}
 	
 	private void checkSlideVisibility(List<WebElement> childElements, String idOfVisibleSlide) {
