@@ -1,7 +1,7 @@
 /**
  * This controller is used to control the slides with a slide container.
  * The following functions are offered:
- * 	- jumpsTo(Document, String) -> jumps to the slide with the given id
+ * 	- jumpTo(Document, String) -> jumps to the slide with the given id
  *	- next(Document)			-> makes the next slide visible and all others invisible. 
  *		If the last slide is currently visible, than the next slide will be the index slide.
  *	- previsous(Document)		-> makes the slide before the currently visible slide visible and all others invisible.
@@ -15,7 +15,7 @@
 /**
  * Sets the slide with given slideId visble and all others invisible.
  */
-window.jumpsTo = function jumpsTo(document, slideId) {
+window.jumpTo = function jumpTo(document, slideId) {
 
 	setSlideVisibility(document, slideId);
 }

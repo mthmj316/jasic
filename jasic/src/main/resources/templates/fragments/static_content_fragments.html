@@ -10,6 +10,8 @@
 
 <script th:fragment="mjax_script" type="text/javascript" async
 	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	
+<script th:fragment="slide_controller" type="module" th:src="@{/js/controller/common/slide_controller.js}"></script>
 
 <header th:fragment="header">
 	<h1 th:utext="#{HEADER.MAIN}"></h1>

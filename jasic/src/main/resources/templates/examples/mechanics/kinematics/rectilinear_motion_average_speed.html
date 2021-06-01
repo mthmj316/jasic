@@ -7,8 +7,10 @@
 	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='../../../../')"></th:block>
 <th:block
 	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: slide_controller"></th:block>
 </head>
-<body>
+<body onload="index(document)">
 	<main>
 		<div
 			th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{AVERAGE.SPEED})">
@@ -16,41 +18,62 @@
 		<table>
 			<tr>
 				<td>
-					<button class="cls_page_flip_btn cls_page_flip_btn_left"></button>
+					<button id="page_flip_btn_left"
+						class="cls_page_flip_btn cls_page_flip_btn_left"
+						onclick="previous(document)"></button>
 				</td>
 				<td class="cls_main_td">
-					<section class="csl_slide">
-						<div
-							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 1: ' + #{POSITIVE.AVERAGE.SPEED})">
-						</div>
-						<p class="cls_content_text" th:text="#{TEXT00031}"></p>
-						<p class="cls_content_text" th:text="#{TEXT00032}"></p>
-						<section class="cls_slide_cite"></section>
-					</section>
-					<section class="csl_slide">
-						<div
-							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 2: ' + #{NEGATIVE.AVERAGE.SPEED})">
-						</div>
-						<p class="cls_content_text" th:text="#{TEXT00035}"></p>
-						<p class="cls_content_text" th:text="#{TEXT00036}"></p>
-						<section class="cls_slide_cite"></section>
-					</section>
-					<section class="csl_slide">
-						<div
-							th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 3: ' + #{TEXT00030})">
-						</div>
-						<p class="cls_content_text" th:text="#{TEXT00037}"></p>
-						<p class="cls_content_text" th:text="#{TEXT00038}"></p>
-						<section class="cls_slide_cite"></section>
-					</section>
-					<section>
-						<p class="cls_content_text" th:text="#{TEXT00039}"></p>
-						<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00040}"></p>
-						<p class="cls_content_text cls_content_text_enum" th:text="#{TEXT00041}"></p>
+					<section id="slide_container">
+
+						<!-- Table of contents -->
+						<section id="slide_0" class="cls_slide">
+							<div
+								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{TABLE.OF.CONTENTS})">
+							</div>
+
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_1', item_text=#{EXAMPLE} + ' 1: ' + #{POSITIVE.AVERAGE.SPEED})"></th:block>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_2', item_text=#{EXAMPLE} + ' 2: ' + #{NEGATIVE.AVERAGE.SPEED})"></th:block>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_3', item_text=#{EXAMPLE} + ' 3: ' + #{TEXT00030})"></th:block>
+						</section>
+						<section id="slide_1" class="csl_slide">
+							<div
+								th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 1: ' + #{POSITIVE.AVERAGE.SPEED})">
+							</div>
+							<p class="cls_content_text" th:text="#{TEXT00031}"></p>
+							<p class="cls_content_text" th:text="#{TEXT00032}"></p>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_botton_menu_reduced()"></th:block>
+							<section class="cls_slide_cite"></section>
+						</section>
+						<section id="slide_2" class="csl_slide">
+							<div
+								th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 2: ' + #{NEGATIVE.AVERAGE.SPEED})">
+							</div>
+							<p class="cls_content_text" th:text="#{TEXT00035}"></p>
+							<p class="cls_content_text" th:text="#{TEXT00036}"></p>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_botton_menu_reduced()"></th:block>
+							<section class="cls_slide_cite"></section>
+						</section>
+						<section id="slide_3" class="csl_slide">
+							<div
+								th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 3: ' + #{TEXT00030})">
+							</div>
+							<p class="cls_content_text" th:text="#{TEXT00037}"></p>
+							<p class="cls_content_text" th:text="#{TEXT00038}"></p>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_botton_menu_reduced()"></th:block>
+							<section class="cls_slide_cite"></section>
+						</section>
 					</section>
 				</td>
 				<td>
-					<button class="cls_page_flip_btn cls_page_flip_btn_right"></button>
+					<button id="page_flip_btn_right"
+						class="cls_page_flip_btn cls_page_flip_btn_right"
+						onclick="next(document)"></button>
 				</td>
 			</tr>
 		</table>

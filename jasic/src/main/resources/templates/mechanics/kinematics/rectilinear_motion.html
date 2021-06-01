@@ -9,7 +9,8 @@
 	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
 <th:block th:insert="fragments/modal_window_fragments.html :: modal_css"></th:block>
 
-<script type="module" th:src="@{/js/controller/common/slide_controller.js}"></script>
+<th:block
+	th:insert="fragments/static_content_fragments.html :: slide_controller"></th:block>
 </head>
 <body onload="index(document); initModalWindow()">
 	<div th:insert="fragments/static_content_fragments.html :: header">
@@ -29,13 +30,22 @@
 					</div>
 					<section id="slide_container">
 						<!-- Table of contents -->
-						<section id="slide_0" class="cls_slide_cite">
+						<section id="slide_0" class="cls_slide">
 							<div
 								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{TABLE.OF.CONTENTS})">
 							</div>
+							
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_1', item_text=#{INTRODUCTION})"></th:block>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_2', item_text=#{PATH})"></th:block>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_3', item_text=#{SPEED})"></th:block>
+							<th:block
+								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_4', item_text=#{AVERAGE.SPEED})"></th:block>
 						</section>
 						<!-- 					Basic information about rectilinear motion -->
-						<section id="slide_1" class="cls_slide_cite">
+						<section id="slide_1" class="cls_slide">
 							<div
 								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{INTRODUCTION})">
 							</div>
@@ -52,7 +62,7 @@
 							</section>
 						</section>
 						<!-- 					Path -->
-						<section id="slide_2" class="cls_slide_cite">
+						<section id="slide_2" class="cls_slide">
 							<div
 								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{PATH})">
 							</div>
@@ -70,7 +80,7 @@
 							</section>
 						</section>
 						<!-- 					Speed -->
-						<section id="slide_3" class="cls_slide_cite">
+						<section id="slide_3" class="cls_slide">
 							<div
 								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{SPEED})">
 							</div>
@@ -88,7 +98,7 @@
 							</section>
 						</section>
 						<!-- 					Average speed -->
-						<section id="slide_4" class="cls_slide_cite">
+						<section id="slide_4" class="cls_slide">
 							<div
 								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{AVERAGE.SPEED})">
 							</div>

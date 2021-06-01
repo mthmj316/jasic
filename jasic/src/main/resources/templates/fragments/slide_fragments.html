@@ -6,4 +6,10 @@
 	<a class="cls_slide_botton_menu_item" th:href="'javascript:openPopup(&quot;' + ${exercise_link} + '&quot;)'" th:text="#{EXERCISES}"></a>
 </p>
 
-<p th:fragment="slide_index_item()"></p>
+<p th:fragment="slide_botton_menu_reduced()" class="cls_slide_botton_menu">
+	<a id="index_btn" class="cls_slide_botton_menu_item" th:href="'javascript:index(document)'" th:text="#{CONTENT}"></a>
+</p>
+
+<p th:fragment="slide_index_item(slide_id, item_text)" class="cls_slide_index_item_container">
+	<a class="cls_slide_index_item" th:href="'javascript:jumpTo(document, &quot;' + ${slide_id} + '&quot;)'" th:text="${item_text}"></a>
+</p>
