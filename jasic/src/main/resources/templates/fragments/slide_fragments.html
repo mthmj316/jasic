@@ -13,3 +13,7 @@
 <p th:fragment="slide_index_item(slide_id, item_text)" class="cls_slide_index_item_container">
 	<a class="cls_slide_index_item" th:href="'javascript:jumpTo(document, &quot;' + ${slide_id} + '&quot;)'" th:text="${item_text}"></a>
 </p>
+
+<button th:fragment="slide_page_flip_btn_left()" id="page_flip_btn_left" class="cls_page_flip_btn cls_page_flip_btn_left" onclick="previous(document)"></button>
+
+<button th:fragment="slide_page_flip_btn_right()" id="page_flip_btn_right" class="cls_page_flip_btn cls_page_flip_btn_right" onclick="next(document)"></button>

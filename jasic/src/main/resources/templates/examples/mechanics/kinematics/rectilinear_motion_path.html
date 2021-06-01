@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
-<th:block
-	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='../../../../')"></th:block>
-<th:block
-	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
-
-<th:block
-	th:insert="fragments/static_content_fragments.html :: slide_controller"></th:block>
-
-</head>
+<th:block th:insert="fragments/static_content_fragments.html :: head()"></th:block>
 <body onload="index(document)">
 	<main>
 		<div
@@ -20,7 +9,8 @@
 		<table>
 			<tr>
 				<td>
-					<button id="page_flip_btn_left" class="cls_page_flip_btn cls_page_flip_btn_left" onclick="previous(document)"></button>
+					<th:block
+						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_left()"></th:block>
 				</td>
 				<td class="cls_main_td">
 					<section id="slide_container">
@@ -56,7 +46,8 @@
 					</section>
 				</td>
 				<td>
-					<button id="page_flip_btn_right" class="cls_page_flip_btn cls_page_flip_btn_right" onclick="next(document)"></button>
+					<th:block
+						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_right()"></th:block>
 				</td>
 			</tr>
 		</table>

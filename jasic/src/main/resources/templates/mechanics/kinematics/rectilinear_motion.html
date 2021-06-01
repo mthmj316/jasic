@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
-<th:block
-	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='../../../')"></th:block>
-<th:block
-	th:insert="fragments/static_content_fragments.html :: mjax_script"></th:block>
-<th:block th:insert="fragments/modal_window_fragments.html :: modal_css"></th:block>
-
-<th:block
-	th:insert="fragments/static_content_fragments.html :: slide_controller"></th:block>
-</head>
+<th:block th:insert="fragments/static_content_fragments.html :: head()"></th:block>
 <body onload="index(document); initModalWindow()">
-	<div th:insert="fragments/static_content_fragments.html :: header">
-	</div>
+	<div th:insert="fragments/static_content_fragments.html :: header"></div>
 	<div
-		th:insert="fragments/static_content_fragments.html :: navigation_bar">
-	</div>
+		th:insert="fragments/static_content_fragments.html :: navigation_bar"></div>
 	<main>
 		<table>
 			<tr>
 				<td>
-					<button id="page_flip_btn_left" class="cls_page_flip_btn cls_page_flip_btn_left" onclick="previous(document)"></button>
+					<th:block
+						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_left()"></th:block>
 				</td>
 				<td class="cls_main_td">
 					<div
@@ -34,7 +22,7 @@
 							<div
 								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{TABLE.OF.CONTENTS})">
 							</div>
-							
+
 							<th:block
 								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_1', item_text=#{INTRODUCTION})"></th:block>
 							<th:block
@@ -117,7 +105,8 @@
 					</section>
 				</td>
 				<td>
-					<button id="page_flip_btn_right" class="cls_page_flip_btn cls_page_flip_btn_right" onclick="next(document)"></button>
+					<th:block
+						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_right()"></th:block>
 				</td>
 			</tr>
 		</table>

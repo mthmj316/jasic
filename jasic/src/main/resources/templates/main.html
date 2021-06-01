@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<th:block th:insert="fragments/static_content_fragments.html :: title"></th:block>
 <th:block
-	th:insert="fragments/static_content_fragments.html :: style(pathPrefix='')"></th:block>
-</head>
+	th:insert="fragments/static_content_fragments.html :: head()"></th:block>
 <body>
 	<div th:insert="fragments/static_content_fragments.html :: header">
 	</div>
