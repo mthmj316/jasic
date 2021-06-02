@@ -1,0 +1,11 @@
+
+<section th:fragment="example_2" id="slide_2" class="csl_slide">
+	<div
+		th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 2: ' + #{NEGATIVE.AVERAGE.SPEED})">
+	</div>
+	<p class="cls_content_text" th:text="#{TEXT00035}"></p>
+	<p class="cls_content_text" th:text="#{TEXT00036}"></p>
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_botton_menu_reduced()"></th:block>
+	<section class="cls_slide_cite"></section>
+</section>

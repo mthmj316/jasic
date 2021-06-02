@@ -13,37 +13,7 @@
 						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_left()"></th:block>
 				</td>
 				<td class="cls_main_td">
-					<section id="slide_container">
-						<!-- Table of contents -->
-						<section id="slide_0" class="cls_slide">
-							<div
-								th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{TABLE.OF.CONTENTS})">
-							</div>
-
-							<th:block
-								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_1', item_text=#{EXAMPLE} + ' 1: ' + #{POSITIVE.PATH})"></th:block>
-							<th:block
-								th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_2', item_text=#{EXAMPLE} + ' 2: ' + #{NEGATIVE.PATH})"></th:block>
-						</section>
-						<section id="slide_1" class="csl_slide">
-							<div
-								th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 1: ' + #{POSITIVE.PATH})">
-							</div>
-							<p class="cls_content_text" th:text="#{TEXT00033}"></p>
-							<th:block
-								th:insert="fragments/slide_fragments.html :: slide_botton_menu_reduced()"></th:block>
-							<section class="cls_slide_cite"></section>
-						</section>
-						<section id="slide_2" class="csl_slide">
-							<div
-								th:insert="fragments/static_content_fragments.html :: content_section_header(#{EXAMPLE} + ' 2: ' + #{NEGATIVE.PATH})">
-							</div>
-							<p class="cls_content_text" th:text="#{TEXT00034}"></p>
-							<th:block
-								th:insert="fragments/slide_fragments.html :: slide_botton_menu_reduced()"></th:block>
-							<section class="cls_slide_cite"></section>
-						</section>
-					</section>
+					<th:block th:insert="examples/mechanics/kinematics/rectilinear_motion_path/slide_container.html :: slide_container"></th:block>
 				</td>
 				<td>
 					<th:block

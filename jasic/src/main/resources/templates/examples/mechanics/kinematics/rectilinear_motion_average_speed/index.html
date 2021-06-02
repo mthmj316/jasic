@@ -1,0 +1,14 @@
+
+<!-- Table of contents -->
+<section th:fragment="index" id="slide_0" class="cls_slide">
+	<div
+		th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{TABLE.OF.CONTENTS})">
+	</div>
+
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_1', item_text=#{EXAMPLE} + ' 1: ' + #{POSITIVE.AVERAGE.SPEED})"></th:block>
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_2', item_text=#{EXAMPLE} + ' 2: ' + #{NEGATIVE.AVERAGE.SPEED})"></th:block>
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_index_item(slide_id='slide_3', item_text=#{EXAMPLE} + ' 3: ' + #{TEXT00030})"></th:block>
+</section>

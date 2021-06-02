@@ -1,0 +1,16 @@
+<!-- 	Basic information about rectilinear motion -->
+<section th:fragment="introduction" id="slide_1" class="cls_slide">
+	<div
+		th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{INTRODUCTION})">
+	</div>
+	<p class="cls_content_text" th:text="#{TEXT00014}"></p>
+	<p class="cls_content_text" th:utext="#{TEXT00015}"></p>
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_botton_menu()"></th:block>
+	<section class="cls_slide_cite">
+		<span th:insert="fragments/reference_fragments :: reference_label">
+		</span> </span> <span
+			th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+		</span>
+	</section>
+</section>
