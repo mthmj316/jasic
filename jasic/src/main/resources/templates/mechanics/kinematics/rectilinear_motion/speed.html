@@ -1,0 +1,18 @@
+
+<!-- 					Speed -->
+<section th:fragment="speed" id="slide_3" class="cls_slide">
+	<div
+		th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{SPEED})">
+	</div>
+	<p class="cls_content_text" th:text="#{TEXT00025}"></p>
+	<p class="cls_content_text" th:text="#{TEXT00026}"></p>
+	<p class="cls_content_text" th:text="#{TEXT00027}"></p>
+	<th:block
+		th:insert="fragments/slide_fragments.html :: slide_botton_menu()"></th:block>
+	<section class="cls_slide_cite">
+		<span th:insert="fragments/reference_fragments :: reference_label">
+		</span> </span> <span
+			th:insert="fragments/reference_fragments :: reference_physic_giancoli_4">
+		</span>
+	</section>
+</section>

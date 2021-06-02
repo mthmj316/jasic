@@ -1,8 +1,12 @@
-<head th:fragment="head">
-	<meta charset="UTF-8">
-	<title th:text="#{HEADER.TITLE}"></title>
-	<link rel="stylesheet" th:href="@{css/themes/basic/main_theme.css}" />
+<head th:fragment="head()" th:with="title=${title} ?: #{HEADER.TITLE}">
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+<link rel="stylesheet" th:href="@{'/css/themes/basic/main_theme.css'}" />
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>	
+<script type="module" th:src="@{/js/controller/common/slide_controller.js}"></script>
+<th:block th:insert="fragments/modal_window_fragments.html :: modal_css"></th:block>
 </head>
+
 
 <link th:fragment="style(pathPrefix)" rel="stylesheet" th:href="@{${pathPrefix} + 'css/themes/basic/main_theme.css'}" />
 
@@ -10,6 +14,8 @@
 
 <script th:fragment="mjax_script" type="text/javascript" async
 	src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	
+<script th:fragment="slide_controller" type="module" th:src="@{/js/controller/common/slide_controller.js}"></script>
 
 <header th:fragment="header">
 	<h1 th:utext="#{HEADER.MAIN}"></h1>
@@ -17,14 +23,14 @@
 
 <nav th:fragment="navigation_bar">
 	<ul class="cls_nav_1st">
-		<li><a href="#" th:text="#{CLASSIC.MECHANICS}"></a>
+		<li><a id="mechanics" href="#" th:text="#{CLASSIC.MECHANICS}"></a>
 			<ul class="cls_nav_2nd">
 				<li><a href="/mechanics/introduction" th:text="#{INTRODUCTION}"></a></li>
-				<li><a href="#" th:text="#{KINEMATICS}"></a>
+				<li><a  id="mechanics_kinematics" href="#" th:text="#{KINEMATICS}"></a>
 					<ul class="cls_nav_3rd">
 						<li><a href="/mechanics/kinematics/introduction"
 							th:text="#{INTRODUCTION}"></a></li>
-						<li><a href="/mechanics/kinematics/rectilinear_motion"
+						<li><a id="mechanics_kinematics_rectilinear_motion" href="/mechanics/kinematics/rectilinear_motion"
 							th:text="#{RECTILINEAR.MOTION}"></a></li>
 					</ul></li>
 				<li><a href="#" th:text="#{DYNAMICS}"></a>

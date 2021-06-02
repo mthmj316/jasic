@@ -182,3 +182,12 @@ table{
 .cls_main_td {
     width:100%;	
 }
+
+.cls_slide_index_item_container{
+	width: 100%;
+	text-align: center;
+}
+
+.cls_slide_index_item {
+	color: black;
+}

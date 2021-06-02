@@ -1,4 +1,4 @@
-package de.mthoma.web.jasic.js.integrationtests;
+package de.mthoma.web.jasic.js.integrationtests.kinematics;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
