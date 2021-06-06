@@ -2,32 +2,12 @@
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <th:block th:insert="fragments/static_content_fragments.html :: head()"></th:block>
 <body onload="index(document); initModalWindow()">
-	<div th:insert="fragments/static_content_fragments.html :: header"></div>
-	<div
-		th:insert="fragments/static_content_fragments.html :: navigation_bar"></div>
+	<th:block th:insert="fragments/static_content_fragments.html :: header"></th:block>
+	<th:block th:insert="fragments/static_content_fragments.html :: navigation_bar"></th:block>
 	<main>
-		<table>
-			<tr>
-				<td>
-					<th:block
-						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_left()"></th:block>
-				</td>
-				<td class="cls_main_td">
-					<div
-						th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{RECTILINEAR.MOTION})">
-					</div>
-					<th:block th:insert="mechanics/kinematics/rectilinear_motion/slide_container.html :: slide_container"></th:block>
-				</td>
-				<td>
-					<th:block
-						th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_right()"></th:block>
-				</td>
-			</tr>
-		</table>
+		<th:block th:insert="mechanics/kinematics/rectilinear_motion/frame.html :: frame"></th:block>
 	</main>
-	<div th:insert="fragments/static_content_fragments.html :: footer">
-	</div>
-	<span
-		th:insert="fragments/modal_window_fragments.html :: modal_iframe_and_script"></span>
+	<th:block th:insert="fragments/static_content_fragments.html :: footer"></th:block>
+	<th:block th:insert="fragments/modal_window_fragments.html :: modal_iframe_and_script"></th:block>
 </body>
 </html>

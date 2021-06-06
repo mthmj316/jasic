@@ -1,0 +1,14 @@
+<table th:fragment="frame" >
+	<tr>
+		<td>
+<!-- 		<th:block th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_left()"></th:block> -->
+		</td>
+		<td class="cls_main_td">
+			<th:block th:insert="fragments/static_content_fragments.html :: content_top_header(content=#{CLASSIC.MECHANICS})"></th:block>
+			<th:block th:insert="mechanics/introduction/slide_container.html :: slide_container"></th:block>
+		</td>
+		<td>
+<!-- 			<th:block th:insert="fragments/slide_fragments.html :: slide_page_flip_btn_right()"></th:block> -->
+		</td>
+	</tr>
+</table>
