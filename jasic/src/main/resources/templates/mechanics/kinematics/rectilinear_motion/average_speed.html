@@ -1,9 +1,9 @@
 
 <!-- 					Average speed -->
 <section th:fragment="average_speed" id="slide_4" class="cls_slide">
-	<div
+	<th:block
 		th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{AVERAGE.SPEED})">
-	</div>
+	</th:block>
 	<p class="cls_content_text" th:text="#{TEXT00028}"></p>
 	<p class="cls_content_text" th:text="#{TEXT00029}"></p>
 	<th:block
