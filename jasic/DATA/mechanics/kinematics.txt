@@ -1,0 +1,17 @@
+## Start: Beschleunigung ##########
+##
+H2:Beschleunigung
+P:Unter Beschleunigung versteht man, wenn ein Körper seine Geschwindigkeit ändert. Sie gibt an, um wie viele \({m}\over{s}\) sich die Geschwindigkeit pro \(s\) ändert.
+P:Das Symbol für die Beschleunigung ist \(a\) und dessen Einheit: $$[a]={{{m}\over{s}}\over{s}}={{m}\over{s^2}}$$
+P:Wie bei dem Weg und der Geschwindigkeit, handelt es sich bei der Beschleunigung auch um eine vektorielle Größe. Folgendes gilt für die Beschleunigung in Bezug mit er Geschwindigkeit:
+PE:Wenn Beschleunigung und Geschwindigkeit das gleiche Vorzeichen haben, wird der Körper schneller.
+PE:Wenn Beschleunigung und Geschwindigkeit unterschiedliche Vorzeichen haben, wird der Körper abgebremst.
+PE:Ist die Geschwindigkeit null, dann ist auch die Beschleunigung null.
+Q:reference_physic_giancoli_4
+##
+H2:Durchschnittsbeschleunigung
+##
+P:Die Durchschnittsbeschleunigung ist die Änderung der Geschwindigkeit dividiert durch die Zeitspanne, in der die Änderung stattgefunden hat:$$\bar{a}={{v_2-v_1}\over{t_2-t_1}}={{\Delta{v}}\over{\Delta{t}}}$$
+Q:reference_physic_giancoli_4
+H2:Momentanbeschleunigung
+## End: Beschleunigung ############
