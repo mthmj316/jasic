@@ -49,3 +49,12 @@ P:Ist die Beschleunigung konstant dann gilt: $$Momentanbeschleunigung = Durchsch
 P:Bei konstanter Beschleunigung ergibt sich für den den Weg und die Geschwindigkeit:$$s=s_0+v_0t+{{1}\over{2}}at^2$$ $$v=v_0+at$$ $$\bar{v}={{v+v_0}\over{2}}$$ Unter der Voraussetzung das zum Zeitpunkt des Starts \(t_0=0\) ist. \(s_0\) und \(v_0\) sind der zum Zeitpunkt \(t_0\) bereits zurückgelegte Weg bzw. die Geschwindigkeit.
 Q:reference_physic_giancoli_4
 ## End: Beschleunigung ############
+###################################
+## Start: Freier Fall #############
+##
+H2:Der Freie Fall
+##
+P:
+##
+Q:reference_physic_giancoli_4
+## End: Freier Fall ###############
