@@ -1,0 +1,15 @@
+
+<section th:fragment="average_acceleration"  id="slide_8" class="csl_slide">
+	<th:block
+		th:insert="fragments/static_content_fragments.html :: content_section_header(content=#{AVERAGE.ACCELERATION})">
+	</th:block>
+	<p class="cls_content_text" th:text="#{TEXT00056}"></p>
+	
+	<th:block th:insert="fragments/slide_fragments.html :: slide_botton_menu()"></th:block>
+	
+	<section class="cls_slide_cite">
+		<th:block th:insert="fragments/reference_fragments :: reference_label"></th:block>
+		
+		<th:block th:insert="fragments/reference_fragments :: reference_physic_giancoli_4"></th:block> 
+	</section>
+</section>

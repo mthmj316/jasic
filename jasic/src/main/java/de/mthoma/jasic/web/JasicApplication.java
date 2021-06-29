@@ -15,6 +15,11 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
 public class JasicApplication implements WebMvcConfigurer{
+	
+	private static final String[] RESOURCE_BUNDLES = {
+			"messages/messages", 
+			"messages/mechanics/introduction/introduction", 
+			"messages/mechanics/kinematics/kinematics"};
 
 	
 	public static void main(String[] args) {
@@ -24,7 +29,7 @@ public class JasicApplication implements WebMvcConfigurer{
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("messages/messages");
+        messageSource.setBasenames(RESOURCE_BUNDLES);
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }

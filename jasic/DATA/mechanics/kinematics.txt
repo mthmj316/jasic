@@ -1,0 +1,51 @@
+###################################
+## Erläuterung:
+## H2   -> Slide Header
+## P    -> Slide Absatz
+## PE   -> Eingerückter Slide Absatz
+## Q    -> Schlüssel für den Quellenverweis (siehe: ... \resources\templates\fragments\reference_fragments.html
+##
+## Referenzen:
+##  reference_physic_giancoli_4
+###################################
+## Start: Beschleunigung ##########
+##
+H2:Beschleunigung
+##
+P:Unter Beschleunigung versteht man, wenn ein Körper seine Geschwindigkeit ändert. Sie gibt an, um wie viele \({m}\over{s}\) sich die Geschwindigkeit pro \(s\) ändert.
+##
+P:Das Symbol für die Beschleunigung ist \(a\) und dessen Einheit: $$[a]={{{m}\over{s}}\over{s}}={{m}\over{s^2}}$$
+##
+P:Wie bei dem Weg und der Geschwindigkeit, handelt es sich bei der Beschleunigung auch um eine vektorielle Größe. Folgendes gilt für die Beschleunigung in Bezug mit der Geschwindigkeit:
+##
+PE:Wenn Beschleunigung und Geschwindigkeit das gleiche Vorzeichen haben, wird der Körper schneller.
+##
+PE:Wenn Beschleunigung und Geschwindigkeit unterschiedliche Vorzeichen haben, wird der Körper abgebremst.
+##
+PE:Ist die Geschwindigkeit null, dann ist auch die Beschleunigung null.
+##
+Q:reference_physic_giancoli_4
+##
+H2:Durchschnittsbeschleunigung
+##
+P:Die Durchschnittsbeschleunigung ist die Änderung der Geschwindigkeit dividiert durch die Zeitspanne, in der die Änderung stattgefunden hat:$$\bar{a}={{v_2-v_1}\over{t_2-t_1}}={{\Delta{v}}\over{\Delta{t}}}$$
+Q:reference_physic_giancoli_4
+##
+H2:Momentanbeschleunigung
+##
+P:Die Momentanbeschleunigung ist definiert als die Durchschnittsbeschleunigung während eines Zeitintervalls, dass gegen null geht.$$a=\lim_{\Delta{t}\to0}{{\Delta{v}}\over{\Delta{t}}}={{dv}\over{dt}}$$
+P:Wenn wir den Begriff "Beschleunigung" verwenden, ist immer die Momentanbeschleunigung gemeint. 
+##
+Q:reference_physic_giancoli_4
+##
+H2:Beschleunigung-Zeit-Funktion
+P:Liegt der Weg als Weg-Zeit-Funktion oder die Geschwindigkeit als Geschwindigkeit-Zeit-Funktion vor, so kann die Beschleunigung-Zeit-Funktion durch zweimaliges bzw. einmaliges ableiten der Weg-Zeit-Funktion bzw. der Geschwindigkeit-Zeit-Funktion hergeleitet werden. Daraus ergibt sich für die Momentanbeschleunigung:$$a={{d^2s}\over{dt^2}}={{dv}\over{dt}}$$
+##
+Q:reference_physic_giancoli_4
+##
+H2:Bewegung bei konstanter Beschleunigung
+##
+P:Ist die Beschleunigung konstant dann gilt: $$Momentanbeschleunigung = Durchschnittsbeschleunigung$$Ein Beispiel hierfür wäre der Freie Fall nahe der Erdoberfläche.
+P:Bei konstanter Beschleunigung ergibt sich für den den Weg und die Geschwindigkeit:$$s=s_0+v_0t+{{1}\over{2}}at^2$$ $$v=v_0+at$$ $$\bar{v}={{v+v_0}\over{2}}$$ Unter der Voraussetzung das zum Zeitpunkt des Starts \(t_0=0\) ist. \(s_0\) und \(v_0\) sind der zum Zeitpunkt \(t_0\) bereits zurückgelegte Weg bzw. die Geschwindigkeit.
+Q:reference_physic_giancoli_4
+## End: Beschleunigung ############
