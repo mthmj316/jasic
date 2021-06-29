@@ -16,7 +16,7 @@ P:Unter Beschleunigung versteht man, wenn ein Körper seine Geschwindigkeit änd
 ##
 P:Das Symbol für die Beschleunigung ist \(a\) und dessen Einheit: $$[a]={{{m}\over{s}}\over{s}}={{m}\over{s^2}}$$
 ##
-P:Wie bei dem Weg und der Geschwindigkeit, handelt es sich bei der Beschleunigung auch um eine vektorielle Größe. Folgendes gilt für die Beschleunigung in Bezug mit er Geschwindigkeit:
+P:Wie bei dem Weg und der Geschwindigkeit, handelt es sich bei der Beschleunigung auch um eine vektorielle Größe. Folgendes gilt für die Beschleunigung in Bezug mit der Geschwindigkeit:
 ##
 PE:Wenn Beschleunigung und Geschwindigkeit das gleiche Vorzeichen haben, wird der Körper schneller.
 ##
@@ -46,6 +46,6 @@ Q:reference_physic_giancoli_4
 H2:Bewegung bei konstanter Beschleunigung
 ##
 P:Ist die Beschleunigung konstant dann gilt: $$Momentanbeschleunigung = Durchschnittsbeschleunigung$$Ein Beispiel hierfür wäre der Freie Fall nahe der Erdoberfläche.
-P:Bei konstanter Beschleunigung ergibt sich für den den Weg und die Geschwindigkeit:$$s=s_0+v_0t+{{1}\over{2}}at^2$$ $$v=v_0+at$$ $$\bar{v}={{v+v_0}\over{2}}$$ Unter der Voraussetzung das zum Zeitpunkt des Starts \(t_0=0\) ist.
+P:Bei konstanter Beschleunigung ergibt sich für den den Weg und die Geschwindigkeit:$$s=s_0+v_0t+{{1}\over{2}}at^2$$ $$v=v_0+at$$ $$\bar{v}={{v+v_0}\over{2}}$$ Unter der Voraussetzung das zum Zeitpunkt des Starts \(t_0=0\) ist. \(s_0\) und \(v_0\) sind der zum Zeitpunkt \(t_0\) bereits zurückgelegte Weg bzw. die Geschwindigkeit.
 Q:reference_physic_giancoli_4
 ## End: Beschleunigung ############
