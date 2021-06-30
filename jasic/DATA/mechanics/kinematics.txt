@@ -54,7 +54,11 @@ Q:reference_physic_giancoli_4
 ##
 H2:Der Freie Fall
 ##
-P:
+P:Wie bereits im vorigen Abschnitt erwähnt, ist der Freie Fall nahe der Erdoberfläche ein typisches Beispiel für eine Bewegung mit konstanter Beschleunigung.
+P:Wenn sich ein Körper nahe der Erdoberfläche ohne Widerstand, z.B. Luftwiderstand, im Freien Fall befindet, dann beschleunigt er mit der konstanten Beschleunigung von \(g=9,81{{m}\over{s^2}}\). Diese Beschleunigung wird Fallbeschleunigung bezeichnet.
+P:Daraus ergibt sich unter der Anwendung der Gleichungen für die Bewegung bei konstanter Beschleunigung:$$s=s_0+v_0t+{{1}\over{2}}gt^2$$ $$v=v_0+gt$$ $$\bar{v}={{v+v_0}\over{2}}$$
+P:Weil die Fallbeschleunigung vom Breitengrad und der Höhe über dem Meeresspiegel abhängt, ist \(g\) nur ein Näherungswert. Weil die Unterschiede aber nur gering sind, kann mit diesem Näherungswert überall nahe der Erdoberfläche gerechnet werden.
+P:Bei der Fallbeschleunigung handelt sich, wie bei allen anderen Beschleunigungen, um einen Vektor der zum Erdmittelpunkt zeigt.
 ##
 Q:reference_physic_giancoli_4
 ## End: Freier Fall ###############
