@@ -11,9 +11,9 @@
 	</parent>
 	<groupId>de.mthoma.web</groupId>
 	<artifactId>jasic</artifactId>
-	<version>v0.6.1-SNAPSHOT</version>
+	<version>v0.7.0-SNAPSHOT</version>
 	<name>jasic</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Jasic - Physics</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -95,9 +95,9 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
-		    <groupId>org.seleniumhq.selenium</groupId>
-		    <artifactId>selenium-java</artifactId>
-		    <version>3.141.59</version>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.59</version>
 		</dependency>
 	</dependencies>
 
@@ -108,6 +108,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<directory>C:\Users\mthoma\Documents\GitHub\jasic\jasic\lib</directory>
 	</build>
 
 	<dependencyManagement>
